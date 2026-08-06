@@ -367,6 +367,10 @@ async function analyzeAd(){
 
     
     const priceNum = cleanPrice(parsed.price);
+    console.log("RAW PRICE:", parsed.price);
+console.log("CLEAN PRICE:", priceNum);
+console.log("YEAR:", parsed.year);
+console.log("KM:", kmNum);
 const kmNum = cleanKm(parsed.km);
 
 const advice = priceAdvice(
