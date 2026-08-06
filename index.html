@@ -344,10 +344,13 @@ function cleanPrice(raw){
 
   if(isNaN(n)) return null;
 
-  // alleen Marktplaats centen corrigeren
- if(raw.includes('priceCents')){
- n = n / 100;
-}
+
+  // Marktplaats geeft soms prijs in centen terug
+  // Bijvoorbeeld 995000 = €9950
+  if(n > 100000 && n < 100000000){
+      n = Math.round(n / 100);
+  }
+
 
   if(n < 500 || n > 2000000){
       return null;
