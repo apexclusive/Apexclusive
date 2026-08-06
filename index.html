@@ -269,27 +269,20 @@ function cleanPrice(raw){
 
   if(!raw) return null;
 
+  let n = parseInt(raw.replace(/[^\d]/g,''));
 
-  let value = raw.replace(/[^\d]/g,'');
+  if(isNaN(n)) return null;
 
-
-  let n = parseInt(value);
-
-
-  // Marktplaats gebruikt centen
-  if(n > 1000000){
+  // Marktplaats priceCents correctie
+  if(n > 100000 && n < 100000000){
       n = Math.round(n / 100);
   }
 
-
-  // onrealistische prijzen verwijderen
-  if(n > 1000000){
+  if(n < 500 || n > 2000000){
       return null;
   }
 
-
-  return isNaN(n) ? null : n;
-
+  return n;
 }
 
 function cleanKm(raw){
@@ -311,15 +304,15 @@ function priceAdvice(price, km, year){
 const titleLower = document.body.innerText.toLowerCase();
 
 if(
+titleLower.includes('rs6') ||
 titleLower.includes('m2') ||
 titleLower.includes('m3') ||
 titleLower.includes('m4') ||
-titleLower.includes('rs6') ||
 titleLower.includes('porsche') ||
 titleLower.includes('lamborghini') ||
 titleLower.includes('ferrari')
 ){
-basePrice = 80000;
+  basePrice = 80000;
 }
 
 let estimated = basePrice * Math.pow(0.90, age);
@@ -371,7 +364,13 @@ async function analyzeAd(){
 console.log("CLEAN PRICE:", priceNum);
 console.log("YEAR:", parsed.year);
 console.log("KM:", kmNum);
+const priceNum = cleanPrice(parsed.price);
 const kmNum = cleanKm(parsed.km);
+
+console.log("RAW PRICE:", parsed.price);
+console.log("CLEAN PRICE:", priceNum);
+console.log("YEAR:", parsed.year);
+console.log("KM:", kmNum);
 
 const advice = priceAdvice(
     priceNum,
