@@ -336,7 +336,7 @@ return {
 
 }
   
-function cleanPrice(raw){
+function cleanPrice(raw, platform){
 
   if(!raw) return null;
 
@@ -345,9 +345,8 @@ function cleanPrice(raw){
   if(isNaN(n)) return null;
 
 
-  // Marktplaats geeft soms prijs in centen terug
-  // Bijvoorbeeld 995000 = €9950
-  if(n > 100000 && n < 100000000){
+  // Alleen Marktplaats gebruikt soms centen
+  if(platform === 'marktplaats' && n > 100000){
       n = Math.round(n / 100);
   }
 
@@ -358,7 +357,7 @@ function cleanPrice(raw){
 
   return n;
 }
-
+  
 function cleanKm(raw){
   if(!raw) return null;
   const n = parseFloat(raw.replace(/[^\d]/g,''));
@@ -510,7 +509,7 @@ else parsed = parseMarktplaats(html);
 parsed.images = images;
 
     
-    const priceNum = cleanPrice(parsed.price);
+    const priceNum = cleanPrice(parsed.price, platform);
 const kmNum = cleanKm(parsed.km);
 
 console.log("RAW PRICE:", parsed.price);
