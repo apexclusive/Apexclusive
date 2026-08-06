@@ -163,7 +163,9 @@ img.startsWith("http") &&
 !img.includes("placeholder") &&
 !images.includes(img)
 ){
-
+if(img.includes("autoscout24")){
+    img = img.replace(/_\d+x\d+/,"");
+}
 images.push(img);
 
 }
