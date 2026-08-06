@@ -499,7 +499,8 @@ async function analyzeAd(){
     const html = data.html;
 const images = data.images || [];
 
-    console.log("GEVONDEN FOTO'S:", images);
+    console.log("DATA VAN SERVER:", data);
+console.log("FOTO'S:", images);
 
 let parsed;
 if(platform==='mobile') parsed = parseMobile(html);
