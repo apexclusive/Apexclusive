@@ -170,6 +170,18 @@ continue;
 let cleanImg = img;
 
 
+// Marktplaats hogere resolutie proberen
+if(cleanImg.includes("marktplaats")){
+
+    cleanImg = cleanImg
+    .replace(/width=\d+/g, "width=1600")
+    .replace(/height=\d+/g, "height=1200")
+    .replace(/w=\d+/g, "w=1600")
+    .replace(/h=\d+/g, "h=1200");
+
+}
+
+
 // AutoScout24: probeer grotere versie af te dwingen
 cleanImg = cleanImg
 .replace(/\/\d+x\d+\//, '/1600x1200/')
