@@ -124,27 +124,46 @@ function get(html, patterns){
   const images = [];
 
   const patterns = [
+
+    /https?:\/\/[^"\\]+\.(?:jpg|jpeg|png|webp)[^"\\]*/gi,
+
+    /\\"(https?:\\\/\\\/[^"]+\.(?:jpg|jpeg|png|webp)[^"]*)\\"/gi,
+
     /"image"\s*:\s*"([^"]+)"/gi,
+
     /"imageUrl"\s*:\s*"([^"]+)"/gi,
-    /data-src="([^"]+\.(?:jpg|jpeg|png)[^"]*)"/gi,
-   /https?:\\?\/\\?\/([^"\\]+\.(?:jpg|jpeg|png)[^"\\]*)/gi,
-/"src"\s*:\s*"([^"]+\.(?:jpg|jpeg|png)[^"]*)"/gi,
-    /"url"\s*:\s*"([^"]+\.(?:jpg|jpeg|png)[^"]*)"/gi,
-    /"images"\s*:\s*\["([^"]+)"/gi,
+
     /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/gi
-];
+
+  ];
+
 
   patterns.forEach(pattern => {
+
     let match;
 
     while((match = pattern.exec(html)) !== null){
-      if(match[1] && !images.includes(match[1])){
-        images.push(match[1]);
+
+      let img = match[1] || match[0];
+
+      img = img
+        .replace(/\\u002F/g,'/')
+        .replace(/\\\//g,'/');
+
+      if(
+        img &&
+        !images.includes(img) &&
+        img.startsWith('http')
+      ){
+        images.push(img);
       }
+
     }
+
   });
 
-  return images.slice(0,10); // maximaal 10 foto's
+
+  return images.slice(0,10);
 }
 
 function parseMobile(html){
