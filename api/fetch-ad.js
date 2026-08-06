@@ -1,3 +1,39 @@
+function extractImages(html){
+
+const images = [];
+
+const patterns = [
+
+/"image"\s*:\s*"([^"]+)"/gi,
+
+/"imageUrl"\s*:\s*"([^"]+)"/gi,
+
+/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/gi
+
+];
+
+
+patterns.forEach(pattern => {
+
+let match;
+
+while((match = pattern.exec(html)) !== null){
+
+if(match[1] && !images.includes(match[1])){
+
+images.push(match[1]);
+
+}
+
+}
+
+});
+
+
+return images.slice(0,10);
+
+}
+
 import https from "https";
 import http from "http";
 
