@@ -273,8 +273,8 @@ function cleanPrice(raw){
 
   if(isNaN(n)) return null;
 
-  // Marktplaats priceCents correctie
-  if(n > 100000 && n < 100000000){
+  // alleen Marktplaats centen corrigeren
+  if(n > 1000000){
       n = Math.round(n / 100);
   }
 
@@ -291,29 +291,29 @@ function cleanKm(raw){
   return isNaN(n) ? null : n;
 }
 
-function priceAdvice(price, km, year){
+function priceAdvice(price, km, year, title){
+
   if(!price || !year) return null;
   if(price < 500 || price > 2000000) return null;
+
   const age = 2026 - parseInt(year);
   const kmN = km || (age * 15000);
 
-  // Ruwe marktschatting gebaseerd op leeftijd/km
-  // Basis: gemiddelde auto begint op €30.000 nieuw en deprecieert ~12% per jaar
   let basePrice = 30000;
 
-const titleLower = document.body.innerText.toLowerCase();
+  const titleLower = (title || '').toLowerCase();
 
-if(
-titleLower.includes('rs6') ||
-titleLower.includes('m2') ||
-titleLower.includes('m3') ||
-titleLower.includes('m4') ||
-titleLower.includes('porsche') ||
-titleLower.includes('lamborghini') ||
-titleLower.includes('ferrari')
-){
-  basePrice = 80000;
-}
+  if(
+    titleLower.includes('rs6') ||
+    titleLower.includes('m2') ||
+    titleLower.includes('m3') ||
+    titleLower.includes('m4') ||
+    titleLower.includes('porsche') ||
+    titleLower.includes('lamborghini') ||
+    titleLower.includes('ferrari')
+  ){
+    basePrice = 80000;
+  }
 
 let estimated = basePrice * Math.pow(0.90, age);
   // Km-correctie: 1 cent per km boven/onder 15.000km/jaar gemiddelde
@@ -370,7 +370,8 @@ console.log("KM:", kmNum);
 const advice = priceAdvice(
     priceNum,
     kmNum,
-    parsed.year
+    parsed.year,
+    parsed.title
 );
 
     // Prijs indicator: Mobile.de/AutoScout eigen indicator heeft voorrang
