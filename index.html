@@ -166,8 +166,19 @@ function parseMarktplaats(html){
 
 function cleanPrice(raw){
   if(!raw) return null;
-  const n = parseFloat(raw.replace(/[^\d]/g,''));
-  return isNaN(n) ? null : n;
+
+  let cleaned = raw.replace(/[^\d]/g,'');
+
+  let n = parseFloat(cleaned);
+
+  if(isNaN(n)) return null;
+
+  // Marktplaats geeft prijs soms in centen door
+  if(n > 1000000){
+    n = n / 100;
+  }
+
+  return n;
 }
 
 function cleanKm(raw){
