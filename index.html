@@ -168,12 +168,24 @@ continue;
 
 
 // parameters verwijderen
-let cleanImg = img.split("?")[0];
+let cleanImg = img;
 
 
-// duplicaten verwijderen
+// AutoScout24: probeer grotere versie af te dwingen
+cleanImg = cleanImg
+.replace(/\/\d+x\d+\//, '/1600x1200/')
+.replace(/width=\d+/g, 'width=1600')
+.replace(/height=\d+/g, 'height=1200');
+
+
+// Marktplaats CDN hogere kwaliteit
+cleanImg = cleanImg
+.replace(/width=\d+/g,'width=1600')
+.replace(/height=\d+/g,'height=1200');
+
+
 if(!images.includes(cleanImg)){
-images.push(cleanImg);
+    images.push(cleanImg);
 }
 
 }
