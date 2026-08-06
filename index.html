@@ -469,17 +469,6 @@ function priceAdvice(price, km, year, title){
   };
 
 }
-  // Km-correctie: 1 cent per km boven/onder 15.000km/jaar gemiddelde
-  const expectedKm = age * 15000;
-  const kmDiff = kmN - expectedKm;
-  estimated -= kmDiff * 0.05;
-  estimated = Math.max(estimated, 1500);
-
-  const ratio = price / estimated;
-  if(ratio < 0.85) return {level:'low', label:'Onder marktwaarde', icon:'✓', text:`Op basis van leeftijd en kilometerstand lijkt de vraagprijs <strong>aantrekkelijk</strong> — ruwweg ${Math.round((1-ratio)*100)}% onder een gemiddelde schatting voor dit type voertuig. Wel aan te raden: historiekcheck (CARFAX/AutoDNA) en APK-inspectie voordat u beslist.`};
-  if(ratio > 1.15) return {level:'high', label:'Boven marktwaarde', icon:'✗', text:`De vraagprijs lijkt <strong>aan de hoge kant</strong> — ruwweg ${Math.round((ratio-1)*100)}% boven een gemiddelde schatting. Vergelijkbare voertuigen zijn mogelijk goedkoper verkrijgbaar. Onderhandelingsruimte aanwezig.`};
-  return {level:'avg', label:'Marktconform', icon:'~', text:`De vraagprijs is <strong>marktconform</strong> — redelijk in lijn met wat vergelijkbare voertuigen opbrengen. Geen direct reden tot zorg, maar controleer altijd de voertuighistorie voor u koopt.`};
-}
 
 async function analyzeAd(){
   const url = $('adUrl').value.trim();
@@ -609,13 +598,6 @@ ${advice || finalLevel ? `
 <div class="brow">
 <span class="bl">Vermogen</span>
 <span class="bv">${parsed.power}</span>
-</div>
-` : ''}
-
-${parsed.color ? `
-<div class="brow">
-<span class="bl">Kleur</span>
-<span class="bv">${parsed.color}</span>
 </div>
 ` : ''}
 
