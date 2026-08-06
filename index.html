@@ -338,7 +338,11 @@ async function analyzeAd(){
     const priceNum = cleanPrice(parsed.price);
 const kmNum = cleanKm(parsed.km);
 
-const advice = priceAdvice(priceNum, kmNum, parsed.year);
+const advice = priceAdvice(
+    priceNum,
+    kmNum,
+    parsed.year
+);
 
     // Prijs indicator: Mobile.de/AutoScout eigen indicator heeft voorrang
     const finalLevel = parsed.priceLevel || (advice ? advice.level : null);
