@@ -125,7 +125,17 @@ function parseAutoscout(html){
 /([\d]{2,3}\.[\d]{3})\s*km/i,
 /(\d+)\s*km\b/i
 ]);
-  const fuel  = get(html,[/\"fuel\"\s*:\s*\"([^\"]+)\"/i,/Kraftstoff[^>]*>\s*([^<\n,]{3,20})/i]);
+
+const year = get(html,[
+/"firstRegistration"[^}]*"year"\s*:\s*(\d{4})/i,
+/Erstzulassung[^0-9]*(20\d{2})/i,
+/(\b20[01]\d\b)/
+]);
+
+const fuel = get(html,[
+/"fuel"\s*:\s*"([^"]+)"/i,
+/Kraftstoff[^>]*>\s*([^<\n,]{3,20})/i
+]);
   const power = get(html,[/(\d{2,4})\s*(?:PS|kW)\b/i]);
   const color = get(html,[/\"color\"\s*:\s*\"([^\"]{3,20})\"/i]);
 
@@ -205,7 +215,7 @@ async function analyzeAd(){
   btn.disabled = true;
 
   try {
-    const resp = await fetch(`/api/fetch-ad?url=${encodeURIComponent(url)}`);
+    const resp = await fetch(`/api/fetch-ad?url=${const resp = await fetch(`/.netlify/functions/fetch-ad?url=${encodeURIComponent(url)}`);(url)}`);
     const data = await resp.json();
 
     if(!resp.ok || data.error) throw new Error(data.error || 'Ophalen mislukt');
