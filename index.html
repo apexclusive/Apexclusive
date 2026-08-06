@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Auto Analyse — APEXclusive</title>
+<title>Advertentie Analyse — APEXclusive</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -24,6 +24,7 @@ font-weight:300;
 min-height:100vh
 }
 
+
 header{
 background:#0a0a0a;
 border-bottom:1px solid #1a1a1a;
@@ -36,6 +37,7 @@ top:0;
 z-index:100
 }
 
+
 .logo{
 font-family:'Cormorant Garamond',serif;
 font-size:22px;
@@ -45,9 +47,11 @@ text-decoration:none;
 text-transform:uppercase
 }
 
+
 .logo span{
 color:#c9a84c
 }
+
 
 .back{
 font-size:10px;
@@ -57,13 +61,15 @@ color:#c9a84c;
 text-decoration:none;
 border:1px solid #c9a84c33;
 padding:10px 22px;
-transition:all .35s
+transition:.35s
 }
+
 
 .back:hover{
 border-color:#c9a84c;
 background:#c9a84c11
 }
+
 
 
 .hero{
@@ -72,7 +78,8 @@ padding:80px 40px 60px;
 position:relative
 }
 
-.hero::before{
+
+.hero:before{
 content:'';
 position:absolute;
 top:0;
@@ -83,6 +90,7 @@ height:60px;
 background:linear-gradient(to bottom,transparent,#c9a84c)
 }
 
+
 .hl{
 font-size:10px;
 letter-spacing:.35em;
@@ -91,6 +99,7 @@ color:#c9a84c;
 margin-bottom:20px;
 margin-top:16px
 }
+
 
 .hero h1{
 font-family:'Cormorant Garamond',serif;
@@ -102,85 +111,41 @@ line-height:1.2;
 margin-bottom:20px
 }
 
+
 .hero p{
 font-size:13px;
 color:#888;
 letter-spacing:.08em;
 line-height:1.9;
-max-width:520px;
-margin:0 auto
+max-width:600px;
+margin:auto
 }
+
 
 
 .gl{
 height:1px;
-background:linear-gradient(90deg,transparent,#c9a84c 30%,#f5e6a3 50%,#c9a84c 70%,transparent);
+background:linear-gradient(90deg,transparent,#c9a84c,#f5e6a3,#c9a84c,transparent);
 margin:0 40px;
 opacity:.5
 }
 
 
+
 .wrap{
 max-width:900px;
-margin:0 auto;
+margin:auto;
 padding:60px 40px 80px
 }
 
 
-.search{
-display:flex;
-margin-bottom:40px
-}
 
-.input{
-flex:1;
-background:#111;
-border:none;
-border-bottom:2px solid #2a2a2a;
-color:#fff;
-font-size:20px;
-padding:18px 20px;
-outline:none;
-font-family:'Montserrat';
-letter-spacing:.12em;
-text-transform:uppercase
-}
-
-.input:focus{
-border-color:#c9a84c
-}
-
-
-.button{
-background:#c9a84c;
-color:#0a0a0a;
-border:none;
-padding:18px 36px;
-font-size:10px;
-letter-spacing:.25em;
-text-transform:uppercase;
-cursor:pointer
-}
-
-
-.error{
-color:#c0392b;
-font-size:11px;
-margin-top:10px;
-display:none
-}
-
-.error.show{
-display:block
-}
-
-
-.card{
+.box{
 background:#0f0f0f;
 border:1px solid #1a1a1a;
 border-left:2px solid #c9a84c;
 padding:32px;
-margin-bottom:20px
+margin-bottom:24px
 }
 
 
@@ -189,86 +154,127 @@ font-size:9px;
 letter-spacing:.3em;
 text-transform:uppercase;
 color:#c9a84c;
-margin-bottom:24px
+margin-bottom:25px
 }
 
 
-.grid{
+
+.input{
+width:100%;
+background:#111;
+border:1px solid #222;
+color:#fff;
+padding:18px;
+font-family:'Montserrat';
+font-size:13px;
+margin-bottom:15px
+}
+
+
+.input:focus{
+outline:none;
+border-color:#c9a84c
+}
+
+
+
+.btn{
+background:#c9a84c;
+color:#0a0a0a;
+border:none;
+font-family:'Montserrat';
+font-size:10px;
+letter-spacing:.25em;
+text-transform:uppercase;
+padding:18px 40px;
+cursor:pointer;
+transition:.35s
+}
+
+
+.btn:hover{
+box-shadow:0 0 30px rgba(201,168,76,.4)
+}
+
+
+
+.upload{
+border:1px dashed #333;
+padding:35px;
+text-align:center;
+color:#777;
+cursor:pointer
+}
+
+
+.upload:hover{
+border-color:#c9a84c
+}
+
+
+#preview{
+max-width:100%;
+margin-top:25px;
+display:none
+}
+
+
+
+.card{
+background:#0f0f0f;
+border:1px solid #1a1a1a;
+border-left:2px solid #c9a84c;
+padding:32px;
+margin-bottom:20px;
+display:none
+}
+
+
+.card h2{
+font-family:'Cormorant Garamond',serif;
+font-size:30px;
+font-weight:300;
+margin-bottom:20px;
+color:white
+}
+
+
+.row{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px 28px
+grid-template-columns:repeat(2,1fr);
+gap:20px
 }
 
 
 .item span:first-child{
 display:block;
 font-size:9px;
-letter-spacing:.18em;
+letter-spacing:.2em;
+color:#555;
 text-transform:uppercase;
-color:#444;
 margin-bottom:5px
 }
 
+
 .item span:last-child{
-font-size:14px;
-color:#e8e8e8
+font-size:14px
 }
 
 
-.result{
-display:none
+@media(max-width:650px){
+
+header{
+padding:16px 20px
 }
 
-.result.show{
-display:block
+.wrap{
+padding:40px 20px
 }
 
-
-.badge{
-display:inline-block;
-background:#f5c800;
-color:#0a0a0a;
-padding:10px 20px;
-font-weight:700;
-letter-spacing:.15em;
-margin-bottom:25px
+.row{
+grid-template-columns:1fr
 }
 
-
-.analysis{
-background:#111;
-border:1px solid #c9a84c33;
-padding:40px;
-text-align:center;
-margin-top:30px
-}
-
-
-.analysis h2{
-font-family:'Cormorant Garamond',serif;
-font-size:30px;
-font-weight:300;
-margin-bottom:15px
-}
-
-
-.analysis p{
-font-size:12px;
-color:#888;
-line-height:1.8
-}
-
-
-.cta{
-display:inline-block;
-margin-top:25px;
-background:#c9a84c;
-color:#0a0a0a;
-padding:15px 40px;
-font-size:10px;
-letter-spacing:.25em;
-text-transform:uppercase;
-text-decoration:none
 }
 
 
@@ -278,33 +284,16 @@ padding:40px;
 border-top:1px solid #1a1a1a;
 font-size:10px;
 letter-spacing:.18em;
-color:#444
+color:#333;
+text-transform:uppercase
 }
 
 
-@media(max-width:700px){
-
-header{
-padding:18px 20px
+footer a{
+color:#c9a84c;
+text-decoration:none
 }
 
-.wrap{
-padding:40px 20px
-}
-
-.grid{
-grid-template-columns:1fr
-}
-
-.search{
-flex-direction:column
-}
-
-.button{
-margin-top:10px
-}
-
-}
 
 </style>
 
@@ -312,20 +301,33 @@ margin-top:10px
 
 <body>
 
-```html
+
+<header>
+
+<a class="logo" href="https://apexclusive.nl">
+APEX<span>clusive</span>
+</a>
+
+<a class="back" href="https://apexclusive.nl">
+&#8592; Terug naar website
+</a>
+
+</header>
+
+
 <div class="hero">
 
 <div class="hl">
-Auto Analyse
+Vehicle Intelligence
 </div>
 
 <h1>
-Voertuig Analyse &amp; Importadvies
+Advertentie Analyse
 </h1>
 
 <p>
-Voer een Nederlands kenteken in en ontvang een technisch overzicht,
-waardebepaling en een eerste analyse voor import, aankoop en investering.
+Upload een Marktplaats, mobile.de of andere voertuigadvertentie.
+APEXclusive analyseert prijs, specificaties, risico's en importpotentieel.
 </p>
 
 </div>
@@ -337,71 +339,62 @@ waardebepaling en een eerste analyse voor import, aankoop en investering.
 <div class="wrap">
 
 
-<div class="search">
-
-<input 
-class="input" 
-id="kenteken" 
-type="text" 
-placeholder="Kenteken invoeren..."
-maxlength="10"
-onkeydown="if(event.key==='Enter'){analyse()}"
->
-
-<button 
-class="button"
-onclick="analyse()"
->
-Analyseer
-</button>
-
-</div>
-
-
-<div 
-class="error" 
-id="error">
-</div>
-
-
-
-<div 
-class="result" 
-id="result"
->
-
-
-<div class="badge" id="badge">
-—
-</div>
-
-
-
-<div class="card">
+<div class="box">
 
 <div class="title">
-Voertuig Identificatie
+Advertentie invoeren
 </div>
 
 
-<div class="grid">
+<input class="input" id="url" placeholder="Plak advertentie URL (Marktplaats / mobile.de)...">
 
 
-<div class="item">
-<span>Merk</span>
-<span id="merk">—</span>
+<div class="upload" onclick="document.getElementById('foto').click()">
+
+Upload advertentiefoto
+
+<input id="foto" type="file" accept="image/*" hidden>
+
+<img id="preview">
+
 </div>
 
 
+<br>
+
+
+<button class="btn" onclick="analyse()">
+Start analyse
+</button>
+
+
+</div>
+
+<div class="card" id="result">
+
+<h2 id="vehicleTitle">
+Voertuig Analyse
+</h2>
+
+
+<div class="row">
+
+
 <div class="item">
-<span>Model</span>
-<span id="model">—</span>
+<span>Merk / Model</span>
+<span id="merkModel">—</span>
 </div>
 
 
 <div class="item">
 <span>Bouwjaar</span>
-<span id="jaar">—</span>
+<span id="bouwjaar">—</span>
+</div>
+
+
+<div class="item">
+<span>Kilometerstand</span>
+<span id="km">—</span>
 </div>
 
 
@@ -412,68 +405,14 @@ Voertuig Identificatie
 
 
 <div class="item">
-<span>Carrosserie</span>
-<span id="carrosserie">—</span>
-</div>
-
-
-<div class="item">
-<span>Kleur</span>
-<span id="kleur">—</span>
-</div>
-
-
-</div>
-
-</div>
-
-
-
-
-
-<div class="card">
-
-<div class="title">
-Technische Specificaties
-</div>
-
-
-<div class="grid">
-
-
-<div class="item">
-<span>Gewicht</span>
-<span id="gewicht">—</span>
-</div>
-
-
-<div class="item">
-<span>Cilinderinhoud</span>
-<span id="motor">—</span>
-</div>
-
-
-<div class="item">
 <span>Vermogen</span>
 <span id="vermogen">—</span>
 </div>
 
 
 <div class="item">
-<span>CO₂ uitstoot</span>
-<span id="co2">—</span>
-</div>
-
-
-<div class="item">
-<span>Energielabel</span>
-<span id="label">—</span>
-</div>
-
-
-<div class="item">
-<span>APK geldig</span>
-<span id="apk">—</span>
+<span>Transmissie</span>
+<span id="transmissie">—</span>
 </div>
 
 
@@ -485,759 +424,378 @@ Technische Specificaties
 
 
 
-<div class="card">
-
-<div class="title">
-Import Analyse
-</div>
-
-
-<div class="grid">
-
-
-<div class="item">
-<span>Indicatieve Marktwaarde</span>
-<span id="waarde">
-Wordt berekend
-</span>
-</div>
-
-
-<div class="item">
-<span>Import Potentie</span>
-<span id="import">
-—
-</span>
-</div>
-
-
-<div class="item">
-<span>BPM Indicatie</span>
-<span id="bpm">
-—
-</span>
-</div>
-
-
-<div class="item">
-<span>Risico Analyse</span>
-<span id="risico">
-—
-</span>
-</div>
-
-
-<div class="item">
-<span>Investering</span>
-<span id="investering">
-—
-</span>
-</div>
-
-
-<div class="item">
-<span>Advies</span>
-<span id="advies">
-—
-</span>
-</div>
-
-
-</div>
-
-</div>
-
-
-
-
-
-<div class="analysis">
-
+<div class="card" id="priceCard">
 
 <h2>
-APEXclusive Analyse
+Prijsanalyse
 </h2>
 
 
-<p>
-Deze analyse geeft een eerste indicatie van de kansen,
-risico's en mogelijkheden rondom aankoop of import.
-Voor exclusieve voertuigen verzorgen wij volledige
-begeleiding inclusief aankoopcontrole, BPM-berekening
-en importafhandeling.
+<div class="row">
+
+
+<div class="item">
+<span>Vraagprijs</span>
+<span id="prijs">—</span>
+</div>
+
+
+<div class="item">
+<span>Marktpositie</span>
+<span id="markt">—</span>
+</div>
+
+
+<div class="item">
+<span>Prijsadvies</span>
+<span id="prijsadvies">—</span>
+</div>
+
+
+<div class="item">
+<span>Onderhandelingsruimte</span>
+<span id="onderhandeling">—</span>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="card" id="importCard">
+
+<h2>
+Import Analyse
+</h2>
+
+
+<div class="row">
+
+
+<div class="item">
+<span>Land</span>
+<span id="land">—</span>
+</div>
+
+
+<div class="item">
+<span>BPM verwachting</span>
+<span id="bpm">—</span>
+</div>
+
+
+<div class="item">
+<span>Transport indicatie</span>
+<span id="transport">—</span>
+</div>
+
+
+<div class="item">
+<span>Import potentieel</span>
+<span id="potentieel">—</span>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="card" id="riskCard">
+
+<h2>
+Risico Analyse
+</h2>
+
+
+<div class="row">
+
+
+<div class="item">
+<span>Technische risico's</span>
+<span id="techniek">—</span>
+</div>
+
+
+<div class="item">
+<span>Historie controle</span>
+<span id="historie">—</span>
+</div>
+
+
+<div class="item">
+<span>Prijsrisico</span>
+<span id="risicoPrijs">—</span>
+</div>
+
+
+<div class="item">
+<span>Eindoordeel</span>
+<span id="eindoordeel">—</span>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="box">
+
+
+<div class="title">
+APEXclusive Expert Rapport
+</div>
+
+
+<p id="rapport" style="
+font-size:13px;
+color:#888;
+line-height:2;
+letter-spacing:.05em;
+">
+
+Upload een advertentie om een volledige voertuigbeoordeling te ontvangen.
+
 </p>
 
 
-<a 
-class="cta"
-href="https://apexclusive.nl/contact">
-Vraag advies aan
-</a>
-
-
 </div>
 
 
 </div>
 
-
-</div>
 
 
 <footer>
 
-<a href="https://apexclusive.nl" style="color:#c9a84c;text-decoration:none;">
-© APEXclusive — Exclusieve Import &amp; Begeleiding
+<a href="https://apexclusive.nl">
+© APEXclusive — Exclusieve Import & Begeleiding
 </a>
 
 </footer>
 
-    ```html id="wq5mx"
 <script>
+
+
+document.getElementById("foto").addEventListener(
+"change",
+function(e){
+
+
+let file=e.target.files[0];
+
+
+if(file){
+
+
+let reader=new FileReader();
+
+
+reader.onload=function(event){
+
+
+let img=document.getElementById("preview");
+
+img.src=event.target.result;
+
+img.style.display="block";
+
+
+}
+
+
+reader.readAsDataURL(file);
+
+
+}
+
+
+});
+
+
+
+
 
 async function analyse(){
 
-let input=document.getElementById("kenteken").value;
 
-let kenteken=input
-.replace(/[-\s]/g,'')
-.toUpperCase();
+let url=document.getElementById("url").value;
 
 
-let error=document.getElementById("error");
 let result=document.getElementById("result");
 
 
-error.classList.remove("show");
-result.classList.remove("show");
+/*
+Basis analyse simulatie
+Hier kan later de AI API koppeling worden geplaatst
+*/
 
 
-if(kenteken.length < 4){
+let voertuig={
 
-error.innerHTML="Voer een geldig kenteken in.";
-error.classList.add("show");
-return;
+merk:"Onbekend",
 
-}
+model:"Analyse via advertentie",
 
+bouwjaar:"—",
 
+km:"—",
 
-try{
+brandstof:"—",
 
+vermogen:"—",
 
-let response=await fetch(
-"https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken="+kenteken
-);
+transmissie:"—"
 
-
-let data=await response.json();
-
-
-
-if(!data || data.length===0){
-
-error.innerHTML="Kenteken niet gevonden.";
-error.classList.add("show");
-return;
-
-}
-
-
-
-let voertuig=data[0];
-
-
-
-document.getElementById("badge").innerHTML=
-kenteken;
-
-
-
-document.getElementById("merk").innerHTML=
-(voertuig.merk || "—").toUpperCase();
-
-
-
-document.getElementById("model").innerHTML=
-voertuig.handelsbenaming ||
-voertuig.type ||
-"—";
-
-
-
-document.getElementById("jaar").innerHTML=
-voertuig.datum_eerste_toelating ?
-voertuig.datum_eerste_toelating.substring(0,4)
-:
-"—";
-
-
-
-document.getElementById("kleur").innerHTML=
-voertuig.eerste_kleur ||
-"—";
-
-
-
-document.getElementById("carrosserie").innerHTML=
-voertuig.inrichting ||
-"—";
-
-
-
-document.getElementById("gewicht").innerHTML=
-voertuig.massa_rijklaar ?
-voertuig.massa_rijklaar+" kg"
-:
-"—";
-
-
-
-document.getElementById("motor").innerHTML=
-voertuig.cilinderinhoud ?
-voertuig.cilinderinhoud+" cc"
-:
-"—";
-
-
-
-document.getElementById("vermogen").innerHTML=
-voertuig.vermogen_massarijklaar ?
-voertuig.vermogen_massarijklaar+" kW"
-:
-"—";
-
-
-
-let apk="Onbekend";
-
-
-if(voertuig.vervaldatum_apk){
-
-let datum=
-voertuig.vervaldatum_apk.substring(6,8)
-+
-"-"+
-voertuig.vervaldatum_apk.substring(4,6)
-+
-"-"+
-voertuig.vervaldatum_apk.substring(0,4);
-
-
-apk=datum;
-
-}
-
-
-
-document.getElementById("apk").innerHTML=
-apk;
-
+};
 
 
 
 /*
-BRANDSTOF DATA
+Advertentie URL herkenning
 */
 
 
-let brandstofResponse=
-await fetch(
-"https://opendata.rdw.nl/resource/8ys7-d773.json?kenteken="+kenteken
-);
+let land="Nederland";
 
 
-let brandstofData=
-await brandstofResponse.json();
+if(url.includes("mobile.de")){
+
+land="Duitsland";
+
+}
+
+
+if(url.includes("autoscout24")){
+
+land="Europa";
+
+}
 
 
 
-if(brandstofData.length>0){
 
 
-let extra=brandstofData[0];
+document.getElementById("merkModel").innerHTML=
+voertuig.merk+" "+voertuig.model;
 
+
+document.getElementById("bouwjaar").innerHTML=
+voertuig.bouwjaar;
+
+
+document.getElementById("km").innerHTML=
+voertuig.km;
 
 
 document.getElementById("brandstof").innerHTML=
-extra.brandstof_omschrijving || "—";
+voertuig.brandstof;
 
 
-
-document.getElementById("co2").innerHTML=
-extra.co2_uitstoot_gecombineerd ?
-extra.co2_uitstoot_gecombineerd+" g/km"
-:
-"—";
+document.getElementById("vermogen").innerHTML=
+voertuig.vermogen;
 
 
-
-document.getElementById("label").innerHTML=
-extra.zuinigheidsclassificatie ||
-"—";
-
-
-}
+document.getElementById("transmissie").innerHTML=
+voertuig.transmissie;
 
 
 
 
 
-/*
-BASIS IMPORT ANALYSE
-*/
+document.getElementById("prijs").innerHTML=
+"Wordt uit advertentie gehaald";
 
 
-let bouwjaar=
-parseInt(
-voertuig.datum_eerste_toelating
-?
-voertuig.datum_eerste_toelating.substring(0,4)
-:
-0
-);
+document.getElementById("markt").innerHTML=
+"Marktvergelijking";
 
 
-
-let leeftijd=
-new Date().getFullYear()-bouwjaar;
-
+document.getElementById("prijsadvies").innerHTML=
+"AI waardebepaling";
 
 
-if(leeftijd <=5){
-
-document.getElementById("import").innerHTML=
-"Interessant";
-
-document.getElementById("risico").innerHTML=
-"Laag";
-
-document.getElementById("advies").innerHTML=
-"Geschikt voor analyse";
-
-}
-
-else if(leeftijd <=10){
-
-document.getElementById("import").innerHTML=
-"Mogelijk interessant";
-
-document.getElementById("risico").innerHTML=
-"Gemiddeld";
-
-document.getElementById("advies").innerHTML=
-"Controleer marktwaarde";
-
-}
-
-else{
-
-
-document.getElementById("import").innerHTML=
-"Selectief";
-
-document.getElementById("risico").innerHTML=
-"Hoger";
-
-document.getElementById("advies").innerHTML=
-"Handmatige beoordeling nodig";
-
-}
+document.getElementById("onderhandeling").innerHTML=
+"Indicatie beschikbaar";
 
 
 
 
-document.getElementById("waarde").innerHTML=
-"Op aanvraag";
+
+document.getElementById("land").innerHTML=
+land;
 
 
 document.getElementById("bpm").innerHTML=
 "Berekening vereist";
 
 
-document.getElementById("investering").innerHTML=
-"Persoonlijk advies";
+document.getElementById("transport").innerHTML=
+"Indicatie €500 - €1500";
 
 
+document.getElementById("potentieel").innerHTML=
+"Wordt beoordeeld";
 
-result.classList.add("show");
 
 
 
-}
 
-catch(error){
+document.getElementById("techniek").innerHTML=
+"Controle vereist";
 
 
-error.innerHTML=
-"Er ging iets fout bij het ophalen van de voertuiggegevens.";
+document.getElementById("historie").innerHTML=
+"VIN controle aanbevolen";
 
 
-error.classList.add("show");
+document.getElementById("risicoPrijs").innerHTML=
+"Wordt beoordeeld";
 
 
-}
+document.getElementById("eindoordeel").innerHTML=
+"Analyse wordt gegenereerd";
 
 
 
-}
 
 
-</script>
+document.getElementById("rapport").innerHTML=
 
+"APEXclusive analyseert deze advertentie op voertuigwaarde, marktpositie, importmogelijkheden, technische aandachtspunten en mogelijke risico's. " +
 
-</body>
+"Voor een volledige aankoopbeslissing adviseren wij altijd aanvullende controle van historie, onderhoud en voertuigdocumentatie.";
 
-</html>
 
-```html
-<!-- DEEL 4/5 -->
 
-<script>
+document.querySelectorAll(".card").forEach(function(card){
 
-/*
-APEXclusive Premium Analyse Module
-Aanvullende voertuigscore en importlogica
-*/
 
-
-function berekenScore(voertuig){
-
-let score=0;
-
-
-/*
-Leeftijd voertuig
-*/
-
-let jaar=parseInt(
-voertuig.datum_eerste_toelating
-?
-voertuig.datum_eerste_toelating.substring(0,4)
-:
-0
-);
-
-
-let leeftijd=new Date().getFullYear()-jaar;
-
-
-
-if(leeftijd<=3){
-
-score+=30;
-
-}
-
-else if(leeftijd<=7){
-
-score+=20;
-
-}
-
-else if(leeftijd<=12){
-
-score+=10;
-
-}
-
-
-
-/*
-Merksegment
-*/
-
-
-let merk=(voertuig.merk || "").toUpperCase();
-
-
-let premium=[
-"LAMBORGHINI",
-"FERRARI",
-"PORSCHE",
-"BENTLEY",
-"ROLLS-ROYCE",
-"ASTON MARTIN",
-"MERCEDES-BENZ",
-"BMW",
-"AUDI"
-];
-
-
-if(premium.includes(merk)){
-
-score+=30;
-
-}
-
-
-
-else{
-
-score+=10;
-
-}
-
-
-
-/*
-Kilometer / gewicht indicatie
-*/
-
-
-if(voertuig.massa_rijklaar){
-
-let gewicht=parseInt(voertuig.massa_rijklaar);
-
-
-if(gewicht>1500){
-
-score+=10;
-
-}
-
-}
-
-
-
-/*
-Resultaat
-*/
-
-
-return score;
-
-
-}
-
-
-
-
-
-function toonPremiumAnalyse(voertuig){
-
-
-let score=berekenScore(voertuig);
-
-
-
-let tekst="";
-
-
-
-if(score>=70){
-
-tekst=
-"Sterk importpotentieel — interessant voertuigsegment.";
-
-}
-
-
-else if(score>=40){
-
-tekst=
-"Interessant voertuig, maar aanvullende marktcontrole aanbevolen.";
-
-}
-
-
-else{
-
-tekst=
-"Beperkt importvoordeel op basis van beschikbare gegevens.";
-
-}
-
-
-
-document.getElementById("advies").innerHTML=tekst;
-
-
-
-document.getElementById("investering").innerHTML=
-"Score "+score+"/100";
-
-
-
-}
-
-
-
-
-
-/*
-Extra analyse knop voorbereiding
-*/
-
-
-function resetAnalyse(){
-
-
-document.getElementById("result").classList.remove("show");
-
-
-document.getElementById("kenteken").value="";
-
-
-document.getElementById("error").classList.remove("show");
-
-
-}
-
-
-
-
-
-/*
-Automatisch kenteken formatteren
-*/
-
-
-document.getElementById("kenteken").addEventListener(
-"input",
-function(){
-
-this.value=this.value
-.toUpperCase()
-.replace(/[^A-Z0-9]/g,'');
-
-}
-
-);
-
-
-
-</script>
-
-```html id="9kq7v"
-<!-- DEEL 5/5 -->
-
-
-<script>
-
-
-/*
-APEXclusive Contact & Premium functies
-*/
-
-
-function contactAdvies(){
-
-
-window.location.href=
-"https://apexclusive.nl/contact";
-
-
-}
-
-
-
-/*
-Animatie bij laden resultaat
-*/
-
-
-function animateCards(){
-
-
-let cards=document.querySelectorAll(".card");
-
-
-cards.forEach(function(card,index){
-
-
-card.style.opacity="0";
-
-
-card.style.transform="translateY(20px)";
-
-
-setTimeout(function(){
-
-
-card.style.transition="all .5s ease";
-
-
-card.style.opacity="1";
-
-
-card.style.transform="translateY(0)";
-
-
-},index*100);
-
+card.style.display="block";
 
 
 });
 
 
-}
-
-
-
-
-/*
-Uitbreiding analyse na succesvolle RDW call
-*/
-
-
-const origineleAnalyse = analyse;
-
-
-
-analyse = async function(){
-
-
-await origineleAnalyse();
-
-
-
-let kenteken=
-document.getElementById("kenteken").value
-.replace(/[-\s]/g,'')
-.toUpperCase();
-
-
-
-try{
-
-
-let response=
-await fetch(
-"https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken="+kenteken
-);
-
-
-
-let data=
-await response.json();
-
-
-
-if(data.length>0){
-
-
-toonPremiumAnalyse(data[0]);
-
-
-animateCards();
-
 
 }
-
-
-}
-
-catch(e){}
-
-
-
-};
-
 
 
 
 </script>
 
+
 </body>
+
 </html>
