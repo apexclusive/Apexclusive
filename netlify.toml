@@ -1,9 +1,0 @@
-[build]
-  base      = "Carrapport"
-  publish   = "Carrapport"
-  functions = "Carrapport/netlify/functions"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "ALLOWALL"
