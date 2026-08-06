@@ -140,7 +140,7 @@ const fuel = get(html,[
 /"fuel"\s*:\s*"([^"]+)"/i,
 /Kraftstoff[^>]*>\s*([^<\n,]{3,20})/i
 ]);
-  const power = get(html,[/(\d{2,4})\s*(?:PS|kW)\b/i]);
+  const power = get(html,[   /(\d{3})\s*(?:pk|PK|PS)/i,   /(\d{2,3})\s*kW/i ]);
   const color = get(html,[/\"color\"\s*:\s*\"([^\"]{3,20})\"/i]);
 
   let priceLevel = null;
@@ -152,41 +152,80 @@ const fuel = get(html,[
 }
 
 function parseMarktplaats(html){
-  const title = get(html,[/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–]{5,80})/i]);
+
+  const title = get(html,[
+    /<h1[^>]*>([^<]{5,120})<\/h1>/i,
+    /<title>([^<|–]{5,120})/i
+  ]);
+
   const price = get(html,[
-/"priceCents"\s*:\s*(\d+)/i,
-/€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,
-/([\d]{1,3}(?:\.[\d]{3})+)\s*€/i
-]);
-  const km    = get(html,[/([\d]{2,3}\.[\d]{3})\s*km/i,/(\d+)\s*km\b/i]);
-  const year  = get(html,[/(\b20[01]\d\b)/,/(\b19[89]\d\b)/]);
-  const fuel  = get(html,[/brandstof[^>]*>\s*([^<\n,]{3,20})/i]);
-  const power = get(html,[/(\d{2,4})\s*(?:pk|kW)\b/i]);
-  const color = get(html,[/kleur[^>]*>\s*([^<\n,]{3,20})/i]);
+    /"priceCents"\s*:\s*(\d+)/i,
+    /€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,
+    /([\d]{1,3}(?:\.[\d]{3})+)\s*€/i
+  ]);
 
-  // Marktplaats heeft geen officiële prijsindicator, schatten op basis van context
+  const km = get(html,[
+    /([\d]{1,3}(?:\.[\d]{3})+)\s*km/i,
+    /(\d+)\s*km\b/i
+  ]);
+
+  const year = get(html,[
+    /\b(20\d{2})\b/i,
+    /\b(19\d{2})\b/i
+  ]);
+
+  const fuel = get(html,[
+    /brandstof[^>]*>\s*([^<\n,]{3,20})/i,
+    /"fuel"\s*:\s*"([^"]+)"/i
+  ]);
+
+  const power = get(html,[
+    /(\d{3})\s*(?:pk|PK|PS)/i,
+    /(\d{2,3})\s*kW/i
+  ]);
+
+  const color = get(html,[
+    /kleur[^>]*>\s*([^<\n,]{3,20})/i,
+    /"color"\s*:\s*"([^"]+)"/i
+  ]);
+
   let priceLevel = null;
-  if(/goede\s*prijs|scherp\s*geprijsd/i.test(html)) priceLevel='low';
-  else if(/vraagprijs\s*hoog|duur/i.test(html)) priceLevel='high';
 
-  return {platform:'Marktplaats.nl', title, price, km, year, fuel, power, color, priceLevel};
+  if(/goede\s*prijs|scherp\s*geprijsd/i.test(html)){
+    priceLevel='low';
+  }
+
+  if(/duur|hoge\s*prijs/i.test(html)){
+    priceLevel='high';
+  }
+
+  return {
+    platform:'Marktplaats.nl',
+    title,
+    price,
+    km,
+    year,
+    fuel,
+    power,
+    color,
+    priceLevel
+  };
 }
 
 function cleanPrice(raw){
+
   if(!raw) return null;
 
-  let cleaned = raw.replace(/[^\d]/g,'');
+  let value = raw.replace(/[^\d]/g,'');
 
-  let n = parseFloat(cleaned);
+  let n = parseInt(value);
 
-  if(isNaN(n)) return null;
-
-  // Marktplaats geeft prijs soms in centen door
+  // Marktplaats priceCents correctie
   if(n > 1000000){
-    n = n / 100;
+    n = Math.round(n / 100);
   }
 
-  return n;
+  return isNaN(n) ? null : n;
 }
 
 function cleanKm(raw){
