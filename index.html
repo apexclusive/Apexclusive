@@ -140,7 +140,15 @@ const fuel = get(html,[
 /"fuel"\s*:\s*"([^"]+)"/i,
 /Kraftstoff[^>]*>\s*([^<\n,]{3,20})/i
 ]);
-  const power = get(html,[   /(\d{3})\s*(?:pk|PK|PS)/i,   /(\d{2,3})\s*kW/i ]);
+  const power = get(html,[
+
+/"power"\s*:\s*"?(\d+)/i,
+
+/(\d{2,3})\s*(?:pk|PK|PS)/i,
+
+/(\d{2,3})\s*kW/i
+
+]);
   const color = get(html,[/\"color\"\s*:\s*\"([^\"]{3,20})\"/i]);
 
   let priceLevel = null;
@@ -158,46 +166,74 @@ function parseMarktplaats(html){
     /<title>([^<|–]{5,120})/i
   ]);
 
+
   const price = get(html,[
-    /"priceCents"\s*:\s*(\d+)/i,
+
+    // Nieuwe Marktplaats JSON structuur
+    /"priceCents"\s*:\s*"?(\d+)"?/i,
+
+    // zichtbare prijs
     /€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,
+
+    // fallback
     /([\d]{1,3}(?:\.[\d]{3})+)\s*€/i
+
   ]);
+
 
   const km = get(html,[
+
+    /"mileage"\s*:\s*"?([\d.]+)/i,
+
     /([\d]{1,3}(?:\.[\d]{3})+)\s*km/i,
+
     /(\d+)\s*km\b/i
+
   ]);
+
 
   const year = get(html,[
+
+    /"constructionYear"\s*:\s*"?(\d{4})/i,
+
     /\b(20\d{2})\b/i,
+
     /\b(19\d{2})\b/i
+
   ]);
+
 
   const fuel = get(html,[
-    /brandstof[^>]*>\s*([^<\n,]{3,20})/i,
-    /"fuel"\s*:\s*"([^"]+)"/i
+
+    /"fuelType"\s*:\s*"([^"]+)"/i,
+
+    /brandstof[^>]*>\s*([^<\n,]{3,20})/i
+
   ]);
+
 
   const power = get(html,[
-    /(\d{3})\s*(?:pk|PK|PS)/i,
-    /(\d{2,3})\s*kW/i
+
+    /"power"\s*:\s*"?(\d+)/i,
+
+    /(\d+)\s*(?:pk|PK|pk)/i,
+
+    /(\d+)\s*PS/i
+
   ]);
 
+
   const color = get(html,[
-    /kleur[^>]*>\s*([^<\n,]{3,20})/i,
-    /"color"\s*:\s*"([^"]+)"/i
+
+    /"color"\s*:\s*"([^"]+)"/i,
+
+    /kleur[^>]*>\s*([^<\n,]{3,20})/i
+
   ]);
+
 
   let priceLevel = null;
 
-  if(/goede\s*prijs|scherp\s*geprijsd/i.test(html)){
-    priceLevel='low';
-  }
-
-  if(/duur|hoge\s*prijs/i.test(html)){
-    priceLevel='high';
-  }
 
   return {
     platform:'Marktplaats.nl',
@@ -210,22 +246,34 @@ function parseMarktplaats(html){
     color,
     priceLevel
   };
-}
 
+}
+  
 function cleanPrice(raw){
 
   if(!raw) return null;
 
+
   let value = raw.replace(/[^\d]/g,'');
+
 
   let n = parseInt(value);
 
-  // Marktplaats priceCents correctie
+
+  // Marktplaats gebruikt centen
   if(n > 1000000){
-    n = Math.round(n / 100);
+      n = Math.round(n / 100);
   }
 
+
+  // onrealistische prijzen verwijderen
+  if(n > 1000000){
+      return null;
+  }
+
+
   return isNaN(n) ? null : n;
+
 }
 
 function cleanKm(raw){
@@ -286,9 +334,7 @@ async function analyzeAd(){
     else if(platform==='autoscout') parsed = parseAutoscout(html);
     else parsed = parseMarktplaats(html);
 
-    if(priceNum > 500000){
-  parsed.price = null;
-}
+    
     const kmNum = cleanKm(parsed.km);
     const advice = priceAdvice(priceNum, kmNum, parsed.year);
 
