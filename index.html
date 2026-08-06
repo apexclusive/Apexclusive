@@ -125,13 +125,9 @@ const images = [];
 
 const patterns = [
 
-/"https?:\\\/\\\/[^"]+\.(?:jpg|jpeg|png)[^"]*/gi,
-
-/https?:\/\/[^"'\\ ]+\.(?:jpg|jpeg|png)[^"'\\ ]*/gi,
+/"image"\s*:\s*"([^"]+)"/gi,
 
 /"imageUrl"\s*:\s*"([^"]+)"/gi,
-
-/"image"\s*:\s*"([^"]+)"/gi,
 
 /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/gi
 
@@ -144,52 +140,46 @@ let match;
 
 while((match = pattern.exec(html)) !== null){
 
-let img = match[1] || match[0];
+let img = match[1];
+
+if(!img) return;
 
 
-// escaped urls herstellen
-img = img
-.replace(/\\u002F/g,"/")
-.replace(/\\\//g,"/");
+// escaped URL herstellen
+img = img.replace(/\\u002F/g,"/");
+img = img.replace(/\\/g,"");
 
 
-// rommel eruit filteren
+// alleen echte foto's
 if(
-img &&
-img.startsWith("http") &&
-!img.includes("logo") &&
-!img.includes("icon") &&
-!img.includes("avatar") &&
-!img.includes("placeholder") &&
-!images.includes(img)
+img.includes("logo") ||
+img.includes("dealer") ||
+img.includes("avatar") ||
+img.includes("icon") ||
+img.includes("placeholder")
 ){
-if(img.includes("autoscout24")){
-    img = img.replace(/_\d+x\d+/,"");
-}
-images.push(img);
-
+return;
 }
 
+
+// duplicaten verwijderen
+// haalt ?width=xxx etc weg
+let cleanImg = img.split("?")[0];
+
+
+if(!images.includes(cleanImg)){
+
+images.push(cleanImg);
+
 }
 
-});
-
-
-// dubbele foto's verwijderen op basis van begin URL
-const unique = [];
-
-images.forEach(img=>{
-
-const base = img.split("?")[0];
-
-if(!unique.some(x=>x.split("?")[0]===base)){
-unique.push(img);
 }
 
 });
 
 
-return unique.slice(0,10);
+// maximaal 10 foto's
+return images.slice(0,10);
 
 }
 
