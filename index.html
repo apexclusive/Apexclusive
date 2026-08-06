@@ -119,51 +119,76 @@ function get(html, patterns){
   return null;
 }
 
-  function getImages(html){
+  function extractImages(html){
 
-  const images = [];
+const images = [];
 
-  const patterns = [
+const patterns = [
 
-    /https?:\/\/[^"\\]+\.(?:jpg|jpeg|png|webp)[^"\\]*/gi,
+/"https?:\\\/\\\/[^"]+\.(?:jpg|jpeg|png)[^"]*/gi,
 
-    /\\"(https?:\\\/\\\/[^"]+\.(?:jpg|jpeg|png|webp)[^"]*)\\"/gi,
+/https?:\/\/[^"'\\ ]+\.(?:jpg|jpeg|png)[^"'\\ ]*/gi,
 
-    /"image"\s*:\s*"([^"]+)"/gi,
+/"imageUrl"\s*:\s*"([^"]+)"/gi,
 
-    /"imageUrl"\s*:\s*"([^"]+)"/gi,
+/"image"\s*:\s*"([^"]+)"/gi,
 
-    /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/gi
+/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/gi
 
-  ];
-
-
-  patterns.forEach(pattern => {
-
-    let match;
-
-    while((match = pattern.exec(html)) !== null){
-
-      let img = match[1] || match[0];
-
-      img = img
-        .replace(/\\u002F/g,'/')
-        .replace(/\\\//g,'/');
-
-      if(
-        img &&
-        !images.includes(img) &&
-        img.startsWith('http')
-      ){
-        images.push(img);
-      }
-
-    }
-
-  });
+];
 
 
-  return images.slice(0,10);
+patterns.forEach(pattern => {
+
+let match;
+
+while((match = pattern.exec(html)) !== null){
+
+let img = match[1] || match[0];
+
+
+// escaped urls herstellen
+img = img
+.replace(/\\u002F/g,"/")
+.replace(/\\\//g,"/");
+
+
+// rommel eruit filteren
+if(
+img &&
+img.startsWith("http") &&
+!img.includes("logo") &&
+!img.includes("icon") &&
+!img.includes("avatar") &&
+!img.includes("placeholder") &&
+!images.includes(img)
+){
+
+images.push(img);
+
+}
+
+}
+
+});
+
+
+// dubbele foto's verwijderen op basis van begin URL
+const unique = [];
+
+images.forEach(img=>{
+
+const base = img.split("?")[0];
+
+if(!unique.some(x=>x.split("?")[0]===base)){
+unique.push(img);
+}
+
+});
+
+
+return unique.slice(0,10);
+
 }
 
 function parseMobile(html){
