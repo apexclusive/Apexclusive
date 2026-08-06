@@ -130,7 +130,15 @@ function parseMobile(html){
 
 function parseAutoscout(html){
   const title = get(html,[/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–]{5,80})/i]);
-  const price = get(html,[/\"price\"\s*:\s*\{[^}]*\"value\"\s*:\s*\"?([\d.,]+)/i,/class="[^"]*price[^"]*"[^>]*>([\d.,\s€]+)/i]);
+  const price = get(html,[
+
+/"price"\s*:\s*\{[^}]*?"value"\s*:\s*(\d{3,7})/i,
+
+/class="[^"]*price[^"]*"[^>]*>([\d.\s€]+)/i,
+
+/(\d{1,3}(?:\.\d{3})+)\s*€/i
+
+]);
   const km = get(html,[
 /"mileage"\s*:\s*"?([\d.,]+)\s*km/i,
 /"mileage"\s*:\s*\{[^}]*"value"\s*:\s*"?([\d.,]+)/i,
@@ -298,7 +306,23 @@ function priceAdvice(price, km, year){
 
   // Ruwe marktschatting gebaseerd op leeftijd/km
   // Basis: gemiddelde auto begint op €30.000 nieuw en deprecieert ~12% per jaar
-  let estimated = 30000 * Math.pow(0.88, age);
+  let basePrice = 30000;
+
+const titleLower = document.body.innerText.toLowerCase();
+
+if(
+titleLower.includes('m2') ||
+titleLower.includes('m3') ||
+titleLower.includes('m4') ||
+titleLower.includes('rs6') ||
+titleLower.includes('porsche') ||
+titleLower.includes('lamborghini') ||
+titleLower.includes('ferrari')
+){
+basePrice = 80000;
+}
+
+let estimated = basePrice * Math.pow(0.90, age);
   // Km-correctie: 1 cent per km boven/onder 15.000km/jaar gemiddelde
   const expectedKm = age * 15000;
   const kmDiff = kmN - expectedKm;
@@ -332,8 +356,6 @@ async function analyzeAd(){
   try {
     const resp = await fetch(`/api/fetch-ad?url=${encodeURIComponent(url)}`);
     const data = await resp.json();
-
-    if(!resp.ok || data.error) throw new Error(data.error || 'Ophalen mislukt');
 
     if(!resp.ok || data.error) throw new Error(data.error || 'Ophalen mislukt');
 
