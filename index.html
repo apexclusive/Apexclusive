@@ -125,55 +125,17 @@ function get(html, patterns){
   return null;
 }
 
-  function extractImages(html){
+function extractImages(html){
 
 const images = [];
 
 const patterns = [
-
 /"image"\s*:\s*"([^"]+)"/gi,
-
 /"imageUrl"\s*:\s*"([^"]+)"/gi,
-
 /"originalUrl"\s*:\s*"([^"]+)"/gi,
-
 /"fullImageUrl"\s*:\s*"([^"]+)"/gi,
-
 /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/gi
-
 ];
-
-
-patterns.forEach(pattern => {
-
-let match;
-
-while((match = pattern.exec(html)) !== null){
-
-let img = match[1]
-.replace(/\\u002F/g,'/')
-.replace(/\\/g,'');
-
-
-if(
-!img.includes('logo') &&
-!img.includes('dealer') &&
-!img.includes('placeholder') &&
-!images.includes(img)
-){
-
-images.push(img);
-
-}
-
-}
-
-});
-
-
-return images.slice(0,10);
-
-}
 
 
 patterns.forEach(pattern => {
@@ -184,15 +146,16 @@ while((match = pattern.exec(html)) !== null){
 
 let img = match[1];
 
-if(!img) return;
+if(!img) continue;
 
 
-// escaped URL herstellen
-img = img.replace(/\\u002F/g,"/");
-img = img.replace(/\\/g,"");
+// URL herstellen
+img = img
+.replace(/\\u002F/g,"/")
+.replace(/\\/g,"");
 
 
-// alleen echte foto's
+// ongewenste afbeeldingen verwijderen
 if(
 img.includes("logo") ||
 img.includes("dealer") ||
@@ -200,24 +163,17 @@ img.includes("avatar") ||
 img.includes("icon") ||
 img.includes("placeholder")
 ){
-return;
+continue;
 }
+
+
+// parameters verwijderen
+let cleanImg = img.split("?")[0];
 
 
 // duplicaten verwijderen
-// haalt ?width=xxx etc weg
-let cleanImg = img.split("?")[0];
-
-if(
-cleanImg.includes("autoscout24") &&
-!cleanImg.match(/\/(1200|1600|1920|1024)\//)
-){
-    return;
-}
 if(!images.includes(cleanImg)){
-
 images.push(cleanImg);
-
 }
 
 }
@@ -225,10 +181,9 @@ images.push(cleanImg);
 });
 
 
-// maximaal 10 foto's
 return images.slice(0,10);
 
-}
+}  
 
 function parseMobile(html){
   const title = get(html,[/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–-]{5,80})/i]);
