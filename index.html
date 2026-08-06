@@ -166,7 +166,12 @@ return;
 // haalt ?width=xxx etc weg
 let cleanImg = img.split("?")[0];
 
-
+if(
+cleanImg.includes("autoscout24") &&
+!cleanImg.match(/\/(1200|1600|1920|1024)\//)
+){
+    return;
+}
 if(!images.includes(cleanImg)){
 
 images.push(cleanImg);
