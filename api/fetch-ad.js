@@ -8,6 +8,10 @@ const patterns = [
 
 /"imageUrl"\s*:\s*"([^"]+)"/gi,
 
+/"images"\s*:\s*\[\s*"([^"]+)"/gi,
+
+/"https?:\\?\/\\?\/[^"\\]+\.(?:jpg|jpeg|png)[^"\\]*/gi,
+
 /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/gi
 
 ];
@@ -19,9 +23,20 @@ let match;
 
 while((match = pattern.exec(html)) !== null){
 
-if(match[1] && !images.includes(match[1])){
+let img = match[1] || match[0];
 
-images.push(match[1]);
+
+// escaped URL herstellen
+img = img.replace(/\\u002F/g,"/");
+img = img.replace(/\\\//g,"/");
+
+
+if(
+img.startsWith("http") &&
+!images.includes(img)
+){
+
+images.push(img);
 
 }
 
