@@ -129,7 +129,7 @@ function extractImages(html){
 const images = [];
 
 const patterns = [
-/"image"\s*:\s*"([^"]+)"/gi,
+/"image"\s*:\s*"([^"]+)"|"(https?:\/\/[^"]*marktplaats[^"]+\.(?:jpg|jpeg|png)[^"]*)"/gi,
 /"imageUrl"\s*:\s*"([^"]+)"/gi,
 /"originalUrl"\s*:\s*"([^"]+)"/gi,
 /"fullImageUrl"\s*:\s*"([^"]+)"/gi,
