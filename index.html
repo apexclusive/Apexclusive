@@ -101,7 +101,15 @@ function get(html, patterns){
 
 function parseMobile(html){
   const title = get(html,[/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–-]{5,80})/i]);
-  const price = get(html,[/\"price\"\s*:\s*\{[^}]*\"amount\"\s*:\s*\"?([\d.,]+)/i,/data-testid="price-label"[^>]*>([\d.,\s€]+)/i,/([\d]{2,3}\.[\d]{3})\s*€/]);
+  const price = get(html,[
+
+/"price"\s*:\s*\{[^}]*?"value"\s*:\s*(\d{3,7})/i,
+
+/class="[^"]*price[^"]*"[^>]*>([\d.\s€]+)/i,
+
+/(\d{1,3}(?:\.\d{3})+)\s*€/i
+
+]);
   const km    = get(html,[/\"mileage\"\s*:\s*\{[^}]*\"value\"\s*:\s*\"?([\d.,]+)/i,/([\d]{2,3}\.[\d]{3})\s*km/i,/(\d+)\s*km\b/i]);
   const year  = get(html,[/\"firstRegistration\"\s*:\s*\{[^}]*\"year\"\s*:\s*(\d{4})/i,/Erstzulassung[^>]*>\s*(\d{2}\/\d{4})/i,/(\b20[01]\d\b)/]);
   const fuel  = get(html,[/\"fuel\"\s*:\s*\"([^\"]+)\"/i,/Kraftstoff[^>]*>\s*([^<\n,]{3,20})/i]);
@@ -284,6 +292,7 @@ function cleanKm(raw){
 
 function priceAdvice(price, km, year){
   if(!price || !year) return null;
+  if(price < 500 || price > 2000000) return null;
   const age = 2026 - parseInt(year);
   const kmN = km || (age * 15000);
 
