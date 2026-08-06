@@ -119,9 +119,12 @@ function parseMobile(html){
 function parseAutoscout(html){
   const title = get(html,[/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–]{5,80})/i]);
   const price = get(html,[/\"price\"\s*:\s*\{[^}]*\"value\"\s*:\s*\"?([\d.,]+)/i,/class="[^"]*price[^"]*"[^>]*>([\d.,\s€]+)/i]);
-  const km    = get(html,[/\"mileage\"\s*:\s*\"?([\d.,]+)\s*km ```javascript
-    /\"mileage\"\s*:\s*\"?([\d.,]+)\s*km/i,/([\d]{2,3}\.[\d]{3})\s*km/i,/(\d+)\s*km\b/i]);
-  const year  = get(html,[/\"firstRegistration\"\s*:\s*\d+[^}]*\"year\"\s*:\s*(\d{4})/i,/(\b20[01]\d\b)/]);
+  const km = get(html,[
+/"mileage"\s*:\s*"?([\d.,]+)\s*km/i,
+/"mileage"\s*:\s*\{[^}]*"value"\s*:\s*"?([\d.,]+)/i,
+/([\d]{2,3}\.[\d]{3})\s*km/i,
+/(\d+)\s*km\b/i
+]);
   const fuel  = get(html,[/\"fuel\"\s*:\s*\"([^\"]+)\"/i,/Kraftstoff[^>]*>\s*([^<\n,]{3,20})/i]);
   const power = get(html,[/(\d{2,4})\s*(?:PS|kW)\b/i]);
   const color = get(html,[/\"color\"\s*:\s*\"([^\"]{3,20})\"/i]);
