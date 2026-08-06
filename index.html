@@ -215,8 +215,10 @@ async function analyzeAd(){
   btn.disabled = true;
 
   try {
-    const resp = await fetch(`/api/fetch-ad?url=${const resp = await fetch(`/.netlify/functions/fetch-ad?url=${encodeURIComponent(url)}`);(url)}`);
+    const resp = await fetch(`/api/fetch-ad?url=${encodeURIComponent(url)}`);
     const data = await resp.json();
+
+    if(!resp.ok || data.error) throw new Error(data.error || 'Ophalen mislukt');
 
     if(!resp.ok || data.error) throw new Error(data.error || 'Ophalen mislukt');
 
