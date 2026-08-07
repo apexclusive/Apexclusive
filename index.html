@@ -97,32 +97,19 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 
 /* PHOTO HERO */
 .photo-hero{
-  position:relative;
-  width:100%;
-  height:auto;
-  min-height:200px;
-  max-height:600px;
-  overflow:hidden;
-  margin-bottom:2px;
+  position:relative;width:100%;height:auto;
+  min-height:200px;max-height:600px;
+  overflow:hidden;margin-bottom:2px;
   background:var(--black-3);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center;
 }
 .photo-hero img{
-  width:100%;
-  height:auto;
-  max-height:600px;
-  object-fit:contain;
-  object-position:center;
-  display:block;
+  width:100%;height:auto;max-height:600px;
+  object-fit:contain;object-position:center;display:block;
   filter:brightness(0.92) saturate(0.85) contrast(1.05);
   transition:transform .9s ease,filter .9s;
 }
-.photo-hero:hover img{
-  transform:scale(1.02);
-  filter:brightness(0.82) saturate(0.75);
-}
+.photo-hero:hover img{transform:scale(1.02);filter:brightness(0.82) saturate(0.75)}
 .photo-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,0.85) 0%,rgba(5,5,5,0.15) 40%,transparent 70%);pointer-events:none}
 .photo-hero-tristrip{position:absolute;bottom:0;left:0;right:0;height:2px;display:flex}
 .photo-hero-tristrip span{flex:1;display:block}
@@ -201,8 +188,6 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .verdict-bad .verdict-tag{color:var(--it-red)}
 .verdict-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--white);line-height:1.1}
 .verdict-text{font-size:0.82rem;color:rgba(238,235,229,0.42);line-height:1.8;font-weight:300}
-
-/* PRICE COMPARE */
 .price-compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:20px}
 .pc-side{background:var(--black-3);padding:22px 24px;position:relative;overflow:hidden}
 .pc-side::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;opacity:.5}
@@ -324,18 +309,11 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   </div>
 
   <div class="results" id="results">
-
     <div id="photo-hero-wrap"></div>
     <div id="thumb-row-wrap"></div>
-
-    <div class="dblock">
-      <div class="sbar" id="sbar"></div>
-    </div>
-
+    <div class="dblock"><div class="sbar" id="sbar"></div></div>
     <div class="stat-cards" id="stat-cards"></div>
-
     <div id="verdict-wrap"></div>
-
     <div class="dblock">
       <div class="bhead open" onclick="toggleBlock(this)">
         <div class="bhead-icon">
@@ -344,15 +322,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="bhead-title">Advertentieoverzicht</div>
         <svg class="bhead-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
-      <div class="bbody">
-        <div id="details-content"></div>
-      </div>
+      <div class="bbody"><div id="details-content"></div></div>
     </div>
-
     <p class="disc">* Indicatief koopadvies op basis van advertentiedata en een globale marktschatting. Geen vervanging voor een professionele voertuiginspectie. APEXclusive aanvaardt geen aansprakelijkheid voor beslissingen op basis van dit rapport.</p>
-
     <button class="reset-btn" onclick="resetTool()">↺ &nbsp;Nieuwe analyse starten</button>
-
     <div class="cta-wrap">
       <div class="cta-eye">
         <div class="tri-pill">
@@ -369,8 +342,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <a class="btn-g" href="mailto:info@apexclusive.nl">E-mail sturen</a>
       </div>
     </div>
-
   </div>
+
 </div>
 
 <footer>
@@ -419,23 +392,37 @@ function get(html,patterns){
   return null;
 }
 
+/* ── IMAGE EXTRACT — direct, geen proxy ── */
 function extractImages(html){
   const images=[];
-  const skip=/(logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking)/i;
+  const skip=/(logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|favicon|hzcdn)/i;
   const patterns=[
-    /"(?:extraExtraLargeUrl|extraLargeUrl|largeUrl|imageUrl|image|fullImageUrl|originalUrl|bigUrl)"\s*:\s*"([^"]{20,})"/gi,
+    /"extraExtraLargeUrl"\s*:\s*"([^"]+)"/gi,
+    /"extraLargeUrl"\s*:\s*"([^"]+)"/gi,
+    /"largeUrl"\s*:\s*"([^"]+)"/gi,
+    /"mediumUrl"\s*:\s*"([^"]+)"/gi,
+    /"imageUrl"\s*:\s*"([^"]+)"/gi,
+    /"(?:image|fullImageUrl|originalUrl|bigUrl|srcUrl|hdUrl)"\s*:\s*"([^"]{20,})"/gi,
     /"src"\s*:\s*"(https?:\/\/[^"]*(?:jpg|jpeg|png|webp)[^"]{0,100})"/gi,
     /property="og:image[^"]*"\s+content="([^"]+)"/gi,
     /content="([^"]+)"\s+property="og:image[^"]*"/gi,
     /<img[^>]+src="(https?:\/\/[^"]*(?:jpg|jpeg|png|webp)[^"]{0,100})"/gi
   ];
   patterns.forEach(function(p){
-    var m, pp=new RegExp(p.source,p.flags);
+    var m,pp=new RegExp(p.source,p.flags);
     while((m=pp.exec(html))!==null){
-      var img=m[1].replace(/\\u002F/g,'/').replace(/\\\//g,'/').replace(/\\"/g,'"').replace(/&amp;/g,'&');
+      var img=m[1]
+        .replace(/\\u002F/g,'/')
+        .replace(/\\u003A/g,':')
+        .replace(/\\\//g,'/')
+        .replace(/\\"/g,'"')
+        .replace(/&amp;/g,'&')
+        .trim();
       if(!img||skip.test(img)||!img.startsWith('http')) continue;
-      /* verwijder lage-res Marktplaats rule */
-      img=img.replace(/[?&]rule=eps_\d+/g,'').replace(/[?&]rule=ecg_mp[^&]*/g,'').replace(/\?$/,'');
+      /* verwijder lage-res Marktplaats rules */
+      img=img.replace(/[?&]rule=eps_\d+/g,'');
+      img=img.replace(/[?&]rule=ecg_mp[^&]*/g,'');
+      img=img.replace(/\?$/,'').replace(/\?&/,'?');
       if(!images.includes(img)) images.push(img);
     }
   });
@@ -455,7 +442,9 @@ function parseMobile(html){
     color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
     trans:get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
     doors:get(html,[/"doors"\s*:\s*"?(\d)/i]),
-    priceLevel:/guter\s*preis|sehr\s*guter\s*preis|good.?price/i.test(html)?'ok':/hoher\s*preis|high.?price/i.test(html)?'bad':/fairer?\s*preis|fair.?price/i.test(html)?'warn':null
+    priceLevel:/guter\s*preis|sehr\s*guter\s*preis|good.?price/i.test(html)?'ok'
+      :/hoher\s*preis|high.?price/i.test(html)?'bad'
+      :/fairer?\s*preis|fair.?price/i.test(html)?'warn':null
   };
 }
 function parseAutoscout(html){
@@ -470,7 +459,9 @@ function parseAutoscout(html){
     color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
     trans:get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
     doors:get(html,[/"doors"\s*:\s*"?(\d)/i]),
-    priceLevel:/top.?offer|great.?deal/i.test(html)?'ok':/overpriced/i.test(html)?'bad':/fair|average/i.test(html)?'warn':null
+    priceLevel:/top.?offer|great.?deal/i.test(html)?'ok'
+      :/overpriced/i.test(html)?'bad'
+      :/fair|average/i.test(html)?'warn':null
   };
 }
 function parseMarktplaats(html){
@@ -563,14 +554,8 @@ async function analyzeAd(){
 
     const html=data.html;
 
-    /* afbeeldingen — marktplaats via proxy voor referer header */
-    var rawImages=data.images||extractImages(html);
-    allImages=rawImages.map(function(img){
-      if(img.includes('marktplaats')||img.includes('admarkt-cdn')||img.includes('ecg-')){
-        return '/api/fetch-ad?img='+encodeURIComponent(img);
-      }
-      return img;
-    });
+    /* afbeeldingen — direct laden, geen proxy */
+    allImages=data.images||extractImages(html);
 
     let parsed;
     if(platform==='mobile')         parsed=parseMobile(html);
@@ -587,11 +572,11 @@ async function analyzeAd(){
     if(allImages.length>0){
       photoWrap.innerHTML=
         '<div class="photo-hero">'
-        +'<img src="'+allImages[0]+'" alt="'+(parsed.title||'Voertuig')+'" onerror="this.parentElement.style.display=\'none\'">'
+        +'<img src="'+allImages[0]+'" alt="'+(parsed.title||'Voertuig').replace(/"/g,'&quot;')+'" onerror="this.parentElement.style.background=\'var(--black-3)\';this.style.display=\'none\'">'
         +'<div class="photo-hero-overlay"></div>'
         +'<div class="photo-hero-tristrip"><span></span><span></span><span></span></div>'
         +'<div class="photo-hero-info">'
-        +'<div class="photo-count">'+allImages.length+' foto'+(allImages.length>1?'s':'')+' beschikbaar · '+parsed.platform+'</div>'
+        +'<div class="photo-count">'+allImages.length+' foto'+(allImages.length>1?'s':'')+' · '+parsed.platform+'</div>'
         +'<div class="photo-title">'+(parsed.title||'Voertuig')+'</div>'
         +(parsed.year?'<div class="photo-platform">'+parsed.year+(parsed.fuel?' · '+parsed.fuel:'')+(parsed.power?' · '+parsed.power+' pk':'')+'</div>':'')
         +'</div>'
@@ -606,7 +591,7 @@ async function analyzeAd(){
       thumbWrap.innerHTML='<div class="thumb-row">'
         +allImages.slice(0,Math.min(allImages.length,8)).map((img,i)=>
           '<div class="thumb-item'+(i===0?' active':'')+'" onclick="switchPhoto('+i+')">'
-          +'<img src="'+img+'" alt="foto '+(i+1)+'" onerror="this.parentElement.style.display=\'none\'">'
+          +'<img src="'+img+'" alt="foto '+(i+1)+'" loading="lazy" onerror="this.parentElement.style.display=\'none\'">'
           +'</div>'
         ).join('')
         +'</div>';
@@ -651,10 +636,11 @@ async function analyzeAd(){
         +'<div class="verdict-title">'+advice.title+'</div></div>'
         +'</div>'
         +'<div class="verdict-text">'+advice.text+'</div>'
-        +(priceNum?'<div class="price-compare">'
-          +'<div class="pc-side"><div class="pc-lbl">Vraagprijs</div><div class="pc-val">'+euro(priceNum)+'</div><div class="pc-sub">Gevraagd door verkoper</div></div>'
-          +'<div class="pc-side"><div class="pc-lbl">Geschatte marktwaarde</div><div class="pc-val">'+euro(est)+'</div><div class="pc-sub">Indicatieve berekening APEXclusive</div></div>'
-          +'</div>':'')
+        +(priceNum
+          ?'<div class="price-compare">'
+            +'<div class="pc-side"><div class="pc-lbl">Vraagprijs</div><div class="pc-val">'+euro(priceNum)+'</div><div class="pc-sub">Gevraagd door verkoper</div></div>'
+            +'<div class="pc-side"><div class="pc-lbl">Geschatte marktwaarde</div><div class="pc-val">'+euro(est)+'</div><div class="pc-sub">Indicatieve berekening APEXclusive</div></div>'
+            +'</div>':'')
         +'</div>';
     } else {
       vw.innerHTML='';
@@ -672,7 +658,7 @@ async function analyzeAd(){
     if(parsed.trans) det+=row('Transmissie',parsed.trans);
     if(parsed.color) det+=row('Kleur',parsed.color);
     if(parsed.doors) det+=row('Aantal deuren',parsed.doors);
-    det+=row('Advertentielink','<a href="'+url+'" target="_blank" style="color:rgba(238,235,229,0.5);text-decoration:none;font-size:.75rem">'+url.substring(0,55)+'…</a>');
+    det+=row('Link','<a href="'+url+'" target="_blank" style="color:rgba(238,235,229,0.5);text-decoration:none;font-size:.75rem">'+url.substring(0,55)+'…</a>');
     document.getElementById('details-content').innerHTML=det;
 
     document.querySelectorAll('.s-card,.thumb-item,.verdict-box').forEach(addHov);
@@ -682,11 +668,7 @@ async function analyzeAd(){
     setTimeout(()=>res.scrollIntoView({behavior:'smooth',block:'start'}),80);
 
   } catch(e){
-    if(url.includes('marktplaats')){
-      err.textContent='Marktplaats advertenties worden beperkt door hun beveiliging. Foto\'s kunnen ontbreken of beperkte kwaliteit hebben. Probeer eventueel een Mobile.de of AutoScout24 link voor een vollediger rapport.';
-    } else {
-      err.textContent='Ophalen mislukt: '+e.message+'. Controleer of de link correct en publiek toegankelijk is.';
-    }
+    err.textContent='Ophalen mislukt: '+e.message+'. Controleer of de link correct en publiek toegankelijk is.';
     err.classList.add('show');
   } finally {
     load.style.display='none';
