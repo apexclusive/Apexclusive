@@ -11,6 +11,11 @@ module.exports = async function handler(req, res) {
     return res.status(200).end();
   }
 
+  /* ── IMAGE PROXY ── */
+  if (req.query.img) {
+    return proxyImage(req.query.img, res);
+  }
+
   const rawUrl = req.query.url;
   if (!rawUrl) {
     return res.status(400).json({ error: 'Geen URL opgegeven' });
@@ -43,7 +48,8 @@ module.exports = async function handler(req, res) {
     var images = [];
 
     if (parsedUrl.hostname.includes('marktplaats')) {
-      /* stap 1: haal eerst de homepage op om cookies te krijgen */
+
+      /* stap 1: haal homepage op voor cookies */
       var cookieStr = '';
       try {
         var homeResp = await fetchRaw('https://www.marktplaats.nl/', {
@@ -53,7 +59,6 @@ module.exports = async function handler(req, res) {
           'Accept-Encoding': 'identity',
           'Connection': 'keep-alive'
         });
-        /* cookies verzamelen */
         if (homeResp.headers && homeResp.headers['set-cookie']) {
           var cookies = homeResp.headers['set-cookie'];
           if (Array.isArray(cookies)) {
@@ -66,7 +71,7 @@ module.exports = async function handler(req, res) {
         cookieStr = '';
       }
 
-      /* stap 2: haal de advertentie op met cookies */
+      /* stap 2: haal advertentie op met cookies */
       var adHeaders = {
         'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -80,8 +85,6 @@ module.exports = async function handler(req, res) {
 
       var adResp = await fetchRaw(rawUrl, adHeaders);
       html = adResp.body;
-
-      /* stap 3: extraheer afbeeldingen specifiek voor Marktplaats */
       images = extractMarktplaatsImages(html);
 
     } else {
@@ -100,40 +103,124 @@ module.exports = async function handler(req, res) {
 };
 
 /* ══════════════════════
+   IMAGE PROXY
+══════════════════════ */
+function proxyImage(imgUrl, res) {
+  return new Promise(function(resolve) {
+    var decoded;
+    try { decoded = decodeURIComponent(imgUrl); }
+    catch(e) { res.status(400).end('Bad URL'); return resolve(); }
+
+    decoded = decoded
+      .replace(/[?&]rule=eps_\d+/g, '')
+      .replace(/[?&]rule=ecg_mp[^&]*/g, '')
+      .replace(/\?$/, '')
+      .replace(/\?&/, '?');
+
+    var parsedImg;
+    try { parsedImg = new URL(decoded); }
+    catch(e) { res.status(400).end('Bad URL'); return resolve(); }
+
+    var imgAllowed = [
+      'marktplaats.com',
+      'images.marktplaats.com',
+      'admarkt-cdn.marktplaats.com',
+      'mobile.de',
+      'img.classistatic.de',
+      'i.ebayimg.com',
+      'autoscout24.net',
+      'prod.pictures.autoscout24.net',
+      'autotrack.nl',
+      'bas-world.com',
+      'cloudfront.net',
+      'cloudinary.com'
+    ];
+
+    var ok = imgAllowed.some(function(d) {
+      return parsedImg.hostname === d ||
+             parsedImg.hostname.endsWith('.' + d) ||
+             decoded.includes(d);
+    });
+
+    if (!ok) {
+      res.status(403).end('Domain not allowed: ' + parsedImg.hostname);
+      return resolve();
+    }
+
+    var lib = parsedImg.protocol === 'https:' ? https : http;
+    var options = {
+      hostname: parsedImg.hostname,
+      path: parsedImg.pathname + parsedImg.search,
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+        'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+        'Accept-Language': 'nl-NL,nl;q=0.9',
+        'Referer': 'https://www.marktplaats.nl/',
+        'Origin': 'https://www.marktplaats.nl',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+      }
+    };
+
+    var request = lib.request(options, function(response) {
+      if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+        response.resume();
+        return proxyImage(encodeURIComponent(response.headers.location), res).then(resolve);
+      }
+      if (response.statusCode !== 200) {
+        res.status(response.statusCode).end('Image failed: ' + response.statusCode);
+        return resolve();
+      }
+      res.setHeader('Content-Type', response.headers['content-type'] || 'image/jpeg');
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      response.pipe(res);
+      response.on('end', resolve);
+      response.on('error', function() { resolve(); });
+    });
+
+    request.on('error', function(e) {
+      res.status(500).end('Error: ' + e.message);
+      resolve();
+    });
+    request.setTimeout(15000, function() {
+      request.destroy();
+      res.status(504).end('Timeout');
+      resolve();
+    });
+    request.end();
+  });
+}
+
+/* ══════════════════════
    MARKTPLAATS IMAGE EXTRACTOR
 ══════════════════════ */
 function extractMarktplaatsImages(html) {
   var images = [];
   var seen = {};
 
-  /* Marktplaats slaat foto's op in JSON blokken in de HTML */
+  var skip = /logo|favicon|placeholder|banner|sprite|icon|avatar|hzcdn\.io/i;
+
   var patterns = [
-    /* nieuw formaat: extraExtraLargeUrl etc */
     /"extraExtraLargeUrl"\s*:\s*"([^"]+)"/gi,
     /"extraLargeUrl"\s*:\s*"([^"]+)"/gi,
     /"largeUrl"\s*:\s*"([^"]+)"/gi,
     /"mediumUrl"\s*:\s*"([^"]+)"/gi,
-    /* oud formaat */
     /"imageUrl"\s*:\s*"([^"]+)"/gi,
     /"originalUrl"\s*:\s*"([^"]+)"/gi,
-    /* CDN urls */
     /"(https?:\/\/images\.marktplaats\.com\/[^"]{10,300})"/gi,
     /"(https?:\/\/admarkt-cdn\.marktplaats\.com\/[^"]{10,300})"/gi,
     /"(https?:\/\/[^"]*ecg[^"]*\.(?:jpg|jpeg|png|webp)[^"]{0,100})"/gi,
-    /* og image */
     /property="og:image"\s+content="([^"]+)"/gi,
     /content="([^"]+)"\s+property="og:image"/gi
   ];
-
-  var skip = /logo|favicon|placeholder|banner|sprite|icon|avatar|hzcdn\.io/i;
 
   patterns.forEach(function(p) {
     var m, pp = new RegExp(p.source, p.flags);
     while ((m = pp.exec(html)) !== null) {
       var img = m[1];
       if (!img) continue;
-
-      /* unescape */
       img = img
         .replace(/\\u002F/gi, '/')
         .replace(/\\u003A/gi, ':')
@@ -141,30 +228,22 @@ function extractMarktplaatsImages(html) {
         .replace(/\"/g, '')
         .replace(/&/g, '&')
         .trim();
-
       if (!img.startsWith('http')) continue;
       if (skip.test(img)) continue;
-
-      /* verwijder lage-res rules */
-      img = img.replace(/[?&]rule=eps_\d+/g, '');
-      img = img.replace(/[?&]rule=ecg_mp[^&]*/g, '');
-      img = img.replace(/\?$/, '').replace(/\?&/, '?');
-
+      img = img
+        .replace(/[?&]rule=eps_\d+/g, '')
+        .replace(/[?&]rule=ecg_mp[^&]*/g, '')
+        .replace(/\?$/, '')
+        .replace(/\?&/, '?');
       var key = img.split('?')[0];
       if (seen[key]) continue;
       seen[key] = true;
-
       images.push(img);
       if (images.length >= 20) break;
     }
-    if (images.length >= 20) return;
   });
 
-  /* sorteer op kwaliteit */
-  images.sort(function(a, b) {
-    return mpScore(b) - mpScore(a);
-  });
-
+  images.sort(function(a, b) { return mpScore(b) - mpScore(a); });
   return images.slice(0, 12);
 }
 
@@ -181,7 +260,7 @@ function mpScore(img) {
 }
 
 /* ══════════════════════
-   FETCH RAW (met headers terug)
+   FETCH RAW
 ══════════════════════ */
 function fetchRaw(url, headers, redirects) {
   redirects = redirects || 0;
@@ -209,7 +288,6 @@ function fetchRaw(url, headers, redirects) {
         response.resume();
         return fetchRaw(nextUrl, headers, redirects + 1).then(resolve).catch(reject);
       }
-
       var chunks = [];
       response.on('data', function(c) { chunks.push(c); });
       response.on('end', function() {
@@ -232,7 +310,7 @@ function fetchRaw(url, headers, redirects) {
 }
 
 /* ══════════════════════
-   FETCH HTML (niet-Marktplaats)
+   FETCH HTML
 ══════════════════════ */
 function fetchUrl(url, redirects) {
   redirects = redirects || 0;
@@ -267,7 +345,6 @@ function fetchUrl(url, redirects) {
         response.resume();
         return fetchUrl(nextUrl, redirects + 1).then(resolve).catch(reject);
       }
-
       var chunks = [];
       response.on('data', function(chunk) { chunks.push(chunk); });
       response.on('end', function() { resolve(Buffer.concat(chunks).toString('utf8')); });
@@ -284,7 +361,7 @@ function fetchUrl(url, redirects) {
 }
 
 /* ══════════════════════
-   EXTRACT IMAGES (niet-Marktplaats)
+   EXTRACT IMAGES
 ══════════════════════ */
 function extractImages(html, hostname) {
   var images = [];
@@ -314,9 +391,13 @@ function extractImages(html, hostname) {
     while ((match = p.exec(html)) !== null) {
       var img = match[1];
       if (!img) continue;
-      img = img.replace(/\\u002F/gi, '/').replace(/\\u003A/gi, ':')
-               .replace(/\\\//g, '/').replace(/\"/g, '')
-               .replace(/&/g, '&').trim();
+      img = img
+        .replace(/\\u002F/gi, '/')
+        .replace(/\\u003A/gi, ':')
+        .replace(/\\\//g, '/')
+        .replace(/\"/g, '')
+        .replace(/&/g, '&')
+        .trim();
       if (!img.startsWith('http')) continue;
       if (skipPattern.test(img)) continue;
       if (tooSmall.test(img)) continue;
@@ -336,10 +417,15 @@ function extractImages(html, hostname) {
 
 function upgradeResolution(img, hostname) {
   if (hostname.includes('mobile.de') || img.includes('mobilede') || img.includes('classistatic')) {
-    img = img.replace(/\/[sml]_/, '/xl_').replace(/\/thumb\//, '/big/')
-             .replace(/\/small\//, '/large/').replace(/\/medium\//, '/large/');
+    img = img
+      .replace(/\/[sml]_/, '/xl_')
+      .replace(/\/thumb\//, '/big/')
+      .replace(/\/small\//, '/large/')
+      .replace(/\/medium\//, '/large/');
   } else if (hostname.includes('autoscout24') || img.includes('autoscout24')) {
-    img = img.replace(/\/thumbs?\//, '/images/').replace(/\/small\//, '/large/');
+    img = img
+      .replace(/\/thumbs?\//, '/images/')
+      .replace(/\/small\//, '/large/');
   }
   return img;
 }
