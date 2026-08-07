@@ -158,18 +158,18 @@ async function handleMarktplaats(rawUrl, parsedUrl, res) {
     }
 
     /* bouw nep-HTML voor de bestaande parsers */
-    var fakeHtml = '' +
-      '' + title + '' +
-      '' +
-      '' +
-      '' + title + '' +
-      (price ? '' + price + '' : '') +
-      (km    ? '' + km + ' km' : '') +
-      (year  ? '' + year + '' : '') +
-      (fuel  ? '' + fuel + '' : '') +
-      (power ? '' + power + ' pk' : '') +
-      (color ? '' + color + '' : '') +
-      '';
+    var fakeHtml = '<html><head>' +
+      '<title>' + title + '</title>' +
+      '<meta property="og:title" content="' + title + '"/>' +
+      '</head><body>' +
+      '<h1>' + title + '</h1>' +
+      (price ? '<span class="price">' + price + '</span>' : '') +
+      (km    ? '<span class="km">' + km + ' km</span>' : '') +
+      (year  ? '<span class="year">' + year + '</span>' : '') +
+      (fuel  ? '<span class="fuel">' + fuel + '</span>' : '') +
+      (power ? '<span class="power">' + power + ' pk</span>' : '') +
+      (color ? '<span class="color">' + color + '</span>' : '') +
+      '</body></html>';
 
     return res.status(200).json({
       html: fakeHtml,
@@ -373,7 +373,7 @@ function extractImages(html, hostname) {
     /property="og:image[^"]*"\s+content="(https?:\/\/[^"]{10,300})"/gi,
     /content="(https?:\/\/[^"]{10,300})"\s+property="og:image[^"]*"/gi,
     /name="twitter:image[^"]*"\s+content="(https?:\/\/[^"]{10,300})"/gi,
-    /]+src="(https?:\/\/[^"]{10,300})"/gi
+    /<img[^>]+src="(https?:\/\/[^"]{10,300})"/gi
   ];
 
   if (hostname.includes('autoscout24')) {
@@ -389,7 +389,7 @@ function extractImages(html, hostname) {
     while ((match = p.exec(html)) !== null) {
       var img = match[1];
       if (!img) continue;
-      img = img.replace(/\\u002F/gi,'/').replace(/\\u003A/gi,':').replace(/\\\//g,'/').replace(/\"/g,'').replace(/&/g,'&').trim();
+      img = img.replace(/\\u002F/gi,'/').replace(/\\u003A/gi,':').replace(/\\\//g,'/').replace(/\\"/g,'').replace(/&amp;/g,'&').trim();
       if (!img.startsWith('http')) continue;
       if (skipPattern.test(img)) continue;
       if (tooSmall.test(img)) continue;
