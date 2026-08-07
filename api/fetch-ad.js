@@ -37,7 +37,9 @@ module.exports = async function handler(req, res) {
     'bas-world.com', 'www.bas-world.com'
   ];
 
-  if (!allowed.some(d => parsedUrl.hostname === d || parsedUrl.hostname.endsWith('.' + d))) {
+  if (!allowed.some(function(d) {
+    return parsedUrl.hostname === d || parsedUrl.hostname.endsWith('.' + d);
+  })) {
     return res.status(403).json({ error: 'Platform niet ondersteund' });
   }
 
@@ -58,33 +60,48 @@ module.exports = async function handler(req, res) {
 ══════════════════════ */
 function proxyImage(imgUrl, res) {
   return new Promise(function(resolve) {
+
     var decoded;
     try {
       decoded = decodeURIComponent(imgUrl);
-    } catch(e) {
+    } catch (e) {
       res.status(400).end('Bad image URL');
       return resolve();
     }
+
+    /* lage-res Marktplaats rule verwijderen vóór proxy */
+    decoded = decoded.replace(/[?&]rule=eps_\d+/g, '');
+    decoded = decoded.replace(/[?&]rule=ecg_mp[^&]*/g, '');
+    decoded = decoded.replace(/\?$/, '');
 
     var parsedImg;
     try {
       parsedImg = new URL(decoded);
-    } catch(e) {
+    } catch (e) {
       res.status(400).end('Bad image URL');
       return resolve();
     }
 
-    /* alleen bekende image domeinen toestaan */
+    /* toegestane image domeinen */
     var imgAllowed = [
-      'marktplaats.com', 'images.marktplaats.com',
-      'mobile.de', 'img.classistatic.de', 'i.ebayimg.com',
-      'autoscout24.net', 'prod.pictures.autoscout24.net',
-      'autotrack.nl', 'bas-world.com',
-      'imgur.com', 'cloudfront.net', 'cloudinary.com'
+      'marktplaats.com',
+      'images.marktplaats.com',
+      'admarkt-cdn.marktplaats.com',
+      'mobile.de',
+      'img.classistatic.de',
+      'i.ebayimg.com',
+      'autoscout24.net',
+      'prod.pictures.autoscout24.net',
+      'autotrack.nl',
+      'bas-world.com',
+      'cloudfront.net',
+      'cloudinary.com'
     ];
 
     var ok = imgAllowed.some(function(d) {
-      return parsedImg.hostname === d || parsedImg.hostname.endsWith('.' + d);
+      return parsedImg.hostname === d ||
+             parsedImg.hostname.endsWith('.' + d) ||
+             decoded.includes(d);
     });
 
     if (!ok) {
@@ -103,6 +120,7 @@ function proxyImage(imgUrl, res) {
         'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
         'Accept-Language': 'nl-NL,nl;q=0.9',
         'Referer': 'https://www.marktplaats.nl/',
+        'Origin': 'https://www.marktplaats.nl',
         'Sec-Fetch-Dest': 'image',
         'Sec-Fetch-Mode': 'no-cors',
         'Sec-Fetch-Site': 'cross-site',
@@ -120,11 +138,10 @@ function proxyImage(imgUrl, res) {
       }
 
       if (response.statusCode !== 200) {
-        res.status(response.statusCode).end('Image fetch failed');
+        res.status(response.statusCode).end('Image fetch failed: ' + response.statusCode);
         return resolve();
       }
 
-      /* headers doorzetten */
       var ct = response.headers['content-type'] || 'image/jpeg';
       res.setHeader('Content-Type', ct);
       res.setHeader('Cache-Control', 'public, max-age=86400');
@@ -132,6 +149,9 @@ function proxyImage(imgUrl, res) {
 
       response.pipe(res);
       response.on('end', resolve);
+      response.on('error', function(e) {
+        resolve();
+      });
     });
 
     request.on('error', function(e) {
@@ -155,6 +175,7 @@ function proxyImage(imgUrl, res) {
 function fetchUrl(url, redirects) {
   redirects = redirects || 0;
   return new Promise(function(resolve, reject) {
+
     if (redirects > 8) {
       return reject(new Error('Te veel redirects'));
     }
@@ -183,6 +204,7 @@ function fetchUrl(url, redirects) {
     };
 
     var request = lib.request(options, function(response) {
+
       if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
         var nextUrl = response.headers.location;
         if (nextUrl.startsWith('/')) {
@@ -232,9 +254,13 @@ function extractImages(html, hostname) {
   if (hostname.includes('autoscout24')) {
     patterns.push(/"(https?:\/\/prod\.pictures\.autoscout24\.net[^"]{5,300})"/gi);
   }
+
   if (hostname.includes('marktplaats')) {
     patterns.push(/"(https?:\/\/images\.marktplaats\.com[^"]{5,300})"/gi);
+    patterns.push(/"(https?:\/\/admarkt-cdn\.marktplaats\.com[^"]{5,300})"/gi);
+    patterns.push(/"url"\s*:\s*"(https?:\/\/[^"]*(?:marktplaats|admarkt)[^"]{5,300})"/gi);
   }
+
   if (hostname.includes('mobile.de')) {
     patterns.push(/"url"\s*:\s*"(https?:\/\/[^"]*(?:mobile|classistatic)[^"]{5,300})"/gi);
   }
@@ -277,31 +303,52 @@ function extractImages(html, hostname) {
   return images.slice(0, 12);
 }
 
+/* ══════════════════════
+   UPGRADE RESOLUTIE
+══════════════════════ */
 function upgradeResolution(img, hostname) {
+
   if (hostname.includes('mobile.de') || img.includes('mobilede') || img.includes('classistatic')) {
     img = img
       .replace(/\/[sml]_/, '/xl_')
       .replace(/\/thumb\//, '/big/')
       .replace(/\/small\//, '/large/')
       .replace(/\/medium\//, '/large/');
+
   } else if (hostname.includes('autoscout24') || img.includes('autoscout24')) {
     img = img
       .replace(/\/thumbs?\//, '/images/')
       .replace(/\/small\//, '/large/');
-  } else if (hostname.includes('marktplaats') || img.includes('marktplaats')) {
+
+  } else if (
+    hostname.includes('marktplaats') ||
+    img.includes('marktplaats') ||
+    img.includes('admarkt-cdn') ||
+    img.includes('icas-mp')
+  ) {
+    /* verwijder lage-res rule */
+    img = img.replace(/[?&]rule=eps_\d+/g, '');
+    img = img.replace(/[?&]rule=ecg_mp[^&]*/g, '');
+    /* lege query string opruimen */
+    img = img.replace(/\?&/, '?');
+    img = img.replace(/\?$/, '');
+    /* oud $_ formaat upgraden */
     img = img.replace(/\$_\d+\.(JPG|jpg|jpeg)/i, '$_86.JPG');
-    if (!img.includes('$_86') && img.includes('marktplaats')) {
-      img = img.replace(/\.(jpg|jpeg|png|webp)(\?.*)?$/i, '$_86.JPG');
-    }
   }
+
   return img;
 }
 
+/* ══════════════════════
+   RESOLUTIE SCORE
+══════════════════════ */
 function resScore(img) {
   var score = 0;
   if (img.includes('1600') || img.includes('xl') || img.includes('large') || img.includes('$_86')) score += 10;
   if (img.includes('800') || img.includes('medium')) score += 5;
   if (img.includes('jpg') || img.includes('jpeg')) score += 2;
   if (img.includes('webp')) score += 1;
+  /* straf voor lage-res Marktplaats rules */
+  if (img.includes('eps_83') || img.includes('eps_48')) score -= 20;
   return score;
 }
