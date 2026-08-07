@@ -1,802 +1,5 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Advertentie Analyse — APEXclusive</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-
-
-<style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
-
-:root{
-
---black:#050505;
---black2:#0b0b0b;
---black3:#111;
-
---white:#eeeae3;
-
---green:#009246;
---red:#ce2b37;
-
---border:rgba(238,235,229,.1);
-
-}
-
-
-
-body{
-
-background:var(--black);
-color:var(--white);
-
-font-family:'Inter',sans-serif;
-
-font-weight:300;
-
-min-height:100vh;
-
-}
-
-
-
-header{
-
-position:sticky;
-
-top:0;
-
-z-index:100;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:25px 60px;
-
-background:rgba(5,5,5,.95);
-
-border-bottom:1px solid var(--border);
-
-}
-
-
-
-.logo{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:32px;
-
-letter-spacing:.15em;
-
-color:white;
-
-text-decoration:none;
-
-}
-
-
-
-.logo span{
-
-color:rgba(238,235,229,.35);
-
-font-weight:300;
-
-}
-
-
-
-.back-btn{
-
-color:rgba(238,235,229,.5);
-
-border:1px solid var(--border);
-
-padding:12px 25px;
-
-font-size:12px;
-
-letter-spacing:.2em;
-
-text-transform:uppercase;
-
-text-decoration:none;
-
-}
-
-
-
-
-.hero{
-
-text-align:center;
-
-padding:100px 20px 80px;
-
-}
-
-
-
-.hero h1{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:clamp(45px,6vw,85px);
-
-font-weight:400;
-
-line-height:1;
-
-}
-
-
-
-.hero em{
-
-color:rgba(238,235,229,.35);
-
-}
-
-
-
-.hero p{
-
-margin:30px auto;
-
-max-width:600px;
-
-line-height:2;
-
-font-size:14px;
-
-color:rgba(238,235,229,.45);
-
-}
-
-
-
-
-
-.wrapper{
-
-max-width:1000px;
-
-margin:auto;
-
-padding:0 40px 100px;
-
-}
-
-
-
-
-
-.search-label{
-
-font-size:11px;
-
-letter-spacing:.3em;
-
-text-transform:uppercase;
-
-color:rgba(238,235,229,.3);
-
-display:block;
-
-margin-bottom:15px;
-
-}
-
-
-
-
-.search-row{
-
-display:flex;
-
-}
-
-
-
-input{
-
-flex:1;
-
-background:#111;
-
-border:1px solid var(--border);
-
-padding:20px;
-
-font-size:16px;
-
-color:white;
-
-outline:none;
-
-}
-
-
-
-button{
-
-cursor:pointer;
-
-}
-
-
-
-.analyse-btn{
-
-background:white;
-
-border:none;
-
-padding:0 45px;
-
-font-size:12px;
-
-letter-spacing:.2em;
-
-text-transform:uppercase;
-
-}
-
-
-
-
-.platforms{
-
-display:flex;
-
-gap:10px;
-
-margin:25px 0 40px;
-
-flex-wrap:wrap;
-
-}
-
-
-
-.platform{
-
-border:1px solid var(--border);
-
-padding:8px 15px;
-
-font-size:11px;
-
-letter-spacing:.15em;
-
-color:rgba(238,235,229,.4);
-
-}
-
-
-
-
-.error{
-
-display:none;
-
-color:#ce2b37;
-
-font-size:14px;
-
-margin:20px 0;
-
-}
-
-
-
-.loading{
-
-display:none;
-
-text-align:center;
-
-padding:70px;
-
-}
-
-
-
-.spinner{
-
-width:35px;
-
-height:35px;
-
-border:2px solid rgba(255,255,255,.1);
-
-border-top-color:white;
-
-border-radius:50%;
-
-animation:spin 1s linear infinite;
-
-margin:auto;
-
-}
-
-
-
-@keyframes spin{
-
-to{
-transform:rotate(360deg);
-}
-
-}
-
-
-
-.results{
-
-display:none;
-
-}
-
-
-
-.photo{
-
-width:100%;
-
-background:#111;
-
-position:relative;
-
-margin-bottom:2px;
-
-}
-
-
-
-.photo img{
-
-width:100%;
-
-max-height:600px;
-
-object-fit:contain;
-
-}
-
-
-
-.thumbs{
-
-display:grid;
-
-grid-template-columns:repeat(6,1fr);
-
-gap:2px;
-
-}
-
-
-
-.thumbs img{
-
-width:100%;
-
-height:90px;
-
-object-fit:cover;
-
-}
-
-
-
-.card{
-
-background:#0b0b0b;
-
-border:1px solid var(--border);
-
-padding:30px;
-
-margin-top:2px;
-
-}
-
-
-
-.stats{
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:2px;
-
-}
-
-
-
-.stat{
-
-background:#111;
-
-padding:30px;
-
-text-align:center;
-
-}
-
-
-
-.stat small{
-
-display:block;
-
-font-size:11px;
-
-letter-spacing:.2em;
-
-color:#777;
-
-margin-bottom:10px;
-
-}
-
-
-
-.stat strong{
-
-font-family:'Cormorant Garamond';
-
-font-size:32px;
-
-font-weight:400;
-
-}
-
-
-
-@media(max-width:700px){
-
-header{
-
-padding:20px;
-
-}
-
-.wrapper{
-
-padding:0 20px 60px;
-
-}
-
-
-.search-row{
-
-flex-direction:column;
-
-}
-
-
-.analyse-btn{
-
-height:60px;
-
-}
-
-
-.stats{
-
-grid-template-columns:1fr 1fr;
-
-}
-
-.thumbs{
-
-grid-template-columns:repeat(3,1fr);
-
-}
-
-
-}
-
-
-</style>
-
-</head>
-
-<body>
-
-
-<header>
-
-<a href="https://apexclusive.nl" class="logo">
-APEX<span>clusive</span>
-</a>
-
-
-<a href="https://apexclusive.nl" class="back-btn">
-← Terug naar website
-</a>
-
-</header>
-
-
-
-<section class="hero">
-
-<h1>
-Advertentie Analyse<br>
-<em>Voertuig Rapport</em>
-</h1>
-
-
-<p>
-Analyseer een AutoScout24, Mobile.de of Marktplaats advertentie.
-Ontvang automatisch prijs, specificaties, foto's en koopadvies.
-</p>
-
-
-</section>
-
-
-
-<div class="wrapper">
-
-
-<span class="search-label">
-Advertentielink invoeren
-</span>
-
-
-
-<div class="search-row">
-
-
-<input 
-id="adUrl"
-type="url"
-placeholder="Plak hier AutoScout24, Mobile.de of Marktplaats link..."
->
-
-
-<button 
-class="analyse-btn"
-id="analyseBtn"
-onclick="analyseer()">
-
-Analyseer
-
-</button>
-
-
-</div>
-
-
-
-<div class="platforms">
-
-<div class="platform">
-AutoScout24
-</div>
-
-<div class="platform">
-Mobile.de
-</div>
-
-<div class="platform">
-Marktplaats
-</div>
-
-<div class="platform">
-AutoTrack
-</div>
-
-</div>
-
-
-
-
-<div id="error" class="error"></div>
-
-
-
-<div id="loading" class="loading">
-
-<div class="spinner"></div>
-
-<br><br>
-
-Advertentie wordt geanalyseerd...
-
-</div>
-
-
-
-
-<div id="results" class="results">
-
-
-
-<div id="mainPhoto"></div>
-
-
-
-<div id="thumbContainer"></div>
-
-
-
-
-<div class="stats">
-
-
-<div class="stat">
-
-<small>
-Vraagprijs
-</small>
-
-<strong id="price">
--
-</strong>
-
-</div>
-
-
-
-<div class="stat">
-
-<small>
-Kilometerstand
-</small>
-
-<strong id="km">
--
-</strong>
-
-</div>
-
-
-
-<div class="stat">
-
-<small>
-Bouwjaar
-</small>
-
-<strong id="year">
--
-</strong>
-
-</div>
-
-
-
-<div class="stat">
-
-<small>
-Brandstof
-</small>
-
-<strong id="fuel">
--
-</strong>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-Advertentiegegevens
-</h3>
-
-
-<br>
-
-
-<div id="details"></div>
-
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-APEXclusive analyse
-</h3>
-
-
-<br>
-
-
-<div id="advies"></div>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<button onclick="resetTool()">
-
-Nieuwe analyse
-
-</button>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<footer style="
-text-align:center;
-padding:50px;
-border-top:1px solid rgba(255,255,255,.1);
-color:#555;
-font-size:12px;
-letter-spacing:.2em;
-">
-
-© 2026 APEXclusive Automotive Advisory
-
-</footer>
-
-
-
-
-
-User: dit is de code voor mijn auto analyse webpagina. echter als ik een link plak van autoscout, laad hij wel informatie, maarniet alle. zo komt de vraagprijs bijvoorbeeld niet goed door in de analyse. bij autoscout zie ik wel foto's verschijnen van de advertentie. als ik een marktplaats link plak, zi eik wel de tekst '1 foto' maar laat de site geen foto zien. kun jij zorgen dat het perfect werkt en het testen of het werkt
-
-
-
-<!DOCTYPE html>
-<html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -823,8 +26,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8000;o
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-track{background:var(--black)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,var(--it-green) 33%,rgba(238,235,229,.5) 33% 66%,var(--it-red) 66%)}
-
-/* HEADER */
 header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:24px 64px;background:rgba(5,5,5,0.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 .logo{text-decoration:none;display:flex;flex-direction:column;gap:3px}
 .logo-wm{display:flex;align-items:baseline}
@@ -839,8 +40,6 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .logo-tb span:nth-child(3){background:var(--it-red)}
 .back-btn{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(238,235,229,0.4);text-decoration:none;border:1px solid rgba(238,235,229,0.12);padding:10px 24px;transition:border-color .3s,color .3s;cursor:none}
 .back-btn:hover{border-color:rgba(238,235,229,0.28);color:var(--white)}
-
-/* HERO */
 .hero{position:relative;text-align:center;padding:96px 40px 76px;overflow:hidden}
 .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:76px;background:linear-gradient(to bottom,transparent,var(--it-green) 33%,rgba(238,235,229,.5) 66%,var(--it-red));opacity:.6}
 .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,var(--it-green-gl) 0%,transparent 55%),radial-gradient(ellipse at 70% 60%,var(--it-red-gl) 0%,transparent 55%);pointer-events:none}
@@ -851,15 +50,9 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:400;color:var(--white);letter-spacing:0.02em;line-height:1.06;margin-bottom:22px;position:relative;z-index:1}
 .hero h1 em{font-style:italic;font-weight:300;color:rgba(238,235,229,0.38)}
 .hero p{font-size:0.87rem;color:rgba(238,235,229,0.38);line-height:1.9;max-width:520px;margin:0 auto;position:relative;z-index:1}
-
-/* DIVIDER */
 .tri-div{margin:0 64px;height:1px;position:relative}
 .tri-div::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--it-green) 20%,rgba(238,235,229,.5) 50%,var(--it-red) 80%,transparent);opacity:.4}
-
-/* WRAP */
 .wrap{max-width:960px;margin:0 auto;padding:72px 64px 110px}
-
-/* SEARCH */
 .search-label{display:block;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(238,235,229,0.22);margin-bottom:14px}
 .search-row{display:flex;gap:1px;background:var(--border);margin-bottom:14px}
 .url-input{flex:1;background:var(--black-2);border:none;border-bottom:2px solid transparent;color:var(--white);font-size:0.9rem;padding:20px 24px;outline:none;font-family:'Inter',sans-serif;font-weight:300;letter-spacing:0.04em;transition:border-color .35s,background .35s;cursor:none}
@@ -871,41 +64,20 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .search-btn:hover{color:var(--white)}
 .search-btn span{position:relative;z-index:1;color:inherit}
 .search-btn:disabled{opacity:.5}
-
-/* PLATFORMS */
 .platforms{display:flex;gap:8px;margin-bottom:40px;flex-wrap:wrap}
 .pt-tag{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(238,235,229,0.1);color:rgba(238,235,229,0.3);display:flex;align-items:center;gap:7px}
 .pt-tag::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--it-green);flex-shrink:0}
-
-/* ERROR */
 .err-msg{display:none;font-size:0.72rem;color:var(--it-red);margin-top:10px;padding-left:4px;letter-spacing:0.06em;line-height:1.6}
 .err-msg.show{display:block}
-
-/* LOADING */
 .loading{display:none;text-align:center;padding:88px 0}
 .spinner{width:32px;height:32px;border:1.5px solid rgba(238,235,229,0.08);border-top-color:rgba(238,235,229,0.5);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 24px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-t{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:rgba(238,235,229,0.3)}
-
-/* RESULTS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .results{display:none}
 .results.show{display:block;animation:fadeUp .5s ease}
-
-/* PHOTO HERO */
-.photo-hero{
-  position:relative;width:100%;height:auto;
-  min-height:200px;max-height:600px;
-  overflow:hidden;margin-bottom:2px;
-  background:var(--black-3);
-  display:flex;align-items:center;justify-content:center;
-}
-.photo-hero img{
-  width:100%;height:auto;max-height:600px;
-  object-fit:contain;object-position:center;display:block;
-  filter:brightness(0.92) saturate(0.85) contrast(1.05);
-  transition:transform .9s ease,filter .9s;
-}
+.photo-hero{position:relative;width:100%;height:auto;min-height:200px;max-height:600px;overflow:hidden;margin-bottom:2px;background:var(--black-3);display:flex;align-items:center;justify-content:center}
+.photo-hero img{width:100%;height:auto;max-height:600px;object-fit:contain;object-position:center;display:block;filter:brightness(0.92) saturate(0.85) contrast(1.05);transition:transform .9s ease,filter .9s}
 .photo-hero:hover img{transform:scale(1.02);filter:brightness(0.82) saturate(0.75)}
 .photo-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,0.85) 0%,rgba(5,5,5,0.15) 40%,transparent 70%);pointer-events:none}
 .photo-hero-tristrip{position:absolute;bottom:0;left:0;right:0;height:2px;display:flex}
@@ -917,16 +89,12 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .photo-count{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(238,235,229,0.35);margin-bottom:8px}
 .photo-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:5px}
 .photo-platform{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(238,235,229,0.3)}
-
-/* THUMBNAILS */
 .thumb-row{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin-bottom:2px;background:var(--black)}
 .thumb-item{height:90px;overflow:hidden;position:relative;cursor:none;background:var(--black-3)}
 .thumb-item img{width:100%;height:100%;object-fit:contain;background:var(--black-3);filter:brightness(0.7) saturate(0.6);transition:filter .4s,transform .5s}
 .thumb-item:hover img{filter:brightness(0.88) saturate(0.8);transform:scale(1.04)}
 .thumb-item.active img{filter:brightness(0.95) saturate(0.9)}
 .thumb-item.active{outline:1px solid rgba(238,235,229,0.25)}
-
-/* BLOCK */
 .dblock{background:var(--black-2);border:1px solid var(--border);margin-bottom:2px;position:relative;overflow:hidden;transition:background .3s}
 .dblock::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--it-green),rgba(238,235,229,.4),var(--it-red));opacity:.3;z-index:1}
 .bhead{display:flex;align-items:center;gap:14px;padding:22px 32px 18px 36px;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
@@ -937,8 +105,6 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .bhead.open .bhead-chev{transform:rotate(180deg)}
 .bbody{padding:28px 36px 32px}
 .bbody.hidden{display:none}
-
-/* STAT CARDS */
 .stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
 .s-card{background:var(--black-2);padding:28px 22px;text-align:center;transition:background .35s;position:relative;overflow:hidden}
 .s-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;transform:scaleX(0);transform-origin:left;transition:transform .5s}
@@ -950,8 +116,6 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .s-card:hover::after{transform:scaleX(1)}
 .s-card-l{font-size:0.55rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(238,235,229,0.22);margin-bottom:12px;display:block}
 .s-card-v{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);line-height:1}
-
-/* PILLS */
 .sbar{display:flex;gap:8px;flex-wrap:wrap;padding:18px 36px;border-bottom:1px solid var(--border)}
 .s-pill{font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;padding:6px 13px;border:1px solid;font-weight:500;display:flex;align-items:center;gap:6px}
 .s-pill::before{content:'';display:block;width:5px;height:5px;border-radius:50%;flex-shrink:0}
@@ -959,15 +123,11 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .pill-warn{color:#c49a00;border-color:rgba(196,154,0,.25);background:rgba(196,154,0,.05)}.pill-warn::before{background:#c49a00}
 .pill-bad{color:var(--it-red);border-color:rgba(206,43,55,.25);background:rgba(206,43,55,.05)}.pill-bad::before{background:var(--it-red)}
 .pill-neu{color:var(--grey-2);border-color:rgba(136,136,136,.15);background:rgba(136,136,136,.04)}.pill-neu::before{background:var(--grey-2)}
-
-/* ROWS */
 .bd-row{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(238,235,229,0.04);font-size:0.83rem}
 .bd-row:last-child{border-bottom:none}
 .bd-l{color:rgba(238,235,229,0.35)}
 .bd-v{color:rgba(238,235,229,0.78);font-weight:400}
 .bd-sec-lbl{font-size:0.55rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(238,235,229,0.18);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-
-/* VERDICT */
 .verdict-box{padding:28px 32px;border:1px solid;margin-bottom:2px;position:relative;overflow:hidden}
 .verdict-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
 .verdict-ok{border-color:rgba(0,146,70,.2);background:rgba(0,146,70,.035)}.verdict-ok::before{background:linear-gradient(90deg,transparent,var(--it-green),transparent)}
@@ -993,12 +153,8 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .pc-lbl{font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(238,235,229,0.22);margin-bottom:8px}
 .pc-val{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);line-height:1}
 .pc-sub{font-size:0.7rem;color:rgba(238,235,229,0.3);margin-top:5px}
-
-/* RESET */
 .reset-btn{margin-top:2px;width:100%;background:transparent;border:1px solid rgba(238,235,229,0.1);color:rgba(238,235,229,0.3);padding:15px;font-family:'Inter',sans-serif;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;cursor:none;transition:border-color .3s,color .3s}
 .reset-btn:hover{border-color:rgba(238,235,229,0.22);color:rgba(238,235,229,0.6)}
-
-/* CTA */
 .cta-wrap{margin-top:2px;padding:64px 56px;background:var(--black-2);border:1px solid rgba(238,235,229,0.08);position:relative;text-align:center}
 .cta-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--it-green) 25%,rgba(238,235,229,.55) 50%,var(--it-red) 75%,transparent);opacity:.5}
 .cta-eye{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:18px}
@@ -1013,8 +169,6 @@ header{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify
 .btn-w span{position:relative;z-index:1;color:inherit}
 .btn-g{display:inline-flex;align-items:center;background:transparent;color:rgba(238,235,229,.5);padding:14px 40px;font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(238,235,229,.14);transition:border-color .3s,color .3s,transform .3s;cursor:none}
 .btn-g:hover{border-color:rgba(238,235,229,.3);color:var(--white);transform:translateY(-2px)}
-
-/* FOOTER */
 footer{text-align:center;padding:52px 64px;border-top:1px solid var(--border);position:relative}
 footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--it-green) 20%,rgba(238,235,229,.35) 50%,var(--it-red) 80%,transparent);opacity:.28}
 .ft-tri{display:flex;gap:2px;justify-content:center;margin-bottom:14px}
@@ -1026,7 +180,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .ft-copy a{color:rgba(238,235,229,.22);text-decoration:none;transition:color .3s}
 .ft-copy a:hover{color:rgba(238,235,229,.5)}
 .disc{margin-top:18px;font-size:0.68rem;color:rgba(238,235,229,.18);line-height:1.7;text-align:center}
-
 @media(max-width:820px){
   header{padding:20px 24px}
   .tri-div{margin:0 24px}
@@ -1150,349 +303,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 <script>
 /* ── CURSOR ── */
-const cur=document.getElementById('cur');
-const ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
-function addHov(el){
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-}
-document.querySelectorAll('a,button,input,.bhead').forEach(addHov);
-
-function toggleBlock(head){
-  head.classList.toggle('open');
-  head.nextElementSibling.classList.toggle('hidden');
-}
-
-/* ── HELPERS ── */
-function euro(v){return v?'€\u00a0'+Math.round(v).toLocaleString('nl-NL'):'—';}
-function fmtKm(v){return v?Math.round(v).toLocaleString('nl-NL')+'\u00a0km':'—';}
-function row(l,v){return '<div class="bd-row"><span class="bd-l">'+l+'</span><span class="bd-v">'+(v||'—')+'</span></div>';}
-
-/* ── PLATFORM DETECT ── */
-function detectPlatform(url){
-  if(url.includes('mobile.de'))      return 'mobile';
-  if(url.includes('autoscout24'))    return 'autoscout';
-  if(url.includes('marktplaats.nl')) return 'marktplaats';
-  if(url.includes('autotrack.nl'))   return 'autotrack';
-  if(url.includes('bas-world'))      return 'bas';
-  return null;
-}
-
-function get(html,patterns){
-  for(const p of patterns){
-    const m=html.match(p);
-    if(m&&m[1]) return m[1].trim();
-  }
-  return null;
-}
-
-/* ── IMAGE EXTRACT — direct, geen proxy ── */
-function extractImages(html){
-  const images=[];
-  const skip=/(logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|favicon|hzcdn)/i;
-  const patterns=[
-    /"extraExtraLargeUrl"\s*:\s*"([^"]+)"/gi,
-    /"extraLargeUrl"\s*:\s*"([^"]+)"/gi,
-    /"largeUrl"\s*:\s*"([^"]+)"/gi,
-    /"mediumUrl"\s*:\s*"([^"]+)"/gi,
-    /"imageUrl"\s*:\s*"([^"]+)"/gi,
-    /"(?:image|fullImageUrl|originalUrl|bigUrl|srcUrl|hdUrl)"\s*:\s*"([^"]{20,})"/gi,
-    /"src"\s*:\s*"(https?:\/\/[^"]*(?:jpg|jpeg|png|webp)[^"]{0,100})"/gi,
-    /property="og:image[^"]*"\s+content="([^"]+)"/gi,
-    /content="([^"]+)"\s+property="og:image[^"]*"/gi,
-    /<img[^>]+src="(https?:\/\/[^"]*(?:jpg|jpeg|png|webp)[^"]{0,100})"/gi
-  ];
-  patterns.forEach(function(p){
-    var m,pp=new RegExp(p.source,p.flags);
-    while((m=pp.exec(html))!==null){
-      var img=m[1]
-        .replace(/\\u002F/g,'/')
-        .replace(/\\u003A/g,':')
-        .replace(/\\\//g,'/')
-        .replace(/\\"/g,'"')
-        .replace(/&amp;/g,'&')
-        .trim();
-      if(!img||skip.test(img)||!img.startsWith('http')) continue;
-      /* verwijder lage-res Marktplaats rules */
-      img=img.replace(/[?&]rule=eps_\d+/g,'');
-      img=img.replace(/[?&]rule=ecg_mp[^&]*/g,'');
-      img=img.replace(/\?$/,'').replace(/\?&/,'?');
-      if(!images.includes(img)) images.push(img);
-    }
-  });
-  return images.slice(0,12);
-}
-
-/* ── PARSERS ── */
-function parseMobile(html){
-  return{
-    platform:'Mobile.de',
-    title:get(html,[/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–\-]{5,80})/i]),
-    price:get(html,[/"price"\s*:\s*\{[^}]*?"value"\s*:\s*(\d{3,7})/i,/(\d{1,3}(?:\.\d{3})+)\s*€/i]),
-    km:get(html,[/"mileage"\s*:\s*\{[^}]*"value"\s*:\s*"?([\d.,]+)/i,/(\d{2,3}\.\d{3})\s*km/i]),
-    year:get(html,[/"firstRegistration"\s*:\s*\{[^}]*"year"\s*:\s*(\d{4})/i,/(\b20[01]\d\b)/]),
-    fuel:get(html,[/"fuel"\s*:\s*"([^"]{2,30})"/i]),
-    power:get(html,[/(\d{2,4})\s*(?:PS|kW)/i]),
-    color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
-    trans:get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
-    doors:get(html,[/"doors"\s*:\s*"?(\d)/i]),
-    priceLevel:/guter\s*preis|sehr\s*guter\s*preis|good.?price/i.test(html)?'ok'
-      :/hoher\s*preis|high.?price/i.test(html)?'bad'
-      :/fairer?\s*preis|fair.?price/i.test(html)?'warn':null
-  };
-}
-function parseAutoscout(html){
-  return{
-    platform:'AutoScout24',
-    title:get(html,[/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–]{5,80})/i]),
-    price:get(html,[/"price"\s*:\s*\{[^}]*?"value"\s*:\s*(\d{3,7})/i,/(\d{1,3}(?:\.\d{3})+)\s*€/i]),
-    km:get(html,[/"mileage"\s*:\s*\{[^}]*"value"\s*:\s*"?([\d.,]+)/i,/(\d{2,3}\.\d{3})\s*km/i]),
-    year:get(html,[/"firstRegistration"[^}]*"year"\s*:\s*(\d{4})/i,/(\b20[01]\d\b)/]),
-    fuel:get(html,[/"fuel"\s*:\s*"([^"]{2,30})"/i]),
-    power:get(html,[/(\d{2,4})\s*(?:PS|pk|kW)/i]),
-    color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
-    trans:get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
-    doors:get(html,[/"doors"\s*:\s*"?(\d)/i]),
-    priceLevel:/top.?offer|great.?deal/i.test(html)?'ok'
-      :/overpriced/i.test(html)?'bad'
-      :/fair|average/i.test(html)?'warn':null
-  };
-}
-function parseMarktplaats(html){
-  return{
-    platform:'Marktplaats.nl',
-    title:get(html,[/<h1[^>]*>([^<]{5,120})<\/h1>/i,/<title>([^<|–]{5,120})/i]),
-    price:get(html,[/"priceCents"\s*:\s*"?(\d+)"?/i,/€\s*([\d]{1,3}(?:\.[\d]{3})*)/i]),
-    km:get(html,[/"mileage"\s*:\s*"?([\d.]+)/i,/([\d]{1,3}(?:\.[\d]{3})+)\s*km/i]),
-    year:get(html,[/"constructionYear"\s*:\s*"?(\d{4})/i,/\b(20\d{2})\b/i]),
-    fuel:get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i]),
-    power:get(html,[/"power"\s*:\s*"?(\d+)/i,/(\d+)\s*(?:pk|PS)/i]),
-    color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
-    trans:null,doors:null,priceLevel:null
-  };
-}
-
-function cleanPrice(raw,platform){
-  if(!raw) return null;
-  let n=parseInt(raw.replace(/[^\d]/g,''));
-  if(isNaN(n)) return null;
-  if(platform==='marktplaats'&&n>100000) n=Math.round(n/100);
-  return(n<500||n>2000000)?null:n;
-}
-function cleanKm(raw){
-  if(!raw) return null;
-  const n=parseFloat(raw.replace(/[^\d]/g,''));
-  return isNaN(n)?null:n;
-}
-
-function priceAdvice(price,km,year,title){
-  if(!price||!year) return null;
-  const age=2026-parseInt(year);
-  const kmN=km||(age*15000);
-  const t=(title||'').toLowerCase();
-  let est;
-  if(/lamborghini|ferrari|mclaren|aston.martin|rolls.royce|bentley/i.test(t)) est=220000;
-  else if(/porsche|rs6|rs7|amg gt|m3|m4|m5|m8|c63|e63|gt3|gt4/i.test(t)) est=95000;
-  else if(/amg|m.sport|rs |s-line|competition/i.test(t)) est=55000;
-  else est=Math.max(8000,32000*Math.pow(0.9,age));
-  est-=(kmN-(age*15000))*0.05;
-  est=Math.max(est,1500);
-  const ratio=price/est;
-  if(ratio<0.85) return{level:'ok',tag:'Onder marktwaarde',title:'Aantrekkelijke vraagprijs',icon:'check',
-    text:'Op basis van leeftijd, kilometerstand en voertuigcategorie lijkt de vraagprijs <strong>aantrekkelijk</strong>. De auto staat circa '+Math.round((1-ratio)*100)+'% onder een geschatte marktwaarde. Controleer altijd onderhoudshistorie, schadeverleden en documentatie voor aankoop.'};
-  if(ratio>1.15) return{level:'bad',tag:'Boven marktwaarde',title:'Prijs vraagt nadere onderbouwing',icon:'warn',
-    text:'De vraagprijs lijkt circa '+Math.round((ratio-1)*100)+'% boven een geschatte marktwaarde te liggen. Bij exclusieve voertuigen kan dit gerechtvaardigd zijn door bijzondere uitvoering, lage kilometerstand of zeldzame specificaties. Een onafhankelijke taxatie is aanbevolen.'};
-  return{level:'warn',tag:'Marktconform',title:'Redelijk marktconforme prijs',icon:'info',
-    text:'De vraagprijs lijkt redelijk marktconform. Bij exclusieve voertuigen zijn onderhoudshistorie, kleurcombinatie, optiepakket en aantoonbare servicehistorie vaak bepalender dan uitsluitend leeftijd en kilometrage.'};
-}
-
-const VICONS={
-  check:'<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>',
-  warn:'<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
-  info:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
-};
-
-let allImages=[];
-function switchPhoto(idx){
-  const hero=document.querySelector('.photo-hero img');
-  if(hero&&allImages[idx]){
-    hero.src=allImages[idx];
-    document.querySelectorAll('.thumb-item').forEach((t,i)=>t.classList.toggle('active',i===idx));
-  }
-}
-
-/* ── MAIN ── */
-async function analyzeAd(){
-  const url=document.getElementById('adUrl').value.trim();
-  const err=document.getElementById('errmsg');
-  const load=document.getElementById('loading');
-  const res=document.getElementById('results');
-  const btn=document.getElementById('analyzeBtn');
-  const btnt=document.getElementById('btn-t');
-  err.classList.remove('show');
-  res.classList.remove('show');
-  res.style.display='none';
-
-  if(!url){err.textContent='Vul een advertentielink in.';err.classList.add('show');return;}
-  const platform=detectPlatform(url);
-  if(!platform){err.textContent='Niet-ondersteund platform. Gebruik Mobile.de, AutoScout24, Marktplaats.nl, AutoTrack of BAS-World.';err.classList.add('show');return;}
-
-  load.style.display='block';
-  btn.disabled=true;
-  btnt.textContent='Analyseren…';
-
-  try{
-    const resp=await fetch('/api/fetch-ad?url='+encodeURIComponent(url));
-    const data=await resp.json();
-    if(!resp.ok||data.error) throw new Error(data.error||'Ophalen mislukt');
-
-    const html=data.html;
-
-    /* afbeeldingen — direct laden, geen proxy */
-    allImages=(data.images||extractImages(html)).map(function(img){
-  if(img.includes('marktplaats')||img.includes('admarkt-cdn')||img.includes('ecg-img')||img.includes('hzcdn')){
-    return '/api/fetch-ad?img='+encodeURIComponent(img);
-  }
-  return img;
-});
-
-    let parsed;
-    if(platform==='mobile')         parsed=parseMobile(html);
-    else if(platform==='autoscout') parsed=parseAutoscout(html);
-    else                            parsed=parseMarktplaats(html);
-
-    const priceNum=cleanPrice(parsed.price,platform);
-    const kmNum=cleanKm(parsed.km);
-    const advice=priceAdvice(priceNum,kmNum,parsed.year,parsed.title);
-    const level=parsed.priceLevel||(advice?advice.level:null);
-
-    /* PHOTO HERO */
-    const photoWrap=document.getElementById('photo-hero-wrap');
-    if(allImages.length>0){
-      photoWrap.innerHTML=
-        '<div class="photo-hero">'
-        +'<img src="'+allImages[0]+'" alt="'+(parsed.title||'Voertuig').replace(/"/g,'&quot;')+'" onerror="this.parentElement.style.background=\'var(--black-3)\';this.style.display=\'none\'">'
-        +'<div class="photo-hero-overlay"></div>'
-        +'<div class="photo-hero-tristrip"><span></span><span></span><span></span></div>'
-        +'<div class="photo-hero-info">'
-        +'<div class="photo-count">'+allImages.length+' foto'+(allImages.length>1?'s':'')+' · '+parsed.platform+'</div>'
-        +'<div class="photo-title">'+(parsed.title||'Voertuig')+'</div>'
-        +(parsed.year?'<div class="photo-platform">'+parsed.year+(parsed.fuel?' · '+parsed.fuel:'')+(parsed.power?' · '+parsed.power+' pk':'')+'</div>':'')
-        +'</div>'
-        +'</div>';
-    } else {
-      photoWrap.innerHTML='';
-    }
-
-    /* THUMBNAILS */
-    const thumbWrap=document.getElementById('thumb-row-wrap');
-    if(allImages.length>1){
-      thumbWrap.innerHTML='<div class="thumb-row">'
-        +allImages.slice(0,Math.min(allImages.length,8)).map((img,i)=>
-          '<div class="thumb-item'+(i===0?' active':'')+'" onclick="switchPhoto('+i+')">'
-          +'<img src="'+img+'" alt="foto '+(i+1)+'" loading="lazy" onerror="this.parentElement.style.display=\'none\'">'
-          +'</div>'
-        ).join('')
-        +'</div>';
-    } else {
-      thumbWrap.innerHTML='';
-    }
-
-    /* PILLS */
-    const sbar=document.getElementById('sbar');
-    sbar.innerHTML='';
-    [
-      {l:parsed.platform,c:'neu'},
-      priceNum?{l:euro(priceNum),c:level==='ok'?'ok':level==='bad'?'bad':'warn'}:{l:'Prijs onbekend',c:'neu'},
-      kmNum?{l:fmtKm(kmNum),c:kmNum<50000?'ok':kmNum<120000?'warn':'bad'}:{l:'KM onbekend',c:'neu'},
-      parsed.year?{l:parsed.year,c:'neu'}:{l:'Jaar onbekend',c:'neu'},
-      parsed.fuel?{l:parsed.fuel,c:'neu'}:null,
-      level?{l:level==='ok'?'Goede prijs':level==='bad'?'Hoge prijs':'Marktconform',c:level}:null
-    ].filter(Boolean).forEach(function(p){
-      const el=document.createElement('div');
-      el.className='s-pill pill-'+p.c;
-      el.textContent=p.l;
-      sbar.appendChild(el);
-    });
-
-    /* STAT CARDS */
-    document.getElementById('stat-cards').innerHTML=
-      '<div class="s-card"><span class="s-card-l">Vraagprijs</span><div class="s-card-v">'+euro(priceNum)+'</div></div>'
-      +'<div class="s-card"><span class="s-card-l">Kilometerstand</span><div class="s-card-v">'+fmtKm(kmNum)+'</div></div>'
-      +'<div class="s-card"><span class="s-card-l">Bouwjaar</span><div class="s-card-v">'+(parsed.year||'—')+'</div></div>'
-      +'<div class="s-card"><span class="s-card-l">Brandstof</span><div class="s-card-v">'+(parsed.fuel||'—')+'</div></div>';
-
-    /* VERDICT */
-    const vw=document.getElementById('verdict-wrap');
-    if(advice){
-      const vc={ok:'verdict-ok',warn:'verdict-warn',bad:'verdict-bad'}[advice.level]||'verdict-warn';
-      const est=Math.round(priceNum/(advice.level==='ok'?0.82:advice.level==='bad'?1.18:1));
-      vw.innerHTML=
-        '<div class="verdict-box '+vc+'">'
-        +'<div class="verdict-head">'
-        +'<div class="verdict-icon">'+(VICONS[advice.icon]||VICONS.info)+'</div>'
-        +'<div><div class="verdict-tag">'+advice.tag+'</div>'
-        +'<div class="verdict-title">'+advice.title+'</div></div>'
-        +'</div>'
-        +'<div class="verdict-text">'+advice.text+'</div>'
-        +(priceNum
-          ?'<div class="price-compare">'
-            +'<div class="pc-side"><div class="pc-lbl">Vraagprijs</div><div class="pc-val">'+euro(priceNum)+'</div><div class="pc-sub">Gevraagd door verkoper</div></div>'
-            +'<div class="pc-side"><div class="pc-lbl">Geschatte marktwaarde</div><div class="pc-val">'+euro(est)+'</div><div class="pc-sub">Indicatieve berekening APEXclusive</div></div>'
-            +'</div>':'')
-        +'</div>';
-    } else {
-      vw.innerHTML='';
-    }
-
-    /* DETAILS */
-    let det='<div class="bd-sec-lbl">Advertentiegegevens</div>';
-    det+=row('Platform',parsed.platform);
-    det+=row('Titel',parsed.title);
-    det+=row('Vraagprijs',euro(priceNum));
-    det+=row('Kilometerstand',fmtKm(kmNum));
-    det+=row('Bouwjaar',parsed.year);
-    det+=row('Brandstof',parsed.fuel);
-    if(parsed.power) det+=row('Vermogen',parsed.power+' pk');
-    if(parsed.trans) det+=row('Transmissie',parsed.trans);
-    if(parsed.color) det+=row('Kleur',parsed.color);
-    if(parsed.doors) det+=row('Aantal deuren',parsed.doors);
-    det+=row('Link','<a href="'+url+'" target="_blank" style="color:rgba(238,235,229,0.5);text-decoration:none;font-size:.75rem">'+url.substring(0,55)+'…</a>');
-    document.getElementById('details-content').innerHTML=det;
-
-    document.querySelectorAll('.s-card,.thumb-item,.verdict-box').forEach(addHov);
-
-    res.style.display='block';
-    res.classList.add('show');
-    setTimeout(()=>res.scrollIntoView({behavior:'smooth',block:'start'}),80);
-
-  } catch(e){
-    err.textContent='Ophalen mislukt: '+e.message+'. Controleer of de link correct en publiek toegankelijk is.';
-    err.classList.add('show');
-  } finally {
-    load.style.display='none';
-    btn.disabled=false;
-    btnt.textContent='Analyseer advertentie';
-  }
-}
-
-function resetTool(){
-  document.getElementById('results').style.display='none';
-  document.getElementById('results').classList.remove('show');
-  document.getElementById('errmsg').classList.remove('show');
-  document.getElementById('adUrl').value='';
-  allImages=[];
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-</script>
-</body>
-</html>
-
-<script>
-/* ── CURSOR ── */
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1505,7 +315,6 @@ document.addEventListener('mousemove', e => {
   ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
   requestAnimationFrame(tick);
 })();
-
 function addHov(el) {
   el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
@@ -1548,10 +357,9 @@ function get(html, patterns) {
   return null;
 }
 
-/* ── AUTOSCOUT: haal data uit __NEXT_DATA__ ── */
+/* ── AUTOSCOUT __NEXT_DATA__ PARSER ── */
 function parseAS24NextData(nd) {
   if (!nd) return {};
-  // Zoek recursief naar relevante velden
   const str = JSON.stringify(nd);
 
   function extractFirst(patterns) {
@@ -1562,54 +370,44 @@ function parseAS24NextData(nd) {
     return null;
   }
 
-  // Prijs — AS24 slaat op als integer of als object {amount, currency}
   const priceRaw = extractFirst([
-    /"price"\s*:\s*(\d{3,7})/,
-    /"amount"\s*:\s*(\d{3,7})/,
-    /"offerPrice"\s*:\s*(\d{3,7})/,
-    /"retailPrice"\s*:\s*(\d{3,7})/,
-    /"value"\s*:\s*(\d{3,7})/,
+    /"price"\s*:\s*(\d{3,7})(?:[,}\s])/,
+    /"amount"\s*:\s*(\d{3,7})(?:[,}\s])/,
+    /"offerPrice"\s*:\s*(\d{3,7})(?:[,}\s])/,
+    /"retailPrice"\s*:\s*(\d{3,7})(?:[,}\s])/,
+    /"value"\s*:\s*(\d{3,7})(?:[,}\s])/,
   ]);
-
   const kmRaw = extractFirst([
-    /"mileage"\s*:\s*(\d{4,7})/,
-    /"km"\s*:\s*(\d{4,7})/,
+    /"mileage"\s*:\s*(\d{4,7})(?:[,}\s])/,
+    /"km"\s*:\s*(\d{4,7})(?:[,}\s])/,
   ]);
-
   const yearRaw = extractFirst([
     /"firstRegistrationYear"\s*:\s*(\d{4})/,
     /"registrationYear"\s*:\s*(\d{4})/,
     /"year"\s*:\s*(\d{4})/,
     /"constructionYear"\s*:\s*(\d{4})/,
   ]);
-
   const fuelRaw = extractFirst([
     /"fuelType"\s*:\s*"([^"]{2,30})"/,
     /"fuel"\s*:\s*"([^"]{2,30})"/,
   ]);
-
   const powerRaw = extractFirst([
-    /"powerKW"\s*:\s*(\d{2,4})/,
-    /"power"\s*:\s*(\d{2,4})/,
-    /"hp"\s*:\s*(\d{2,4})/,
+    /"powerKW"\s*:\s*(\d{2,4})(?:[,}\s])/,
+    /"power"\s*:\s*(\d{2,4})(?:[,}\s])/,
+    /"hp"\s*:\s*(\d{2,4})(?:[,}\s])/,
   ]);
-
   const transRaw = extractFirst([
     /"transmission"\s*:\s*"([^"]{2,30})"/,
     /"gearbox"\s*:\s*"([^"]{2,30})"/,
   ]);
-
   const colorRaw = extractFirst([
     /"color"\s*:\s*"([^"]{2,30})"/,
     /"bodyColor"\s*:\s*"([^"]{2,30})"/,
   ]);
-
   const titleRaw = extractFirst([
     /"title"\s*:\s*"([^"]{5,120})"/,
     /"headline"\s*:\s*"([^"]{5,120})"/,
-    /"name"\s*:\s*"([^"]{5,120})"/,
   ]);
-
   const doorsRaw = extractFirst([
     /"doors"\s*:\s*"?(\d)/,
     /"numberOfDoors"\s*:\s*"?(\d)/,
@@ -1660,19 +458,17 @@ function parseMobile(html) {
       /guter\s*preis|sehr\s*guter\s*preis|good.?price/i.test(html) ? 'ok'
       : /hoher\s*preis|high.?price/i.test(html) ? 'bad'
       : /fairer?\s*preis|fair.?price/i.test(html) ? 'warn' : null,
+    priceCents: false,
   };
 }
 
 function parseAutoscout(html, nextData) {
-  // Basis uit HTML
   const fromHtml = {
-    platform: 'AutoScout24',
     title: get(html, [
       /<h1[^>]*>([^<]{5,100})<\/h1>/i,
       /<title>([^<|–]{5,80})/i,
     ]),
     price: get(html, [
-      // AS24 toont prijs als bijv. "19.900" of "19900"
       /data-testid="(?:price|listing-price)[^"]*"[^>]*>\s*€?\s*([\d.,]+)/i,
       /class="[^"]*price[^"]*"[^>]*>\s*€?\s*([\d.,]+)/i,
       /"price"\s*:\s*(\d{3,7})(?:[,}\s])/i,
@@ -1683,69 +479,54 @@ function parseAutoscout(html, nextData) {
       /(\d{1,3}(?:[.,]\d{3})+)\s*km/i,
       /"mileage"\s*:\s*(\d{4,7})/i,
     ]),
-    year: get(html, [
-      /(\b20[01]\d\b)/,
-    ]),
+    year:  get(html, [/(\b20[01]\d\b)/]),
     fuel:  get(html, [/"fuelType"\s*:\s*"([^"]{2,30})"/i, /"fuel"\s*:\s*"([^"]{2,30})"/i]),
     power: get(html, [/(\d{2,4})\s*(?:PS|pk|kW)/i]),
     color: get(html, [/"color"\s*:\s*"([^"]{2,30})"/i]),
     trans: get(html, [/"transmission"\s*:\s*"([^"]{2,30})"/i]),
     doors: get(html, [/"doors"\s*:\s*"?(\d)/i]),
-    priceLevel: null,
   };
-
-  // Merge met __NEXT_DATA__ (hogere prioriteit voor numerieke velden)
   const fromNext = parseAS24NextData(nextData);
-
   return {
-    platform: 'AutoScout24',
-    title:  fromNext.title  || fromHtml.title,
-    price:  fromNext.price  || fromHtml.price,
-    km:     fromNext.km     || fromHtml.km,
-    year:   fromNext.year   || fromHtml.year,
-    fuel:   fromNext.fuel   || fromHtml.fuel,
-    power:  fromNext.power  || fromHtml.power,
-    color:  fromNext.color  || fromHtml.color,
-    trans:  fromNext.trans  || fromHtml.trans,
-    doors:  fromNext.doors  || fromHtml.doors,
-    priceLevel: null,
+    platform:    'AutoScout24',
+    title:       fromNext.title  || fromHtml.title,
+    price:       fromNext.price  || fromHtml.price,
+    km:          fromNext.km     || fromHtml.km,
+    year:        fromNext.year   || fromHtml.year,
+    fuel:        fromNext.fuel   || fromHtml.fuel,
+    power:       fromNext.power  || fromHtml.power,
+    color:       fromNext.color  || fromHtml.color,
+    trans:       fromNext.trans  || fromHtml.trans,
+    doors:       fromNext.doors  || fromHtml.doors,
+    priceLevel:  null,
+    priceCents:  false,
   };
 }
 
 function parseMarktplaats(html) {
-  // Marktplaats: priceCents is de betrouwbaarste bron
   const priceCentsRaw = get(html, [
     /"priceCents"\s*:\s*"?(\d+)"?/i,
     /"price_cents"\s*:\s*"?(\d+)"?/i,
   ]);
-
-  // Fallback: zoek in JSON-LD
   let priceJsonLd = null;
-  const jsonLdBlocks = html.match(
-    /<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi
-  ) || [];
+  const jsonLdBlocks = html.match(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi) || [];
   for (const block of jsonLdBlocks) {
     try {
       const json = JSON.parse(block.replace(/<\/?script[^>]*>/gi, ''));
-      if (json.offers && json.offers.price) {
-        priceJsonLd = String(json.offers.price);
-        break;
-      }
+      if (json.offers && json.offers.price) { priceJsonLd = String(json.offers.price); break; }
     } catch (_) {}
   }
-
   return {
     platform: 'Marktplaats.nl',
     title: get(html, [
       /<h1[^>]*>([^<]{5,120})<\/h1>/i,
       /<title>([^<|–]{5,120})/i,
     ]),
-    // priceCents heeft prioriteit
     price: priceCentsRaw || priceJsonLd || get(html, [
       /€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,
       /"(?:asking)?[Pp]rice"\s*:\s*"?(\d{3,7})"?/i,
     ]),
-    priceCents: !!priceCentsRaw, // vlag zodat cleanPrice het correct omrekent
+    priceCents: !!priceCentsRaw,
     km: get(html, [
       /"mileage"\s*:\s*"?([\d.]+)/i,
       /([\d]{1,3}(?:\.[\d]{3})+)\s*km/i,
@@ -1767,39 +548,20 @@ function parseMarktplaats(html) {
 /* ── CLEAN HELPERS ── */
 function cleanPrice(raw, platform, isPriceCents) {
   if (!raw) return null;
-
-  // Verwijder alles behalve cijfers en punt/komma
   let cleaned = String(raw).replace(/[^\d.,]/g, '');
-
-  // Detecteer of het een Europees getal is (punt als duizendscheider)
-  // bijv. "19.900" → 19900, "1.500,00" → 1500
   let n;
   if (cleaned.includes(',') && cleaned.includes('.')) {
-    // "1.500,00" → punt = duizendscheider, komma = decimaal
     n = parseFloat(cleaned.replace(/\./g, '').replace(',', '.'));
   } else if (cleaned.includes('.') && cleaned.split('.').length === 2) {
     const parts = cleaned.split('.');
-    if (parts[1].length === 3) {
-      // "19.900" → duizendscheider
-      n = parseInt(cleaned.replace('.', ''));
-    } else {
-      // "19.9" → decimaal (ongebruikelijk voor prijs, maar veiligheidshalve)
-      n = parseFloat(cleaned);
-    }
+    n = parts[1].length === 3 ? parseInt(cleaned.replace('.', '')) : parseFloat(cleaned);
   } else if (cleaned.includes('.') && cleaned.split('.').length > 2) {
-    // "1.234.567" → alles samenvoegen
     n = parseInt(cleaned.replace(/\./g, ''));
   } else {
     n = parseFloat(cleaned.replace(',', '.'));
   }
-
   if (isNaN(n)) return null;
-
-  // priceCents → omrekenen naar euro's
-  if (isPriceCents || (platform === 'marktplaats' && n > 200000)) {
-    n = Math.round(n / 100);
-  }
-
+  if (isPriceCents || (platform === 'marktplaats' && n > 200000)) n = Math.round(n / 100);
   return (n < 500 || n > 2000000) ? null : n;
 }
 
@@ -1815,44 +577,25 @@ function priceAdvice(price, km, year, title) {
   const age = 2026 - parseInt(year);
   const kmN = km || (age * 15000);
   const t = (title || '').toLowerCase();
-
   let est;
-  if (/lamborghini|ferrari|mclaren|aston.martin|rolls.royce|bentley/i.test(t))
-    est = 220000;
-  else if (/porsche|rs6|rs7|amg gt|m3|m4|m5|m8|c63|e63|gt3|gt4/i.test(t))
-    est = 95000;
-  else if (/amg|m.sport|rs |s-line|competition/i.test(t))
-    est = 55000;
-  else
-    est = Math.max(8000, 32000 * Math.pow(0.9, age));
-
+  if (/lamborghini|ferrari|mclaren|aston.martin|rolls.royce|bentley/i.test(t)) est = 220000;
+  else if (/porsche|rs6|rs7|amg gt|m3|m4|m5|m8|c63|e63|gt3|gt4/i.test(t)) est = 95000;
+  else if (/amg|m.sport|rs |s-line|competition/i.test(t)) est = 55000;
+  else est = Math.max(8000, 32000 * Math.pow(0.9, age));
   est -= (kmN - (age * 15000)) * 0.05;
   est = Math.max(est, 1500);
-
   const ratio = price / est;
-  if (ratio < 0.85)
-    return {
-      level: 'ok', tag: 'Onder marktwaarde', title: 'Aantrekkelijke vraagprijs', icon: 'check',
-      text: 'Op basis van leeftijd, kilometerstand en voertuigcategorie lijkt de vraagprijs '
-        + '<strong>aantrekkelijk</strong>. De auto staat circa '
-        + Math.round((1 - ratio) * 100)
-        + '% onder een geschatte marktwaarde. Controleer altijd onderhoudshistorie, '
-        + 'schadeverleden en documentatie voor aankoop.',
-    };
-  if (ratio > 1.15)
-    return {
-      level: 'bad', tag: 'Boven marktwaarde', title: 'Prijs vraagt nadere onderbouwing', icon: 'warn',
-      text: 'De vraagprijs lijkt circa '
-        + Math.round((ratio - 1) * 100)
-        + '% boven een geschatte marktwaarde te liggen. Bij exclusieve voertuigen kan dit '
-        + 'gerechtvaardigd zijn door bijzondere uitvoering, lage kilometerstand of zeldzame '
-        + 'specificaties. Een onafhankelijke taxatie is aanbevolen.',
-    };
+  if (ratio < 0.85) return {
+    level: 'ok', tag: 'Onder marktwaarde', title: 'Aantrekkelijke vraagprijs', icon: 'check',
+    text: 'Op basis van leeftijd, kilometerstand en voertuigcategorie lijkt de vraagprijs <strong>aantrekkelijk</strong>. De auto staat circa ' + Math.round((1 - ratio) * 100) + '% onder een geschatte marktwaarde. Controleer altijd onderhoudshistorie, schadeverleden en documentatie voor aankoop.',
+  };
+  if (ratio > 1.15) return {
+    level: 'bad', tag: 'Boven marktwaarde', title: 'Prijs vraagt nadere onderbouwing', icon: 'warn',
+    text: 'De vraagprijs lijkt circa ' + Math.round((ratio - 1) * 100) + '% boven een geschatte marktwaarde te liggen. Bij exclusieve voertuigen kan dit gerechtvaardigd zijn door bijzondere uitvoering, lage kilometerstand of zeldzame specificaties. Een onafhankelijke taxatie is aanbevolen.',
+  };
   return {
     level: 'warn', tag: 'Marktconform', title: 'Redelijk marktconforme prijs', icon: 'info',
-    text: 'De vraagprijs lijkt redelijk marktconform. Bij exclusieve voertuigen zijn '
-      + 'onderhoudshistorie, kleurcombinatie, optiepakket en aantoonbare servicehistorie '
-      + 'vaak bepalender dan uitsluitend leeftijd en kilometrage.',
+    text: 'De vraagprijs lijkt redelijk marktconform. Bij exclusieve voertuigen zijn onderhoudshistorie, kleurcombinatie, optiepakket en aantoonbare servicehistorie vaak bepalender dan uitsluitend leeftijd en kilometrage.',
   };
 }
 
@@ -1868,30 +611,53 @@ function switchPhoto(idx) {
   const hero = document.querySelector('.photo-hero img');
   if (hero && allImages[idx]) {
     hero.src = allImages[idx];
-    document.querySelectorAll('.thumb-item')
-      .forEach((t, i) => t.classList.toggle('active', i === idx));
+    document.querySelectorAll('.thumb-item').forEach((t, i) => t.classList.toggle('active', i === idx));
   }
 }
 
-/* ── AFBEELDINGEN PROXYEN voor CORS-platforms ── */
+/* ── PROXY HELPER ── */
 function proxyIfNeeded(img) {
   const needsProxy = [
-    'marktplaats', 'admarkt-cdn', 'ecg-img', 'hzcdn',
-    'mpimages', 'persgroep',
+    'marktplaats', 'admarkt-cdn', 'ecg-img', 'hzcdn', 'mpimages', 'persgroep',
   ].some(s => img.includes(s));
-  return needsProxy
-    ? '/api/fetch-ad?img=' + encodeURIComponent(img)
-    : img;
+  return needsProxy ? '/api/fetch-ad?img=' + encodeURIComponent(img) : img;
+}
+
+/* ── CLIENT-SIDE IMAGE FALLBACK ── */
+function extractClientImages(html) {
+  const images = [];
+  const seen   = new Set();
+  const skip   = /(logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|favicon)/i;
+  function add(img) {
+    img = img.replace(/\\u002F/gi, '/').replace(/\\u003A/gi, ':')
+             .replace(/\\\//g, '/').replace(/&amp;/g, '&').trim();
+    if (!img.startsWith('http') || skip.test(img) || seen.has(img)) return;
+    seen.add(img); images.push(img);
+  }
+  const patterns = [
+    /"extraExtraLargeUrl"\s*:\s*"([^"]+)"/gi,
+    /"extraLargeUrl"\s*:\s*"([^"]+)"/gi,
+    /"largeUrl"\s*:\s*"([^"]+)"/gi,
+    /"imageUrl"\s*:\s*"([^"]+)"/gi,
+    /property="og:image"\s+content="([^"]+)"/gi,
+    /content="([^"]+)"\s+property="og:image"/gi,
+  ];
+  patterns.forEach(p => {
+    const re = new RegExp(p.source, p.flags);
+    let m;
+    while ((m = re.exec(html)) !== null) add(m[1]);
+  });
+  return images.slice(0, 16);
 }
 
 /* ── HOOFD FUNCTIE ── */
 async function analyzeAd() {
-  const url    = document.getElementById('adUrl').value.trim();
-  const err    = document.getElementById('errmsg');
-  const load   = document.getElementById('loading');
-  const res    = document.getElementById('results');
-  const btn    = document.getElementById('analyzeBtn');
-  const btnt   = document.getElementById('btn-t');
+  const url  = document.getElementById('adUrl').value.trim();
+  const err  = document.getElementById('errmsg');
+  const load = document.getElementById('loading');
+  const res  = document.getElementById('results');
+  const btn  = document.getElementById('analyzeBtn');
+  const btnt = document.getElementById('btn-t');
 
   err.classList.remove('show');
   res.classList.remove('show');
@@ -1904,8 +670,7 @@ async function analyzeAd() {
   }
   const platform = detectPlatform(url);
   if (!platform) {
-    err.textContent =
-      'Niet-ondersteund platform. Gebruik Mobile.de, AutoScout24, Marktplaats.nl, AutoTrack of BAS-World.';
+    err.textContent = 'Niet-ondersteund platform. Gebruik Mobile.de, AutoScout24, Marktplaats.nl, AutoTrack of BAS-World.';
     err.classList.add('show');
     return;
   }
@@ -1920,74 +685,49 @@ async function analyzeAd() {
     if (!resp.ok || data.error) throw new Error(data.error || 'Ophalen mislukt');
 
     const html     = data.html;
-    const nextData = data.nextData || null; // alleen AutoScout24
+    const nextData = data.nextData || null;
 
-    // Afbeeldingen van server, gefilterd en geproxied waar nodig
-    allImages = (data.images || []).map(proxyIfNeeded);
+    allImages = (data.images && data.images.length > 0)
+      ? data.images.map(proxyIfNeeded)
+      : extractClientImages(html).map(proxyIfNeeded);
 
-    // Fallback: client-side extract als server niks had
-    if (!allImages.length) {
-      const clientImgs = extractClientImages(html);
-      allImages = clientImgs.map(proxyIfNeeded);
-    }
-
-    /* Parse */
     let parsed;
-    if (platform === 'mobile')
-      parsed = parseMobile(html);
-    else if (platform === 'autoscout')
-      parsed = parseAutoscout(html, nextData);
-    else
-      parsed = parseMarktplaats(html);
+    if (platform === 'mobile')         parsed = parseMobile(html);
+    else if (platform === 'autoscout') parsed = parseAutoscout(html, nextData);
+    else                               parsed = parseMarktplaats(html);
 
-    const priceNum = cleanPrice(
-      parsed.price,
-      platform,
-      parsed.priceCents || false
-    );
+    const priceNum = cleanPrice(parsed.price, platform, parsed.priceCents || false);
     const kmNum    = cleanKm(parsed.km);
     const advice   = priceAdvice(priceNum, kmNum, parsed.year, parsed.title);
     const level    = parsed.priceLevel || (advice ? advice.level : null);
 
-    /* ── PHOTO HERO ── */
+    /* PHOTO HERO */
     const photoWrap = document.getElementById('photo-hero-wrap');
     if (allImages.length > 0) {
       photoWrap.innerHTML =
         '<div class="photo-hero">'
-        + '<img src="' + allImages[0] + '" alt="'
-        + (parsed.title || 'Voertuig').replace(/"/g, '&quot;')
-        + '" onerror="this.parentElement.style.background=\'var(--black-3)\';'
-        + 'this.style.display=\'none\'">'
+        + '<img src="' + allImages[0] + '" alt="' + (parsed.title || 'Voertuig').replace(/"/g, '&quot;') + '" '
+        + 'onerror="this.parentElement.style.background=\'var(--black-3)\';this.style.display=\'none\'">'
         + '<div class="photo-hero-overlay"></div>'
         + '<div class="photo-hero-tristrip"><span></span><span></span><span></span></div>'
         + '<div class="photo-hero-info">'
-        + '<div class="photo-count">'
-        + allImages.length + ' foto' + (allImages.length > 1 ? 's' : '')
-        + ' · ' + parsed.platform + '</div>'
+        + '<div class="photo-count">' + allImages.length + ' foto' + (allImages.length > 1 ? 's' : '') + ' · ' + parsed.platform + '</div>'
         + '<div class="photo-title">' + (parsed.title || 'Voertuig') + '</div>'
-        + (parsed.year
-            ? '<div class="photo-platform">'
-              + parsed.year
-              + (parsed.fuel  ? ' · ' + parsed.fuel  : '')
-              + (parsed.power ? ' · ' + parsed.power : '')
-              + '</div>'
-            : '')
+        + (parsed.year ? '<div class="photo-platform">' + parsed.year + (parsed.fuel ? ' · ' + parsed.fuel : '') + (parsed.power ? ' · ' + parsed.power : '') + '</div>' : '')
         + '</div>'
         + '</div>';
     } else {
       photoWrap.innerHTML = '';
     }
 
-    /* ── THUMBNAILS ── */
+    /* THUMBNAILS */
     const thumbWrap = document.getElementById('thumb-row-wrap');
     if (allImages.length > 1) {
       thumbWrap.innerHTML =
         '<div class="thumb-row">'
         + allImages.slice(0, Math.min(allImages.length, 8)).map((img, i) =>
-          '<div class="thumb-item' + (i === 0 ? ' active' : '')
-          + '" onclick="switchPhoto(' + i + ')">'
-          + '<img src="' + img + '" alt="foto ' + (i + 1)
-          + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">'
+          '<div class="thumb-item' + (i === 0 ? ' active' : '') + '" onclick="switchPhoto(' + i + ')">'
+          + '<img src="' + img + '" alt="foto ' + (i + 1) + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">'
           + '</div>'
         ).join('')
         + '</div>';
@@ -1995,23 +735,16 @@ async function analyzeAd() {
       thumbWrap.innerHTML = '';
     }
 
-    /* ── PILLS ── */
+    /* PILLS */
     const sbar = document.getElementById('sbar');
     sbar.innerHTML = '';
     [
       { l: parsed.platform, c: 'neu' },
-      priceNum
-        ? { l: euro(priceNum), c: level === 'ok' ? 'ok' : level === 'bad' ? 'bad' : 'warn' }
-        : { l: 'Prijs onbekend', c: 'neu' },
-      kmNum
-        ? { l: fmtKm(kmNum), c: kmNum < 50000 ? 'ok' : kmNum < 120000 ? 'warn' : 'bad' }
-        : { l: 'KM onbekend', c: 'neu' },
-      parsed.year ? { l: parsed.year,  c: 'neu' } : { l: 'Jaar onbekend', c: 'neu' },
-      parsed.fuel ? { l: parsed.fuel,  c: 'neu' } : null,
-      level
-        ? { l: level === 'ok' ? 'Goede prijs' : level === 'bad' ? 'Hoge prijs' : 'Marktconform',
-            c: level }
-        : null,
+      priceNum ? { l: euro(priceNum), c: level === 'ok' ? 'ok' : level === 'bad' ? 'bad' : 'warn' } : { l: 'Prijs onbekend', c: 'neu' },
+      kmNum    ? { l: fmtKm(kmNum),   c: kmNum < 50000 ? 'ok' : kmNum < 120000 ? 'warn' : 'bad' }  : { l: 'KM onbekend', c: 'neu' },
+      parsed.year ? { l: parsed.year, c: 'neu' } : { l: 'Jaar onbekend', c: 'neu' },
+      parsed.fuel ? { l: parsed.fuel, c: 'neu' } : null,
+      level ? { l: level === 'ok' ? 'Goede prijs' : level === 'bad' ? 'Hoge prijs' : 'Marktconform', c: level } : null,
     ].filter(Boolean).forEach(p => {
       const el = document.createElement('div');
       el.className = 's-pill pill-' + p.c;
@@ -2019,33 +752,18 @@ async function analyzeAd() {
       sbar.appendChild(el);
     });
 
-    /* ── STAT CARDS ── */
+    /* STAT CARDS */
     document.getElementById('stat-cards').innerHTML =
-      '<div class="s-card">'
-        + '<span class="s-card-l">Vraagprijs</span>'
-        + '<div class="s-card-v">' + euro(priceNum) + '</div>'
-      + '</div>'
-      + '<div class="s-card">'
-        + '<span class="s-card-l">Kilometerstand</span>'
-        + '<div class="s-card-v">' + fmtKm(kmNum) + '</div>'
-      + '</div>'
-      + '<div class="s-card">'
-        + '<span class="s-card-l">Bouwjaar</span>'
-        + '<div class="s-card-v">' + (parsed.year || '—') + '</div>'
-      + '</div>'
-      + '<div class="s-card">'
-        + '<span class="s-card-l">Brandstof</span>'
-        + '<div class="s-card-v">' + (parsed.fuel || '—') + '</div>'
-      + '</div>';
+      '<div class="s-card"><span class="s-card-l">Vraagprijs</span><div class="s-card-v">'       + euro(priceNum)          + '</div></div>'
+    + '<div class="s-card"><span class="s-card-l">Kilometerstand</span><div class="s-card-v">'   + fmtKm(kmNum)            + '</div></div>'
+    + '<div class="s-card"><span class="s-card-l">Bouwjaar</span><div class="s-card-v">'         + (parsed.year  || '—')   + '</div></div>'
+    + '<div class="s-card"><span class="s-card-l">Brandstof</span><div class="s-card-v">'        + (parsed.fuel  || '—')   + '</div></div>';
 
-    /* ── VERDICT ── */
+    /* VERDICT */
     const vw = document.getElementById('verdict-wrap');
     if (advice) {
-      const vc = { ok: 'verdict-ok', warn: 'verdict-warn', bad: 'verdict-bad' }[advice.level]
-                 || 'verdict-warn';
-      const est = Math.round(
-        priceNum / (advice.level === 'ok' ? 0.82 : advice.level === 'bad' ? 1.18 : 1)
-      );
+      const vc  = { ok: 'verdict-ok', warn: 'verdict-warn', bad: 'verdict-bad' }[advice.level] || 'verdict-warn';
+      const est = Math.round(priceNum / (advice.level === 'ok' ? 0.82 : advice.level === 'bad' ? 1.18 : 1));
       vw.innerHTML =
         '<div class="verdict-box ' + vc + '">'
         + '<div class="verdict-head">'
@@ -2055,41 +773,28 @@ async function analyzeAd() {
         + '</div>'
         + '<div class="verdict-text">' + advice.text + '</div>'
         + (priceNum
-            ? '<div class="price-compare">'
-              + '<div class="pc-side">'
-              + '<div class="pc-lbl">Vraagprijs</div>'
-              + '<div class="pc-val">' + euro(priceNum) + '</div>'
-              + '<div class="pc-sub">Gevraagd door verkoper</div>'
-              + '</div>'
-              + '<div class="pc-side">'
-              + '<div class="pc-lbl">Geschatte marktwaarde</div>'
-              + '<div class="pc-val">' + euro(est) + '</div>'
-              + '<div class="pc-sub">Indicatieve berekening APEXclusive</div>'
-              + '</div>'
-              + '</div>'
-            : '')
+          ? '<div class="price-compare">'
+            + '<div class="pc-side"><div class="pc-lbl">Vraagprijs</div><div class="pc-val">' + euro(priceNum) + '</div><div class="pc-sub">Gevraagd door verkoper</div></div>'
+            + '<div class="pc-side"><div class="pc-lbl">Geschatte marktwaarde</div><div class="pc-val">' + euro(est) + '</div><div class="pc-sub">Indicatieve berekening APEXclusive</div></div>'
+            + '</div>' : '')
         + '</div>';
     } else {
       vw.innerHTML = '';
     }
 
-    /* ── DETAILS ── */
+    /* DETAILS */
     let det = '<div class="bd-sec-lbl">Advertentiegegevens</div>';
-    det += row('Platform',      parsed.platform);
-    det += row('Titel',         parsed.title);
-    det += row('Vraagprijs',    euro(priceNum));
-    det += row('Kilometerstand',fmtKm(kmNum));
-    det += row('Bouwjaar',      parsed.year);
-    det += row('Brandstof',     parsed.fuel);
+    det += row('Platform',       parsed.platform);
+    det += row('Titel',          parsed.title);
+    det += row('Vraagprijs',     euro(priceNum));
+    det += row('Kilometerstand', fmtKm(kmNum));
+    det += row('Bouwjaar',       parsed.year);
+    det += row('Brandstof',      parsed.fuel);
     if (parsed.power) det += row('Vermogen',    parsed.power);
     if (parsed.trans) det += row('Transmissie', parsed.trans);
     if (parsed.color) det += row('Kleur',       parsed.color);
     if (parsed.doors) det += row('Deuren',      parsed.doors);
-    det += row('Link',
-      '<a href="' + url + '" target="_blank" '
-      + 'style="color:rgba(238,235,229,0.5);text-decoration:none;font-size:.75rem">'
-      + url.substring(0, 55) + '…</a>'
-    );
+    det += row('Link', '<a href="' + url + '" target="_blank" style="color:rgba(238,235,229,0.5);text-decoration:none;font-size:.75rem">' + url.substring(0, 55) + '…</a>');
     document.getElementById('details-content').innerHTML = det;
 
     document.querySelectorAll('.s-card,.thumb-item,.verdict-box').forEach(addHov);
@@ -2099,47 +804,13 @@ async function analyzeAd() {
     setTimeout(() => res.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
 
   } catch (e) {
-    err.textContent =
-      'Ophalen mislukt: ' + e.message
-      + '. Controleer of de link correct en publiek toegankelijk is.';
+    err.textContent = 'Ophalen mislukt: ' + e.message + '. Controleer of de link correct en publiek toegankelijk is.';
     err.classList.add('show');
   } finally {
     load.style.display = 'none';
     btn.disabled = false;
     btnt.textContent = 'Analyseer advertentie';
   }
-}
-
-/* ── CLIENT-SIDE IMAGE FALLBACK ── */
-function extractClientImages(html) {
-  const images = [];
-  const seen   = new Set();
-  const skip   = /(logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|favicon)/i;
-
-  function add(img) {
-    img = img.replace(/\\u002F/gi, '/').replace(/\\u003A/gi, ':')
-             .replace(/\\\//g, '/').replace(/&amp;/g, '&').trim();
-    if (!img.startsWith('http') || skip.test(img) || seen.has(img)) return;
-    seen.add(img);
-    images.push(img);
-  }
-
-  const patterns = [
-    /"extraExtraLargeUrl"\s*:\s*"([^"]+)"/gi,
-    /"extraLargeUrl"\s*:\s*"([^"]+)"/gi,
-    /"largeUrl"\s*:\s*"([^"]+)"/gi,
-    /"imageUrl"\s*:\s*"([^"]+)"/gi,
-    /property="og:image"\s+content="([^"]+)"/gi,
-    /content="([^"]+)"\s+property="og:image"/gi,
-  ];
-
-  patterns.forEach(p => {
-    const re = new RegExp(p.source, p.flags);
-    let m;
-    while ((m = re.exec(html)) !== null) add(m[1]);
-  });
-
-  return images.slice(0, 16);
 }
 
 /* ── RESET ── */
@@ -2152,7 +823,5 @@ function resetTool() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
-
 </body>
-
 </html>
