@@ -555,7 +555,12 @@ async function analyzeAd(){
     const html=data.html;
 
     /* afbeeldingen — direct laden, geen proxy */
-    allImages=data.images||extractImages(html);
+    allImages=(data.images||extractImages(html)).map(function(img){
+  if(img.includes('marktplaats')||img.includes('admarkt-cdn')||img.includes('ecg-img')||img.includes('hzcdn')){
+    return '/api/fetch-ad?img='+encodeURIComponent(img);
+  }
+  return img;
+});
 
     let parsed;
     if(platform==='mobile')         parsed=parseMobile(html);
