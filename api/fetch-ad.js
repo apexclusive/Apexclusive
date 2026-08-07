@@ -3,7 +3,6 @@ const http = require('http');
 const { URL } = require('url');
 
 module.exports = async function handler(req, res) {
-
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -12,8 +11,12 @@ module.exports = async function handler(req, res) {
     return res.status(200).end();
   }
 
-  const rawUrl = req.query.url;
+  /* ── IMAGE PROXY mode ── */
+  if (req.query.img) {
+    return proxyImage(req.query.img, res);
+  }
 
+  const rawUrl = req.query.url;
   if (!rawUrl) {
     return res.status(400).json({ error: 'Geen URL opgegeven' });
   }
@@ -31,7 +34,7 @@ module.exports = async function handler(req, res) {
     'www.autoscout24.nl', 'www.autoscout24.de', 'www.autoscout24.be',
     'marktplaats.nl', 'www.marktplaats.nl',
     'autotrack.nl', 'www.autotrack.nl',
-    'bas-world.com', 'www.bas-world.com',
+    'bas-world.com', 'www.bas-world.com'
   ];
 
   if (!allowed.some(d => parsedUrl.hostname === d || parsedUrl.hostname.endsWith('.' + d))) {
@@ -50,54 +53,138 @@ module.exports = async function handler(req, res) {
   }
 };
 
-function fetchUrl(url, redirects = 0) {
-  return new Promise((resolve, reject) => {
+/* ══════════════════════
+   IMAGE PROXY
+══════════════════════ */
+function proxyImage(imgUrl, res) {
+  return new Promise(function(resolve) {
+    var decoded;
+    try {
+      decoded = decodeURIComponent(imgUrl);
+    } catch(e) {
+      res.status(400).end('Bad image URL');
+      return resolve();
+    }
 
+    var parsedImg;
+    try {
+      parsedImg = new URL(decoded);
+    } catch(e) {
+      res.status(400).end('Bad image URL');
+      return resolve();
+    }
+
+    /* alleen bekende image domeinen toestaan */
+    var imgAllowed = [
+      'marktplaats.com', 'images.marktplaats.com',
+      'mobile.de', 'img.classistatic.de', 'i.ebayimg.com',
+      'autoscout24.net', 'prod.pictures.autoscout24.net',
+      'autotrack.nl', 'bas-world.com',
+      'imgur.com', 'cloudfront.net', 'cloudinary.com'
+    ];
+
+    var ok = imgAllowed.some(function(d) {
+      return parsedImg.hostname === d || parsedImg.hostname.endsWith('.' + d);
+    });
+
+    if (!ok) {
+      res.status(403).end('Domain not allowed');
+      return resolve();
+    }
+
+    var lib = parsedImg.protocol === 'https:' ? https : http;
+
+    var options = {
+      hostname: parsedImg.hostname,
+      path: parsedImg.pathname + parsedImg.search,
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+        'Accept-Language': 'nl-NL,nl;q=0.9',
+        'Referer': 'https://www.marktplaats.nl/',
+        'Sec-Fetch-Dest': 'image',
+        'Sec-Fetch-Mode': 'no-cors',
+        'Sec-Fetch-Site': 'cross-site',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+      }
+    };
+
+    var request = lib.request(options, function(response) {
+
+      /* redirect volgen */
+      if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+        response.resume();
+        return proxyImage(encodeURIComponent(response.headers.location), res).then(resolve);
+      }
+
+      if (response.statusCode !== 200) {
+        res.status(response.statusCode).end('Image fetch failed');
+        return resolve();
+      }
+
+      /* headers doorzetten */
+      var ct = response.headers['content-type'] || 'image/jpeg';
+      res.setHeader('Content-Type', ct);
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      response.pipe(res);
+      response.on('end', resolve);
+    });
+
+    request.on('error', function(e) {
+      res.status(500).end('Proxy error: ' + e.message);
+      resolve();
+    });
+
+    request.setTimeout(15000, function() {
+      request.destroy();
+      res.status(504).end('Timeout');
+      resolve();
+    });
+
+    request.end();
+  });
+}
+
+/* ══════════════════════
+   FETCH HTML
+══════════════════════ */
+function fetchUrl(url, redirects) {
+  redirects = redirects || 0;
+  return new Promise(function(resolve, reject) {
     if (redirects > 8) {
       return reject(new Error('Te veel redirects'));
     }
 
-    let parsedUrl;
+    var parsedUrl;
     try {
       parsedUrl = new URL(url);
     } catch (e) {
-      return reject(new Error('Ongeldige redirect URL'));
+      return reject(new Error('Ongeldige URL'));
     }
 
-    const lib = parsedUrl.protocol === 'https:' ? https : http;
+    var lib = parsedUrl.protocol === 'https:' ? https : http;
 
-    const options = {
+    var options = {
       hostname: parsedUrl.hostname,
       path: parsedUrl.pathname + parsedUrl.search,
       method: 'GET',
       headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
-          'AppleWebKit/537.36 (KHTML, like Gecko) ' +
-          'Chrome/124.0.0.0 Safari/537.36',
-        'Accept':
-          'text/html,application/xhtml+xml,application/xml;q=0.9,' +
-          'image/avif,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Language': 'nl-NL,nl;q=0.9,en-US;q=0.8,en;q=0.7',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'nl-NL,nl;q=0.9,en;q=0.8',
         'Accept-Encoding': 'identity',
         'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'none',
-        'Upgrade-Insecure-Requests': '1',
-        'Connection': 'keep-alive',
+        'Connection': 'keep-alive'
       }
     };
 
-    const request = lib.request(options, (response) => {
-
-      if (
-        response.statusCode >= 300 &&
-        response.statusCode < 400 &&
-        response.headers.location
-      ) {
-        let nextUrl = response.headers.location;
+    var request = lib.request(options, function(response) {
+      if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+        var nextUrl = response.headers.location;
         if (nextUrl.startsWith('/')) {
           nextUrl = parsedUrl.protocol + '//' + parsedUrl.hostname + nextUrl;
         }
@@ -105,70 +192,58 @@ function fetchUrl(url, redirects = 0) {
         return fetchUrl(nextUrl, redirects + 1).then(resolve).catch(reject);
       }
 
-      const chunks = [];
-      response.on('data', chunk => chunks.push(chunk));
-      response.on('end', () => {
-        const buffer = Buffer.concat(chunks);
+      var chunks = [];
+      response.on('data', function(chunk) { chunks.push(chunk); });
+      response.on('end', function() {
+        var buffer = Buffer.concat(chunks);
         resolve(buffer.toString('utf8'));
       });
       response.on('error', reject);
     });
 
     request.on('error', reject);
-    request.setTimeout(20000, () => {
+    request.setTimeout(20000, function() {
       request.destroy();
-      reject(new Error('Timeout — pagina reageert niet'));
+      reject(new Error('Timeout'));
     });
     request.end();
   });
 }
 
+/* ══════════════════════
+   EXTRACT IMAGES
+══════════════════════ */
 function extractImages(html, hostname) {
-  const images = [];
-  const seen = new Set();
+  var images = [];
+  var seen = {};
 
-  const skipPattern =
-    /logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|badge|flag|brand|watermark/i;
+  var skipPattern = /logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|badge|flag|brand|watermark/i;
+  var tooSmall = /[_\-\/]\d{1,3}x\d{1,3}[_\-.]/;
 
-  const tooSmall = /[_\-\/](\d{1,2}|[0-9]{1,3})x[0-9]{1,3}[_\-.]/;
-
-  const patterns = [
+  var patterns = [
     /"(?:imageUrl|image|fullImageUrl|originalUrl|largeUrl|xlUrl|hdUrl|srcUrl|bigUrl)"\s*:\s*"(https?:\/\/[^"]{10,300})"/gi,
     /"src"\s*:\s*"(https?:\/\/[^"]*?\.(?:jpg|jpeg|png|webp)[^"]{0,200})"/gi,
-    /"url"\s*:\s*"(https?:\/\/[^"]*?(?:vehicle|car|auto|fahrzeug|image|photo|foto|img)[^"]{0,200}\.(?:jpg|jpeg|png|webp)[^"]*)"/gi,
-    /property="og:image(?::[^"]+)?"\s+content="(https?:\/\/[^"]{10,300})"/gi,
-    /content="(https?:\/\/[^"]{10,300})"\s+property="og:image(?::[^"]+)?"/gi,
-    /name="twitter:image(?::[^"]+)?"\s+content="(https?:\/\/[^"]{10,300})"/gi,
-    /srcset="(https?:\/\/[^"\s,]{10,300})/gi,
-    /<img[^>]+src="(https?:\/\/[^"]{10,300})"/gi,
+    /property="og:image[^"]*"\s+content="(https?:\/\/[^"]{10,300})"/gi,
+    /content="(https?:\/\/[^"]{10,300})"\s+property="og:image[^"]*"/gi,
+    /name="twitter:image[^"]*"\s+content="(https?:\/\/[^"]{10,300})"/gi,
+    /<img[^>]+src="(https?:\/\/[^"]{10,300})"/gi
   ];
 
-  if (hostname.includes('mobile.de')) {
-    patterns.push(
-      /"url"\s*:\s*"(https?:\/\/i\.?mobilede[^"]+)"/gi,
-      /"mediaList"\s*:\s*\[[^\]]*?"url"\s*:\s*"([^"]+)"/gi
-    );
-  }
-
   if (hostname.includes('autoscout24')) {
-    patterns.push(
-      /"(https?:\/\/prod\.pictures\.autoscout24\.net[^"]{5,300})"/gi,
-      /"(https?:\/\/[^"]*autoscout[^"]*\.(?:jpg|jpeg|png|webp)[^"]*)"/gi
-    );
+    patterns.push(/"(https?:\/\/prod\.pictures\.autoscout24\.net[^"]{5,300})"/gi);
   }
-
   if (hostname.includes('marktplaats')) {
-    patterns.push(
-      /"(https?:\/\/images\.marktplaats\.com[^"]{5,300})"/gi,
-      /"(https?:\/\/[^"]*marktplaats[^"]*\.(?:jpg|jpeg|png|webp)[^"]*)"/gi
-    );
+    patterns.push(/"(https?:\/\/images\.marktplaats\.com[^"]{5,300})"/gi);
+  }
+  if (hostname.includes('mobile.de')) {
+    patterns.push(/"url"\s*:\s*"(https?:\/\/[^"]*(?:mobile|classistatic)[^"]{5,300})"/gi);
   }
 
-  for (const pattern of patterns) {
-    const p = new RegExp(pattern.source, pattern.flags);
-    let match;
+  for (var i = 0; i < patterns.length; i++) {
+    var p = new RegExp(patterns[i].source, patterns[i].flags);
+    var match;
     while ((match = p.exec(html)) !== null) {
-      let img = match[1] || match[0];
+      var img = match[1];
       if (!img) continue;
 
       img = img
@@ -185,9 +260,9 @@ function extractImages(html, hostname) {
 
       img = upgradeResolution(img, hostname);
 
-      const key = img.split('?')[0];
-      if (seen.has(key)) continue;
-      seen.add(key);
+      var key = img.split('?')[0];
+      if (seen[key]) continue;
+      seen[key] = true;
 
       images.push(img);
       if (images.length >= 20) break;
@@ -195,61 +270,35 @@ function extractImages(html, hostname) {
     if (images.length >= 20) break;
   }
 
-  images.sort((a, b) => resScore(b) - resScore(a));
+  images.sort(function(a, b) {
+    return resScore(b) - resScore(a);
+  });
 
   return images.slice(0, 12);
 }
 
 function upgradeResolution(img, hostname) {
-
   if (hostname.includes('mobile.de') || img.includes('mobilede') || img.includes('classistatic')) {
     img = img
       .replace(/\/[sml]_/, '/xl_')
       .replace(/\/thumb\//, '/big/')
       .replace(/\/small\//, '/large/')
-      .replace(/\/medium\//, '/large/')
-      .replace(/([?&])w=\d+/, '$1w=1600')
-      .replace(/([?&])h=\d+/, '$1h=1200')
-      .replace(/width=\d+/, 'width=1600')
-      .replace(/height=\d+/, 'height=1200')
-      .replace(/_\d{3,4}x\d{3,4}\./, '_1600x1200.');
-
+      .replace(/\/medium\//, '/large/');
   } else if (hostname.includes('autoscout24') || img.includes('autoscout24')) {
     img = img
-      .replace(/\/\d{3,4}\/\d{3,4}\//, '/1600/1200/')
-      .replace(/([?&])width=\d+/, '$1width=1600')
-      .replace(/([?&])height=\d+/, '$1height=1200')
-      .replace(/_\d{3,4}x\d{3,4}/, '_1600x1200')
       .replace(/\/thumbs?\//, '/images/')
       .replace(/\/small\//, '/large/');
-
   } else if (hostname.includes('marktplaats') || img.includes('marktplaats')) {
-    img = img
-      .replace(/\$_\d+\.(JPG|jpg|jpeg)/i, '$_86.JPG')
-      .replace(/\/thumb\//, '/image/')
-      .replace(/[?&]rule=ecg_mp[^&]*/g, '')
-      .replace(/([?&])w=\d+/, '$1w=1600')
-      .replace(/([?&])h=\d+/, '$1h=1200');
-
+    img = img.replace(/\$_\d+\.(JPG|jpg|jpeg)/i, '$_86.JPG');
     if (!img.includes('$_86') && img.includes('marktplaats')) {
-      img = img.replace(/(\.(jpg|jpeg|png|webp))(\?.*)?$/i, '$_86.JPG');
+      img = img.replace(/\.(jpg|jpeg|png|webp)(\?.*)?$/i, '$_86.JPG');
     }
-
-  } else {
-    img = img
-      .replace(/([?&])w=\d+/, '$1w=1600')
-      .replace(/([?&])h=\d+/, '$1h=1200')
-      .replace(/width=\d+/g, 'width=1600')
-      .replace(/height=\d+/g, 'height=1200')
-      .replace(/\/\d{2,4}x\d{2,4}\//, '/1600x1200/')
-      .replace(/_\d{2,4}x\d{2,4}\./, '_1600x1200.');
   }
-
   return img;
 }
 
 function resScore(img) {
-  let score = 0;
+  var score = 0;
   if (img.includes('1600') || img.includes('xl') || img.includes('large') || img.includes('$_86')) score += 10;
   if (img.includes('800') || img.includes('medium')) score += 5;
   if (img.includes('jpg') || img.includes('jpeg')) score += 2;
