@@ -1,6 +1,1053 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APEXclusive — Private Vehicle Advisory | Auto import &amp; aankoopbegeleiding Maastricht</title>
+<meta name="description" content="Droomauto uit Europa importeren zonder risico? APEXclusive begeleidt u van zoektocht tot sleuteloverdracht. Onafhankelijk, discreet, A tot Z geregeld.">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%230a0a0a"/><text x="32" y="46" font-family="Georgia,serif" font-size="42" fill="%23c6cbd1" text-anchor="middle">A</text></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pt:#c6cbd1;--pt-s:#f2f4f6;
+  --ig:#009246;--ir:#CE2B37;
+  --ink:#080808;--ink2:#0d0d0d;--ink3:#131313;--ink4:#181818;
+  --ln:rgba(198,203,209,.18);--hr:rgba(255,255,255,.07);
+  --tx:#e4e4e4;--mt:#8a8a8a;
+  --sf:'Cormorant Garamond',serif;
+  --ss:'Montserrat',sans-serif;
+  --lb:'Oswald',sans-serif;
+  --pd:clamp(1.25rem,5vw,4rem);
+  --ch:linear-gradient(100deg,#5a5f65 0%,#e8ecf0 18%,#a0a8b0 36%,#fff 50%,#a0a8b0 64%,#e8ecf0 82%,#5a5f65 100%);
+  --cs:linear-gradient(100deg,#8a9099 0%,#d4d8dc 40%,#fff 50%,#d4d8dc 60%,#8a9099 100%);
+  --tr:linear-gradient(90deg,var(--ig) 0 33.33%,#fff 33.33% 66.66%,var(--ir) 66.66% 100%);
+  --tf:linear-gradient(90deg,transparent 0%,var(--ig) 15% 33.33%,#fff 33.33% 66.66%,var(--ir) 66.66% 85%,transparent 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--ink);color:var(--tx);font-family:var(--ss);font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--pt);color:var(--ink)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,var(--ig) 33%,rgba(198,203,209,.5) 33% 66%,var(--ir) 66%)}
+section{padding:clamp(4.5rem,9vw,8rem) var(--pd);position:relative}
+.wrap{max-width:1160px;margin:0 auto;position:relative;z-index:1}
+.head{max-width:58ch;margin-bottom:clamp(2.5rem,5vw,3.75rem)}
+.rule{width:56px;height:2px;background:var(--ch);margin-top:1.5rem}
+
+/* ══ TRICOLORE EYEBROW ══ */
+.ey{font-family:var(--lb);font-size:.65rem;letter-spacing:.38em;text-transform:uppercase;color:var(--pt);font-weight:400;margin-bottom:1.35rem;display:flex;align-items:center;gap:.85rem}
+.ey-tri,.ey-tri-r{display:flex;flex-direction:row;gap:0;flex-shrink:0;overflow:hidden;height:11px;width:0;transition:width .85s cubic-bezier(.2,.7,.3,1)}
+.ey-tri-r{transition-delay:.12s}
+.ey-tri span,.ey-tri-r span{display:block;flex:1;min-width:0}
+.ey-tri span:nth-child(1){background:var(--ig)}.ey-tri span:nth-child(2){background:#fff}.ey-tri span:nth-child(3){background:var(--ir)}
+.ey-tri-r span:nth-child(1){background:var(--ir)}.ey-tri-r span:nth-child(2){background:#fff}.ey-tri-r span:nth-child(3){background:var(--ig)}
+.ey.tri-in .ey-tri,.ey.tri-in .ey-tri-r{width:42px}
+.ey.c{justify-content:center}
+
+/* ══ TYPE ══ */
+h1,h2,h3,h4{font-family:var(--sf);font-weight:300;line-height:1.1;letter-spacing:.01em}
+h2{font-size:clamp(2rem,4.4vw,3.3rem);margin-bottom:1.1rem}
+h3{font-size:1.38rem;margin-bottom:.58rem}
+p{color:var(--mt);font-size:.92rem}
+.lead{font-size:1.02rem;max-width:56ch;color:#ababab}
+h2 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em}
+h2 .w i{display:inline-block;font-style:inherit;transform:translateY(115%);transition:transform .95s cubic-bezier(.2,.7,.3,1)}
+h2.in .w i{transform:none}
+
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:200;background:var(--pt-s);transform-origin:left;transform:scaleX(0)}
+
+/* ══ LOGO ══ */
+.brand{font-family:var(--sf);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;display:inline-flex;align-items:center;gap:0;text-decoration:none;color:var(--tx)}
+.brand-apex{font-weight:600;color:var(--pt);letter-spacing:.22em}
+.brand-sep{display:inline-flex;flex-direction:column;gap:2px;margin:0 8px;flex-shrink:0}
+.brand-sep span{display:block;width:3px;border-radius:1px}
+.brand-sep span:nth-child(1){height:5px;background:var(--ig)}
+.brand-sep span:nth-child(2){height:5px;background:#fff}
+.brand-sep span:nth-child(3){height:5px;background:var(--ir)}
+.brand-excl{font-weight:300;color:rgba(198,203,209,.42);letter-spacing:.22em}
+
+/* ══ NAV ══ */
+nav{position:fixed;inset:0 0 auto;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.4rem var(--pd);transition:background .4s,padding .4s,border-color .4s,transform .5s cubic-bezier(.2,.7,.3,1);border-bottom:1px solid transparent}
+nav.stuck{background:rgba(8,8,8,.94);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);padding:.85rem var(--pd);border-bottom-color:var(--ln)}
+nav.hide{transform:translateY(-105%)}
+.navlinks{display:flex;gap:2rem;font-family:var(--lb);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase}
+.navlinks a{color:#aaa;position:relative;padding-bottom:4px;transition:color .3s}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--tf);transition:width .4s cubic-bezier(.2,.7,.3,1)}
+.navlinks a:hover,.navlinks a.active{color:#fff}
+.navlinks a:hover::after,.navlinks a.active::after{width:100%}
+.brand{font-size:1.3rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;padding:.9rem 1.9rem;font-family:var(--lb);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--pt);color:var(--pt);font-weight:400;background:transparent;cursor:pointer;position:relative;overflow:hidden;transition:color .4s;white-space:nowrap}
+.btn::before{content:'';position:absolute;inset:0;background:var(--ch);background-size:220% 100%;background-position:100% 0;transform:translateY(101%);transition:transform .4s cubic-bezier(.2,.7,.3,1);z-index:-1}
+.btn:hover{color:var(--ink)}.btn:hover::before{transform:translateY(0)}
+.btn.gh{border-color:rgba(255,255,255,.18);color:#ccc}.btn.gh::before{background:rgba(255,255,255,.95)}.btn.gh:hover{color:var(--ink)}
+.btn.sm{padding:.6rem 1.3rem}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+#burger{display:none;flex-direction:column;gap:6px;background:none;border:0;cursor:pointer;padding:8px;z-index:160}
+#burger span{display:block;width:24px;height:1px;background:var(--pt);transition:transform .4s,opacity .3s}
+#burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#burger.open span:nth-child(2){opacity:0}
+#burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mm{position:fixed;inset:0;z-index:150;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+#mm.open{opacity:1;visibility:visible}
+#mm a{font-family:var(--sf);font-size:1.9rem;color:var(--tx);letter-spacing:.06em;opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s,color .3s}
+#mm.open a{opacity:1;transform:none}
+#mm a:hover{color:var(--pt)}
+@media(max-width:900px){.navlinks,nav .btn{display:none}#burger{display:flex}}
+
+/* ══ HERO ══ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:8rem;padding-bottom:6.5rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero .livery{position:absolute;top:0;bottom:0;left:0;width:4px;z-index:1;background:var(--tr);opacity:0;animation:lvin .9s .6s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes lvin{to{opacity:.88}}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;transform:scale(1.06);animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:scale(1.06) translate3d(-1.5%,-1%,0)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,.96) 0%,rgba(8,8,8,.65) 45%,rgba(8,8,8,.22) 100%),linear-gradient(to top,var(--ink) 0%,transparent 42%)}
+.hero-inner{max-width:1160px;margin:0 auto;width:100%}
+.hero-content{max-width:70ch}
+.hero .sub{font-family:var(--lb);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:#bbb;margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.hero .sub::before{content:'';width:36px;height:2px;background:var(--tr)}
+.hero h1{font-size:clamp(2.8rem,8vw,6.5rem);line-height:1;letter-spacing:.02em}
+.hero h1 em{font-style:italic;display:block;font-size:.72em;margin-top:.07em;background:var(--ch);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:csh 7s ease-in-out infinite}
+@keyframes csh{0%{background-position:0% center}50%{background-position:100% center}100%{background-position:0% center}}
+.hero .lead{margin:1.65rem 0 2.5rem;font-size:1.02rem;color:#aaa}
+.hero .sub,.hero h1,.hero .lead,.hero .cta-row{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards}
+.hero h1{animation-delay:.12s}.hero .lead{animation-delay:.25s}.hero .cta-row{animation-delay:.38s}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.scrollcue{position:absolute;left:var(--pd);bottom:2.2rem;font-family:var(--lb);font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:#444;display:flex;align-items:center;gap:.8rem}
+.scrollcue i{display:block;width:38px;height:1px;background:linear-gradient(to right,var(--pt),transparent);animation:pull 2.2s ease-in-out infinite}
+@keyframes pull{50%{transform:scaleX(.4);transform-origin:left}}
+
+/* ══ TRUST STRIP ══ */
+.trust{background:var(--ink2);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.trust-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ln)}
+@media(max-width:640px){.trust-inner{grid-template-columns:repeat(2,1fr)}}
+.ti{background:var(--ink2);padding:1.5rem 1.65rem;display:flex;align-items:center;gap:.9rem;position:relative;transition:background .3s}
+.ti:hover{background:var(--ink3)}
+.ti::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.ti:nth-child(1)::before{background:var(--ig)}
+.ti:nth-child(2)::before{background:var(--pt)}
+.ti:nth-child(3)::before{background:var(--pt)}
+.ti:nth-child(4)::before{background:var(--ir)}
+.ti:hover::before{transform:scaleX(1)}
+.ti-num{font-family:var(--sf);font-size:2rem;font-weight:300;color:var(--pt);line-height:1;white-space:nowrap}
+.ti-lbl{font-family:var(--lb);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mt);line-height:1.55}
+.ti-press{font-family:var(--sf);font-style:italic;font-size:.9rem;color:rgba(198,203,209,.42);line-height:1.5}
+.ti-press strong{color:rgba(198,203,209,.65);font-style:normal;font-weight:400;display:block}
+
+/* ══ FEAR BREAKER ══ */
+.fear{background:var(--ink);padding:clamp(3.75rem,7.5vw,6.5rem) var(--pd)}
+.fear-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(235px,100%),1fr));gap:1px;background:var(--ln);max-width:1160px;margin:0 auto}
+.fi-item{background:var(--ink);padding:1.85rem 1.75rem;position:relative;transition:background .35s}
+.fi-item:hover{background:var(--ink3)}
+.fi-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.fi-item:nth-child(1)::before{background:var(--ig)}
+.fi-item:nth-child(2)::before{background:var(--pt)}
+.fi-item:nth-child(3)::before{background:var(--pt)}
+.fi-item:nth-child(4)::before{background:var(--ir)}
+.fi-item:hover::before{transform:scaleX(1)}
+.fi-icon{width:32px;height:32px;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;transition:border-color .4s}
+.fi-item:hover .fi-icon{border-color:rgba(198,203,209,.3)}
+.fi-icon svg{width:14px;height:14px;stroke:var(--mt);fill:none;stroke-width:1.5;transition:stroke .4s}
+.fi-item:hover .fi-icon svg{stroke:var(--pt)}
+.fi-q{font-family:var(--sf);font-size:1rem;font-style:italic;color:rgba(198,203,209,.5);margin-bottom:.45rem;line-height:1.42}
+.fi-a{font-size:.78rem;color:var(--mt);line-height:1.68}
+
+/* ══ TOOLS ══ */
+.tools-sec{background:var(--ink2);padding:clamp(4.5rem,9vw,8rem) var(--pd)}
+.tools-intro{text-align:center;max-width:580px;margin:0 auto clamp(2rem,4vw,3.25rem)}
+.tip-bar{background:var(--ink3);border:1px solid var(--ln);padding:.85rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:.85rem;position:relative;overflow:hidden;max-width:1160px;margin-left:auto;margin-right:auto}
+.tip-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.5}
+.tip-dot{width:7px;height:7px;border-radius:50%;background:var(--ig);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,146,70,.4)}50%{box-shadow:0 0 0 5px rgba(0,146,70,0)}}
+.tip-bar p{font-size:.74rem;color:#ccc;font-family:var(--lb);letter-spacing:.07em}
+.tip-bar p strong{color:var(--pt)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);max-width:1160px;margin:0 auto}
+@media(max-width:780px){.tgrid{grid-template-columns:1fr}}
+.tc{display:flex;flex-direction:column;background:var(--ink2);position:relative;overflow:hidden;transition:background .4s;text-decoration:none;color:inherit}
+.tc:hover{background:var(--ink3)}
+.tc-photo{width:100%;height:195px;overflow:hidden;position:relative;flex-shrink:0;background:var(--ink3)}
+.tc-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.26) saturate(.4);transition:filter .65s,transform .85s}
+.tc-photo img.img-contain{object-fit:contain;padding:1.4rem;filter:brightness(.6) saturate(.25);background:var(--ink3)}
+.tc-photo img.img-logo{object-fit:contain;padding:2rem;filter:brightness(.52) saturate(.08) contrast(1.1);background:var(--ink3)}
+.tc:hover .tc-photo img{filter:brightness(.46) saturate(.65);transform:scale(1.04)}
+.tc:hover .tc-photo img.img-contain{filter:brightness(.8) saturate(.45);transform:none}
+.tc:hover .tc-photo img.img-logo{filter:brightness(.76) saturate(.22);transform:none}
+.tc-fade{position:absolute;inset:0;background:linear-gradient(to top,var(--ink2) 0%,transparent 55%);z-index:1;pointer-events:none}
+.tc-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;z-index:2;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.tc:nth-child(1) .tc-photo::after{background:var(--ig)}
+.tc:nth-child(2) .tc-photo::after{background:var(--pt)}
+.tc:nth-child(3) .tc-photo::after{background:var(--ir)}
+.tc:hover .tc-photo::after{transform:scaleX(1)}
+.tc-body{padding:1.4rem 1.65rem 1.65rem;display:flex;flex-direction:column;flex:1}
+.tc-body .num{font-family:var(--sf);font-size:.78rem;color:var(--pt);letter-spacing:.2em;opacity:.52;margin-bottom:.42rem}
+.tc-body h3{font-size:1.32rem;margin-bottom:.4rem}
+.tc-body p{font-size:.8rem;margin-bottom:1rem;flex:1}
+.tc-perk{font-family:var(--lb);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,203,209,.3);margin-bottom:.9rem;display:flex;align-items:center;gap:.42rem}
+.tc-perk::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.tc:nth-child(1) .tc-perk::before{background:var(--ig)}
+.tc:nth-child(2) .tc-perk::before{background:var(--pt)}
+.tc:nth-child(3) .tc-perk::before{background:var(--ir)}
+.tc-go{font-family:var(--lb);font-size:.61rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pt);display:inline-flex;align-items:center;gap:.5rem;font-weight:500;margin-top:auto}
+.tc-go i{width:14px;height:1px;background:var(--pt);transition:width .4s;display:block}
+.tc:hover .tc-go i{width:28px}
+.tools-cta{text-align:center;margin-top:2.25rem;padding:2rem 1.75rem;background:var(--ink3);border:1px solid var(--ln);position:relative;overflow:hidden;max-width:1160px;margin-left:auto;margin-right:auto}
+.tools-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.38}
+.tools-cta h3{font-size:1.38rem;margin-bottom:.5rem}
+.tools-cta p{max-width:400px;margin:0 auto 1.35rem;font-size:.82rem}
+
+/* ══ IMPORT ══ */
+.imp-grid{display:grid;grid-template-columns:.88fr 1fr;gap:clamp(2.5rem,5.5vw,5rem);align-items:center}
+@media(max-width:820px){.imp-grid{grid-template-columns:1fr}}
+.imp-visual{position:relative}
+.imp-img{position:relative;height:520px;overflow:hidden;border:1px solid var(--ln)}
+.imp-img::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:1px solid rgba(198,203,209,.08);z-index:2;pointer-events:none}
+.imp-strip{position:absolute;top:-12px;left:-12px;bottom:12px;width:2px;display:flex;flex-direction:column;z-index:3}
+.imp-strip span{flex:1;display:block}
+.imp-strip span:nth-child(1){background:var(--ig);opacity:.72}
+.imp-strip span:nth-child(2){background:rgba(198,203,209,.42)}
+.imp-strip span:nth-child(3){background:var(--ir);opacity:.72}
+.imp-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.55);display:block;transition:filter .8s,transform 1s}
+.imp-img:hover img{filter:brightness(.75) saturate(.68);transform:scale(1.02)}
+.imp-card{position:absolute;bottom:0;left:0;right:0;background:rgba(8,8,8,.92);backdrop-filter:blur(18px);padding:14px 20px;border-top:1px solid var(--ln);z-index:4}
+.imp-card-lbl{font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(198,203,209,.35);margin-bottom:8px;font-family:var(--lb)}
+.imp-countries{display:flex;flex-wrap:wrap;gap:4px 9px}
+.ic{display:flex;align-items:center;gap:4px;font-size:.7rem;color:rgba(198,203,209,.46);font-family:var(--lb);letter-spacing:.04em}
+.ic-dot{width:4px;height:4px;border-radius:50%}
+.ic:nth-child(3n+1) .ic-dot{background:var(--ig)}
+.ic:nth-child(3n+2) .ic-dot{background:rgba(198,203,209,.52)}
+.ic:nth-child(3n) .ic-dot{background:var(--ir)}
+.imp-steps{margin-top:1.85rem}
+.imp-step{display:flex;gap:1.2rem;padding:.95rem 0;border-bottom:1px solid var(--hr)}
+.imp-step:first-child{border-top:1px solid var(--hr)}
+.imp-step-n{font-family:var(--sf);font-size:.78rem;color:var(--pt);opacity:.35;padding-top:1px;min-width:18px}
+.imp-step-t{font-size:.82rem;font-weight:500;color:var(--tx);margin-bottom:1px}
+.imp-step-d{font-size:.74rem;color:var(--mt);line-height:1.56}
+
+/* ══ WERKWIJZE — behoud verticale scroll-animatie ══ */
+.ww-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(2.5rem,6vw,5.5rem);align-items:start}
+@media(max-width:820px){.ww-layout{grid-template-columns:1fr}}
+.ww-sticky{position:sticky;top:120px}
+.steps{position:relative;--tp:0}
+.steps::before{content:'';position:absolute;left:10px;top:6px;bottom:6px;width:1px;background:rgba(198,203,209,.08)}
+.steps::after{content:'';position:absolute;left:10px;top:6px;bottom:6px;width:1px;background:linear-gradient(to bottom,var(--ig),var(--pt),var(--ir));transform:scaleY(var(--tp));transform-origin:top;will-change:transform}
+.step{position:relative;padding:0 0 2.5rem 3.25rem}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:3px;top:5px;width:14px;height:14px;border-radius:50%;border:1px solid var(--pt);background:var(--ink);z-index:1}
+.step .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--pt);transform:scale(0);transition:transform .5s .2s}
+.step.in .dot::after{transform:scale(1)}
+.step .k{font-family:var(--lb);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--pt);opacity:.65}
+.step h3{font-size:1.22rem;margin:.38rem 0 .32rem}
+.step p{max-width:50ch;font-size:.82rem}
+
+/* Sleuteloverdracht foto bij werkwijze */
+.sleutels-wrap{margin-top:2.5rem;position:relative;overflow:hidden;border:1px solid var(--ln)}
+.sleutels-wrap img{width:100%;height:280px;object-fit:cover;object-position:center 40%;display:block;filter:brightness(.48) saturate(.42);transition:filter .8s,transform 1s}
+.sleutels-wrap:hover img{filter:brightness(.6) saturate(.55);transform:scale(1.02)}
+.sleutels-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--tr);z-index:2;opacity:.62}
+.sleutels-quote{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 1.85rem 1.35rem;background:linear-gradient(to top,rgba(8,8,8,.96) 0%,rgba(8,8,8,.38) 65%,transparent 100%);z-index:1}
+.sleutels-quote p{font-family:var(--sf);font-style:italic;font-size:.98rem;color:rgba(198,203,229,.52);line-height:1.55}
+.sleutels-quote cite{display:block;margin-top:.5rem;font-family:var(--lb);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(198,203,209,.26);font-style:normal}
+
+/* ══ OVER ONS ══ */
+.about-grid{display:grid;grid-template-columns:.78fr 1fr;gap:clamp(2.5rem,5.5vw,5rem);align-items:start}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+.portrait{position:relative;margin:12px 12px 12px 0}
+.portrait::after{content:'';position:absolute;inset:12px -12px -12px 12px;border:1px solid var(--ln);z-index:-1}
+.portrait::before{content:'';position:absolute;top:-12px;left:-12px;bottom:12px;width:2px;background:linear-gradient(to bottom,var(--ig) 33%,#fff 33% 66%,var(--ir) 66%);opacity:.6;z-index:3}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 12%;filter:grayscale(.38) contrast(1.06);display:block;transition:filter .8s}
+.portrait:hover img{filter:grayscale(0) contrast(1)}
+.portrait-fade{position:absolute;top:0;right:0;bottom:0;width:28%;background:linear-gradient(to left,var(--ink2) 0%,rgba(13,13,13,.78) 45%,transparent 100%);z-index:2;pointer-events:none}
+.sig{font-family:var(--sf);font-style:italic;font-size:1.55rem;color:var(--pt);margin-top:1.5rem}
+.role{font-family:var(--lb);font-size:.59rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mt);margin-top:.28rem}
+
+/* Garage scroll */
+.garage-section{margin-top:2.25rem;padding-top:1.85rem;border-top:1px solid var(--hr)}
+.garage-label{font-family:var(--lb);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(198,203,209,.26);margin-bottom:.85rem}
+.garage-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:rgba(198,203,209,.12) transparent}
+.garage-scroll::-webkit-scrollbar{height:2px}
+.garage-scroll::-webkit-scrollbar-thumb{background:linear-gradient(to right,var(--ig),var(--pt),var(--ir))}
+.garage-card{flex-shrink:0;position:relative;width:185px;height:118px;overflow:hidden;border:1px solid var(--hr);transition:border-color .4s}
+.garage-card:hover{border-color:var(--ln)}
+.garage-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.58) saturate(.5);transition:filter .55s,transform .75s;display:block}
+.garage-card:hover img{filter:brightness(.75) saturate(.68);transform:scale(1.05)}
+.garage-card-lbl{position:absolute;bottom:0;left:0;right:0;padding:.42rem .6rem;background:linear-gradient(to top,rgba(8,8,8,.92) 0%,transparent 100%);font-family:var(--lb);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,203,209,.5)}
+
+/* Press badge */
+.press-badge{display:inline-flex;align-items:center;gap:.65rem;background:var(--ink3);border:1px solid var(--ln);padding:.55rem .95rem;margin-top:1.35rem;font-family:var(--lb);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(198,203,209,.38);transition:border-color .3s,color .3s;text-decoration:none}
+.press-badge:hover{border-color:rgba(198,203,209,.26);color:rgba(198,203,209,.6)}
+.press-badge svg{width:12px;height:12px;fill:none;stroke:rgba(198,203,209,.32);stroke-width:1.5;flex-shrink:0}
+.press-badge strong{color:rgba(198,203,209,.58)}
+
+/* ══ PROJECTEN ══ */
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:1.5rem}
+.proj{position:relative;overflow:hidden;background:var(--ink3);border:1px solid var(--hr);transition:border-color .5s}
+.proj:hover{border-color:var(--ln)}
+.proj .imgwrap{overflow:hidden;position:relative}
+.proj img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.68) saturate(.55);transition:transform .9s,filter .9s;display:block}
+.proj:hover img{transform:scale(1.05);filter:brightness(.48) saturate(.44)}
+.proj .imgwrap::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--tr);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1);z-index:3}
+.proj:hover .imgwrap::after{transform:scaleX(1)}
+.proj .cap{padding:1.45rem 1.35rem 1.65rem}
+.proj .tag{font-family:var(--lb);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pt);opacity:.62}
+.proj h3{font-size:1.18rem;margin:.48rem 0 .38rem}
+.proj p{font-size:.78rem;line-height:1.66}
+.veil{position:relative;overflow:hidden}
+.veil::before{content:'';position:absolute;inset:0;z-index:2;background:var(--ink3);transform:scaleX(1);transform-origin:right;transition:transform .9s cubic-bezier(.75,0,.25,1)}
+.veil.in::before{transform:scaleX(0)}
+
+/* ══ QUOTE ══ */
+.quote{height:200vh;padding:0;background:var(--ink)}
+.q-pin{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:0 var(--pd)}
+.quote blockquote{max-width:62ch;margin:0 auto;text-align:center;border:0;font-family:var(--sf);font-size:clamp(1.25rem,2.6vw,1.75rem);font-style:italic;line-height:1.72;color:#ccc}
+.quote blockquote::before{content:'\201C';display:block;font-size:3.8rem;line-height:.6;background:var(--cs);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:normal;margin-bottom:1.35rem;opacity:.82}
+.quote blockquote .qw{opacity:.1;transition:opacity .18s linear}
+.quote .attrib{margin-top:1.75rem;font-family:var(--lb);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--pt)}
+
+/* ══ CONTACT ══ */
+.contact-sec{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(198,203,209,.055),transparent 55%),var(--ink2);padding:clamp(4.5rem,9vw,8rem) var(--pd)}
+.contact-sec h2{font-size:clamp(2rem,4.8vw,3.5rem)}
+.contact-sec .lead{margin:0 auto 2.25rem}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);max-width:780px;margin:0 auto 2.25rem}
+@media(max-width:600px){.c-grid{grid-template-columns:1fr}}
+.cc{background:var(--ink3);padding:1.55rem 1.35rem;text-align:left;position:relative;overflow:hidden;transition:background .4s}
+.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--cs);opacity:0;transition:opacity .4s}
+.cc:hover{background:var(--ink4)}.cc:hover::before{opacity:1}
+.cc .tag{font-family:var(--lb);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pt);margin-bottom:.72rem;display:block;opacity:.68}
+.cc p{font-size:.81rem;color:#bfbfbf;line-height:1.7}
+.cc a{color:inherit;border-bottom:1px solid var(--ln);transition:color .3s,border-color .3s}
+.cc a:hover{color:var(--pt);border-color:var(--pt)}
+
+/* ══ FOOTER ══ */
+footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
+.fg{max-width:1160px;margin:0 auto;padding:3rem 0 2.25rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.25rem 2rem}
+@media(max-width:640px){.fg{grid-template-columns:1fr}}
+.fg .brand{font-size:1.08rem}
+.fg p{font-size:.76rem;margin-top:.8rem;max-width:33ch;color:var(--mt)}
+.fh{font-family:var(--lb);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--pt);margin-bottom:.95rem;font-weight:500;opacity:.68}
+.fl{list-style:none;display:flex;flex-direction:column;gap:.55rem;font-size:.77rem;color:var(--mt)}
+.fl a{transition:color .3s,padding-left .3s}
+.fl a:hover{color:var(--pt);padding-left:4px}
+.fb{max-width:1160px;margin:0 auto;padding:1.2rem 0;border-top:1px solid var(--hr);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--lb);font-size:.62rem;color:#383838;letter-spacing:.05em}
+.fb .tric{display:inline-block;width:26px;height:2px;background:var(--tr);vertical-align:middle;margin:0 .4rem;opacity:.65}
+
+/* ══ REVEAL ══ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.2,.7,.3,1),transform .85s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  .rv,.hero .sub,.hero h1,.hero .lead,.hero .cta-row{opacity:1;transform:none;transition:none;animation:none}
+  .hero-bg img,.scrollcue i,.hero h1 em{animation:none}
+  h2 .w i{transform:none;transition:none}
+  .ey-tri,.ey-tri-r{width:42px!important;transition:none}
+  .veil::before{display:none}
+  .steps::after{transform:none}
+  .step .dot::after{transform:scale(1)}
+  .quote{height:auto;padding:clamp(4.5rem,9vw,8rem) var(--pd)}
+  .q-pin{position:static;min-height:0;padding:0}
+  .quote blockquote .qw{opacity:1;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="#top" class="brand">
+    <span class="brand-apex">APEX</span>
+    <span class="brand-sep" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="brand-excl">exclusive</span>
+  </a>
+  <div class="navlinks" id="navlinks">
+    <a href="#tools">Tools</a>
+    <a href="#import">Import</a>
+    <a href="#werkwijze">Werkwijze</a>
+    <a href="#over">Over ons</a>
+    <a href="#projecten">Projecten</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="btn sm"><span>Gesprek plannen</span></a>
+  <button id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div id="mm">
+  <a href="#tools"     style="transition-delay:.05s">Tools</a>
+  <a href="#import"    style="transition-delay:.1s">Import</a>
+  <a href="#werkwijze" style="transition-delay:.15s">Werkwijze</a>
+  <a href="#over"      style="transition-delay:.2s">Over ons</a>
+  <a href="#projecten" style="transition-delay:.25s">Projecten</a>
+  <a href="#contact"   style="transition-delay:.3s;color:var(--pt)">Contact</a>
+</div>
+
+<!-- ══ 1. HERO ══
+     Eerste indruk: emotie + belofte + CTA
+     Volgorde logisch: zie wie we zijn → dan bewijs
+═════════════════════════════════════════ -->
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <img
+      src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_1600,q_50,f_auto/v1786112048/Lamborghini_cockpit_zw7pmk.jpg"
+      srcset="
+        https://res.cloudinary.com/sfd8ohjz/image/upload/w_768,q_50,f_auto/v1786112048/Lamborghini_cockpit_zw7pmk.jpg 768w,
+        https://res.cloudinary.com/sfd8ohjz/image/upload/w_1200,q_50,f_auto/v1786112048/Lamborghini_cockpit_zw7pmk.jpg 1200w,
+        https://res.cloudinary.com/sfd8ohjz/image/upload/w_1600,q_50,f_auto/v1786112048/Lamborghini_cockpit_zw7pmk.jpg 1600w"
+      sizes="100vw" alt="Lamborghini cockpit" fetchpriority="high" decoding="async">
+  </div>
+  <div class="livery" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-content" id="heroContent">
+      <p class="sub">Automotive Advisory · Maastricht</p>
+      <h1>Uw droomauto,<br><em>zonder risico geïmporteerd.</em></h1>
+      <p class="lead">Wij sporen uitzonderlijke auto's op in heel Europa, beoordelen ze volledig onafhankelijk en regelen alles — van eerste gesprek tot sleuteloverdracht.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn"><span>Vrijblijvend gesprek</span></a>
+        <a href="#tools"   class="btn gh"><span>Bekijk onze tools</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="scrollcue" id="cue"><i></i> Scroll</div>
+</header>
+
+<!-- ══ 2. TRUST STRIP ══
+     Direct na hero: snel vertrouwen opbouwen
+     EU · 100% · A-Z · Krant
+═════════════════════════════════════════ -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="ti rv">
+      <div class="ti-num">EU</div>
+      <div class="ti-lbl">Heel Europa<br>als zoekgebied</div>
+    </div>
+    <div class="ti rv">
+      <div class="ti-num">100%</div>
+      <div class="ti-lbl">Onafhankelijk<br>geen dealerbelang</div>
+    </div>
+    <div class="ti rv">
+      <div class="ti-num">A–Z</div>
+      <div class="ti-lbl">Volledig geregeld<br>tot aan de deur</div>
+    </div>
+    <div class="ti rv">
+      <!--
+        De Limburger link — opent artikel in nieuw tabblad
+        Staat in trust strip: geloofwaardigheidssignaal direct na hero
+        Perfecte plek: vroeg in de pagina, subtiel maar krachtig
+      -->
+      <a href="https://www.limburger.nl/regio/roermond/autofanaat-martijn-37-uit-roermond-is-gek-op-snelle-sportauto-s-en-laat-anderen-graag-meegenieten-van-zijn-passie/22277510.html"
+         target="_blank" rel="noopener"
+         style="text-decoration:none;display:flex;align-items:center;gap:.85rem;width:100%">
+        <div>
+          <div class="ti-press"><strong>Zoals vermeld in De Limburger</strong>Autofanaat &amp; oprichter APEXclusive</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 3. ANGST-BREAKER ══
+     Bezwaren wegnemen VOORDAT ze tools zien
+     Logisch: eerst twijfels weg → dan actie
+═════════════════════════════════════════ -->
+<div class="fear">
+  <div class="fear-grid">
+    <div class="fi-item rv">
+      <div class="fi-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="fi-q">"Stel dat ik een auto koop met verborgen schade?"</div>
+      <div class="fi-a">U koopt niets zonder zekerheid. Op verzoek regelen wij een onafhankelijke aankoopkeuring ter plaatse bij de verkoper — professioneel en volledig objectief.</div>
+    </div>
+    <div class="fi-item rv">
+      <div class="fi-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="fi-q">"Is de BPM niet veel duurder dan ik verwacht?"</div>
+      <div class="fi-a">Bereken het direct met onze BPM Calculator. Bij import regelen wij de officiële taxatie via erkende partners — transparant, geen verrassingen achteraf.</div>
+    </div>
+    <div class="fi-item rv">
+      <div class="fi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="fi-q">"Ik spreek de taal niet en ken de markt niet."</div>
+      <div class="fi-a">Wij zijn uw verlengde arm in Duitsland, Italië, België en Spanje. Communicatie, onderhandeling en lokale inspecties — wij regelen het alsof het onze eigen auto betreft.</div>
+    </div>
+    <div class="fi-item rv">
+      <div class="fi-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <div class="fi-q">"Papieren en registratie zijn te ingewikkeld."</div>
+      <div class="fi-a">RDW-keuring, kentekenregistratie en montage aan huis. U rijdt pas als alles klopt — wij regelen het volledig voor u.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 4. TOOLS ══
+     Na angst wegnemen: nu zijn ze klaar voor actie
+     Tools = lage drempel instap, of beslissen om uit te besteden
+═════════════════════════════════════════ -->
+<section class="tools-sec" id="tools">
+  <div class="wrap">
+    <div class="tools-intro rv">
+      <p class="ey c">
+        <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+        Doe de check
+        <span class="ey-tri-r" aria-hidden="true"><span></span><span></span><span></span></span>
+      </p>
+      <h2>Bereken en controleer — voordat u beslist.</h2>
+      <p class="lead">Drie instrumenten die wij zelf dagelijks inzetten. Direct beschikbaar, zonder registratie.</p>
+    </div>
+
+    <div class="tip-bar rv">
+      <div class="tip-dot"></div>
+      <p><strong>Tip van Martijn:</strong> Voer altijd eerst de kentekencheck en BPM-berekening uit voordat u een bod uitbrengt op een buitenlandse auto. Het kan u duizenden euro's schelen.</p>
+    </div>
+
+    <div class="tgrid rv">
+      <a class="tc" href="https://bpm.apexclusive.nl">
+        <div class="tc-photo">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=620,q_55,auto=format" alt="BPM Calculator" loading="lazy" decoding="async">
+          <div class="tc-fade"></div>
+        </div>
+        <div class="tc-body">
+          <span class="num">01</span>
+          <h3>BPM Calculator</h3>
+          <p>Weet precies wat de import u kost voordat u een bod uitbrengt. Bereken de resterende BPM op basis van leeftijd, cataloguswaarde en brandstoftype.</p>
+          <div class="tc-perk">Direct resultaat · Geen registratie</div>
+          <span class="tc-go">Berekenen <i></i></span>
+        </div>
+      </a>
+      <a class="tc" href="https://kentekencheck.apexclusive.nl">
+        <div class="tc-photo">
+          <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_620,q_55,f_auto/v1786120828/Nederlands_Kenteken_Sticker_gfmewm.png" alt="Kentekencheck" loading="lazy" decoding="async" class="img-contain">
+          <div class="tc-fade"></div>
+        </div>
+        <div class="tc-body">
+          <span class="num">02</span>
+          <h3>Kentekencheck</h3>
+          <p>APK-historie, tellerstandverloop en tenaamstellingen via officiële RDW-data. Vertrouw nooit een verkoper op zijn woord — controleer zelf.</p>
+          <div class="tc-perk">RDW-data · APK-historie · Tellerstand</div>
+          <span class="tc-go">Controleren <i></i></span>
+        </div>
+      </a>
+      <a class="tc" href="https://carrapport.apexclusive.nl">
+        <div class="tc-photo">
+          <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_620,q_55,f_auto/v1786118058/mobile-de-seeklogo_z1hb8f.png" alt="Advertentie analyse" loading="lazy" decoding="async" class="img-logo">
+          <div class="tc-fade"></div>
+        </div>
+        <div class="tc-body">
+          <span class="num">03</span>
+          <h3>Advertentie Analyse</h3>
+          <p>Plak een link van Mobile.de, AutoScout24 of Marktplaats en ontvang direct een objectieve prijsbeoordeling. Betaalt u de eerlijke prijs?</p>
+          <div class="tc-perk">Mobile.de · AutoScout24 · Marktplaats</div>
+          <span class="tc-go">Analyseren <i></i></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="tools-cta rv">
+      <p class="ey c">
+        <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+        Liever alles uitbesteden?
+        <span class="ey-tri-r" aria-hidden="true"><span></span><span></span><span></span></span>
+      </p>
+      <h3>Wij nemen het volledig van u over — van A tot Z.</h3>
+      <p>Geen zin in zelf uitzoeken? Plan een vrijblijvend gesprek. Wij regelen alles.</p>
+      <a href="#contact" class="btn" style="margin-top:1.35rem"><span>Vrijblijvend gesprek plannen</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. IMPORT — Europa is uw showroom ══
+     Wat doen we concreet? Showreel van aanpak
+     Luxe Unsplash nacht-skyline foto ipv dots kaart
+═════════════════════════════════════════ -->
+<section id="import" style="background:var(--ink2)">
+  <div class="wrap">
+    <div class="imp-grid">
+      <div class="imp-visual rv">
+        <div class="imp-img">
+          <!--
+            Luxe Europese nacht-skyline foto (Unsplash)
+            Vervangt de dots-kaart — veel sjieker, past beter bij premium merk
+            Alternatieven ook mooi: Parijs, Duomo Milano, Berlijn bij nacht
+          -->
+          <img
+            src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=850&q=58&auto=format"
+            alt="Europa — uw zoekgebied" loading="lazy" decoding="async">
+          <div class="imp-strip"><span></span><span></span><span></span></div>
+          <div class="imp-card">
+            <div class="imp-card-lbl">Actief zoekgebied</div>
+            <div class="imp-countries">
+              <div class="ic"><span class="ic-dot"></span>Duitsland</div>
+              <div class="ic"><span class="ic-dot"></span>België</div>
+              <div class="ic"><span class="ic-dot"></span>Italië</div>
+              <div class="ic"><span class="ic-dot"></span>Spanje</div>
+              <div class="ic"><span class="ic-dot"></span>Zweden</div>
+              <div class="ic"><span class="ic-dot"></span>Luxemburg</div>
+              <div class="ic"><span class="ic-dot"></span>Frankrijk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rv">
+        <p class="ey">
+          <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+          Importbegeleiding
+        </p>
+        <h2>Europa is uw showroom. Wij zijn uw gids.</h2>
+        <p class="lead" style="margin-bottom:1.35rem">De mooiste exemplaren staan zelden bij een Nederlandse dealer. Wij doorzoeken heel Europa en regelen het volledige importtraject — zonder dat u er wakker van hoeft te liggen.</p>
+        <div class="imp-steps">
+          <div class="imp-step"><div class="imp-step-n">01</div><div><div class="imp-step-t">Voertuig opsporen</div><div class="imp-step-d">Wij doorzoeken ons Europese netwerk op voertuigen die voldoen aan uw exacte wensen en budget.</div></div></div>
+          <div class="imp-step"><div class="imp-step-n">02</div><div><div class="imp-step-t">Keuring ter plaatse — op verzoek</div><div class="imp-step-d">Op verzoek regelen wij een onafhankelijke aankoopkeuring bij de verkoper. U beslist pas na groen licht.</div></div></div>
+          <div class="imp-step"><div class="imp-step-n">03</div><div><div class="imp-step-t">BPM-taxatie &amp; afhandeling</div><div class="imp-step-d">Volledige coördinatie via erkende partners. Transparant, geen verrassingen.</div></div></div>
+          <div class="imp-step"><div class="imp-step-n">04</div><div><div class="imp-step-t">Rijklaar afgeleverd aan huis</div><div class="imp-step-d">RDW-keuring, kenteken en montage bij u thuis. U stapt in — klaar.</div></div></div>
+        </div>
+        <div style="margin-top:2rem"><a href="#contact" class="btn"><span>Import bespreken</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. WERKWIJZE ══
+     Diensten en werkwijze SAMENGEVOEGD tot één sectie
+     Diensten staan nu als stappen IN de werkwijze
+     → Geen overlap, compacter, verticale scroll-animatie behouden
+═════════════════════════════════════════ -->
+<section id="werkwijze">
+  <div class="wrap">
+    <div class="ww-layout">
+      <!-- Links: sticky uitleg -->
+      <div class="ww-sticky rv">
+        <p class="ey">
+          <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+          Werkwijze
+        </p>
+        <h2>Van eerste gesprek tot sleuteloverdracht.</h2>
+        <div class="rule" style="margin-bottom:1.5rem"></div>
+        <p style="margin-bottom:1.25rem">Elk traject begint met luisteren — en eindigt pas wanneer u volledig tevreden achter het stuur zit.</p>
+        <p>Transparant van start tot finish. Persoonlijk. Volledig op maat.</p>
+        <!-- Sleuteloverdracht foto -->
+        <div class="sleutels-wrap" style="margin-top:2rem">
+          <img
+            src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=700&q=55&auto=format"
+            alt="Sleuteloverdracht" loading="lazy" decoding="async">
+          <div class="sleutels-quote">
+            <p>"Van eerste gesprek tot sleuteloverdracht — alles geregeld, niets vergeten."</p>
+            <cite>— Martijn Puts · Founder APEXclusive</cite>
+          </div>
+        </div>
+      </div>
+      <!-- Rechts: verticale stappen -->
+      <div class="rv">
+        <div class="steps" id="steps">
+          <div class="step rv">
+            <span class="dot"></span>
+            <span class="k">Stap 01</span>
+            <h3>Intake &amp; wensen</h3>
+            <p>Persoonlijk gesprek over uw wensen, budget en rijervaring. Zonder verplichtingen.</p>
+          </div>
+          <div class="step rv">
+            <span class="dot"></span>
+            <span class="k">Stap 02</span>
+            <h3>Zoeken &amp; screenen</h3>
+            <p>Wij doorzoeken netwerk en Europese markt. Inclusief bronnen waar anderen niet kijken.</p>
+          </div>
+          <div class="step rv">
+            <span class="dot"></span>
+            <span class="k">Stap 03</span>
+            <h3>Keuring ter plaatse — op verzoek</h3>
+            <p>Op verzoek regelen wij een onafhankelijke aankoopkeuring bij de verkoper. U beslist pas na groen licht.</p>
+          </div>
+          <div class="step rv">
+            <span class="dot"></span>
+            <span class="k">Stap 04</span>
+            <h3>Onderhandelen &amp; aankopen</h3>
+            <p>Scherpe onderhandeling op basis van marktkennis en keuringsresultaten. U beslist — wij regelen de overdracht.</p>
+          </div>
+          <div class="step rv">
+            <span class="dot"></span>
+            <span class="k">Stap 05</span>
+            <h3>BPM-taxatie &amp; import</h3>
+            <p>Volledige importafhandeling via erkende partners. Transparant en zonder onverwachte kosten.</p>
+          </div>
+          <div class="step rv">
+            <span class="dot"></span>
+            <span class="k">Stap 06</span>
+            <h3>RDW-keuring &amp; kenteken aan huis</h3>
+            <p>Verplichte RDW-keuring en kentekenmontage direct bij u thuis. U rijdt pas als alles klopt.</p>
+          </div>
+        </div>
+        <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--hr)">
+          <a href="#contact" class="btn"><span>Gesprek plannen</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. OVER ONS ══
+     Na werkwijze: wie staat hier achter?
+     Geloofwaardigheid, passie, eigen ervaring
+═════════════════════════════════════════ -->
+<section id="over" style="background:var(--ink2)">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait rv">
+        <img
+          src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_720,q_60,f_auto/v1786112744/8A26E528-46F4-471D-856C-7D4210809521_1_105_c_uguopr.jpg"
+          alt="Martijn Puts — Founder APEXclusive" loading="lazy" decoding="async">
+        <div class="portrait-fade"></div>
+      </div>
+      <div class="rv">
+        <p class="ey">
+          <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+          Over de oprichter
+        </p>
+        <h2>Piloot. Autofanaat. Meer dan tien jaar ervaring met exclusieve auto's.</h2>
+        <div class="rule" style="margin-bottom:1.6rem"></div>
+
+        <p style="margin-bottom:1rem">APEXclusive is ontstaan vanuit een eenvoudige overtuiging: wie investeert in een bijzonder voertuig, verdient begeleiding die daar volledig bij past.</p>
+
+        <p style="margin-bottom:1rem">Als professioneel piloot zijn precisie, voorbereiding en oog voor detail geen eigenschappen — het zijn gewoontes die ik elke dag meeneem in elk adviestraject.</p>
+
+        <p style="margin-bottom:1.65rem">Wat mij onderscheidt is dat ik niet alleen adviseur ben, maar zelf liefhebber. Meer dan tien jaar rij ik in exclusieve auto's — van een McLaren 650S Spyder en Lamborghini Huracán tot Porsche 911 Turbo en Audi RS-modellen. Mijn eerste McLaren werd geïmporteerd uit België. Precies die ervaring deed mij beseffen hoe het beter kon — en sindsdien doe ik het zelf. Die kennis en dat netwerk zet ik nu in voor mijn klanten.</p>
+
+        <div class="garage-section">
+          <div class="garage-label">Eigen rijervaring — selectie uit de garage</div>
+          <div class="garage-scroll">
+            <div class="garage-card">
+              <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_300,q_52,f_auto/v1786123838/WhatsApp_Image_2025-05-20_at_01.01.02_nh95ep.jpg" alt="Lamborghini Huracán" loading="lazy" decoding="async">
+              <div class="garage-card-lbl">Lamborghini Huracán · Import</div>
+            </div>
+            <div class="garage-card">
+              <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_300,q_52,f_auto/v1786123971/Scherm_afbeelding_2026-08-07_om_19.32.35_jnsz99.jpg" alt="McLaren 650S Spyder" loading="lazy" decoding="async">
+              <div class="garage-card-lbl">McLaren 650S · Import België</div>
+            </div>
+            <div class="garage-card">
+              <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_300,q_52,f_auto/v1786124284/IMG_7402_rmzafp.jpg" alt="Porsche 911 Turbo" loading="lazy" decoding="async">
+              <div class="garage-card-lbl">Porsche 911 Turbo</div>
+            </div>
+            <div class="garage-card">
+              <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_300,q_52,f_auto/v1786124284/IMG_3419_tszyzk.jpg" alt="BMW M4" loading="lazy" decoding="async">
+              <div class="garage-card-lbl">BMW M4</div>
+            </div>
+            <div class="garage-card">
+              <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_300,q_52,f_auto/v1786124459/IMG_5245_f3sxrk.jpg" alt="Porsche Macan Turbo" loading="lazy" decoding="async">
+              <div class="garage-card-lbl">Porsche Macan Turbo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Krant: aparte badge, niet in trust strip — logischer hier bij persoonlijk verhaal -->
+        <a href="https://www.limburger.nl/regio/roermond/autofanaat-martijn-37-uit-roermond-is-gek-op-snelle-sportauto-s-en-laat-anderen-graag-meegenieten-van-zijn-passie/22277510.html"
+           class="press-badge" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+          <span>Zoals vermeld in <strong>De Limburger</strong> — lees het artikel</span>
+        </a>
+
+        <p class="sig">Martijn Puts</p>
+        <p class="role">Founder &amp; Private Vehicle Advisor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. PROJECTEN ══
+     Bewijs: dit hebben we al gerealiseerd
+     Versterkt vertrouwen vlak voor tarieven en contact
+═════════════════════════════════════════ -->
+<section id="projecten">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="ey">
+        <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+        Gerealiseerde projecten
+      </p>
+      <h2>Drie recente opdrachten.</h2>
+      <p class="lead">Elk voertuig persoonlijk begeleid, onafhankelijk gekeurd en rijklaar afgeleverd aan een tevreden eigenaar.</p>
+    </div>
+    <div class="p-grid">
+      <article class="proj rv">
+        <div class="imgwrap veil">
+          <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_720,q_55,f_auto/v1786123838/WhatsApp_Image_2025-05-20_at_01.01.02_nh95ep.jpg" alt="Lamborghini Huracán LP610 Spyder" loading="lazy" decoding="async">
+        </div>
+        <div class="cap">
+          <span class="tag">Persoonlijke import · Zweden</span>
+          <h3>Lamborghini Huracán LP610 Spyder</h3>
+          <p>610 pk · V10 · Eerste eigenaar · Volledig PPF · Titanium F1-uitlaat · Ingeruild tegen McLaren 650S Spyder.</p>
+        </div>
+      </article>
+      <article class="proj rv">
+        <div class="imgwrap veil">
+          <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_720,q_55,f_auto/v1786111940/987D691B-FFBF-4137-9766-15DEF62F5CD4_1_201_a_k1eyvp.jpg" alt="Lamborghini Urus" loading="lazy" decoding="async">
+        </div>
+        <div class="cap">
+          <span class="tag">Persoonlijke import · Luxemburg</span>
+          <h3>Lamborghini Urus</h3>
+          <p>650 pk · V8 Twin-Turbo · Luxemburgse luxury dealer · 5 jaar Lamborghini Service Warranty inclusief onderhoud.</p>
+        </div>
+      </article>
+      <article class="proj rv">
+        <div class="imgwrap veil">
+          <img src="https://res.cloudinary.com/sfd8ohjz/image/upload/w_720,q_55,f_auto/v1786112182/8112FE63-03BD-4C6D-9A40-1217FCD5910F_1_201_a_vbazdb.heic" alt="Audi RS6 Avant C8" loading="lazy" decoding="async">
+        </div>
+        <div class="cap">
+          <span class="tag">Aankoopbegeleiding · Duitsland</span>
+          <h3>Audi RS6 Avant C8</h3>
+          <p>600 pk · V8 TFSI · Audi Approved · 24 maanden garantie · BPM-afhandeling en NL-registratie inbegrepen.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 9. QUOTE / AFTER SALES ══
+     Emotionele afsluiter vóór tarieven en contact
+     Pinned scroll = premium gevoel
+═════════════════════════════════════════ -->
+<section class="quote" id="aftersales">
+  <div class="q-pin">
+    <div class="wrap" style="text-align:center">
+      <p class="ey c" style="margin-bottom:1.85rem">
+        <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+        After sales
+        <span class="ey-tri-r" aria-hidden="true"><span></span><span></span><span></span></span>
+      </p>
+      <blockquote id="bq">Ik bel u altijd na afloop. Niet als vinkje op een checklist — gewoon omdat ik echt wil weten hoe het voelt, rijdt en of u blij bent met uw keuze. Uw vertrouwen is niet alleen een formaliteit; het is het fundament van alles.</blockquote>
+      <p class="attrib">— Martijn Puts · Founder &amp; Private Vehicle Advisor</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. TARIEVEN ══
+     Kort en eerlijk — vlak voor contact
+     Geen uitgebreid blok, verwijst naar gesprek
+═════════════════════════════════════════ -->
+<section id="tarieven" style="background:var(--ink2)">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(2.5rem,5vw,5rem);align-items:center" class="rv">
+      <div>
+        <p class="ey">
+          <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+          Tarieven
+        </p>
+        <h2>Investeren in zekerheid</h2>
+        <div class="rule"></div>
+      </div>
+      <div>
+        <p class="lead" style="margin-bottom:1.1rem">Transparant honorarium, afgestemd op de omvang van uw opdracht. Geen vaste pakketprijzen — wel een eerlijk gesprek vooraf over wat u kunt verwachten.</p>
+        <p style="margin-bottom:1.75rem;color:var(--mt)">De begeleiding verdient zichzelf terug via een scherpere aankoopprijs, vermeden risico's en de zekerheid dat u precies de juiste auto rijdt.</p>
+        <a href="#contact" class="btn"><span>Tarieven bespreken</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11. CONTACT ══
+     Logisch eindpunt: nu zijn ze overtuigd, actie
+     3 kaarten, compact, WhatsApp prominent
+═════════════════════════════════════════ -->
+<section class="contact-sec" id="contact">
+  <div class="wrap rv">
+    <p class="ey c">
+      <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+      Contact
+      <span class="ey-tri-r" aria-hidden="true"><span></span><span></span><span></span></span>
+    </p>
+    <h2>Klaar om uw droomauto te importeren?</h2>
+    <p class="lead">Eén gesprek is genoeg. Vrijblijvend, discreet en zonder verplichtingen.</p>
+
+    <div class="c-grid">
+      <div class="cc rv">
+        <span class="tag">◆ Locatie</span>
+        <p>Maastricht, Nederland<br><span style="font-size:.76rem;color:#555">Actief in heel Europa</span></p>
+      </div>
+      <div class="cc rv">
+        <span class="tag">◆ E-mail &amp; WhatsApp</span>
+        <p>
+          <a href="mailto:info@apexclusive.nl">info@apexclusive.nl</a><br>
+          <a href="https://wa.me/31624735939">WhatsApp: +31 6 24 73 59 39</a>
+        </p>
+      </div>
+      <div class="cc rv">
+        <span class="tag">◆ Wat u kunt verwachten</span>
+        <p style="font-size:.78rem;line-height:1.82;color:#777">
+          Reactie binnen 24 uur<br>
+          Persoonlijk contact met Martijn<br>
+          Volledig discreet &amp; vertrouwelijk<br>
+          Transparant honorarium vooraf
+        </p>
+      </div>
+    </div>
+
+    <div class="cta-row" style="justify-content:center;margin-bottom:0">
+      <a class="btn"    href="https://wa.me/31624735939"><span>WhatsApp +31 6 24 73 59 39</span></a>
+      <a class="btn gh" href="mailto:info@apexclusive.nl"><span>E-mail sturen</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="fg">
+    <div>
+      <a href="#top" class="brand" style="font-size:1.08rem">
+        <span class="brand-apex">APEX</span>
+        <span class="brand-sep" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-excl">exclusive</span>
+      </a>
+      <p>Private vehicle advisory vanuit Maastricht. Onafhankelijke aankoopbegeleiding en import van uitzonderlijke auto's in heel Europa.</p>
+    </div>
+    <div>
+      <p class="fh">Instrumenten</p>
+      <ul class="fl">
+        <li><a href="https://bpm.apexclusive.nl">BPM Calculator</a></li>
+        <li><a href="https://kentekencheck.apexclusive.nl">Kentekencheck</a></li>
+        <li><a href="https://carrapport.apexclusive.nl">Advertentie Analyse</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="fh">Contact</p>
+      <ul class="fl">
+        <li><a href="mailto:info@apexclusive.nl">info@apexclusive.nl</a></li>
+        <li><a href="https://wa.me/31624735939">WhatsApp +31 6 24 73 59 39</a></li>
+        <li><a href="#top">Maastricht, Nederland</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb">
+    <span>© <span id="yr">2026</span> APEXclusive · Automotive Advisory · Maastricht</span>
+    <span>Driven by Excellence.<span class="tric"></span>Gran turismo, geregeld.</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let stimer;
+addEventListener('scroll',()=>{
+  document.body.classList.add('scrolling');
+  clearTimeout(stimer);
+  stimer=setTimeout(()=>document.body.classList.remove('scrolling'),150);
+},{passive:true});
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+/* H2 word split */
+if(!reduced){
+  document.querySelectorAll('section h2,header h1').forEach(h=>{
+    [...h.childNodes].forEach(node=>{
+      if(node.nodeType!==3||!node.textContent.trim())return;
+      const frag=document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(tk=>{
+        if(!tk.trim()){frag.append(tk);return;}
+        const w=document.createElement('span');w.className='w';
+        const i=document.createElement('i');i.textContent=tk;
+        w.append(i);frag.append(w);
+      });
+      h.replaceChild(frag,node);
+    });
+    h.querySelectorAll('.w i').forEach((el,i)=>el.style.transitionDelay=70+i*48+'ms');
+  });
+}
+
+/* Quote words */
+const bq=document.getElementById('bq');
+let qw=[];
+if(!reduced){
+  const words=bq.textContent.trim().split(/\s+/);
+  bq.textContent='';
+  words.forEach(word=>{
+    const s=document.createElement('span');s.className='qw';s.textContent=word;
+    bq.append(s,' ');
+  });
+  qw=[...bq.querySelectorAll('.qw')];
+}
+
+/* Mobile menu */
+const nav=document.getElementById('nav');
+const burger=document.getElementById('burger');
+const mmenu=document.getElementById('mm');
+const toggleMenu=open=>{
+  burger.classList.toggle('open',open);
+  mmenu.classList.toggle('open',open);
+  burger.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+  if(open)nav.classList.remove('hide');
+};
+burger.addEventListener('click',()=>toggleMenu(!mmenu.classList.contains('open')));
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+
+/* Reveal + tricolore + veil */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    io.unobserve(e.target);
+    const img=e.target.classList.contains('veil')?e.target.querySelector('img'):null;
+    if(img&&!img.complete){
+      img.addEventListener('load', ()=>e.target.classList.add('in'),{once:true});
+      img.addEventListener('error',()=>e.target.classList.add('in'),{once:true});
+    }else e.target.classList.add('in');
+    if(e.target.classList.contains('ey'))e.target.classList.add('tri-in');
+    e.target.querySelectorAll&&e.target.querySelectorAll('.ey').forEach(ey=>setTimeout(()=>ey.classList.add('tri-in'),160));
+  });
+},{threshold:.06,rootMargin:'0px 0px -3% 0px'});
+
+document.querySelectorAll('.p-grid,.tgrid,.c-grid,.fear-grid').forEach(g=>{
+  [...g.children].forEach((el,i)=>el.style.transitionDelay=Math.min(i,4)*75+'ms');
+});
+document.querySelectorAll('.rv,.step,.veil,section h2,.ey').forEach(el=>io.observe(el));
+
+/* Scrollspy */
+const links=[...document.querySelectorAll('#navlinks a')];
+const spy=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id));
+  });
+},{rootMargin:'-40% 0px -55% 0px'});
+links.forEach(a=>{const t=document.querySelector(a.hash);if(t)spy.observe(t);});
+
+/* Main rAF loop */
+const bar   = document.getElementById('progress');
+const heroC = document.getElementById('heroContent');
+const cue   = document.getElementById('cue');
+const steps = document.getElementById('steps');
+const quote = document.querySelector('.quote');
+let navY = scrollY;
+
+function frame(){
+  const y=scrollY,vh=innerHeight;
+  const total=document.documentElement.scrollHeight-vh;
+  bar.style.transform=`scaleX(${total>0?y/total:0})`;
+  nav.classList.toggle('stuck',y>40);
+  if(y>navY+6&&y>260&&!mmenu.classList.contains('open'))nav.classList.add('hide');
+  else if(y<navY-6||y<=260)nav.classList.remove('hide');
+  navY=y;
+  if(!reduced){
+    const hp=clamp(y/vh,0,1);
+    heroC.style.transform=`translateY(${hp*88}px)`;
+    heroC.style.opacity  =1-hp*1.3;
+    cue.style.opacity    =1-hp*3;
+    if(steps){
+      const r=steps.getBoundingClientRect();
+      steps.style.setProperty('--tp',clamp((vh*.68-r.top)/r.height,0,1).toFixed(3));
+    }
+    if(qw.length){
+      const r =quote.getBoundingClientRect();
+      const pr=clamp(-r.top/(r.height-vh),0,1);
+      const n =qw.length;
+      for(let i=0;i<n;i++)
+        qw[i].style.opacity=clamp((pr*(n+8)-i)/5,.1,1).toFixed(2);
+    }
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
+Model: Begrepen — ik heb de code bekeken en wacht op je vraag.
+User: onderstaande is de code voor mijn advertentie analyse. geef deze pagina dezelfde looks en feel en perfectie als de homepage. perfectioneer hem en maak hem zo uitgerbreid als mogelijk met de allerbest mogelijke informatie voorziening voor de aklnt 
+User: <!DOCTYPE html>
+<html lang="nl">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Advertentie Analyse — APEXclusive</title>
@@ -820,6 +1867,1245 @@ function resetTool() {
   document.getElementById('adUrl').value = '';
   allImages = [];
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
+Model: Ik ga de advertentie analyse pagina volledig herbouwen met exact de look & feel van de homepage, inclusief alle design tokens, animaties, en uitgebreide informatievoorzieining.
+
+```html
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Advertentie Analyse — APEXclusive | Voertuig Rapport</title>
+<meta name="description" content="Analyseer een Mobile.de, AutoScout24 of Marktplaats advertentie. Ontvang direct inzicht in prijs, specificaties en een objectief koopadvies van APEXclusive.">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%230a0a0a"/><text x="32" y="46" font-family="Georgia,serif" font-size="42" fill="%23c6cbd1" text-anchor="middle">A</text></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pt:#c6cbd1;--pt-s:#f2f4f6;
+  --ig:#009246;--ir:#CE2B37;
+  --ink:#080808;--ink2:#0d0d0d;--ink3:#131313;--ink4:#181818;
+  --ln:rgba(198,203,209,.18);--hr:rgba(255,255,255,.07);
+  --tx:#e4e4e4;--mt:#8a8a8a;
+  --sf:'Cormorant Garamond',serif;
+  --ss:'Montserrat',sans-serif;
+  --lb:'Oswald',sans-serif;
+  --pd:clamp(1.25rem,5vw,4rem);
+  --ch:linear-gradient(100deg,#5a5f65 0%,#e8ecf0 18%,#a0a8b0 36%,#fff 50%,#a0a8b0 64%,#e8ecf0 82%,#5a5f65 100%);
+  --cs:linear-gradient(100deg,#8a9099 0%,#d4d8dc 40%,#fff 50%,#d4d8dc 60%,#8a9099 100%);
+  --tr:linear-gradient(90deg,var(--ig) 0 33.33%,#fff 33.33% 66.66%,var(--ir) 66.66% 100%);
+  --tf:linear-gradient(90deg,transparent 0%,var(--ig) 15% 33.33%,#fff 33.33% 66.66%,var(--ir) 66.66% 85%,transparent 100%);
+  --ok-c:var(--ig);--ok-bg:rgba(0,146,70,.06);--ok-bd:rgba(0,146,70,.22);
+  --wn-c:#c49a00;--wn-bg:rgba(196,154,0,.05);--wn-bd:rgba(196,154,0,.2);
+  --bd-c:var(--ir);--bd-bg:rgba(206,43,55,.06);--bd-bd:rgba(206,43,55,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--ink);color:var(--tx);font-family:var(--ss);font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--pt);color:var(--ink)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,var(--ig) 33%,rgba(198,203,209,.5) 33% 66%,var(--ir) 66%)}
+
+/* ══ PROGRESS BAR ══ */
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:200;background:var(--pt-s);transform-origin:left;transform:scaleX(0)}
+
+/* ══ LOGO / BRAND ══ */
+.brand{font-family:var(--sf);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;display:inline-flex;align-items:center;gap:0;text-decoration:none;color:var(--tx)}
+.brand-apex{font-weight:600;color:var(--pt);letter-spacing:.22em}
+.brand-sep{display:inline-flex;flex-direction:column;gap:2px;margin:0 8px;flex-shrink:0}
+.brand-sep span{display:block;width:3px;border-radius:1px}
+.brand-sep span:nth-child(1){height:5px;background:var(--ig)}
+.brand-sep span:nth-child(2){height:5px;background:#fff}
+.brand-sep span:nth-child(3){height:5px;background:var(--ir)}
+.brand-excl{font-weight:300;color:rgba(198,203,209,.42);letter-spacing:.22em}
+
+/* ══ NAV ══ */
+nav{position:fixed;inset:0 0 auto;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.4rem var(--pd);transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.stuck{background:rgba(8,8,8,.94);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);padding:.85rem var(--pd);border-bottom-color:var(--ln)}
+.brand{font-size:1.3rem}
+.nav-right{display:flex;align-items:center;gap:1.25rem}
+.nav-back{font-family:var(--lb);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#aaa;display:flex;align-items:center;gap:.55rem;transition:color .3s}
+.nav-back:hover{color:var(--pt)}
+.nav-back::before{content:'←';font-family:var(--ss);font-size:.8rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;padding:.9rem 1.9rem;font-family:var(--lb);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--pt);color:var(--pt);font-weight:400;background:transparent;cursor:pointer;position:relative;overflow:hidden;transition:color .4s;white-space:nowrap}
+.btn::before{content:'';position:absolute;inset:0;background:var(--ch);background-size:220% 100%;background-position:100% 0;transform:translateY(101%);transition:transform .4s cubic-bezier(.2,.7,.3,1);z-index:-1}
+.btn:hover{color:var(--ink)}.btn:hover::before{transform:translateY(0)}
+.btn.gh{border-color:rgba(255,255,255,.18);color:#ccc}.btn.gh::before{background:rgba(255,255,255,.95)}.btn.gh:hover{color:var(--ink)}
+.btn.sm{padding:.6rem 1.3rem}
+
+/* ══ EYEBROW ══ */
+.ey{font-family:var(--lb);font-size:.65rem;letter-spacing:.38em;text-transform:uppercase;color:var(--pt);font-weight:400;margin-bottom:1.35rem;display:flex;align-items:center;gap:.85rem}
+.ey-tri,.ey-tri-r{display:flex;flex-direction:row;gap:0;flex-shrink:0;overflow:hidden;height:11px;width:0;transition:width .85s cubic-bezier(.2,.7,.3,1)}
+.ey-tri-r{transition-delay:.12s}
+.ey-tri span,.ey-tri-r span{display:block;flex:1;min-width:0}
+.ey-tri span:nth-child(1){background:var(--ig)}.ey-tri span:nth-child(2){background:#fff}.ey-tri span:nth-child(3){background:var(--ir)}
+.ey-tri-r span:nth-child(1){background:var(--ir)}.ey-tri-r span:nth-child(2){background:#fff}.ey-tri-r span:nth-child(3){background:var(--ig)}
+.ey.tri-in .ey-tri,.ey.tri-in .ey-tri-r{width:42px}
+.ey.c{justify-content:center}
+
+/* ══ TYPE ══ */
+h1,h2,h3,h4{font-family:var(--sf);font-weight:300;line-height:1.1;letter-spacing:.01em}
+h2{font-size:clamp(2rem,4.4vw,3.3rem);margin-bottom:1.1rem}
+h3{font-size:1.38rem;margin-bottom:.58rem}
+p{color:var(--mt);font-size:.92rem}
+.lead{font-size:1.02rem;max-width:56ch;color:#ababab}
+.rule{width:56px;height:2px;background:var(--ch);margin-top:1.5rem}
+
+/* ══ REVEAL ══ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.2,.7,.3,1),transform .85s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* ══ HERO ══ */
+.page-hero{position:relative;padding:clamp(7rem,14vw,11rem) var(--pd) clamp(4rem,8vw,6rem);text-align:center;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--ig) 33%,rgba(198,203,209,.5) 66%,var(--ir));opacity:.55}
+.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 28% 60%,rgba(0,146,70,.04) 0%,transparent 55%),radial-gradient(ellipse at 72% 60%,rgba(206,43,55,.04) 0%,transparent 55%);pointer-events:none}
+.page-hero .ey{justify-content:center;margin-bottom:1.5rem}
+.page-hero h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.04;letter-spacing:.02em;margin-bottom:1.35rem}
+.page-hero h1 em{font-style:italic;display:block;font-size:.72em;margin-top:.08em;background:var(--ch);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:csh 7s ease-in-out infinite}
+@keyframes csh{0%{background-position:0% center}50%{background-position:100% center}100%{background-position:0% center}}
+.page-hero .lead{margin:0 auto;text-align:center}
+.hero-divider{height:1px;background:linear-gradient(90deg,transparent,var(--ig) 20%,rgba(198,203,209,.4) 50%,var(--ir) 80%,transparent);opacity:.35;margin:0 var(--pd)}
+
+/* ══ MAIN WRAP ══ */
+.page-wrap{max-width:1060px;margin:0 auto;padding:clamp(3rem,6vw,5rem) var(--pd) clamp(5rem,10vw,8rem)}
+
+/* ══ SEARCH BLOCK ══ */
+.search-block{background:var(--ink2);border:1px solid var(--ln);position:relative;overflow:hidden;margin-bottom:2px}
+.search-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.45}
+.search-inner{padding:clamp(1.75rem,4vw,2.75rem) clamp(1.5rem,4vw,2.75rem)}
+.search-label{display:block;font-family:var(--lb);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(198,203,209,.3);margin-bottom:1rem}
+.search-row{display:flex;gap:1px;background:var(--ln);margin-bottom:1rem}
+.url-input{flex:1;background:var(--ink3);border:none;border-bottom:2px solid transparent;color:var(--tx);font-size:.9rem;padding:1.2rem 1.5rem;outline:none;font-family:var(--ss);font-weight:300;letter-spacing:.03em;transition:border-color .35s,background .35s}
+.url-input:focus{background:var(--ink4);border-bottom-color:var(--pt)}
+.url-input::placeholder{color:rgba(198,203,209,.15);font-size:.82rem}
+.search-submit{background:transparent;border:none;border-left:1px solid var(--ln);color:var(--pt);font-family:var(--lb);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;padding:1.2rem 2.2rem;cursor:pointer;position:relative;overflow:hidden;transition:color .4s;white-space:nowrap;flex-shrink:0}
+.search-submit::before{content:'';position:absolute;inset:0;background:var(--ch);background-size:220% 100%;background-position:100% 0;transform:translateY(101%);transition:transform .4s cubic-bezier(.2,.7,.3,1);z-index:0}
+.search-submit span{position:relative;z-index:1}
+.search-submit:hover{color:var(--ink)}.search-submit:hover::before{transform:translateY(0)}
+.search-submit:disabled{opacity:.4;pointer-events:none}
+.platforms-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.pt-tag{font-family:var(--lb);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 13px;border:1px solid rgba(198,203,209,.1);color:rgba(198,203,209,.3);display:flex;align-items:center;gap:6px;transition:border-color .3s,color .3s}
+.pt-tag::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--ig);flex-shrink:0}
+.pt-tag:hover{border-color:rgba(198,203,209,.22);color:rgba(198,203,209,.55)}
+.err-msg{display:none;font-size:.76rem;color:var(--ir);margin-top:.85rem;padding:.65rem 1rem;background:rgba(206,43,55,.06);border-left:2px solid rgba(206,43,55,.4);letter-spacing:.04em;line-height:1.65}
+.err-msg.show{display:block}
+
+/* ══ HOE WERKT HET ══ */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);margin-bottom:2px}
+@media(max-width:720px){.how-grid{grid-template-columns:1fr}}
+.how-item{background:var(--ink2);padding:1.65rem 1.5rem;position:relative;overflow:hidden;transition:background .3s}
+.how-item:hover{background:var(--ink3)}
+.how-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.how-item:nth-child(1)::before{background:var(--ig)}
+.how-item:nth-child(2)::before{background:var(--pt)}
+.how-item:nth-child(3)::before{background:var(--ir)}
+.how-item:hover::before{transform:scaleX(1)}
+.how-n{font-family:var(--sf);font-size:.78rem;color:var(--pt);opacity:.4;letter-spacing:.15em;margin-bottom:.65rem}
+.how-item h3{font-size:1.05rem;margin-bottom:.35rem;color:var(--tx)}
+.how-item p{font-size:.78rem;line-height:1.72}
+
+/* ══ LOADING ══ */
+.loading{display:none;text-align:center;padding:5rem 0}
+.spinner{width:34px;height:34px;border:1.5px solid rgba(198,203,209,.08);border-top-color:rgba(198,203,209,.5);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-label{font-family:var(--lb);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mt);margin-bottom:.5rem}
+.loading-sub{font-family:var(--sf);font-style:italic;font-size:1rem;color:rgba(198,203,209,.3)}
+
+/* ══ RESULTS ══ */
+.results{display:none}
+.results.show{display:block;animation:fadeUp .55s cubic-bezier(.2,.7,.3,1)}
+
+/* Photo gallery */
+.gallery-hero{position:relative;width:100%;background:var(--ink3);border:1px solid var(--ln);overflow:hidden;margin-bottom:2px}
+.gallery-main{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;cursor:pointer}
+.gallery-main img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.88) saturate(.82);transition:filter .7s,transform .9s}
+.gallery-main:hover img{filter:brightness(.78) saturate(.72);transform:scale(1.02)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.9) 0%,rgba(8,8,8,.2) 40%,transparent 70%);pointer-events:none}
+.gallery-strip{position:absolute;bottom:0;left:0;right:0;height:2px;display:flex}
+.gallery-strip span{flex:1;display:block}
+.gallery-strip span:nth-child(1){background:var(--ig);opacity:.72}
+.gallery-strip span:nth-child(2){background:rgba(198,203,209,.42)}
+.gallery-strip span:nth-child(3){background:var(--ir);opacity:.72}
+.gallery-info{position:absolute;bottom:0;left:0;right:0;padding:2rem 2rem 1.5rem;z-index:2}
+.gallery-platform{font-family:var(--lb);font-size:.55rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(198,203,209,.4);margin-bottom:.5rem}
+.gallery-title{font-family:var(--sf);font-size:clamp(1.4rem,3vw,2.4rem);font-weight:400;color:var(--tx);line-height:1.1;margin-bottom:.35rem}
+.gallery-meta{font-family:var(--lb);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,203,209,.4);display:flex;gap:1rem;flex-wrap:wrap}
+.gallery-count{position:absolute;top:1.25rem;right:1.25rem;font-family:var(--lb);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(198,203,209,.4);background:rgba(8,8,8,.7);backdrop-filter:blur(12px);padding:.4rem .85rem;border:1px solid var(--ln)}
+.thumb-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;background:var(--ink)}
+@media(max-width:640px){.thumb-strip{grid-template-columns:repeat(4,1fr)}}
+.thumb-item{height:68px;overflow:hidden;cursor:pointer;background:var(--ink3);position:relative;transition:opacity .3s}
+.thumb-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.5);transition:filter .4s,transform .5s}
+.thumb-item:hover img{filter:brightness(.75) saturate(.7);transform:scale(1.06)}
+.thumb-item.active{outline:1px solid rgba(198,203,209,.35)}
+.thumb-item.active img{filter:brightness(.88) saturate(.78)}
+.thumb-item.more{display:flex;align-items:center;justify-content:center;background:var(--ink3);font-family:var(--lb);font-size:.58rem;letter-spacing:.12em;color:rgba(198,203,209,.3)}
+
+/* Status bar */
+.status-bar{background:var(--ink3);border:1px solid var(--ln);border-top:none;padding:.85rem 1.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:2px;position:relative}
+.status-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.25}
+.s-pill{font-family:var(--lb);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border:1px solid;display:flex;align-items:center;gap:5px;font-weight:400}
+.s-pill::before{content:'';display:block;width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.pill-ok{color:var(--ok-c);border-color:var(--ok-bd);background:var(--ok-bg)}.pill-ok::before{background:var(--ok-c)}
+.pill-warn{color:var(--wn-c);border-color:var(--wn-bd);background:var(--wn-bg)}.pill-warn::before{background:var(--wn-c)}
+.pill-bad{color:var(--bd-c);border-color:var(--bd-bd);background:var(--bd-bg)}.pill-bad::before{background:var(--bd-c)}
+.pill-neu{color:var(--mt);border-color:rgba(198,203,209,.12);background:rgba(198,203,209,.03)}.pill-neu::before{background:var(--mt)}
+
+/* Stat cards */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ln);margin-bottom:2px}
+@media(max-width:720px){.stat-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:400px){.stat-row{grid-template-columns:1fr}}
+.s-card{background:var(--ink2);padding:1.75rem 1.5rem;text-align:center;position:relative;overflow:hidden;transition:background .35s}
+.s-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.s-card:nth-child(1)::after{background:var(--ig)}
+.s-card:nth-child(2)::after{background:var(--pt)}
+.s-card:nth-child(3)::after{background:var(--pt)}
+.s-card:nth-child(4)::after{background:var(--ir)}
+.s-card:hover{background:var(--ink3)}.s-card:hover::after{transform:scaleX(1)}
+.s-card-lbl{font-family:var(--lb);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(198,203,209,.28);margin-bottom:.85rem;display:block}
+.s-card-val{font-family:var(--sf);font-size:2rem;font-weight:300;color:var(--tx);line-height:1}
+.s-card-sub{font-family:var(--lb);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(198,203,209,.22);margin-top:.4rem}
+
+/* Verdict */
+.verdict-box{border:1px solid;padding:2rem 2.25rem;margin-bottom:2px;position:relative;overflow:hidden}
+.verdict-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.verdict-ok{border-color:var(--ok-bd);background:var(--ok-bg)}.verdict-ok::before{background:linear-gradient(90deg,transparent,var(--ok-c),transparent)}
+.verdict-warn{border-color:var(--wn-bd);background:var(--wn-bg)}.verdict-warn::before{background:linear-gradient(90deg,transparent,var(--wn-c),transparent)}
+.verdict-bad{border-color:var(--bd-bd);background:var(--bd-bg)}.verdict-bad::before{background:linear-gradient(90deg,transparent,var(--bd-c),transparent)}
+.verdict-head{display:flex;align-items:flex-start;gap:1.25rem;margin-bottom:1.25rem}
+.verdict-icon{width:40px;height:40px;border:1px solid;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.verdict-ok .verdict-icon{border-color:var(--ok-bd)}.verdict-warn .verdict-icon{border-color:var(--wn-bd)}.verdict-bad .verdict-icon{border-color:var(--bd-bd)}
+.verdict-icon svg{width:16px;height:16px;fill:none;stroke-width:1.5}
+.verdict-ok .verdict-icon svg{stroke:var(--ok-c)}.verdict-warn .verdict-icon svg{stroke:var(--wn-c)}.verdict-bad .verdict-icon svg{stroke:var(--bd-c)}
+.verdict-tag{font-family:var(--lb);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:.38rem}
+.verdict-ok .verdict-tag{color:var(--ok-c)}.verdict-warn .verdict-tag{color:var(--wn-c)}.verdict-bad .verdict-tag{color:var(--bd-c)}
+.verdict-title{font-family:var(--sf);font-size:1.55rem;font-weight:400;color:var(--tx);line-height:1.15}
+.verdict-body{font-size:.84rem;color:var(--mt);line-height:1.85;margin-bottom:1.5rem}
+.verdict-body strong{color:rgba(198,203,209,.72);font-weight:500}
+.price-compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ln)}
+@media(max-width:480px){.price-compare{grid-template-columns:1fr}}
+.pc-side{background:var(--ink3);padding:1.35rem 1.5rem;position:relative;overflow:hidden}
+.pc-side::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;opacity:.5}
+.pc-side:nth-child(1)::before{background:rgba(198,203,209,.2)}
+.pc-side:nth-child(2)::before{background:var(--ig)}
+.pc-lbl{font-family:var(--lb);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(198,203,209,.28);margin-bottom:.65rem}
+.pc-val{font-family:var(--sf);font-size:2rem;font-weight:300;color:var(--tx);line-height:1}
+.pc-sub{font-size:.74rem;color:rgba(198,203,209,.3);margin-top:.4rem}
+.pc-delta{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--lb);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.5rem;padding:.3rem .65rem;border:1px solid}
+.delta-ok{color:var(--ok-c);border-color:var(--ok-bd);background:var(--ok-bg)}
+.delta-warn{color:var(--wn-c);border-color:var(--wn-bd);background:var(--wn-bg)}
+.delta-bad{color:var(--bd-c);border-color:var(--bd-bd);background:var(--bd-bg)}
+
+/* Detail blocks */
+.dblock{background:var(--ink2);border:1px solid var(--ln);margin-bottom:2px;position:relative;overflow:hidden}
+.dblock::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--ig),rgba(198,203,209,.4),var(--ir));opacity:.25}
+.bhead{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.75rem 1.1rem 1.85rem;border-bottom:1px solid var(--hr);cursor:pointer;user-select:none;transition:background .3s}
+.bhead:hover{background:var(--ink3)}
+.bhead-icon{width:36px;height:36px;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
+.bhead:hover .bhead-icon{border-color:rgba(198,203,209,.28)}
+.bhead-icon svg{width:15px;height:15px;stroke:var(--mt);fill:none;stroke-width:1.5}
+.bhead-title{font-family:var(--lb);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(198,203,209,.35);flex:1;transition:color .3s}
+.bhead:hover .bhead-title{color:rgba(198,203,209,.65)}
+.bhead-chev{width:14px;height:14px;stroke:rgba(198,203,209,.2);fill:none;stroke-width:1.5;transition:transform .35s,stroke .3s;flex-shrink:0}
+.bhead:hover .bhead-chev{stroke:rgba(198,203,209,.45)}
+.bhead.open .bhead-chev{transform:rotate(180deg)}
+.bbody{padding:1.75rem 1.85rem 2rem}
+.bbody.hidden{display:none}
+
+/* Detail rows */
+.bd-section{margin-bottom:1.5rem}
+.bd-section:last-child{margin-bottom:0}
+.bd-sec-lbl{font-family:var(--lb);font-size:.54rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(198,203,209,.2);margin-bottom:.85rem;padding-bottom:.65rem;border-bottom:1px solid var(--ln)}
+.bd-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
+@media(max-width:560px){.bd-grid{grid-template-columns:1fr}}
+.bd-row{display:flex;justify-content:space-between;align-items:baseline;padding:.72rem 0;border-bottom:1px solid rgba(198,203,209,.04);font-size:.84rem;gap:1rem}
+.bd-row:last-child{border-bottom:none}
+.bd-l{color:rgba(198,203,209,.32);flex-shrink:0}
+.bd-v{color:rgba(198,203,209,.75);font-weight:400;text-align:right}
+.bd-v a{color:rgba(198,203,209,.5);border-bottom:1px solid var(--ln);transition:color .3s,border-color .3s}
+.bd-v a:hover{color:var(--pt);border-color:var(--pt)}
+
+/* Checklist */
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.5rem}
+@media(max-width:560px){.checklist{grid-template-columns:1fr}}
+.check-item{display:flex;align-items:flex-start;gap:.65rem;padding:.6rem 0;border-bottom:1px solid rgba(198,203,209,.04)}
+.check-dot{width:16px;height:16px;border:1px solid;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.check-ok{border-color:var(--ok-bd)}.check-ok svg{stroke:var(--ok-c)}
+.check-warn{border-color:var(--wn-bd)}.check-warn svg{stroke:var(--wn-c)}
+.check-bad{border-color:var(--bd-bd)}.check-bad svg{stroke:var(--bd-c)}
+.check-neu{border-color:var(--ln)}.check-neu svg{stroke:var(--mt)}
+.check-dot svg{width:9px;height:9px;fill:none;stroke-width:2}
+.check-text{font-size:.8rem;color:var(--mt);line-height:1.55}
+.check-text strong{color:rgba(198,203,209,.62);font-weight:500;display:block;font-size:.78rem}
+
+/* Risk meter */
+.risk-bar{margin-top:1.25rem}
+.risk-labels{display:flex;justify-content:space-between;font-family:var(--lb);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,203,209,.25);margin-bottom:.5rem}
+.risk-track{height:4px;background:rgba(198,203,209,.08);position:relative;overflow:hidden}
+.risk-fill{height:100%;background:linear-gradient(to right,var(--ig),#c49a00,var(--ir));transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.risk-marker{position:absolute;top:-4px;height:12px;width:2px;background:var(--tx);transform:translateX(-50%);transition:left 1.2s cubic-bezier(.2,.7,.3,1)}
+.risk-score{font-family:var(--sf);font-size:3rem;font-weight:300;color:var(--tx);line-height:1;margin-bottom:.25rem}
+.risk-label{font-family:var(--lb);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase}
+
+/* Advice tips */
+.tip-list{display:flex;flex-direction:column;gap:.5rem}
+.tip-item{display:flex;gap:.85rem;padding:.85rem 1rem;background:var(--ink3);border-left:2px solid var(--ln);transition:border-color .3s,background .3s}
+.tip-item:hover{background:var(--ink4);border-left-color:var(--pt)}
+.tip-n{font-family:var(--sf);font-size:.78rem;color:var(--pt);opacity:.4;flex-shrink:0;padding-top:.05rem}
+.tip-text{font-size:.8rem;color:var(--mt);line-height:1.65}
+.tip-text strong{color:rgba(198,203,209,.6);font-weight:500}
+
+/* Market context */
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln)}
+@media(max-width:580px){.market-grid{grid-template-columns:1fr}}
+.mkt-card{background:var(--ink3);padding:1.35rem 1.25rem;position:relative}
+.mkt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.mkt-card:hover::after{transform:scaleX(1)}
+.mkt-card:nth-child(1)::after{background:var(--ig)}
+.mkt-card:nth-child(2)::after{background:var(--pt)}
+.mkt-card:nth-child(3)::after{background:var(--ir)}
+.mkt-lbl{font-family:var(--lb);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(198,203,209,.25);margin-bottom:.65rem}
+.mkt-val{font-family:var(--sf);font-size:1.45rem;font-weight:300;color:var(--tx);line-height:1;margin-bottom:.3rem}
+.mkt-sub{font-size:.74rem;color:rgba(198,203,209,.3)}
+
+/* Import strip */
+.import-strip{background:var(--ink3);border:1px solid var(--ln);padding:1.25rem 1.75rem;margin-bottom:2px;display:flex;align-items:center;gap:1rem;position:relative;overflow:hidden}
+.import-strip::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.4}
+.import-dot{width:8px;height:8px;border-radius:50%;background:var(--ig);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,146,70,.4)}50%{box-shadow:0 0 0 5px rgba(0,146,70,0)}}
+.import-strip p{font-size:.78rem;color:#ccc;font-family:var(--lb);letter-spacing:.07em}
+.import-strip p strong{color:var(--pt)}
+
+/* Disclaimer */
+.disc{font-size:.72rem;color:rgba(198,203,209,.2);line-height:1.75;padding:1.25rem 1.5rem;background:var(--ink2);border:1px solid var(--ln);border-top:none;margin-bottom:2px;position:relative}
+.disc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:rgba(198,203,209,.06)}
+
+/* Reset btn */
+.reset-btn{width:100%;background:transparent;border:1px solid var(--ln);color:rgba(198,203,209,.3);padding:1rem;font-family:var(--lb);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,background .3s;margin-bottom:2px;display:flex;align-items:center;justify-content:center;gap:.65rem}
+.reset-btn:hover{border-color:rgba(198,203,209,.28);color:rgba(198,203,209,.65);background:var(--ink3)}
+
+/* CTA block */
+.cta-block{background:radial-gradient(ellipse at 50% 0%,rgba(198,203,209,.04),transparent 55%),var(--ink2);border:1px solid var(--ln);padding:clamp(2.5rem,5vw,4rem) clamp(1.75rem,4vw,3.5rem);text-align:center;position:relative;overflow:hidden;margin-bottom:2px}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.42}
+.cta-block h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.85rem}
+.cta-block .lead{margin:0 auto 2rem}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+
+/* Footer */
+footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
+.fg{max-width:1060px;margin:0 auto;padding:2.5rem 0 2rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.fb{max-width:1060px;margin:0 auto;padding:1.2rem 0;border-top:1px solid var(--hr);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--lb);font-size:.62rem;color:#383838;letter-spacing:.05em}
+.fb .tric{display:inline-block;width:26px;height:2px;background:var(--tr);vertical-align:middle;margin:0 .4rem;opacity:.65}
+.fl{list-style:none;display:flex;gap:1.5rem;flex-wrap:wrap}
+.fl a{font-family:var(--lb);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(198,203,209,.28);transition:color .3s}
+.fl a:hover{color:rgba(198,203,209,.65)}
+
+@media(max-width:820px){
+  .how-grid{grid-template-columns:1fr 1fr}
+  .search-row{flex-direction:column;gap:0}
+  .search-submit{border-left:none;border-top:1px solid var(--ln);padding:1rem}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .checklist{grid-template-columns:1fr}
+  .bd-grid{grid-template-columns:1fr}
+  .cta-row{flex-direction:column;align-items:center}
+  .cta-row .btn{width:100%;max-width:320px}
+}
+@media(max-width:540px){
+  .how-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr}
+  .market-grid{grid-template-columns:1fr}
+  .thumb-strip{grid-template-columns:repeat(3,1fr)}
+  .fg{flex-direction:column;gap:1rem}
+  .fl{flex-direction:column;gap:.65rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv,.gallery-main img{transition:none;animation:none}
+  .ey-tri,.ey-tri-r{width:42px!important;transition:none}
+  .risk-fill,.risk-marker{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="https://apexclusive.nl" class="brand">
+    <span class="brand-apex">APEX</span>
+    <span class="brand-sep" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="brand-excl">exclusive</span>
+  </a>
+  <div class="nav-right">
+    <a href="https://apexclusive.nl" class="nav-back">Terug naar website</a>
+    <a href="https://apexclusive.nl#contact" class="btn sm"><span>Gesprek plannen</span></a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="page-hero">
+  <p class="ey c rv">
+    <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+    APEXclusive — Gratis Instrument
+    <span class="ey-tri-r" aria-hidden="true"><span></span><span></span><span></span></span>
+  </p>
+  <h1 class="rv">Advertentie Analyse<br><em>Voertuig Rapport</em></h1>
+  <p class="lead rv">Analyseer een Mobile.de, AutoScout24 of Marktplaats advertentie en ontvang direct inzicht in prijs, specificaties, foto's en een objectief koopadvies — voordat u ook maar één euro op tafel legt.</p>
+</div>
+
+<div class="hero-divider"></div>
+
+<!-- ══ MAIN ══ -->
+<div class="page-wrap">
+
+  <!-- HOE WERKT HET -->
+  <div class="how-grid rv" style="margin-bottom:2px">
+    <div class="how-item">
+      <div class="how-n">01</div>
+      <h3>Plak de advertentielink</h3>
+      <p>Kopieer de URL van Mobile.de, AutoScout24 of Marktplaats en plak deze in het invoerveld hieronder.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-n">02</div>
+      <h3>Wij analyseren direct</h3>
+      <p>Onze tool haalt de advertentiedata op, vergelijkt de vraagprijs met de markt en genereert een volledig rapport.</p>
+    </div>
+    <div class="how-item">
+      <div class="how-n">03</div>
+      <h3>Ontvang uw koopadvies</h3>
+      <p>Prijs­beoordeling, risicoscore, aandachtspunten en persoonlijke tips — alles op één overzichtelijke pagina.</p>
+    </div>
+  </div>
+
+  <!-- SEARCH BLOCK -->
+  <div class="search-block rv">
+    <div class="search-inner">
+      <label class="search-label" for="adUrl">Advertentielink invoeren</label>
+      <div class="search-row">
+        <input class="url-input" id="adUrl" type="url"
+          placeholder="Plak hier uw Mobile.de, AutoScout24 of Marktplaats link…"
+          onkeydown="if(event.key==='Enter')analyzeAd()" autocomplete="off" spellcheck="false">
+        <button class="search-submit" id="analyzeBtn" onclick="analyzeAd()">
+          <span id="btn-t">Analyseer advertentie</span>
+        </button>
+      </div>
+      <div class="platforms-row">
+        <span class="pt-tag">Mobile.de</span>
+        <span class="pt-tag">AutoScout24</span>
+        <span class="pt-tag">Marktplaats.nl</span>
+        <span class="pt-tag">AutoTrack</span>
+        <span class="pt-tag">BAS-World</span>
+      </div>
+      <div class="err-msg" id="errmsg"></div>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-label">Advertentie ophalen &amp; analyseren</div>
+    <div class="loading-sub">Even geduld — dit duurt doorgaans 3–8 seconden.</div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+
+    <!-- Photo gallery -->
+    <div class="gallery-hero rv" id="galleryHero"></div>
+
+    <!-- Status bar -->
+    <div class="status-bar rv" id="statusBar"></div>
+
+    <!-- Stat cards -->
+    <div class="stat-row rv" id="statRow"></div>
+
+    <!-- Verdict -->
+    <div id="verdictWrap"></div>
+
+    <!-- Marktcontext -->
+    <div class="dblock rv" id="marketBlock">
+      <div class="bhead open" onclick="toggleBlock(this)">
+        <div class="bhead-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="bhead-title">Marktcontext &amp; waardebepaling</div>
+        <svg class="bhead-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="bbody" id="marketContent"></div>
+    </div>
+
+    <!-- Risicoprofiel -->
+    <div class="dblock rv" id="riskBlock">
+      <div class="bhead open" onclick="toggleBlock(this)">
+        <div class="bhead-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="bhead-title">Risicoprofiel &amp; aandachtspunten</div>
+        <svg class="bhead-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="bbody" id="riskContent"></div>
+    </div>
+
+    <!-- Koopadvies tips -->
+    <div class="dblock rv" id="tipsBlock">
+      <div class="bhead open" onclick="toggleBlock(this)">
+        <div class="bhead-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+        <div class="bhead-title">Koopadvies &amp; aanbevelingen APEXclusive</div>
+        <svg class="bhead-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="bbody" id="tipsContent"></div>
+    </div>
+
+    <!-- Advertentieoverzicht -->
+    <div class="dblock rv">
+      <div class="bhead open" onclick="toggleBlock(this)">
+        <div class="bhead-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <div class="bhead-title">Volledig advertentieoverzicht</div>
+        <svg class="bhead-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="bbody" id="detailsContent"></div>
+    </div>
+
+    <!-- Import strip -->
+    <div class="import-strip rv">
+      <div class="import-dot"></div>
+      <p><strong>Import nodig?</strong> APEXclusive regelt BPM-taxatie, RDW-keuring en volledige importafhandeling — rijklaar aan uw deur.</p>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="disc rv">Indicatief koopadvies op basis van advertentiedata en een globale marktschatting. Geen vervanging voor een professionele voertuiginspectie. APEXclusive aanvaardt geen aansprakelijkheid voor beslissingen op basis van dit rapport.</p>
+
+    <!-- Reset -->
+    <button class="reset-btn rv" onclick="resetTool()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Nieuwe analyse starten
+    </button>
+
+    <!-- CTA -->
+    <div class="cta-block rv">
+      <p class="ey c" style="margin-bottom:1.5rem">
+        <span class="ey-tri" aria-hidden="true"><span></span><span></span><span></span></span>
+        Serieus geïnteresseerd?
+        <span class="ey-tri-r" aria-hidden="true"><span></span><span></span><span></span></span>
+      </p>
+      <h2>Van analyse naar <em style="font-style:italic;background:var(--ch);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent">rijklaar afgeleverd.</em></h2>
+      <p class="lead">APEXclusive regelt de onafhankelijke keuring ter plaatse, de onderhandeling, BPM-optimalisatie en volledige importafhandeling — van eerste gesprek tot sleuteloverdracht.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://wa.me/31624735939" target="_blank"><span>WhatsApp +31 6 24 73 59 39</span></a>
+        <a class="btn gh" href="mailto:info@apexclusive.nl"><span>E-mail sturen</span></a>
+      </div>
+    </div>
+
+  </div><!-- /results -->
+
+</div><!-- /page-wrap -->
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="fg">
+    <a href="https://apexclusive.nl" class="brand" style="font-size:1.08rem">
+      <span class="brand-apex">APEX</span>
+      <span class="brand-sep" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="brand-excl">exclusive</span>
+    </a>
+    <ul class="fl">
+      <li><a href="https://bpm.apexclusive.nl">BPM Calculator</a></li>
+      <li><a href="https://kentekencheck.apexclusive.nl">Kentekencheck</a></li>
+      <li><a href="https://carrapport.apexclusive.nl">Advertentie Analyse</a></li>
+      <li><a href="https://apexclusive.nl#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="fb">
+    <span>© <span id="yr">2026</span> APEXclusive · Automotive Advisory · Maastricht</span>
+    <span>Driven by Excellence.<span class="tric"></span>Gran turismo, geregeld.</span>
+  </div>
+</footer>
+
+<script>
+/* ══ YEAR ══ */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ══ PROGRESS BAR + NAV STUCK ══ */
+const bar = document.getElementById('progress');
+const nav = document.getElementById('nav');
+let navY = 0;
+function frame() {
+  const y = scrollY, total = document.documentElement.scrollHeight - innerHeight;
+  bar.style.transform = `scaleX(${total > 0 ? y / total : 0})`;
+  nav.classList.toggle('stuck', y > 40);
+  navY = y;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ══ REVEAL + TRICOLORE ══ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    io.unobserve(e.target);
+    e.target.classList.add('in');
+    if (e.target.classList.contains('ey')) e.target.classList.add('tri-in');
+    e.target.querySelectorAll && e.target.querySelectorAll('.ey').forEach(ey => {
+      setTimeout(() => ey.classList.add('tri-in'), 160);
+    });
+  });
+}, { threshold: .06, rootMargin: '0px 0px -3% 0px' });
+document.querySelectorAll('.rv, .ey').forEach(el => io.observe(el));
+
+/* ══ TOGGLE BLOCK ══ */
+function toggleBlock(head) {
+  head.classList.toggle('open');
+  head.nextElementSibling.classList.toggle('hidden');
+}
+
+/* ══ HELPERS ══ */
+const euro  = v => v ? '€\u00a0' + Math.round(v).toLocaleString('nl-NL') : '—';
+const fmtKm = v => v ? Math.round(v).toLocaleString('nl-NL') + '\u00a0km' : '—';
+const fmtAge= y => y ? (2026 - parseInt(y)) + ' jaar' : '—';
+
+function row(l, v, full) {
+  if (!v || v === '—') return '';
+  return `<div class="bd-row"><span class="bd-l">${l}</span><span class="bd-v">${v}</span></div>`;
+}
+
+function get(html, patterns) {
+  for (const p of patterns) {
+    const m = html.match(p);
+    if (m && m[1]) return m[1].trim();
+  }
+  return null;
+}
+
+/* ══ PLATFORM DETECT ══ */
+function detectPlatform(url) {
+  if (url.includes('mobile.de'))      return 'mobile';
+  if (url.includes('autoscout24'))    return 'autoscout';
+  if (url.includes('marktplaats.nl')) return 'marktplaats';
+  if (url.includes('autotrack.nl'))   return 'autotrack';
+  if (url.includes('bas-world'))      return 'bas';
+  return null;
+}
+
+/* ══ AUTOSCOUT __NEXT_DATA__ ══ */
+function parseAS24NextData(nd) {
+  if (!nd) return {};
+  const str = JSON.stringify(nd);
+  function ex(pats) {
+    for (const p of pats) { const m = str.match(p); if (m && m[1]) return m[1].trim(); }
+    return null;
+  }
+  return {
+    title:  ex([/"title"\s*:\s*"([^"]{5,120})"/,/"headline"\s*:\s*"([^"]{5,120})"/]),
+    price:  ex([/"price"\s*:\s*(\d{3,7})(?:[,}\s])/,/"amount"\s*:\s*(\d{3,7})(?:[,}\s])/,/"offerPrice"\s*:\s*(\d{3,7})(?:[,}\s])/,/"value"\s*:\s*(\d{3,7})(?:[,}\s])/]),
+    km:     ex([/"mileage"\s*:\s*(\d{4,7})(?:[,}\s])/,/"km"\s*:\s*(\d{4,7})(?:[,}\s])/]),
+    year:   ex([/"firstRegistrationYear"\s*:\s*(\d{4})/,/"registrationYear"\s*:\s*(\d{4})/,/"year"\s*:\s*(\d{4})/,/"constructionYear"\s*:\s*(\d{4})/]),
+    fuel:   ex([/"fuelType"\s*:\s*"([^"]{2,30})"/,/"fuel"\s*:\s*"([^"]{2,30})"/]),
+    power:  ex([/"powerKW"\s*:\s*(\d{2,4})(?:[,}\s])/,/"power"\s*:\s*(\d{2,4})(?:[,}\s])/]),
+    trans:  ex([/"transmission"\s*:\s*"([^"]{2,30})"/,/"gearbox"\s*:\s*"([^"]{2,30})"/]),
+    color:  ex([/"color"\s*:\s*"([^"]{2,30})"/,/"bodyColor"\s*:\s*"([^"]{2,30})"/]),
+    doors:  ex([/"doors"\s*:\s*"?(\d)/,/"numberOfDoors"\s*:\s*"?(\d)/]),
+    body:   ex([/"bodyType"\s*:\s*"([^"]{2,30})"/]),
+    seats:  ex([/"seats"\s*:\s*"?(\d)/]),
+    owners: ex([/"previousOwners"\s*:\s*"?(\d)/,/"numberOfPreviousOwners"\s*:\s*"?(\d)/]),
+  };
+}
+
+/* ══ PARSERS ══ */
+function parseMobile(html) {
+  return {
+    platform:'Mobile.de',
+    title:  get(html,[/<h1[^>]*class="[^"]*listing-title[^"]*"[^>]*>([^<]{5,100})<\/h1>/i,/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–\-]{5,80})/i]),
+    price:  get(html,[/"price"\s*:\s*\{[^}]*?"value"\s*:\s*(\d{3,7})/i,/class="[^"]*price[^"]*"[^>]*>\s*(?:€\s*)?([\d,.]+)/i,/(\d{1,3}(?:\.\d{3})+)\s*€/i]),
+    km:     get(html,[/"mileage"\s*:\s*\{[^}]*"value"\s*:\s*"?([\d.,]+)/i,/(\d{2,3}\.\d{3})\s*km/i]),
+    year:   get(html,[/"firstRegistration"\s*:\s*\{[^}]*"year"\s*:\s*(\d{4})/i,/(\b20[01]\d\b)/]),
+    fuel:   get(html,[/"fuel"\s*:\s*"([^"]{2,30})"/i]),
+    power:  get(html,[/(\d{2,4})\s*(?:PS|kW)/i]),
+    color:  get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
+    trans:  get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
+    doors:  get(html,[/"doors"\s*:\s*"?(\d)/i]),
+    body:   get(html,[/"bodyType"\s*:\s*"([^"]{2,30})"/i]),
+    seats:  get(html,[/"seats"\s*:\s*"?(\d)/i]),
+    owners: get(html,[/"previousOwners"\s*:\s*"?(\d)/i]),
+    country:get(html,[/"country"\s*:\s*"([^"]{2,30})"/i,/"location"\s*.*?"country"\s*:\s*"([^"]{2,30})"/i]),
+    priceLevel: /guter\s*preis|sehr\s*guter\s*preis|good.?price/i.test(html)?'ok':/hoher\s*preis|high.?price/i.test(html)?'bad':/fairer?\s*preis|fair.?price/i.test(html)?'warn':null,
+    priceCents: false,
+  };
+}
+
+function parseAutoscout(html, nd) {
+  const nh = parseAS24NextData(nd);
+  const hm = {
+    title: get(html,[/<h1[^>]*>([^<]{5,100})<\/h1>/i,/<title>([^<|–]{5,80})/i]),
+    price: get(html,[/data-testid="(?:price|listing-price)[^"]*"[^>]*>\s*€?\s*([\d.,]+)/i,/"price"\s*:\s*(\d{3,7})(?:[,}\s])/i,/(\d{1,3}(?:[.,]\d{3})+)\s*€/i]),
+    km:    get(html,[/(\d{1,3}(?:[.,]\d{3})+)\s*km/i,/"mileage"\s*:\s*(\d{4,7})/i]),
+    year:  get(html,[/(\b20[01]\d\b)/]),
+    fuel:  get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i]),
+    power: get(html,[/(\d{2,4})\s*(?:PS|pk|kW)/i]),
+    color: get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
+    trans: get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
+    doors: get(html,[/"doors"\s*:\s*"?(\d)/i]),
+    body:  get(html,[/"bodyType"\s*:\s*"([^"]{2,30})"/i]),
+    seats: get(html,[/"seats"\s*:\s*"?(\d)/i]),
+    owners:get(html,[/"previousOwners"\s*:\s*"?(\d)/i]),
+    country:get(html,[/"country"\s*:\s*"([^"]{2,30})"/i]),
+  };
+  return {
+    platform:'AutoScout24',
+    title:  nh.title  || hm.title,
+    price:  nh.price  || hm.price,
+    km:     nh.km     || hm.km,
+    year:   nh.year   || hm.year,
+    fuel:   nh.fuel   || hm.fuel,
+    power:  nh.power  ? nh.power + ' kW' : hm.power,
+    trans:  nh.trans  || hm.trans,
+    color:  nh.color  || hm.color,
+    doors:  nh.doors  || hm.doors,
+    body:   nh.body   || hm.body,
+    seats:  nh.seats  || hm.seats,
+    owners: nh.owners || hm.owners,
+    country: hm.country,
+    priceLevel:null, priceCents:false,
+  };
+}
+
+function parseMarktplaats(html) {
+  const priceCentsRaw = get(html,[/"priceCents"\s*:\s*"?(\d+)"?/i,/"price_cents"\s*:\s*"?(\d+)"?/i]);
+  let priceJsonLd = null;
+  const blocks = html.match(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)||[];
+  for (const b of blocks) {
+    try { const j=JSON.parse(b.replace(/<\/?script[^>]*>/gi,'')); if(j.offers&&j.offers.price){priceJsonLd=String(j.offers.price);break;} } catch(_){}
+  }
+  return {
+    platform:'Marktplaats.nl',
+    title:  get(html,[/<h1[^>]*>([^<]{5,120})<\/h1>/i,/<title>([^<|–]{5,120})/i]),
+    price:  priceCentsRaw || priceJsonLd || get(html,[/€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,/"(?:asking)?[Pp]rice"\s*:\s*"?(\d{3,7})"?/i]),
+    priceCents: !!priceCentsRaw,
+    km:     get(html,[/"mileage"\s*:\s*"?([\d.]+)/i,/([\d]{1,3}(?:\.[\d]{3})+)\s*km/i]),
+    year:   get(html,[/"constructionYear"\s*:\s*"?(\d{4})/i,/"(?:year|bouwjaar)"\s*:\s*"?(\d{4})/i,/\b(20\d{2})\b/i]),
+    fuel:   get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i,/"brandstof"\s*:\s*"([^"]{2,30})"/i]),
+    power:  get(html,[/"power"\s*:\s*"?(\d+)/i,/(\d+)\s*(?:pk|PS)/i]),
+    color:  get(html,[/"color"\s*:\s*"([^"]{2,30})"/i,/"kleur"\s*:\s*"([^"]{2,30})"/i]),
+    trans:  null, doors:null, body:null, seats:null, owners:null, country:'Nederland',
+    priceLevel:null,
+  };
+}
+
+/* ══ CLEAN ══ */
+function cleanPrice(raw, platform, isCents) {
+  if (!raw) return null;
+  let c = String(raw).replace(/[^\d.,]/g,''), n;
+  if (c.includes(',')&&c.includes('.'))       n = parseFloat(c.replace(/\./g,'').replace(',','.'));
+  else if (c.includes('.')&&c.split('.').length===2) { const p=c.split('.'); n=p[1].length===3?parseInt(c.replace('.',''))  :parseFloat(c); }
+  else if (c.includes('.')&&c.split('.').length>2)   n = parseInt(c.replace(/\./g,''));
+  else n = parseFloat(c.replace(',','.'));
+  if (isNaN(n)) return null;
+  if (isCents||(platform==='marktplaats'&&n>200000)) n=Math.round(n/100);
+  return (n<500||n>2000000)?null:n;
+}
+
+function cleanKm(raw) {
+  if (!raw) return null;
+  const n = parseFloat(String(raw).replace(/[^\d]/g,''));
+  return isNaN(n)?null:n;
+}
+
+/* ══ PRICE ADVICE ══ */
+function priceAdvice(price, km, year, title) {
+  if (!price||!year) return null;
+  const age = 2026 - parseInt(year);
+  const kmN = km||(age*15000);
+  const t = (title||'').toLowerCase();
+  let base;
+  if (/lamborghini|ferrari|mclaren|aston.martin|rolls.royce|bentley/i.test(t)) base=220000;
+  else if (/porsche 911|gt3|gt4|gt2/i.test(t)) base=135000;
+  else if (/porsche|rs6|rs7|amg gt|m3|m4|m5|m8|c63|e63|competition/i.test(t)) base=95000;
+  else if (/amg|m.sport|rs |s-line/i.test(t)) base=55000;
+  else base=Math.max(8000,32000*Math.pow(0.88,age));
+  let est = base - (kmN-(age*15000))*0.05;
+  est = Math.max(est,1500);
+  const ratio = price/est;
+  const diff  = Math.abs(Math.round((ratio-1)*100));
+  if (ratio < 0.85) return {
+    level:'ok', tag:'Onder marktwaarde', title:'Aantrekkelijke vraagprijs', icon:'check',
+    text:`Op basis van leeftijd, kilometerstand en voertuigcategorie lijkt de vraagprijs <strong>circa ${diff}% onder de geschatte marktwaarde</strong>. Dit kan duiden op een koopkans — maar controleer altijd of er een gegronde reden is (schade, ontbrekend onderhoud, import­kosten).`,
+    est, ratio,
+  };
+  if (ratio > 1.15) return {
+    level:'bad', tag:'Boven marktwaarde', title:'Prijs vraagt nadere onderbouwing', icon:'warn',
+    text:`De vraagprijs lijkt <strong>circa ${diff}% boven de geschatte marktwaarde</strong>. Bij exclusieve voertuigen kan dit gerechtvaardigd zijn door een bijzondere uitvoering, zeldzame kleur­combinatie, volledig servicehistorie of collectorswaarde. Een onafhankelijke taxatie is sterk aanbevolen.`,
+    est, ratio,
+  };
+  return {
+    level:'warn', tag:'Marktconform', title:'Redelijk marktconforme prijs', icon:'info',
+    text:`De vraagprijs lijkt <strong>marktconform</strong>. Bij exclusieve voertuigen zijn onderhoudshistorie, kleur­combinatie, optiepakket en aantoonbare servicehistorie vaak bepalender dan uitsluitend leeftijd en kilometrage. Onderhandelen is altijd zinvol.`,
+    est, ratio,
+  };
+}
+
+/* ══ RISK PROFILE ══ */
+function buildRisk(parsed, priceNum, kmNum) {
+  const age  = parsed.year ? 2026 - parseInt(parsed.year) : null;
+  const t    = (parsed.title||'').toLowerCase();
+  const isLux= /lamborghini|ferrari|mclaren|porsche|bentley|rolls.royce|aston.martin/i.test(t);
+  const checks = [];
+  let score = 30; // base risk score 0–100
+
+  // kilometerstand
+  if (kmNum) {
+    if (kmNum < 30000) { checks.push({s:'ok', strong:'Lage kilometerstand', text:'Minder dan 30.000 km — gunstiger dan gemiddeld.'}); score -= 8; }
+    else if (kmNum < 80000) { checks.push({s:'ok', strong:'Normale kilometerstand', text:'Normaal gebruik voor de leeftijd.'}); }
+    else if (kmNum < 150000) { checks.push({s:'warn', strong:'Hogere kilometerstand', text:'Extra aandacht voor slijtage­onderdelen bij keuring.'}); score += 10; }
+    else { checks.push({s:'bad', strong:'Hoge kilometerstand', text:'Risico op hogere onderhouds­kosten — keuring essentieel.'}); score += 20; }
+  } else {
+    checks.push({s:'neu', strong:'Kilometerstand onbekend', text:'Niet geparseerd uit advertentie — controleer handmatig.'});
+    score += 10;
+  }
+
+  // leeftijd
+  if (age !== null) {
+    if (age <= 3)  { checks.push({s:'ok', strong:'Recent model', text:'Relatief jong voertuig — minder risico op verborgen gebreken.'}); score -= 5; }
+    else if (age <= 8) { checks.push({s:'ok', strong:'Middeloud voertuig', text:'Normale leeftijd voor de categorie.'}); }
+    else if (age <= 15){ checks.push({s:'warn', strong:'Ouder voertuig', text:'Verhoogde kans op slijtage — onderhoudshistorie kritiek.'}); score += 8; }
+    else               { checks.push({s:'bad', strong:'Hoge voertuigouderdom', text:'Grondige keuring en volledige documentatie­check verplicht.'}); score += 18; }
+  }
+
+  // prijs vs markt
+  if (priceNum) {
+    const adv = priceAdvice(priceNum, kmNum, parsed.year, parsed.title);
+    if (adv) {
+      if (adv.level==='ok')   { checks.push({s:'ok', strong:'Aantrekkelijke prijs', text:'Prijs lijkt onder marktwaarde — navragen waarom.'}); }
+      else if (adv.level==='bad') { checks.push({s:'warn', strong:'Hogere vraagprijs', text:'Controleer of specificaties de meerprijs rechtvaardigen.'}); score += 8; }
+    }
+  }
+
+  // luxe merk → extra risico importkosten
+  if (isLux) {
+    checks.push({s:'warn', strong:'Exclusief voertuig', text:'BPM, verzekering en onderhoud liggen significant hoger — plan dit mee in uw budget.'});
+    score += 6;
+  }
+
+  // platform risico
+  if (parsed.platform === 'Marktplaats.nl') {
+    checks.push({s:'warn', strong:'Particuliere markt', text:'Marktplaats biedt minder zekerheid dan dealer­aanbod — geen garantie, voertuig­check essentieel.'});
+    score += 8;
+  } else {
+    checks.push({s:'ok', strong:'Gerenommeerd platform', text:'Mobile.de en AutoScout24 hanteren strikte dealer­normen.'});
+  }
+
+  // manuals
+  checks.push({s:'neu', strong:'Servicehistorie onbekend', text:'Vraag het complete onderhouds­boekje op bij de verkoper.'});
+  checks.push({s:'neu', strong:'Schadeverleden onbekend', text:'Laat een Carfax of gelijkwaardig rapport opvragen voor definitieve aankoop.'});
+
+  score = Math.max(5, Math.min(95, score));
+  return { score, checks };
+}
+
+/* ══ MARKET CONTEXT ══ */
+function buildMarketContext(parsed, priceNum, kmNum) {
+  const age = parsed.year ? 2026 - parseInt(parsed.year) : null;
+  const adv = priceAdvice(priceNum, kmNum, parsed.year, parsed.title);
+  const est = adv ? adv.est : null;
+  const avgKm = age ? age * 15000 : null;
+  const kmDelta = (kmNum && avgKm) ? kmNum - avgKm : null;
+
+  let html = '<div class="bd-section">';
+  html += '<div class="bd-sec-lbl">Marktwaarde indicatie</div>';
+  html += '<div class="market-grid">';
+  html += `<div class="mkt-card"><div class="mkt-lbl">Geschatte marktwaarde</div><div class="mkt-val">${est ? euro(est) : '—'}</div><div class="mkt-sub">Indicatieve berekening</div></div>`;
+  html += `<div class="mkt-card"><div class="mkt-lbl">Vraagprijs</div><div class="mkt-val">${euro(priceNum)}</div><div class="mkt-sub">Advertentieprijs</div></div>`;
+  if (adv) {
+    const pct = Math.round((adv.ratio - 1) * 100);
+    html += `<div class="mkt-card"><div class="mkt-lbl">Verschil</div><div class="mkt-val" style="color:${adv.level==='ok'?'var(--ig)':adv.level==='bad'?'var(--ir)':'var(--wn-c)'}">${pct > 0 ? '+' : ''}${pct}%</div><div class="mkt-sub">${adv.tag}</div></div>`;
+  }
+  html += '</div></div>';
+
+  if (kmNum && age) {
+    html += '<div class="bd-section" style="margin-top:1.5rem">';
+    html += '<div class="bd-sec-lbl">Kilometerstand analyse</div>';
+    html += '<div class="market-grid">';
+    html += `<div class="mkt-card"><div class="mkt-lbl">Werkelijke stand</div><div class="mkt-val">${fmtKm(kmNum)}</div><div class="mkt-sub">Opgegeven in advertentie</div></div>`;
+    html += `<div class="mkt-card"><div class="mkt-lbl">Gemiddeld voor leeftijd</div><div class="mkt-val">${fmtKm(avgKm)}</div><div class="mkt-sub">15.000 km/jaar norm</div></div>`;
+    if (kmDelta !== null) {
+      const d = Math.abs(Math.round(kmDelta/1000));
+      const isHigh = kmDelta > 5000;
+      html += `<div class="mkt-card"><div class="mkt-lbl">Afwijking</div><div class="mkt-val" style="color:${isHigh?'var(--ir)':'var(--ig)'}">${isHigh?'+':'−'}${d}k km</div><div class="mkt-sub">${isHigh?'Hoger dan gemiddeld':'Lager dan gemiddeld'}</div></div>`;
+    }
+    html += '</div></div>';
+  }
+
+  // Importkosten context
+  if (priceNum) {
+    const bpmEst = Math.round(priceNum * 0.092);
+    const rdw = 690;
+    const total = priceNum + bpmEst + rdw;
+    html += '<div class="bd-section" style="margin-top:1.5rem">';
+    html += '<div class="bd-sec-lbl">Indicatieve totaalkosten (bij import)</div>';
+    html += '<div class="market-grid">';
+    html += `<div class="mkt-card"><div class="mkt-lbl">Aankoopprijs</div><div class="mkt-val">${euro(priceNum)}</div><div class="mkt-sub">Vraagprijs advertentie</div></div>`;
+    html += `<div class="mkt-card"><div class="mkt-lbl">BPM (indicatief)</div><div class="mkt-val">${euro(bpmEst)}</div><div class="mkt-sub">Gebruik onze BPM Calculator</div></div>`;
+    html += `<div class="mkt-card"><div class="mkt-lbl">Totaal indicatief</div><div class="mkt-val" style="color:var(--pt)">${euro(total)}</div><div class="mkt-sub">Incl. BPM + RDW (ca. €690)</div></div>`;
+    html += '</div></div>';
+  }
+
+  return html;
+}
+
+/* ══ TIPS ══ */
+function buildTips(parsed, adv, kmNum) {
+  const age = parsed.year ? 2026 - parseInt(parsed.year) : null;
+  const t = (parsed.title||'').toLowerCase();
+  const isLux = /lamborghini|ferrari|mclaren|porsche|bentley|rolls.royce/i.test(t);
+
+  const tips = [];
+
+  tips.push({
+    t:'Onafhankelijke aankoopkeuring',
+    d:'Laat altijd een <strong>onafhankelijke keuring</strong> uitvoeren door een erkende specialist — nooit via de verkopende partij. APEXclusive kan dit voor u regelen in heel Europa.'
+  });
+
+  if (adv && adv.level === 'bad') {
+    tips.push({
+      t:'Onderhandelruimte benutten',
+      d:`De vraagprijs lijkt boven marktwaarde. Ga de onderhandeling in met een bod van <strong>${euro(adv.est)}</strong> als referentie. Onderbouw met vergelijkbare advertenties.`
+    });
+  }
+
+  if (adv && adv.level === 'ok') {
+    tips.push({
+      t:'Vraag naar de reden van verkoop',
+      d:'Een aantrekkelijke prijs is positief, maar vraag altijd <strong>waarom de auto zo geprijsd staat</strong>. Verborgen schade, technische problemen of ontbrekende documenten verklaren soms een lage vraagprijs.'
+    });
+  }
+
+  tips.push({
+    t:'Servicehistorie en documentatie',
+    d:'Vraag het <strong>volledig onderhoudsboekje</strong> op — bij voorkeur gecertificeerd door de merkdealer. Ontbrekend onderhoud kan leiden tot aanzienlijke vervolgkosten.'
+  });
+
+  if (kmNum && kmNum > 100000) {
+    tips.push({
+      t:'Slijtage-onderdelen controleren',
+      d:'Bij meer dan 100.000 km zijn distributie­riem of -ketting, remmen, koppeling en ophanging extra aandachtspunten. Vraag om bewijs van recente vervanging.'
+    });
+  }
+
+  if (isLux) {
+    tips.push({
+      t:'Onderhoudskosten meecalculeren',
+      d:'Exclusieve voertuigen hebben <strong>aanzienlijk hogere onderhoudskosten</strong>. Zorg voor een goed onderhoudsfonds en overweeg een garantie­pakket bij aanschaf.'
+    });
+  }
+
+  if (parsed.platform !== 'Marktplaats.nl') {
+    tips.push({
+      t:'BPM berekening vooraf',
+      d:'Bereken via onze <strong>BPM Calculator</strong> de exacte importbelasting voordat u een bod uitbrengt. BPM kan de totaalprijs significant verhogen.'
+    });
+  }
+
+  tips.push({
+    t:'Proefrit onder wisselende omstandigheden',
+    d:'Rijd altijd <strong>meerdere routes</strong>: stad, snelweg en, indien mogelijk, een sprintje. Let op trillingen, remrespons, koppelingsgedrag en klimaatregeling.'
+  });
+
+  tips.push({
+    t:'Importafhandeling uitbesteden',
+    d:'Import­papieren, BPM-taxatie, RDW-keuring en kentekenregistratie — APEXclusive regelt het volledig. U rijdt pas als alles klopt.'
+  });
+
+  return '<div class="tip-list">' + tips.map((tip, i) =>
+    `<div class="tip-item"><div class="tip-n">0${i+1}</div><div class="tip-text"><strong>${tip.t}</strong>${tip.d}</div></div>`
+  ).join('') + '</div>';
+}
+
+/* ══ DETAIL BLOCK ══ */
+function buildDetails(parsed, priceNum, kmNum, url) {
+  const age = parsed.year ? 2026 - parseInt(parsed.year) : null;
+  let h = '';
+
+  // Voertuig hoofdgegevens
+  h += '<div class="bd-section"><div class="bd-sec-lbl">Voertuig — hoofdgegevens</div><div class="bd-grid">';
+  h += row('Platform',        parsed.platform);
+  h += row('Titel',           parsed.title);
+  h += row('Bouwjaar',        parsed.year);
+  h += row('Voertuigouderdom', age ? fmtAge(parsed.year) : null);
+  h += row('Brandstof',       parsed.fuel);
+  h += row('Transmissie',     parsed.trans);
+  h += row('Carrosserie',     parsed.body);
+  h += row('Kleur',           parsed.color);
+  h += row('Deuren',          parsed.doors);
+  h += row('Zitplaatsen',     parsed.seats);
+  h += row('Herkomst',        parsed.country);
+  h += '</div></div>';
+
+  // Financieel
+  h += '<div class="bd-section"><div class="bd-sec-lbl">Financieel</div><div class="bd-grid">';
+  h += row('Vraagprijs',     euro(priceNum));
+  h += row('Kilometerstand', fmtKm(kmNum));
+  if (parsed.power) h += row('Vermogen', parsed.power);
+  if (parsed.owners) h += row('Vorige eigenaren', parsed.owners);
+  h += '</div></div>';
+
+  // Link
+  h += '<div class="bd-section"><div class="bd-sec-lbl">Advertentielink</div>';
+  h += `<div class="bd-row"><span class="bd-l">Bron</span><span class="bd-v"><a href="${url}" target="_blank" rel="noopener">${url.length>65?url.substring(0,65)+'…':url}</a></span></div>`;
+  h += '</div>';
+
+  return h;
+}
+
+/* ══ ICONS ══ */
+const ICONS = {
+  check:`<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`,
+  warn: `<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+  info: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`,
+};
+
+/* ══ PHOTOS ══ */
+let allImages = [];
+
+function switchPhoto(idx) {
+  const main = document.querySelector('.gallery-main img');
+  if (main && allImages[idx]) {
+    main.style.opacity = 0;
+    setTimeout(() => {
+      main.src = allImages[idx];
+      main.style.opacity = 1;
+    }, 180);
+    document.querySelectorAll('.thumb-item').forEach((t,i) => t.classList.toggle('active', i===idx));
+  }
+}
+
+function proxyIfNeeded(img) {
+  const needs = ['marktplaats','admarkt-cdn','ecg-img','hzcdn','mpimages','persgroep'].some(s=>img.includes(s));
+  return needs ? '/api/fetch-ad?img=' + encodeURIComponent(img) : img;
+}
+
+function extractClientImages(html) {
+  const imgs=[], seen=new Set();
+  const skip=/(logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|favicon)/i;
+  function add(img) {
+    img=img.replace(/\\u002F/gi,'/').replace(/\\u003A/gi,':').replace(/\\\//g,'/').replace(/&amp;/g,'&').trim();
+    if(!img.startsWith('http')||skip.test(img)||seen.has(img))return;
+    seen.add(img); imgs.push(img);
+  }
+  [/"extraExtraLargeUrl"\s*:\s*"([^"]+)"/gi,/"extraLargeUrl"\s*:\s*"([^"]+)"/gi,/"largeUrl"\s*:\s*"([^"]+)"/gi,/"imageUrl"\s*:\s*"([^"]+)"/gi,/property="og:image"\s+content="([^"]+)"/gi,/content="([^"]+)"\s+property="og:image"/gi]
+  .forEach(p=>{const re=new RegExp(p.source,p.flags);let m;while((m=re.exec(html))!==null)add(m[1]);});
+  return imgs.slice(0,16);
+}
+
+/* ══ ANALYSE ══ */
+async function analyzeAd() {
+  const url  = document.getElementById('adUrl').value.trim();
+  const err  = document.getElementById('errmsg');
+  const load = document.getElementById('loading');
+  const res  = document.getElementById('results');
+  const btn  = document.getElementById('analyzeBtn');
+  const btnt = document.getElementById('btn-t');
+
+  err.classList.remove('show');
+  res.classList.remove('show');
+  res.style.display = 'none';
+
+  if (!url) { err.textContent='Vul een advertentielink in.'; err.classList.add('show'); return; }
+  const platform = detectPlatform(url);
+  if (!platform) { err.textContent='Niet-ondersteund platform. Gebruik Mobile.de, AutoScout24, Marktplaats.nl, AutoTrack of BAS-World.'; err.classList.add('show'); return; }
+
+  load.style.display = 'block';
+  btn.disabled = true; btnt.textContent = 'Analyseren…';
+
+  try {
+    const resp = await fetch('/api/fetch-ad?url=' + encodeURIComponent(url));
+    const data = await resp.json();
+    if (!resp.ok || data.error) throw new Error(data.error || 'Ophalen mislukt');
+
+    const html = data.html;
+    const nd   = data.nextData || null;
+
+    allImages = (data.images && data.images.length > 0)
+      ? data.images.map(proxyIfNeeded)
+      : extractClientImages(html).map(proxyIfNeeded);
+
+    let parsed;
+    if (platform === 'mobile')         parsed = parseMobile(html);
+    else if (platform === 'autoscout') parsed = parseAutoscout(html, nd);
+    else                               parsed = parseMarktplaats(html);
+
+    const priceNum = cleanPrice(parsed.price, platform, parsed.priceCents||false);
+    const kmNum    = cleanKm(parsed.km);
+    const adv      = priceAdvice(priceNum, kmNum, parsed.year, parsed.title);
+    const level    = parsed.priceLevel || (adv ? adv.level : null);
+    const risk     = buildRisk(parsed, priceNum, kmNum);
+
+    /* ── GALLERY ── */
+    const gh = document.getElementById('galleryHero');
+    if (allImages.length > 0) {
+      gh.innerHTML =
+        `<div class="gallery-main" onclick="switchPhoto(${Math.min(1,allImages.length-1)})">
+          <img src="${allImages[0]}" alt="${(parsed.title||'Voertuig').replace(/"/g,'&quot;')}"
+            style="transition:opacity .25s" onerror="this.parentElement.style.background='var(--ink3)';this.style.display='none'">
+          <div class="gallery-overlay"></div>
+          <div class="gallery-strip"><span></span><span></span><span></span></div>
+          <div class="gallery-count">${allImages.length} foto${allImages.length!==1?'s':''}</div>
+          <div class="gallery-info">
+            <div class="gallery-platform">${parsed.platform}</div>
+            <div class="gallery-title">${parsed.title||'Voertuig'}</div>
+            <div class="gallery-meta">
+              ${parsed.year?`<span>${parsed.year}</span>`:''}
+              ${parsed.fuel?`<span>${parsed.fuel}</span>`:''}
+              ${parsed.power?`<span>${parsed.power}</span>`:''}
+              ${kmNum?`<span>${fmtKm(kmNum)}</span>`:''}
+            </div>
+          </div>
+        </div>`
+        + (allImages.length > 1
+          ? `<div class="thumb-strip">${allImages.slice(0,8).map((img,i) =>
+              `<div class="thumb-item${i===0?' active':''}" onclick="switchPhoto(${i})">
+                <img src="${img}" alt="foto ${i+1}" loading="lazy" onerror="this.parentElement.style.display='none'">
+              </div>`
+            ).join('') + (allImages.length > 8
+              ? `<div class="thumb-item more">+${allImages.length-8}</div>` : '')
+            }</div>` : '');
+    } else {
+      gh.innerHTML = '';
+    }
+
+    /* ── STATUS BAR ── */
+    const sb = document.getElementById('statusBar');
+    const pills = [
+      { l: parsed.platform, c:'neu' },
+      priceNum ? { l:euro(priceNum), c:level==='ok'?'ok':level==='bad'?'bad':'warn' } : { l:'Prijs onbekend', c:'neu' },
+      kmNum    ? { l:fmtKm(kmNum),   c:kmNum<50000?'ok':kmNum<120000?'warn':'bad' }  : { l:'KM onbekend', c:'neu' },
+      parsed.year ? { l:parsed.year, c:'neu' } : { l:'Jaar onbekend', c:'neu' },
+      parsed.fuel ? { l:parsed.fuel, c:'neu' } : null,
+      level ? { l:level==='ok'?'Goede prijs':level==='bad'?'Hoge prijs':'Marktconform', c:level } : null,
+      parsed.country ? { l:parsed.country, c:'neu' } : null,
+    ].filter(Boolean);
+    sb.innerHTML = pills.map(p => `<div class="s-pill pill-${p.c}">${p.l}</div>`).join('');
+
+    /* ── STAT CARDS ── */
+    document.getElementById('statRow').innerHTML =
+      `<div class="s-card"><span class="s-card-lbl">Vraagprijs</span><div class="s-card-val">${euro(priceNum)}</div><div class="s-card-sub">${adv?adv.tag:'—'}</div></div>`
+    + `<div class="s-card"><span class="s-card-lbl">Kilometerstand</span><div class="s-card-val">${fmtKm(kmNum)}</div><div class="s-card-sub">${kmNum&&kmNum<50000?'Laag':kmNum&&kmNum<120000?'Normaal':kmNum?'Hoog':'—'}</div></div>`
+    + `<div class="s-card"><span class="s-card-lbl">Bouwjaar</span><div class="s-card-val">${parsed.year||'—'}</div><div class="s-card-sub">${parsed.year?fmtAge(parsed.year):'Onbekend'}</div></div>`
+    + `<div class="s-card"><span class="s-card-lbl">Risicoscore</span><div class="s-card-val" style="color:${risk.score<40?'var(--ig)':risk.score<65?'var(--wn-c)':'var(--ir)'}">${risk.score}</div><div class="s-card-sub">0 = laag · 100 = hoog</div></div>`;
+
+    /* ── VERDICT ── */
+    const vw = document.getElementById('verdictWrap');
+    if (adv) {
+      const vc = { ok:'verdict-ok', warn:'verdict-warn', bad:'verdict-bad' }[adv.level];
+      const deltaClass = adv.level==='ok'?'delta-ok':adv.level==='bad'?'delta-bad':'delta-warn';
+      const pct = Math.round((adv.ratio - 1) * 100);
+      vw.innerHTML =
+        `<div class="verdict-box ${vc} rv">
+          <div class="verdict-head">
+            <div class="verdict-icon">${ICONS[adv.icon]||ICONS.info}</div>
+            <div>
+              <div class="verdict-tag">${adv.tag}</div>
+              <div class="verdict-title">${adv.title}</div>
+            </div>
+          </div>
+          <div class="verdict-body">${adv.text}</div>
+          <div class="price-compare">
+            <div class="pc-side">
+              <div class="pc-lbl">Vraagprijs</div>
+              <div class="pc-val">${euro(priceNum)}</div>
+              <div class="pc-sub">Gevraagd door verkoper</div>
+            </div>
+            <div class="pc-side">
+              <div class="pc-lbl">Geschatte marktwaarde</div>
+              <div class="pc-val">${euro(adv.est)}</div>
+              <div class="pc-sub">Indicatief — APEXclusive</div>
+              <div class="pc-delta ${deltaClass}">${pct>0?'+':''}${pct}% verschil</div>
+            </div>
+          </div>
+        </div>`;
+      io.observe(vw.querySelector('.rv'));
+    } else {
+      vw.innerHTML = '';
+    }
+
+    /* ── MARKET CONTEXT ── */
+    document.getElementById('marketContent').innerHTML = buildMarketContext(parsed, priceNum, kmNum);
+
+    /* ── RISK CHECKLIST ── */
+    const riskBar = `
+      <div style="display:flex;align-items:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap">
+        <div>
+          <div class="risk-score" style="color:${risk.score<40?'var(--ig)':risk.score<65?'var(--wn-c)':'var(--ir)'}">${risk.score}</div>
+          <div class="risk-label" style="color:${risk.score<40?'var(--ig)':risk.score<65?'var(--wn-c)':'var(--ir)'}">
+            ${risk.score<40?'Laag risico':risk.score<65?'Gemiddeld risico':'Verhoogd risico'}
+          </div>
+        </div>
+        <div style="flex:1;min-width:180px">
+          <div class="risk-bar">
+            <div class="risk-labels"><span>Laag</span><span>Gemiddeld</span><span>Hoog</span></div>
+            <div class="risk-track">
+              <div class="risk-fill" id="riskFill" style="transform:scaleX(0)"></div>
+              <div class="risk-marker" id="riskMarker" style="left:0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    document.getElementById('riskContent').innerHTML = riskBar
+      + '<div class="checklist">'
+      + risk.checks.map(c =>
+          `<div class="check-item">
+            <div class="check-dot check-${c.s}">
+              ${c.s==='ok'?'<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+               :c.s==='warn'?'<svg viewBox="0 0 24 24"><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+               :c.s==='bad'?'<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+               :'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/></svg>'}
+            </div>
+            <div class="check-text"><strong>${c.strong}</strong>${c.text}</div>
+          </div>`
+        ).join('')
+      + '</div>';
+    // animate risk bar
+    setTimeout(() => {
+      const f = document.getElementById('riskFill');
+      const m = document.getElementById('riskMarker');
+      if (f) f.style.transform = `scaleX(${risk.score/100})`;
+      if (m) m.style.left = `${risk.score}%`;
+    }, 400);
+
+    /* ── TIPS ── */
+    document.getElementById('tipsContent').innerHTML = buildTips(parsed, adv, kmNum);
+
+    /* ── DETAILS ── */
+    document.getElementById('detailsContent').innerHTML = buildDetails(parsed, priceNum, kmNum, url);
+
+    // re-observe new .rv elements
+    res.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+    res.style.display = 'block';
+    res.classList.add('show');
+    setTimeout(() => res.scrollIntoView({ behavior:'smooth', block:'start' }), 80);
+
+  } catch(e) {
+    err.textContent = 'Ophalen mislukt: ' + e.message + '. Controleer of de link correct en publiek toegankelijk is.';
+    err.classList.add('show');
+  } finally {
+    load.style.display = 'none';
+    btn.disabled = false;
+    btnt.textContent = 'Analyseer advertentie';
+  }
+}
+
+/* ══ RESET ══ */
+function resetTool() {
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('errmsg').classList.remove('show');
+  document.getElementById('adUrl').value = '';
+  allImages = [];
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 </script>
 </body>
