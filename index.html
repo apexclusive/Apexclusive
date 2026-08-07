@@ -569,7 +569,14 @@ async function analyzeAd(){
     if(!resp.ok||data.error) throw new Error(data.error||'Ophalen mislukt');
 
     const html=data.html;
-    allImages=data.images||extractImages(html);
+    var rawImages = data.images || extractImages(html);
+allImages = rawImages.map(function(img) {
+  // marktplaats afbeeldingen via proxy laden
+  if (img.includes('marktplaats') || img.includes('ecg-')) {
+    return '/api/fetch-ad?img=' + encodeURIComponent(img);
+  }
+  return img;
+});
 
     let parsed;
     if(platform==='mobile')      parsed=parseMobile(html);
