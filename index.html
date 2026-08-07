@@ -24,9 +24,9 @@
   --cs:linear-gradient(100deg,#8a9099 0%,#d4d8dc 40%,#fff 50%,#d4d8dc 60%,#8a9099 100%);
   --tr:linear-gradient(90deg,var(--ig) 0 33.33%,#fff 33.33% 66.66%,var(--ir) 66.66% 100%);
   --tf:linear-gradient(90deg,transparent 0%,var(--ig) 15% 33.33%,#fff 33.33% 66.66%,var(--ir) 66.66% 85%,transparent 100%);
-  --ok-c:var(--ig);--ok-bg:rgba(0,146,70,.06);--ok-bd:rgba(0,146,70,.22);
+  --ok-c:#009246;--ok-bg:rgba(0,146,70,.06);--ok-bd:rgba(0,146,70,.22);
   --wn-c:#c49a00;--wn-bg:rgba(196,154,0,.05);--wn-bd:rgba(196,154,0,.2);
-  --bd-c:var(--ir);--bd-bg:rgba(206,43,55,.06);--bd-bd:rgba(206,43,55,.22);
+  --bd-c:#CE2B37;--bd-bg:rgba(206,43,55,.06);--bd-bd:rgba(206,43,55,.22);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -37,9 +37,7 @@ a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--ink)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,var(--ig) 33%,rgba(198,203,209,.5) 33% 66%,var(--ir) 66%)}
-
 #progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:200;background:var(--pt-s);transform-origin:left;transform:scaleX(0)}
-
 .brand{font-family:var(--sf);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;display:inline-flex;align-items:center;gap:0;text-decoration:none;color:var(--tx)}
 .brand-apex{font-weight:600;color:var(--pt);letter-spacing:.22em}
 .brand-sep{display:inline-flex;flex-direction:column;gap:2px;margin:0 8px;flex-shrink:0}
@@ -48,7 +46,6 @@ a{color:inherit;text-decoration:none}
 .brand-sep span:nth-child(2){height:5px;background:#fff}
 .brand-sep span:nth-child(3){height:5px;background:var(--ir)}
 .brand-excl{font-weight:300;color:rgba(198,203,209,.42);letter-spacing:.22em}
-
 nav{position:fixed;inset:0 0 auto;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.4rem var(--pd);transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
 nav.stuck{background:rgba(8,8,8,.94);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);padding:.85rem var(--pd);border-bottom-color:var(--ln)}
 .brand{font-size:1.3rem}
@@ -61,7 +58,6 @@ nav.stuck{background:rgba(8,8,8,.94);backdrop-filter:blur(22px);-webkit-backdrop
 .btn:hover{color:var(--ink)}.btn:hover::before{transform:translateY(0)}
 .btn.gh{border-color:rgba(255,255,255,.18);color:#ccc}.btn.gh::before{background:rgba(255,255,255,.95)}.btn.gh:hover{color:var(--ink)}
 .btn.sm{padding:.6rem 1.3rem}
-
 .ey{font-family:var(--lb);font-size:.65rem;letter-spacing:.38em;text-transform:uppercase;color:var(--pt);font-weight:400;margin-bottom:1.35rem;display:flex;align-items:center;gap:.85rem}
 .ey-tri,.ey-tri-r{display:flex;flex-direction:row;gap:0;flex-shrink:0;overflow:hidden;height:11px;width:0;transition:width .85s cubic-bezier(.2,.7,.3,1)}
 .ey-tri-r{transition-delay:.12s}
@@ -70,18 +66,15 @@ nav.stuck{background:rgba(8,8,8,.94);backdrop-filter:blur(22px);-webkit-backdrop
 .ey-tri-r span:nth-child(1){background:var(--ir)}.ey-tri-r span:nth-child(2){background:#fff}.ey-tri-r span:nth-child(3){background:var(--ig)}
 .ey.tri-in .ey-tri,.ey.tri-in .ey-tri-r{width:42px}
 .ey.c{justify-content:center}
-
 h1,h2,h3,h4{font-family:var(--sf);font-weight:300;line-height:1.1;letter-spacing:.01em}
 h2{font-size:clamp(2rem,4.4vw,3.3rem);margin-bottom:1.1rem}
 h3{font-size:1.38rem;margin-bottom:.58rem}
 p{color:var(--mt);font-size:.92rem}
 .lead{font-size:1.02rem;max-width:56ch;color:#ababab}
 .rule{width:56px;height:2px;background:var(--ch);margin-top:1.5rem}
-
 .rv{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.2,.7,.3,1),transform .85s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-
 .page-hero{position:relative;padding:clamp(7rem,14vw,11rem) var(--pd) clamp(4rem,8vw,6rem);text-align:center;overflow:hidden}
 .page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--ig) 33%,rgba(198,203,209,.5) 66%,var(--ir));opacity:.55}
 .page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 28% 60%,rgba(0,146,70,.04) 0%,transparent 55%),radial-gradient(ellipse at 72% 60%,rgba(206,43,55,.04) 0%,transparent 55%);pointer-events:none}
@@ -91,9 +84,7 @@ p{color:var(--mt);font-size:.92rem}
 @keyframes csh{0%{background-position:0% center}50%{background-position:100% center}100%{background-position:0% center}}
 .page-hero .lead{margin:0 auto;text-align:center}
 .hero-divider{height:1px;background:linear-gradient(90deg,transparent,var(--ig) 20%,rgba(198,203,209,.4) 50%,var(--ir) 80%,transparent);opacity:.35;margin:0 var(--pd)}
-
 .page-wrap{max-width:1060px;margin:0 auto;padding:clamp(3rem,6vw,5rem) var(--pd) clamp(5rem,10vw,8rem)}
-
 .search-block{background:var(--ink2);border:1px solid var(--ln);position:relative;overflow:hidden;margin-bottom:2px}
 .search-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.45}
 .search-inner{padding:clamp(1.75rem,4vw,2.75rem) clamp(1.5rem,4vw,2.75rem)}
@@ -112,7 +103,6 @@ p{color:var(--mt);font-size:.92rem}
 .pt-tag::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--ig);flex-shrink:0}
 .err-msg{display:none;font-size:.76rem;color:var(--ir);margin-top:.85rem;padding:.65rem 1rem;background:rgba(206,43,55,.06);border-left:2px solid rgba(206,43,55,.4);letter-spacing:.04em;line-height:1.65}
 .err-msg.show{display:block}
-
 .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);margin-bottom:2px}
 .how-item{background:var(--ink2);padding:1.65rem 1.5rem;position:relative;overflow:hidden;transition:background .3s}
 .how-item:hover{background:var(--ink3)}
@@ -124,13 +114,11 @@ p{color:var(--mt);font-size:.92rem}
 .how-n{font-family:var(--sf);font-size:.78rem;color:var(--pt);opacity:.4;letter-spacing:.15em;margin-bottom:.65rem}
 .how-item h3{font-size:1.05rem;margin-bottom:.35rem;color:var(--tx)}
 .how-item p{font-size:.78rem;line-height:1.72}
-
 .loading{display:none;text-align:center;padding:5rem 0}
 .spinner{width:34px;height:34px;border:1.5px solid rgba(198,203,209,.08);border-top-color:rgba(198,203,209,.5);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-label{font-family:var(--lb);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mt);margin-bottom:.5rem}
 .loading-sub{font-family:var(--sf);font-style:italic;font-size:1rem;color:rgba(198,203,209,.3)}
-
 .results{display:none}
 .results.show{display:block;animation:fadeUp .55s cubic-bezier(.2,.7,.3,1)}
 
@@ -141,24 +129,21 @@ p{color:var(--mt);font-size:.92rem}
 .gallery-main:hover img{filter:brightness(.78) saturate(.72);transform:scale(1.02)}
 .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.9) 0%,rgba(8,8,8,.2) 40%,transparent 70%);pointer-events:none}
 .gallery-strip{position:absolute;bottom:0;left:0;right:0;height:2px;display:flex}
-.gallery-strip span{flex:1;display:block}
-.gallery-strip span:nth-child(1){background:var(--ig);opacity:.72}
-.gallery-strip span:nth-child(2){background:rgba(198,203,209,.42)}
-.gallery-strip span:nth-child(3){background:var(--ir);opacity:.72}
+.gallery-strip span{flex:1}.gallery-strip span:nth-child(1){background:var(--ig);opacity:.72}.gallery-strip span:nth-child(2){background:rgba(198,203,209,.42)}.gallery-strip span:nth-child(3){background:var(--ir);opacity:.72}
 .gallery-info{position:absolute;bottom:0;left:0;right:0;padding:2rem 2rem 1.5rem;z-index:2}
 .gallery-platform{font-family:var(--lb);font-size:.55rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(198,203,209,.4);margin-bottom:.5rem}
 .gallery-title{font-family:var(--sf);font-size:clamp(1.4rem,3vw,2.4rem);font-weight:400;color:var(--tx);line-height:1.1;margin-bottom:.35rem}
 .gallery-meta{font-family:var(--lb);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,203,209,.4);display:flex;gap:1rem;flex-wrap:wrap}
 .gallery-count{position:absolute;top:1.25rem;right:1.25rem;font-family:var(--lb);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(198,203,209,.4);background:rgba(8,8,8,.7);backdrop-filter:blur(12px);padding:.4rem .85rem;border:1px solid var(--ln)}
 .thumb-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;background:var(--ink)}
-.thumb-item{height:68px;overflow:hidden;cursor:pointer;background:var(--ink3);position:relative}
+.thumb-item{height:68px;overflow:hidden;cursor:pointer;background:var(--ink3)}
 .thumb-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.5);transition:filter .4s,transform .5s}
 .thumb-item:hover img{filter:brightness(.75) saturate(.7);transform:scale(1.06)}
 .thumb-item.active{outline:1px solid rgba(198,203,209,.35)}
 .thumb-item.active img{filter:brightness(.88) saturate(.78)}
 .thumb-item.more{display:flex;align-items:center;justify-content:center;background:var(--ink3);font-family:var(--lb);font-size:.58rem;letter-spacing:.12em;color:rgba(198,203,209,.3)}
 
-/* Status + cards */
+/* Status pills + stat cards */
 .status-bar{background:var(--ink3);border:1px solid var(--ln);border-top:none;padding:.85rem 1.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:2px;position:relative}
 .status-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.25}
 .s-pill{font-family:var(--lb);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border:1px solid;display:flex;align-items:center;gap:5px;font-weight:400}
@@ -167,14 +152,10 @@ p{color:var(--mt);font-size:.92rem}
 .pill-warn{color:var(--wn-c);border-color:var(--wn-bd);background:var(--wn-bg)}.pill-warn::before{background:var(--wn-c)}
 .pill-bad{color:var(--bd-c);border-color:var(--bd-bd);background:var(--bd-bg)}.pill-bad::before{background:var(--bd-c)}
 .pill-neu{color:var(--mt);border-color:rgba(198,203,209,.12);background:rgba(198,203,209,.03)}.pill-neu::before{background:var(--mt)}
-
 .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ln);margin-bottom:2px}
 .s-card{background:var(--ink2);padding:1.75rem 1.5rem;text-align:center;position:relative;overflow:hidden;transition:background .35s}
 .s-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
-.s-card:nth-child(1)::after{background:var(--ig)}
-.s-card:nth-child(2)::after{background:var(--pt)}
-.s-card:nth-child(3)::after{background:var(--pt)}
-.s-card:nth-child(4)::after{background:var(--ir)}
+.s-card:nth-child(1)::after{background:var(--ig)}.s-card:nth-child(2)::after{background:var(--pt)}.s-card:nth-child(3)::after{background:var(--pt)}.s-card:nth-child(4)::after{background:var(--ir)}
 .s-card:hover{background:var(--ink3)}.s-card:hover::after{transform:scaleX(1)}
 .s-card-lbl{font-family:var(--lb);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(198,203,209,.28);margin-bottom:.85rem;display:block}
 .s-card-val{font-family:var(--sf);font-size:2rem;font-weight:300;color:var(--tx);line-height:1}
@@ -199,8 +180,7 @@ p{color:var(--mt);font-size:.92rem}
 .price-compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ln)}
 .pc-side{background:var(--ink3);padding:1.35rem 1.5rem;position:relative;overflow:hidden}
 .pc-side::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;opacity:.5}
-.pc-side:nth-child(1)::before{background:rgba(198,203,209,.2)}
-.pc-side:nth-child(2)::before{background:var(--ig)}
+.pc-side:nth-child(1)::before{background:rgba(198,203,209,.2)}.pc-side:nth-child(2)::before{background:var(--ig)}
 .pc-lbl{font-family:var(--lb);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(198,203,209,.28);margin-bottom:.65rem}
 .pc-val{font-family:var(--sf);font-size:2rem;font-weight:300;color:var(--tx);line-height:1}
 .pc-sub{font-size:.74rem;color:rgba(198,203,209,.3);margin-top:.4rem}
@@ -208,6 +188,13 @@ p{color:var(--mt);font-size:.92rem}
 .delta-ok{color:var(--ok-c);border-color:var(--ok-bd);background:var(--ok-bg)}
 .delta-warn{color:var(--wn-c);border-color:var(--wn-bd);background:var(--wn-bg)}
 .delta-bad{color:var(--bd-c);border-color:var(--bd-bd);background:var(--bd-bg)}
+/* Confidence indicator */
+.conf-bar{display:flex;align-items:center;gap:.65rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--hr)}
+.conf-label{font-family:var(--lb);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(198,203,209,.25);white-space:nowrap}
+.conf-track{flex:1;height:3px;background:rgba(198,203,209,.08);position:relative}
+.conf-fill{height:100%;background:linear-gradient(to right,var(--ir),var(--wn-c),var(--ig));transform-origin:left;transition:transform 1s cubic-bezier(.2,.7,.3,1)}
+.conf-val{font-family:var(--lb);font-size:.52rem;letter-spacing:.12em;color:rgba(198,203,209,.35);white-space:nowrap}
+.conf-basis{font-size:.72rem;color:rgba(198,203,209,.22);margin-top:.5rem;line-height:1.6}
 
 /* Detail blocks */
 .dblock{background:var(--ink2);border:1px solid var(--ln);margin-bottom:2px;position:relative;overflow:hidden}
@@ -224,7 +211,6 @@ p{color:var(--mt);font-size:.92rem}
 .bhead.open .bhead-chev{transform:rotate(180deg)}
 .bbody{padding:1.75rem 1.85rem 2rem}
 .bbody.hidden{display:none}
-
 .bd-section{margin-bottom:1.75rem}
 .bd-section:last-child{margin-bottom:0}
 .bd-sec-lbl{font-family:var(--lb);font-size:.54rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(198,203,209,.2);margin-bottom:.85rem;padding-bottom:.65rem;border-bottom:1px solid var(--ln)}
@@ -236,7 +222,7 @@ p{color:var(--mt);font-size:.92rem}
 .bd-v a{color:rgba(198,203,209,.5);border-bottom:1px solid var(--ln);transition:color .3s,border-color .3s}
 .bd-v a:hover{color:var(--pt);border-color:var(--pt)}
 
-/* Risk checklist */
+/* Risk */
 .checklist{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.5rem}
 .check-item{display:flex;align-items:flex-start;gap:.65rem;padding:.6rem 0;border-bottom:1px solid rgba(198,203,209,.04)}
 .check-dot{width:16px;height:16px;border:1px solid;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
@@ -247,84 +233,159 @@ p{color:var(--mt);font-size:.92rem}
 .check-dot svg{width:9px;height:9px;fill:none;stroke-width:2}
 .check-text{font-size:.8rem;color:var(--mt);line-height:1.55}
 .check-text strong{color:rgba(198,203,209,.62);font-weight:500;display:block;font-size:.78rem}
-
-/* Risk meter */
-.risk-bar{margin-top:1.25rem}
-.risk-labels{display:flex;justify-content:space-between;font-family:var(--lb);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,203,209,.25);margin-bottom:.5rem}
-.risk-track{height:4px;background:rgba(198,203,209,.08);position:relative;overflow:hidden}
+.risk-score-wrap{display:flex;align-items:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.risk-score{font-family:var(--sf);font-size:3rem;font-weight:300;line-height:1;margin-bottom:.25rem}
+.risk-lbl{font-family:var(--lb);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase}
+.risk-track{flex:1;min-width:160px}
+.risk-track-labels{display:flex;justify-content:space-between;font-family:var(--lb);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,203,209,.25);margin-bottom:.5rem}
+.risk-bg{height:4px;background:rgba(198,203,209,.08);position:relative;overflow:hidden}
 .risk-fill{height:100%;background:linear-gradient(to right,var(--ig),#c49a00,var(--ir));transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
-.risk-marker{position:absolute;top:-4px;height:12px;width:2px;background:var(--tx);transform:translateX(-50%);transition:left 1.2s cubic-bezier(.2,.7,.3,1)}
-.risk-score{font-family:var(--sf);font-size:3rem;font-weight:300;color:var(--tx);line-height:1;margin-bottom:.25rem}
-.risk-label{font-family:var(--lb);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase}
 
-/* Market grid */
+/* Market */
 .market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln)}
 .mkt-card{background:var(--ink3);padding:1.35rem 1.25rem;position:relative}
 .mkt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 .mkt-card:hover::after{transform:scaleX(1)}
-.mkt-card:nth-child(1)::after{background:var(--ig)}
-.mkt-card:nth-child(2)::after{background:var(--pt)}
-.mkt-card:nth-child(3)::after{background:var(--ir)}
+.mkt-card:nth-child(1)::after{background:var(--ig)}.mkt-card:nth-child(2)::after{background:var(--pt)}.mkt-card:nth-child(3)::after{background:var(--ir)}
 .mkt-lbl{font-family:var(--lb);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(198,203,209,.25);margin-bottom:.65rem}
 .mkt-val{font-family:var(--sf);font-size:1.45rem;font-weight:300;color:var(--tx);line-height:1;margin-bottom:.3rem}
 .mkt-sub{font-size:.74rem;color:rgba(198,203,209,.3)}
 
-/* ══ TIPS — volledig nieuw design ══ */
-.tips-grid{display:flex;flex-direction:column;gap:0}
-.tip-card{display:grid;grid-template-columns:auto 1fr;gap:0;border-bottom:1px solid var(--hr);transition:background .3s}
+/* ══ TIP CARDS — volledig nieuw design ══ */
+.tips-list{display:flex;flex-direction:column;gap:0}
+
+/* Elke tip-card: twee kolommen — links smal (nummer + icoon), rechts breed (content) */
+.tip-card{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  border-bottom:1px solid var(--hr);
+  transition:background .3s;
+  position:relative;
+}
 .tip-card:last-child{border-bottom:none}
-.tip-card:hover{background:rgba(198,203,209,.02)}
-.tip-card-left{padding:1.65rem 1.5rem 1.65rem 0;display:flex;flex-direction:column;align-items:center;gap:.75rem;border-right:1px solid var(--hr);min-width:72px;width:72px}
-.tip-card-n{font-family:var(--sf);font-size:1.65rem;font-weight:300;color:var(--pt);opacity:.28;line-height:1}
-.tip-card-icon{width:32px;height:32px;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .4s}
-.tip-card:hover .tip-card-icon{border-color:rgba(198,203,209,.28)}
-.tip-card-icon svg{width:13px;height:13px;fill:none;stroke:var(--mt);stroke-width:1.5;transition:stroke .4s}
-.tip-card:hover .tip-card-icon svg{stroke:var(--pt)}
-.tip-card-right{padding:1.65rem 0 1.65rem 1.75rem;display:flex;flex-direction:column;gap:.55rem}
-.tip-card-head{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap}
-.tip-card-title{font-family:var(--sf);font-size:1.12rem;font-weight:400;color:var(--tx);line-height:1.2}
-/* source badge — uit advertentie gehaald */
-.tip-source{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--lb);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;padding:.28rem .65rem;border:1px solid;flex-shrink:0}
-.tip-source-ok{color:var(--ok-c);border-color:var(--ok-bd);background:var(--ok-bg)}
-.tip-source-warn{color:var(--wn-c);border-color:var(--wn-bd);background:var(--wn-bg)}
-.tip-source-bad{color:var(--bd-c);border-color:var(--bd-bd);background:var(--bd-bg)}
-.tip-source-neu{color:var(--mt);border-color:rgba(198,203,209,.12);background:rgba(198,203,209,.03)}
-.tip-source svg{width:8px;height:8px;fill:none;stroke:currentColor;stroke-width:2;flex-shrink:0}
-.tip-card-body{font-size:.82rem;color:var(--mt);line-height:1.85}
-.tip-card-body strong{color:rgba(198,203,209,.65);font-weight:500}
-/* advertentie extract quote */
-.tip-extract{margin-top:.55rem;padding:.65rem 1rem;background:var(--ink3);border-left:2px solid var(--ln);font-family:var(--sf);font-style:italic;font-size:.84rem;color:rgba(198,203,209,.38);line-height:1.65;position:relative}
+.tip-card:hover{background:rgba(198,203,209,.015)}
+/* Subtiele linker accent-lijn per kaart */
+.tip-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  opacity:0;transition:opacity .4s;
+}
+.tip-card.tc-ok::before{background:var(--ok-c)}
+.tip-card.tc-warn::before{background:var(--wn-c)}
+.tip-card.tc-bad::before{background:var(--bd-c)}
+.tip-card.tc-neu::before{background:rgba(198,203,209,.25)}
+.tip-card:hover::before{opacity:1}
+
+/* Linker kolom */
+.tip-left{
+  padding:1.75rem 1rem 1.75rem 1.5rem;
+  display:flex;flex-direction:column;align-items:center;
+  gap:.75rem;border-right:1px solid var(--hr);
+}
+.tip-num{
+  font-family:var(--sf);font-size:1.55rem;font-weight:300;
+  color:var(--pt);opacity:.22;line-height:1;
+}
+.tip-icon-wrap{
+  width:34px;height:34px;border:1px solid var(--ln);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:border-color .4s;
+}
+.tip-card:hover .tip-icon-wrap{border-color:rgba(198,203,209,.3)}
+.tip-icon-wrap svg{
+  width:13px;height:13px;fill:none;stroke:var(--mt);
+  stroke-width:1.5;transition:stroke .4s;
+}
+.tip-card:hover .tip-icon-wrap svg{stroke:var(--pt)}
+
+/* Rechter kolom */
+.tip-right{padding:1.75rem 1.75rem 1.75rem 1.65rem;display:flex;flex-direction:column;gap:.75rem}
+
+/* Titel-rij: titel + status-badge naast elkaar */
+.tip-title-row{display:flex;align-items:flex-start;gap:.85rem;flex-wrap:wrap}
+.tip-title{
+  font-family:var(--sf);font-size:1.18rem;font-weight:400;
+  color:var(--tx);line-height:1.25;flex:1;min-width:0;
+}
+/* Status badge */
+.tip-badge{
+  display:inline-flex;align-items:center;gap:.38rem;
+  font-family:var(--lb);font-size:.5rem;letter-spacing:.16em;
+  text-transform:uppercase;padding:.3rem .65rem;border:1px solid;
+  flex-shrink:0;white-space:nowrap;margin-top:.18rem;
+}
+.tip-badge svg{width:8px;height:8px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0}
+.tb-ok{color:var(--ok-c);border-color:var(--ok-bd);background:var(--ok-bg)}
+.tb-warn{color:var(--wn-c);border-color:var(--wn-bd);background:var(--wn-bg)}
+.tb-bad{color:var(--bd-c);border-color:var(--bd-bd);background:var(--bd-bg)}
+.tb-neu{color:var(--mt);border-color:rgba(198,203,209,.12);background:rgba(198,203,209,.03)}
+
+/* Body tekst — APART van de titel */
+.tip-body{
+  font-size:.83rem;color:var(--mt);line-height:1.88;
+}
+.tip-body strong{color:rgba(198,203,209,.65);font-weight:500}
+
+/* Advertentie-extract quote */
+.tip-extract{
+  padding:.75rem 1rem .75rem 1.1rem;
+  background:var(--ink3);
+  border-left:2px solid var(--ln);
+  position:relative;
+  font-family:var(--sf);font-style:italic;
+  font-size:.84rem;color:rgba(198,203,209,.38);
+  line-height:1.7;
+}
 .tip-extract::before{content:'';position:absolute;top:0;left:-2px;bottom:0;width:2px}
-.tip-extract.ex-ok::before{background:var(--ig);opacity:.6}
-.tip-extract.ex-warn::before{background:var(--wn-c);opacity:.6}
-.tip-extract.ex-bad::before{background:var(--ir);opacity:.6}
+.tip-extract.ex-ok::before{background:var(--ig);opacity:.65}
+.tip-extract.ex-warn::before{background:var(--wn-c);opacity:.65}
+.tip-extract.ex-bad::before{background:var(--ir);opacity:.65}
 .tip-extract.ex-neu::before{background:rgba(198,203,209,.25)}
-.tip-extract-src{display:block;margin-top:.35rem;font-family:var(--lb);font-style:normal;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(198,203,209,.22)}
-.tip-action{margin-top:.55rem;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--lb);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(198,203,209,.3);transition:color .3s}
+.tip-extract-lbl{
+  display:block;margin-bottom:.28rem;
+  font-family:var(--lb);font-style:normal;
+  font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(198,203,209,.2);
+}
+/* Geverifieerd vinkje direct vanuit tekst */
+.tip-verify-row{
+  display:flex;align-items:center;gap:.55rem;
+  font-family:var(--lb);font-size:.54rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:.45rem .8rem;
+  border:1px solid;
+  align-self:flex-start;
+}
+.vr-ok{color:var(--ok-c);border-color:var(--ok-bd);background:var(--ok-bg)}
+.vr-warn{color:var(--wn-c);border-color:var(--wn-bd);background:var(--wn-bg)}
+.vr-bad{color:var(--bd-c);border-color:var(--bd-bd);background:var(--bd-bg)}
+.vr-neu{color:var(--mt);border-color:rgba(198,203,209,.1);background:rgba(198,203,209,.02)}
+.tip-verify-row svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2.2;flex-shrink:0}
+
+/* Actie link onderaan tip */
+.tip-action{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--lb);font-size:.55rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(198,203,209,.28);
+  transition:color .3s;align-self:flex-start;
+}
 .tip-action svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .3s}
 .tip-card:hover .tip-action{color:var(--pt)}
-.tip-card:hover .tip-action svg{transform:translateX(3px)}
+.tip-card:hover .tip-action svg{transform:translateX(4px)}
 
-/* Import + disclaimer */
+/* Bottom */
 .import-strip{background:var(--ink3);border:1px solid var(--ln);padding:1.25rem 1.75rem;margin-bottom:2px;display:flex;align-items:center;gap:1rem;position:relative;overflow:hidden}
 .import-strip::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.4}
 .import-dot{width:8px;height:8px;border-radius:50%;background:var(--ig);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,146,70,.4)}50%{box-shadow:0 0 0 5px rgba(0,146,70,0)}}
 .import-strip p{font-size:.78rem;color:#ccc;font-family:var(--lb);letter-spacing:.07em}
 .import-strip p strong{color:var(--pt)}
-.disc{font-size:.72rem;color:rgba(198,203,209,.2);line-height:1.75;padding:1.25rem 1.5rem;background:var(--ink2);border:1px solid var(--ln);border-top:none;margin-bottom:2px;position:relative}
-.disc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:rgba(198,203,209,.06)}
+.disc{font-size:.72rem;color:rgba(198,203,209,.2);line-height:1.75;padding:1.25rem 1.5rem;background:var(--ink2);border:1px solid var(--ln);border-top:none;margin-bottom:2px}
 .reset-btn{width:100%;background:transparent;border:1px solid var(--ln);color:rgba(198,203,209,.3);padding:1rem;font-family:var(--lb);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,background .3s;margin-bottom:2px;display:flex;align-items:center;justify-content:center;gap:.65rem}
 .reset-btn:hover{border-color:rgba(198,203,209,.28);color:rgba(198,203,209,.65);background:var(--ink3)}
-
-/* CTA */
 .cta-block{background:radial-gradient(ellipse at 50% 0%,rgba(198,203,209,.04),transparent 55%),var(--ink2);border:1px solid var(--ln);padding:clamp(2.5rem,5vw,4rem) clamp(1.75rem,4vw,3.5rem);text-align:center;position:relative;overflow:hidden;margin-bottom:2px}
 .cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.42}
 .cta-block h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:.85rem}
 .cta-block .lead{margin:0 auto 2rem}
 .cta-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-
-/* Footer */
 footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
 .fg{max-width:1060px;margin:0 auto;padding:2.5rem 0 2rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .fb{max-width:1060px;margin:0 auto;padding:1.2rem 0;border-top:1px solid var(--hr);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--lb);font-size:.62rem;color:#383838;letter-spacing:.05em}
@@ -342,26 +403,25 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
   .bd-grid{grid-template-columns:1fr}
   .price-compare{grid-template-columns:1fr}
   .market-grid{grid-template-columns:1fr 1fr}
-  .cta-row{flex-direction:column;align-items:center}
-  .cta-row .btn{width:100%;max-width:320px}
-  .tip-card-left{min-width:52px;width:52px;padding:1.35rem .85rem 1.35rem 0}
-  .tip-card-right{padding:1.35rem 0 1.35rem 1.25rem}
+  .tip-card{grid-template-columns:56px 1fr}
+  .tip-left{padding:1.35rem .75rem 1.35rem 1rem}
+  .tip-right{padding:1.35rem 1.25rem}
   .thumb-strip{grid-template-columns:repeat(4,1fr)}
 }
 @media(max-width:540px){
   .how-grid{grid-template-columns:1fr}
   .stat-row{grid-template-columns:1fr}
   .market-grid{grid-template-columns:1fr}
+  .tip-card{grid-template-columns:1fr}
+  .tip-left{display:none}
+  .tip-right{padding:1.25rem 1.1rem}
   .thumb-strip{grid-template-columns:repeat(3,1fr)}
   .fg{flex-direction:column;gap:1rem}
-  .fl{flex-direction:column;gap:.65rem}
-  .tip-card{grid-template-columns:1fr}
-  .tip-card-left{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   .rv{transition:none;animation:none;opacity:1;transform:none}
   .ey-tri,.ey-tri-r{width:42px!important;transition:none}
-  .risk-fill,.risk-marker{transition:none}
+  .risk-fill,.conf-fill{transition:none}
   html{scroll-behavior:auto}
 }
 </style>
@@ -389,7 +449,7 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
     <span class="ey-tri-r" aria-hidden="true"><span></span><span></span><span></span></span>
   </p>
   <h1 class="rv">Advertentie Analyse<br><em>Voertuig Rapport</em></h1>
-  <p class="lead rv">Analyseer een Mobile.de, AutoScout24 of Marktplaats advertentie en ontvang direct inzicht in prijs, specificaties, foto's en een objectief koopadvies — voordat u ook maar één euro op tafel legt.</p>
+  <p class="lead rv">Analyseer een Mobile.de, AutoScout24 of Marktplaats advertentie en ontvang direct inzicht in prijs, specificaties, foto's en een objectief koopadvies.</p>
 </div>
 <div class="hero-divider"></div>
 
@@ -399,17 +459,17 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
     <div class="how-item">
       <div class="how-n">01</div>
       <h3>Plak de advertentielink</h3>
-      <p>Kopieer de URL van Mobile.de, AutoScout24 of Marktplaats en plak deze in het invoerveld hieronder.</p>
+      <p>Kopieer de URL van Mobile.de, AutoScout24 of Marktplaats en plak deze in het invoerveld.</p>
     </div>
     <div class="how-item">
       <div class="how-n">02</div>
       <h3>Wij analyseren direct</h3>
-      <p>Onze tool haalt de advertentiedata op, vergelijkt de vraagprijs met de markt en genereert een volledig rapport.</p>
+      <p>De tool vergelijkt de vraagprijs met identieke configuraties en genereert een volledig rapport.</p>
     </div>
     <div class="how-item">
       <div class="how-n">03</div>
       <h3>Ontvang uw koopadvies</h3>
-      <p>Prijsbeoordeling, risicoscore, verkoperclaims en persoonlijke aanbevelingen — alles op één pagina.</p>
+      <p>Prijsbeoordeling, risicoscore, verkoperclaims en aanbevelingen — alles op één pagina.</p>
     </div>
   </div>
 
@@ -442,13 +502,12 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
   </div>
 
   <div class="results" id="results">
-
     <div class="gallery-hero rv" id="galleryHero"></div>
     <div class="status-bar rv" id="statusBar"></div>
     <div class="stat-row rv" id="statRow"></div>
     <div id="verdictWrap"></div>
 
-    <div class="dblock rv" id="marketBlock">
+    <div class="dblock rv">
       <div class="bhead open" onclick="toggleBlock(this)">
         <div class="bhead-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <div class="bhead-title">Marktcontext &amp; waardebepaling</div>
@@ -457,7 +516,7 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
       <div class="bbody" id="marketContent"></div>
     </div>
 
-    <div class="dblock rv" id="riskBlock">
+    <div class="dblock rv">
       <div class="bhead open" onclick="toggleBlock(this)">
         <div class="bhead-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="bhead-title">Risicoprofiel &amp; aandachtspunten</div>
@@ -466,7 +525,7 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
       <div class="bbody" id="riskContent"></div>
     </div>
 
-    <div class="dblock rv" id="tipsBlock">
+    <div class="dblock rv">
       <div class="bhead open" onclick="toggleBlock(this)">
         <div class="bhead-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
         <div class="bhead-title">Koopadvies &amp; aanbevelingen APEXclusive</div>
@@ -488,9 +547,7 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
       <div class="import-dot"></div>
       <p><strong>Import nodig?</strong> APEXclusive regelt BPM-taxatie, RDW-keuring en volledige importafhandeling — rijklaar aan uw deur.</p>
     </div>
-
     <p class="disc rv">Indicatief koopadvies op basis van advertentiedata en een globale marktschatting. Geen vervanging voor een professionele voertuiginspectie. APEXclusive aanvaardt geen aansprakelijkheid voor beslissingen op basis van dit rapport.</p>
-
     <button class="reset-btn rv" onclick="resetTool()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       Nieuwe analyse starten
@@ -504,12 +561,11 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
       </p>
       <h2>Van analyse naar <em style="font-style:italic;background:var(--ch);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent">rijklaar afgeleverd.</em></h2>
       <p class="lead">APEXclusive regelt de onafhankelijke keuring ter plaatse, de onderhandeling, BPM-optimalisatie en volledige importafhandeling — van eerste gesprek tot sleuteloverdracht.</p>
-      <div class="cta-row">
+      <div class="cta-row" style="margin-top:2rem">
         <a class="btn" href="https://wa.me/31624735939" target="_blank"><span>WhatsApp +31 6 24 73 59 39</span></a>
         <a class="btn gh" href="mailto:info@apexclusive.nl"><span>E-mail sturen</span></a>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -536,330 +592,189 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-/* ══ PROGRESS + NAV ══ */
 const bar = document.getElementById('progress');
 const nav = document.getElementById('nav');
-function frame() {
-  const y = scrollY, total = document.documentElement.scrollHeight - innerHeight;
-  bar.style.transform = `scaleX(${total > 0 ? y / total : 0})`;
-  nav.classList.toggle('stuck', y > 40);
+function frame(){
+  const y=scrollY,total=document.documentElement.scrollHeight-innerHeight;
+  bar.style.transform=`scaleX(${total>0?y/total:0})`;
+  nav.classList.toggle('stuck',y>40);
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
 
-/* ══ REVEAL ══ */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
     io.unobserve(e.target);
     e.target.classList.add('in');
-    if (e.target.classList.contains('ey')) e.target.classList.add('tri-in');
-    e.target.querySelectorAll && e.target.querySelectorAll('.ey').forEach(ey => {
-      setTimeout(() => ey.classList.add('tri-in'), 160);
-    });
+    if(e.target.classList.contains('ey'))e.target.classList.add('tri-in');
+    e.target.querySelectorAll&&e.target.querySelectorAll('.ey').forEach(ey=>setTimeout(()=>ey.classList.add('tri-in'),160));
   });
-}, { threshold: .06, rootMargin: '0px 0px -3% 0px' });
-document.querySelectorAll('.rv, .ey').forEach(el => io.observe(el));
+},{threshold:.06,rootMargin:'0px 0px -3% 0px'});
+document.querySelectorAll('.rv,.ey').forEach(el=>io.observe(el));
 
-function toggleBlock(head) {
+function toggleBlock(head){
   head.classList.toggle('open');
   head.nextElementSibling.classList.toggle('hidden');
 }
 
 /* ══ HELPERS ══ */
-const euro  = v => v ? '€\u00a0' + Math.round(v).toLocaleString('nl-NL') : '—';
-const fmtKm = v => v ? Math.round(v).toLocaleString('nl-NL') + '\u00a0km' : '—';
-const fmtAge= y => y ? (2026 - parseInt(y)) + ' jaar' : '—';
-function get(html, patterns) {
-  for (const p of patterns) { const m = html.match(p); if (m && m[1]) return m[1].trim(); }
+const euro  = v => v ? '€\u00a0'+Math.round(v).toLocaleString('nl-NL') : '—';
+const fmtKm = v => v ? Math.round(v).toLocaleString('nl-NL')+'\u00a0km' : '—';
+const fmtAge= y => y ? (2026-parseInt(y))+' jaar' : '—';
+
+function get(html,patterns){
+  for(const p of patterns){const m=html.match(p);if(m&&m[1])return m[1].trim();}
   return null;
 }
 
-/* ══ ADVERTENTIE CLAIMS EXTRACTOR ══
-   Haalt actieve verkoperclaims uit de HTML-tekst
-   Geeft een array van {key, found, quote, status}
-══ */
-function extractClaims(html) {
-  // Verwijder HTML-tags voor tekstmatch
-  const text = html
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
+/* ══ TEKST EXTRACTOR — schone plain-text uit HTML ══ */
+function extractText(html){
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi,' ')
+    .replace(/<style[\s\S]*?<\/style>/gi,' ')
+    .replace(/<[^>]+>/g,' ')
     .replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/&#\d+;/g,' ')
-    .replace(/\s+/g,' ');
+    .replace(/\s+/g,' ').trim();
+}
 
-  const claims = [];
+/* ══ CLAIMS EXTRACTOR — haal beweringen uit advertentietekst ══ */
+function extractClaims(html){
+  const text = extractText(html);
 
-  // Helper: zoek een patroon en extraheer omgeving als quote
-  function find(patterns, maxCtx=80) {
-    for (const p of patterns) {
-      const m = text.match(p);
-      if (m) {
-        const idx = m.index + m[0].length;
-        const ctx = text.substring(Math.max(0, m.index - 10), Math.min(text.length, idx + maxCtx)).trim();
-        return ctx.length > 8 ? ctx : true;
+  function findCtx(pats, ctxLen=140){
+    for(const p of pats){
+      const m=text.match(p);
+      if(m){
+        const start=Math.max(0,m.index-20);
+        const end=Math.min(text.length,m.index+m[0].length+ctxLen);
+        const ctx=text.substring(start,end).trim();
+        return ctx.length>10?ctx:true;
       }
     }
     return false;
   }
 
-  // 1. Onderhoud / service
-  const service = find([
+  /* Reden van verkoop */
+  const redenVerkoop = findCtx([
+    /(?:reden\s+(?:van\s+)?verkoop|verkoop\s*reden|reason\s+for\s+(?:selling|sale)|grund\s+(?:des\s+)?verkauf)[^.!?]*[.!?]/i,
+    /(?:verkoop(?:t)?\s+(?:vanwege|ivm|wegens|omdat|door)|selling\s+(?:due\s+to|because|as\s+I))[^.!?]*[.!?]/i,
+    /(?:inruil|nieuwe\s+auto|gezins(?:uitbreiding|auto)|emigr|verhuiz|te\s+groot|te\s+klein|reserve)[^.!?]*[.!?]/i,
+  ],180);
+
+  /* Service + onderhoud */
+  const service = findCtx([
     /(?:full|complete|volledig|gepland|recent|nieuw)[e\s]+(?:service|onderhoud|beurt)/i,
-    /service(?:history|boekje|boek|historie|historiek)/i,
-    /onderhoud(?:sboek|shistorie|sbewijs|sfacturen|srecord)/i,
+    /(?:service|onderhoud)(?:history|boekje|boek|historie|historiek|bewijs|facturen|record)/i,
     /(?:serviceboek|onderhoudsboek)(?:je)?/i,
-  ], 120);
-  claims.push({
-    key: 'Onderhoud & servicehistorie',
-    found: !!service,
-    quote: typeof service === 'string' ? service : null,
-    status: service ? 'ok' : 'warn',
-    advice: service
-      ? 'Verkoper vermeldt servicehistorie. Vraag originele facturen en stempelboekje op ter verificatie.'
-      : 'Geen vermelding van servicehistorie aangetroffen. Vraag expliciet om onderhoudsfacturen voor aankoop.',
-    icon: 'tool',
-  });
+    /dealer\s*(?:maintained|onderhouden|service)/i,
+  ],160);
 
-  // 2. Facturen aanwezig
-  const facturen = find([
-    /facturen?\b/i,
-    /invoic[ei]/i,
-    /rechnungen?\b/i,
-    /werkplaats(?:factuur|bon)/i,
-    /maintenance\s+invoic/i,
-  ], 100);
-  claims.push({
-    key: 'Facturen aanwezig',
-    found: !!facturen,
-    quote: typeof facturen === 'string' ? facturen : null,
-    status: facturen ? 'ok' : 'neu',
-    advice: facturen
-      ? 'Verkoper vermeldt aanwezige facturen. Verifieer dit bij bezichtiging en vraag originelen op.'
-      : 'Geen facturen vermeld in advertentie. Vraag bij de verkoper of facturen beschikbaar zijn.',
-    icon: 'file',
-  });
+  /* Facturen */
+  const facturen = findCtx([
+    /facturen?\b/i,/invoic[ei]/i,/rechnungen?\b/i,
+    /werkplaats(?:factuur|bon)/i,/maintenance\s+invoic/i,
+  ],120);
 
-  // 3. Garantie
-  const garantie = find([
+  /* Garantie */
+  const garantie = findCtx([
     /(?:\d+[\s-]*(?:maanden?|months?|jaar|years?)\s*)?garantie/i,
-    /warranty/i,
-    /gewährleistung/i,
-    /approved\s+(?:used|pre-owned)/i,
-    /certified\s+pre-owned/i,
-  ], 120);
-  claims.push({
-    key: 'Garantie',
-    found: !!garantie,
-    quote: typeof garantie === 'string' ? garantie : null,
-    status: garantie ? 'ok' : 'neu',
-    advice: garantie
-      ? 'Garantie vermeld. Controleer de exacte voorwaarden, duur en dekkingsomvang bij de dealer.'
-      : 'Geen garantie vermeld. Vraag of fabrieks- of dealergarantie nog van toepassing is.',
-    icon: 'shield',
-  });
+    /warranty/i,/gewährleistung/i,
+    /approved\s+(?:used|pre-owned)/i,/certified\s+pre-owned/i,
+  ],160);
 
-  // 4. Schadevrij / ongeluksvrij
-  const schadevrij = find([
-    /schade(?:vrij|frei|los|free)/i,
-    /unfall(?:frei|los)/i,
-    /accident[- ]free/i,
-    /geen\s+(?:schade|schadehistorie)/i,
-    /damage[- ]free/i,
-    /no\s+accidents?/i,
-    /no\s+damage/i,
-  ], 100);
-  claims.push({
-    key: 'Schadevrij / geen ongelukshistorie',
-    found: !!schadevrij,
-    quote: typeof schadevrij === 'string' ? schadevrij : null,
-    status: schadevrij ? 'ok' : 'warn',
-    advice: schadevrij
-      ? 'Verkoper beweert schadevrij. Laat dit onafhankelijk verifiëren via Carfax of equivalent rapport.'
-      : 'Geen schadevrij-claim aangetroffen. Vraag expliciet naar schadeverleden en laat een voertuigrapport opvragen.',
-    icon: 'check',
-  });
+  /* Schadevrij */
+  const schadevrij = findCtx([
+    /schade(?:vrij|frei|los|free)/i,/unfall(?:frei|los)/i,
+    /accident[- ]free/i,/geen\s+(?:schade|schadehistorie)/i,
+    /no\s+accidents?/i,/no\s+damage/i,
+  ],120);
 
-  // 5. Eerste eigenaar / originele eigenaar
-  const eigenaar = find([
+  /* Eigenaar */
+  const eigenaar = findCtx([
     /(?:1e?|eerste|erster?|first)\s*(?:eigenaar|owner|besitzer|hand)/i,
-    /one\s+(?:previous\s+)?owner/i,
-    /ein(?:er?)?\s+vorbesitzer/i,
-  ], 100);
-  claims.push({
-    key: 'Eerste / weinig eigenaren',
-    found: !!eigenaar,
-    quote: typeof eigenaar === 'string' ? eigenaar : null,
-    status: eigenaar ? 'ok' : 'neu',
-    advice: eigenaar
-      ? 'Verkoper claimt één of weinig vorige eigenaren. Controleer dit via het kentekenregister of voertuigrapport.'
-      : 'Eigendomshistorie niet vermeld. Vraag naar het aantal vorige eigenaren.',
-    icon: 'user',
-  });
+    /one\s+(?:previous\s+)?owner/i,/ein(?:er?)?\s+vorbesitzer/i,
+  ],120);
 
-  // 6. Originele lak / geen spuitwerk
-  const lak = find([
-    /origineel?(?:e)?\s+lak/i,
-    /original(?:er?)?\s*(?:lack|paint|lacquer)/i,
-    /geen\s+(?:spuitwerk|doorspuiten|overspuiting)/i,
-    /no\s+(?:repaint|paintwork|respray)/i,
-    /unverändert(?:e)?\s*lack/i,
-    /lakdikte/i,
-    /paintmeter/i,
-  ], 120);
-  claims.push({
-    key: 'Originele lak / geen spuitwerk',
-    found: !!lak,
-    quote: typeof lak === 'string' ? lak : null,
-    status: lak ? 'ok' : 'neu',
-    advice: lak
-      ? 'Verkoper meldt originele lak. Laat een laktdiktemeting uitvoeren bij de aankoopkeuring.'
-      : 'Geen vermelding over lakstatus. Verzoek een lakdiktemeting bij de aankoopkeuring.',
-    icon: 'layers',
-  });
-
-  // 7. Km-stand aantoonbaar / NAP
-  const nap = find([
-    /\bNAP\b/,
-    /n\.a\.p\./i,
+  /* NAP */
+  const nap = findCtx([
+    /\bNAP\b/,/n\.a\.p\./i,
     /aantoonbaar(?:e)?\s*(?:km|kilometerstand)/i,
-    /nachweisbar(?:er?)?\s*(?:km|kilometer)/i,
-    /documented\s+mileage/i,
-    /km[\s-]*(?:aantoonbaar|verantwoord|bewijsbaar)/i,
-  ], 100);
-  claims.push({
-    key: 'Kilometerstand aantoonbaar (NAP)',
-    found: !!nap,
-    quote: typeof nap === 'string' ? nap : null,
-    status: nap ? 'ok' : 'warn',
-    advice: nap
-      ? 'NAP of aantoonbare kilometerstand vermeld. Verifieer via RDW kentekencheck of Carfax.'
-      : 'Geen NAP-vermelding. Controleer kilometerstanden via onze kentekencheck of vraag Carfax-rapport op.',
-    icon: 'gauge',
-  });
+    /documented\s+mileage/i,/km[\s-]*(?:aantoonbaar|verantwoord)/i,
+  ],100);
 
-  // 8. PPF / ceramic / beschermfolie
-  const ppf = find([
-    /\bPPF\b/i,
-    /paint\s*protection\s*film/i,
+  /* Lak origineel */
+  const lak = findCtx([
+    /origineel?(?:e)?\s+lak/i,/original(?:er?)?\s*(?:lack|paint)/i,
+    /geen\s+(?:spuitwerk|overspuiting)/i,/no\s+(?:repaint|respray)/i,
+    /lakdikte/i,/paintmeter/i,
+  ],140);
+
+  /* PPF / ceramic */
+  const ppf = findCtx([
+    /\bPPF\b/i,/paint\s*protection\s*film/i,
     /ceramic\s*(?:coating|bescherm)/i,
-    /bescherm(?:folie|laag)/i,
-    /xpel/i,
-    /stek(?:cal)?/i,
-  ], 120);
-  if (ppf) {
-    claims.push({
-      key: 'Beschermfolie / PPF / Ceramic coating',
-      found: true,
-      quote: typeof ppf === 'string' ? ppf : null,
-      status: 'ok',
-      advice: 'Verkoper vermeldt PPF of keramische coating. Vraag om bewijs van installatie en garantiecertificaat.',
-      icon: 'layers',
-    });
-  }
+    /bescherm(?:folie|laag)/i,/xpel/i,
+  ],160);
 
-  // 9. Nieuw onderhoud recent
-  const recentService = find([
-    /(?:nieuw(?:e)?|recent(?:elijk)?|zojuist|vers|just|new|frisch(?:e)?)\s+(?:banden?|remmen?|distributie|ketting|riem|olie|service|beurt|onderhoud)/i,
+  /* Recent onderhoud (banden, remmen, etc.) */
+  const recentParts = findCtx([
+    /(?:nieuw(?:e)?|recent(?:elijk)?|vers|new)\s+(?:banden?|remmen?|distributie|ketting|riem|olie)/i,
     /(?:tires?|tyres?|brakes?|timing\s*(?:belt|chain)|oil\s+change)\s+(?:new|recently|just)\s*(?:done|changed|replaced)/i,
-  ], 140);
-  if (recentService) {
-    claims.push({
-      key: 'Recent onderhoud / vervanging onderdelen',
-      found: true,
-      quote: typeof recentService === 'string' ? recentService : null,
-      status: 'ok',
-      advice: 'Verkoper vermeldt recent vervangen onderdelen. Vraag facturen op en laat dit controleren tijdens keuring.',
-      icon: 'tool',
-    });
-  }
+  ],180);
 
-  // 10. Volledige opties / leder / panoramadak etc. — positief vermelding
-  const extras = find([
-    /(?:full|volledig|compleet|sämtlich[e]?)\s+(?:option|uitvoering|ausstattung|specification)/i,
-    /panoramadak|panoramadach|panoramic\s*(?:roof|sunroof)/i,
-    /leder(?:bekleding)?|leather\s*(?:interior|seats?)/i,
-    /carbon(?:\s*pakket|-package)?/i,
-  ], 120);
-  if (extras) {
-    claims.push({
-      key: 'Opvallende specificaties vermeld',
-      found: true,
-      quote: typeof extras === 'string' ? extras : null,
-      status: 'neu',
-      advice: 'Bijzondere uitvoering of opties vermeld. Verifieer de optiecodes via de fabrikant of via Carfax/Dekra rapport.',
-      icon: 'star',
-    });
-  }
+  /* Inruil / prijs aanleiding */
+  const inruilReden = findCtx([
+    /inruil(?:auto)?/i,/part\s*exchange/i,/trade[\s-]in/i,/ingeruild/i,
+  ],120);
 
-  return claims;
+  return {
+    redenVerkoop, service, facturen, garantie, schadevrij,
+    eigenaar, nap, lak, ppf, recentParts, inruilReden
+  };
 }
 
 /* ══ PLATFORM DETECT ══ */
-function detectPlatform(url) {
-  if (url.includes('mobile.de'))      return 'mobile';
-  if (url.includes('autoscout24'))    return 'autoscout';
-  if (url.includes('marktplaats.nl')) return 'marktplaats';
-  if (url.includes('autotrack.nl'))   return 'autotrack';
-  if (url.includes('bas-world'))      return 'bas';
+function detectPlatform(url){
+  if(url.includes('mobile.de'))      return 'mobile';
+  if(url.includes('autoscout24'))    return 'autoscout';
+  if(url.includes('marktplaats.nl')) return 'marktplaats';
+  if(url.includes('autotrack.nl'))   return 'autotrack';
+  if(url.includes('bas-world'))      return 'bas';
   return null;
 }
 
 /* ══ AUTOSCOUT NEXT DATA ══ */
-function parseAS24NextData(nd) {
-  if (!nd) return {};
-  const str = JSON.stringify(nd);
-  function ex(pats) {
-    for (const p of pats) { const m = str.match(p); if (m && m[1]) return m[1].trim(); }
-    return null;
-  }
-  return {
-    title:  ex([/"title"\s*:\s*"([^"]{5,120})"/,/"headline"\s*:\s*"([^"]{5,120})"/]),
-    price:  ex([/"price"\s*:\s*(\d{3,7})(?:[,}\s])/,/"amount"\s*:\s*(\d{3,7})(?:[,}\s])/,/"offerPrice"\s*:\s*(\d{3,7})(?:[,}\s])/,/"value"\s*:\s*(\d{3,7})(?:[,}\s])/]),
-    km:     ex([/"mileage"\s*:\s*(\d{4,7})(?:[,}\s])/,/"km"\s*:\s*(\d{4,7})(?:[,}\s])/]),
-    year:   ex([/"firstRegistrationYear"\s*:\s*(\d{4})/,/"registrationYear"\s*:\s*(\d{4})/,/"year"\s*:\s*(\d{4})/,/"constructionYear"\s*:\s*(\d{4})/]),
-    fuel:   ex([/"fuelType"\s*:\s*"([^"]{2,30})"/,/"fuel"\s*:\s*"([^"]{2,30})"/]),
-    power:  ex([/"powerKW"\s*:\s*(\d{2,4})(?:[,}\s])/,/"power"\s*:\s*(\d{2,4})(?:[,}\s])/]),
-    trans:  ex([/"transmission"\s*:\s*"([^"]{2,30})"/,/"gearbox"\s*:\s*"([^"]{2,30})"/]),
-    color:  ex([/"color"\s*:\s*"([^"]{2,30})"/,/"bodyColor"\s*:\s*"([^"]{2,30})"/]),
-    doors:  ex([/"doors"\s*:\s*"?(\d)/,/"numberOfDoors"\s*:\s*"?(\d)/]),
-    body:   ex([/"bodyType"\s*:\s*"([^"]{2,30})"/]),
-    seats:  ex([/"seats"\s*:\s*"?(\d)/]),
-    owners: ex([/"previousOwners"\s*:\s*"?(\d)/,/"numberOfPreviousOwners"\s*:\s*"?(\d)/]),
+function parseAS24NextData(nd){
+  if(!nd)return{};
+  const str=JSON.stringify(nd);
+  function ex(pats){for(const p of pats){const m=str.match(p);if(m&&m[1])return m[1].trim();}return null;}
+  return{
+    title: ex([/"title"\s*:\s*"([^"]{5,120})"/,/"headline"\s*:\s*"([^"]{5,120})"/]),
+    price: ex([/"price"\s*:\s*(\d{3,7})(?:[,}\s])/,/"amount"\s*:\s*(\d{3,7})(?:[,}\s])/,/"offerPrice"\s*:\s*(\d{3,7})(?:[,}\s])/,/"value"\s*:\s*(\d{3,7})(?:[,}\s])/]),
+    km:    ex([/"mileage"\s*:\s*(\d{4,7})(?:[,}\s])/,/"km"\s*:\s*(\d{4,7})(?:[,}\s])/]),
+    year:  ex([/"firstRegistrationYear"\s*:\s*(\d{4})/,/"registrationYear"\s*:\s*(\d{4})/,/"year"\s*:\s*(\d{4})/,/"constructionYear"\s*:\s*(\d{4})/]),
+    fuel:  ex([/"fuelType"\s*:\s*"([^"]{2,30})"/,/"fuel"\s*:\s*"([^"]{2,30})"/]),
+    power: ex([/"powerKW"\s*:\s*(\d{2,4})(?:[,}\s])/,/"power"\s*:\s*(\d{2,4})(?:[,}\s])/]),
+    trans: ex([/"transmission"\s*:\s*"([^"]{2,30})"/,/"gearbox"\s*:\s*"([^"]{2,30})"/]),
+    color: ex([/"color"\s*:\s*"([^"]{2,30})"/,/"bodyColor"\s*:\s*"([^"]{2,30})"/]),
+    doors: ex([/"doors"\s*:\s*"?(\d)/,/"numberOfDoors"\s*:\s*"?(\d)/]),
+    body:  ex([/"bodyType"\s*:\s*"([^"]{2,30})"/]),
+    seats: ex([/"seats"\s*:\s*"?(\d)/]),
+    owners:ex([/"previousOwners"\s*:\s*"?(\d)/,/"numberOfPreviousOwners"\s*:\s*"?(\d)/]),
   };
 }
 
 /* ══ PARSERS ══ */
-function parseMobile(html) {
-  return {
+function parseMobile(html){
+  return{
     platform:'Mobile.de',
-    title:  get(html,[/<h1[^>]*class="[^"]*listing-title[^"]*"[^>]*>([^<]{5,100})<\/h1>/i,/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–\-]{5,80})/i]),
-    price:  get(html,[/"price"\s*:\s*\{[^}]*?"value"\s*:\s*(\d{3,7})/i,/class="[^"]*price[^"]*"[^>]*>\s*(?:€\s*)?([\d,.]+)/i,/(\d{1,3}(?:\.\d{3})+)\s*€/i]),
-    km:     get(html,[/"mileage"\s*:\s*\{[^}]*"value"\s*:\s*"?([\d.,]+)/i,/(\d{2,3}\.\d{3})\s*km/i]),
-    year:   get(html,[/"firstRegistration"\s*:\s*\{[^}]*"year"\s*:\s*(\d{4})/i,/(\b20[01]\d\b)/]),
-    fuel:   get(html,[/"fuel"\s*:\s*"([^"]{2,30})"/i]),
-    power:  get(html,[/(\d{2,4})\s*(?:PS|kW)/i]),
-    color:  get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
-    trans:  get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
-    doors:  get(html,[/"doors"\s*:\s*"?(\d)/i]),
-    body:   get(html,[/"bodyType"\s*:\s*"([^"]{2,30})"/i]),
-    seats:  get(html,[/"seats"\s*:\s*"?(\d)/i]),
-    owners: get(html,[/"previousOwners"\s*:\s*"?(\d)/i]),
-    country:get(html,[/"country"\s*:\s*"([^"]{2,30})"/i]),
-    priceLevel:/guter\s*preis|sehr\s*guter\s*preis|good.?price/i.test(html)?'ok':/hoher\s*preis|high.?price/i.test(html)?'bad':/fairer?\s*preis|fair.?price/i.test(html)?'warn':null,
-    priceCents:false,
-  };
-}
-
-function parseAutoscout(html, nd) {
-  const nh = parseAS24NextData(nd);
-  const hm = {
-    title: get(html,[/<h1[^>]*>([^<]{5,100})<\/h1>/i,/<title>([^<|–]{5,80})/i]),
-    price: get(html,[/data-testid="(?:price|listing-price)[^"]*"[^>]*>\s*€?\s*([\d.,]+)/i,/"price"\s*:\s*(\d{3,7})(?:[,}\s])/i,/(\d{1,3}(?:[.,]\d{3})+)\s*€/i]),
-    km:    get(html,[/(\d{1,3}(?:[.,]\d{3})+)\s*km/i,/"mileage"\s*:\s*(\d{4,7})/i]),
-    year:  get(html,[/(\b20[01]\d\b)/]),
-    fuel:  get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i]),
-    power: get(html,[/(\d{2,4})\s*(?:PS|pk|kW)/i]),
+    title: get(html,[/<h1[^>]*class="[^"]*listing-title[^"]*"[^>]*>([^<]{5,100})<\/h1>/i,/<h1[^>]*>([^<]{5,80})<\/h1>/i,/<title>([^<|–\-]{5,80})/i]),
+    price: get(html,[/"price"\s*:\s*\{[^}]*?"value"\s*:\s*(\d{3,7})/i,/class="[^"]*price[^"]*"[^>]*>\s*(?:€\s*)?([\d,.]+)/i,/(\d{1,3}(?:\.\d{3})+)\s*€/i]),
+    km:    get(html,[/"mileage"\s*:\s*\{[^}]*"value"\s*:\s*"?([\d.,]+)/i,/(\d{2,3}\.\d{3})\s*km/i]),
+    year:  get(html,[/"firstRegistration"\s*:\s*\{[^}]*"year"\s*:\s*(\d{4})/i,/(\b20[01]\d\b)/]),
+    fuel:  get(html,[/"fuel"\s*:\s*"([^"]{2,30})"/i]),
+    power: get(html,[/(\d{2,4})\s*(?:PS|kW)/i]),
     color: get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
     trans: get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
     doors: get(html,[/"doors"\s*:\s*"?(\d)/i]),
@@ -867,473 +782,1126 @@ function parseAutoscout(html, nd) {
     seats: get(html,[/"seats"\s*:\s*"?(\d)/i]),
     owners:get(html,[/"previousOwners"\s*:\s*"?(\d)/i]),
     country:get(html,[/"country"\s*:\s*"([^"]{2,30})"/i]),
+    priceLevel:/guter\s*preis|sehr\s*guter\s*preis|good.?price/i.test(html)?'ok':/hoher\s*preis|high.?price/i.test(html)?'bad':/fairer?\s*preis|fair.?price/i.test(html)?'warn':null,
+    priceCents:false,
   };
-  return {
-    platform:'AutoScout24',
-    title:  nh.title  || hm.title,  price:  nh.price  || hm.price,
-    km:     nh.km     || hm.km,     year:   nh.year   || hm.year,
-    fuel:   nh.fuel   || hm.fuel,   power:  nh.power  ? nh.power+' kW' : hm.power,
-    trans:  nh.trans  || hm.trans,  color:  nh.color  || hm.color,
-    doors:  nh.doors  || hm.doors,  body:   nh.body   || hm.body,
-    seats:  nh.seats  || hm.seats,  owners: nh.owners || hm.owners,
-    country: hm.country, priceLevel:null, priceCents:false,
+}
+function parseAutoscout(html,nd){
+  const nh=parseAS24NextData(nd);
+  const hm={
+    title:get(html,[/<h1[^>]*>([^<]{5,100})<\/h1>/i,/<title>([^<|–]{5,80})/i]),
+    price:get(html,[/data-testid="(?:price|listing-price)[^"]*"[^>]*>\s*€?\s*([\d.,]+)/i,/"price"\s*:\s*(\d{3,7})(?:[,}\s])/i,/(\d{1,3}(?:[.,]\d{3})+)\s*€/i]),
+    km:   get(html,[/(\d{1,3}(?:[.,]\d{3})+)\s*km/i,/"mileage"\s*:\s*(\d{4,7})/i]),
+    year: get(html,[/(\b20[01]\d\b)/]),
+    fuel: get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i]),
+    power:get(html,[/(\d{2,4})\s*(?:PS|pk|kW)/i]),
+    color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
+    trans:get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
+    doors:get(html,[/"doors"\s*:\s*"?(\d)/i]),
+    body: get(html,[/"bodyType"\s*:\s*"([^"]{2,30})"/i]),
+    seats:get(html,[/"seats"\s*:\s*"?(\d)/i]),
+    owners:get(html,[/"previousOwners"\s*:\s*"?(\d)/i]),
+    country:get(html,[/"country"\s*:\s*"([^"]{2,30})"/i]),
   };
+  return{platform:'AutoScout24',title:nh.title||hm.title,price:nh.price||hm.price,km:nh.km||hm.km,year:nh.year||hm.year,fuel:nh.fuel||hm.fuel,power:nh.power?nh.power+' kW':hm.power,trans:nh.trans||hm.trans,color:nh.color||hm.color,doors:nh.doors||hm.doors,body:nh.body||hm.body,seats:nh.seats||hm.seats,owners:nh.owners||hm.owners,country:hm.country,priceLevel:null,priceCents:false};
+}
+function parseMarktplaats(html){
+  const priceCentsRaw=get(html,[/"priceCents"\s*:\s*"?(\d+)"?/i,/"price_cents"\s*:\s*"?(\d+)"?/i]);
+  let priceJsonLd=null;
+  const blocks=html.match(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)||[];
+  for(const b of blocks){try{const j=JSON.parse(b.replace(/<\/?script[^>]*>/gi,''));if(j.offers&&j.offers.price){priceJsonLd=String(j.offers.price);break;}}catch(_){}}
+  return{platform:'Marktplaats.nl',title:get(html,[/<h1[^>]*>([^<]{5,120})<\/h1>/i,/<title>([^<|–]{5,120})/i]),price:priceCentsRaw||priceJsonLd||get(html,[/€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,/"(?:asking)?[Pp]rice"\s*:\s*"?(\d{3,7})"?/i]),priceCents:!!priceCentsRaw,km:get(html,[/"mileage"\s*:\s*"?([\d.]+)/i,/([\d]{1,3}(?:\.[\d]{3})+)\s*km/i]),year:get(html,[/"constructionYear"\s*:\s*"?(\d{4})/i,/"(?:year|bouwjaar)"\s*:\s*"?(\d{4})/i,/\b(20\d{2})\b/i]),fuel:get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i,/"brandstof"\s*:\s*"([^"]{2,30})"/i]),power:get(html,[/"power"\s*:\s*"?(\d+)/i,/(\d+)\s*(?:pk|PS)/i]),color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i,/"kleur"\s*:\s*"([^"]{2,30})"/i]),trans:null,doors:null,body:null,seats:null,owners:null,country:'Nederland',priceLevel:null};
 }
 
-function parseMarktplaats(html) {
-  const priceCentsRaw = get(html,[/"priceCents"\s*:\s*"?(\d+)"?/i,/"price_cents"\s*:\s*"?(\d+)"?/i]);
-  let priceJsonLd = null;
-  const blocks = html.match(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)||[];
-  for (const b of blocks) {
-    try { const j=JSON.parse(b.replace(/<\/?script[^>]*>/gi,'')); if(j.offers&&j.offers.price){priceJsonLd=String(j.offers.price);break;} } catch(_){}
-  }
-  return {
-    platform:'Marktplaats.nl',
-    title:  get(html,[/<h1[^>]*>([^<]{5,120})<\/h1>/i,/<title>([^<|–]{5,120})/i]),
-    price:  priceCentsRaw||priceJsonLd||get(html,[/€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,/"(?:asking)?[Pp]rice"\s*:\s*"?(\d{3,7})"?/i]),
-    priceCents:!!priceCentsRaw,
-    km:    get(html,[/"mileage"\s*:\s*"?([\d.]+)/i,/([\d]{1,3}(?:\.[\d]{3})+)\s*km/i]),
-    year:  get(html,[/"constructionYear"\s*:\s*"?(\d{4})/i,/"(?:year|bouwjaar)"\s*:\s*"?(\d{4})/i,/\b(20\d{2})\b/i]),
-    fuel:  get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i,/"brandstof"\s*:\s*"([^"]{2,30})"/i]),
-    power: get(html,[/"power"\s*:\s*"?(\d+)/i,/(\d+)\s*(?:pk|PS)/i]),
-    color: get(html,[/"color"\s*:\s*"([^"]{2,30})"/i,/"kleur"\s*:\s*"([^"]{2,30})"/i]),
-    trans:null,doors:null,body:null,seats:null,owners:null,country:'Nederland',
-    priceLevel:null,
-  };
+/* ══ CLEAN ══ */
+function cleanPrice(raw,platform,isCents){
+  if(!raw)return null;
+  let c=String(raw).replace(/[^\d.,]/g,''),n;
+  if(c.includes(',')&&c.includes('.'))      n=parseFloat(c.replace(/\./g,'').replace(',','.'));
+  else if(c.includes('.')&&c.split('.').length===2){const p=c.split('.');n=p[1].length===3?parseInt(c.replace('.',''))  :parseFloat(c);}
+  else if(c.includes('.')&&c.split('.').length>2)  n=parseInt(c.replace(/\./g,''));
+  else n=parseFloat(c.replace(',','.'));
+  if(isNaN(n))return null;
+  if(isCents||(platform==='marktplaats'&&n>200000))n=Math.round(n/100);
+  return(n<500||n>2500000)?null:n;
 }
-
-/* ══ CLEAN HELPERS ══ */
-function cleanPrice(raw, platform, isCents) {
-  if (!raw) return null;
-  let c = String(raw).replace(/[^\d.,]/g,''), n;
-  if (c.includes(',')&&c.includes('.'))       n = parseFloat(c.replace(/\./g,'').replace(',','.'));
-  else if (c.includes('.')&&c.split('.').length===2){const p=c.split('.');n=p[1].length===3?parseInt(c.replace('.',''))  :parseFloat(c);}
-  else if (c.includes('.')&&c.split('.').length>2)   n = parseInt(c.replace(/\./g,''));
-  else n = parseFloat(c.replace(',','.'));
-  if (isNaN(n)) return null;
-  if (isCents||(platform==='marktplaats'&&n>200000)) n=Math.round(n/100);
-  return (n<500||n>2500000)?null:n;
-}
-function cleanKm(raw) {
-  if (!raw) return null;
-  const n = parseFloat(String(raw).replace(/[^\d]/g,''));
+function cleanKm(raw){
+  if(!raw)return null;
+  const n=parseFloat(String(raw).replace(/[^\d]/g,''));
   return isNaN(n)?null:n;
 }
 
-/* ══ REALISTISCH PRIJSMODEL ══
-   Gebaseerd op werkelijke marktprijzen per merk/model.
-   GEEN simpele formule meer — per categorie een realistische vloer/plafond.
-══ */
-function estimateMarketValue(title, year, km) {
+/* ══════════════════════════════════════════════
+   REALISTISCH PRIJSMODEL
+   
+   Methode:
+   1. Identificeer merk + model + motorvariant uit titel
+   2. Gebruik een specifieke basisprijs voor die exact configuratie
+   3. Pas depreciatiecurve toe op basis van:
+      - Leeftijd (jaren)
+      - Kilometerstand t.o.v. norm (15.000 km/jaar)
+      - Brandstoftype (EV deprecieert sneller)
+   4. Confidence score: hoe precies is de match?
+   
+   ALLE waarden zijn gebaseerd op Nederlandse marktprijzen
+   (inclusief BPM, dus wat je in NL betaalt voor een
+   vergelijkbaar voertuig met kenteken).
+══════════════════════════════════════════════ */
+function estimateMarketValue(title, year, km, fuel, power){
   const t   = (title||'').toLowerCase();
-  const age = year ? Math.max(0, 2026 - parseInt(year)) : 5;
-  const kmN = km  || (age * 15000);
+  const age = year ? Math.max(0, 2026-parseInt(year)) : 5;
+  const kmN = km || (age*15000);
+  const kmNorm = age*15000;
+  const kmDev  = kmN - kmNorm; // positief = meer dan gemiddeld
 
-  // Depreciatiecurve: per jaar en per 10k km
-  function depr(base, yearRate, kmRate, floor) {
-    let v = base * Math.pow(1 - yearRate, age);
-    v -= (kmN / 10000) * kmRate;
-    return Math.max(v, floor);
+  /* Depreciatiecurve met km-correctie
+     yearRate = jaarlijks depreciatiepercentage
+     kmRate   = waardevermindering per 10.000 extra km boven norm (€)
+     floor    = absolute bodemwaarde
+     confidence: 1-5 (hoe specifiek de match is)
+  */
+  function val(base, yearRate, kmRate, floor, conf){
+    let v = base * Math.pow(1-yearRate, age);
+    v -= (kmDev/10000)*kmRate;
+    v = Math.max(v, floor);
+    return { est: Math.round(v/500)*500, confidence: conf };
   }
 
-  // ── HYPER / MEGA GT ──
-  if (/sf90|laferrari|918|bugatti|koenigsegg|pagani|rimac/i.test(t))
-    return depr(480000, 0.04, 1200, 320000);
-  if (/ferrari\s*(?:f8|488\s*pista|812\s*superfast|812\s*gts)/i.test(t))
-    return depr(280000, 0.05, 900, 200000);
-  if (/ferrari\s*(?:488|california|portofino|roma)/i.test(t))
-    return depr(185000, 0.055, 700, 120000);
-  if (/ferrari/i.test(t))
-    return depr(200000, 0.05, 800, 95000);
-  if (/lamborghini\s*(?:svj|sian|aventador)/i.test(t))
-    return depr(380000, 0.04, 1500, 260000);
-  if (/lamborghini\s*(?:huracan|urus)/i.test(t))
-    return depr(195000, 0.055, 800, 120000);
-  if (/lamborghini/i.test(t))
-    return depr(180000, 0.055, 750, 95000);
-  if (/mclaren\s*(?:720|765|senna|p1)/i.test(t))
-    return depr(260000, 0.05, 1100, 170000);
-  if (/mclaren\s*(?:570|600|650)/i.test(t))
-    return depr(145000, 0.06, 700, 90000);
-  if (/mclaren/i.test(t))
-    return depr(130000, 0.06, 650, 75000);
-  if (/aston\s*martin\s*(?:dbs|db11|vantage\s*v12)/i.test(t))
-    return depr(180000, 0.07, 700, 85000);
-  if (/aston\s*martin/i.test(t))
-    return depr(120000, 0.07, 600, 60000);
-  if (/bentley\s*(?:continental|flying\s*spur)/i.test(t))
-    return depr(175000, 0.08, 600, 65000);
-  if (/bentley/i.test(t))
-    return depr(145000, 0.08, 550, 55000);
-  if (/rolls.royce/i.test(t))
-    return depr(310000, 0.07, 900, 150000);
+  const pw = power ? parseInt(String(power).replace(/[^\d]/g,'')) : 0;
 
-  // ── SPORT / PERFORMANCE ──
-  if (/porsche\s*(?:gt2|gt3|918)/i.test(t))
-    return depr(220000, 0.03, 800, 160000);
-  if (/porsche\s*911\s*turbo/i.test(t))
-    return depr(175000, 0.06, 600, 90000);
-  if (/porsche\s*(?:911|992|991)/i.test(t))
-    return depr(110000, 0.06, 450, 55000);
-  if (/porsche\s*(?:taycan\s*turbo\s*s)/i.test(t))
-    return depr(145000, 0.09, 500, 60000);
-  if (/porsche\s*(?:taycan|panamera\s*turbo)/i.test(t))
-    return depr(110000, 0.09, 400, 45000);
-  if (/porsche\s*(?:panamera|macan|cayenne)/i.test(t))
-    return depr(85000, 0.09, 350, 25000);
-  if (/amg\s*(?:gt\s*(?:r|black|63)|c63\s*(?:black|edition|507))/i.test(t))
-    return depr(130000, 0.09, 500, 45000);
-  if (/amg\s*(?:gt|c63|e63|s63|g63)/i.test(t))
-    return depr(95000, 0.09, 400, 35000);
-  if (/mercedes.*(?:g\s*63|g\s*500)/i.test(t))
-    return depr(145000, 0.06, 400, 80000);
-  if (/(?:rs6|rs7)\s*(?:performance)?/i.test(t))
-    return depr(90000, 0.10, 380, 28000);
-  if (/(?:rs3|rs4|rs5|rs\s*[3-7])/i.test(t))
-    return depr(70000, 0.10, 350, 22000);
-  if (/(?:m3|m4)\s*(?:competition|cs|gts)?/i.test(t))
-    return depr(85000, 0.10, 380, 22000);
-  if (/(?:m5|m8)\s*(?:competition)?/i.test(t))
-    return depr(95000, 0.10, 400, 30000);
-  if (/(?:bmw\s*(?:m2|m3|m4|m5|m6|m8))/i.test(t))
-    return depr(75000, 0.10, 360, 20000);
+  /* ════ FERRARI ════ */
+  if(/ferrari/i.test(t)){
+    if(/sf90\s*(stradale|spider)?/i.test(t))   return val(490000,.04,1500,390000,5);
+    if(/laferrari/i.test(t))                    return val(2800000,.01,5000,2200000,5);
+    if(/812\s*(superfast|gts|competizione)/i.test(t)) return val(330000,.05,1200,250000,5);
+    if(/f8\s*(tributo|spider)/i.test(t))        return val(240000,.05,1100,180000,5);
+    if(/296\s*(gtb|gts)/i.test(t))              return val(290000,.04,1200,230000,5);
+    if(/roma/i.test(t))                         return val(215000,.05,900,155000,5);
+    if(/portofino\s*m?/i.test(t))               return val(195000,.055,850,130000,5);
+    if(/488\s*pista/i.test(t))                  return val(310000,.04,1300,240000,5);
+    if(/488\s*(gtb|spider)/i.test(t))           return val(200000,.06,900,140000,5);
+    if(/california\s*t?/i.test(t))              return val(130000,.07,700,75000,4);
+    if(/458/i.test(t))                          return val(160000,.06,800,105000,4);
+    if(/f430/i.test(t))                         return val(105000,.06,700,65000,4);
+    if(/360/i.test(t))                          return val(75000,.05,600,45000,3);
+    return val(185000,.06,800,90000,3); // generic Ferrari
+  }
 
-  // ── PREMIUM / LUXURY ──
-  if (/(?:mercedes|bmw|audi)\s*(?:s-klasse|s\s*class|s500|s600|s63|7-serie|7er|a8\s*l)/i.test(t))
-    return depr(85000, 0.12, 300, 12000);
-  if (/range\s*rover\s*(?:sport\s*svr|autobiography)/i.test(t))
-    return depr(95000, 0.13, 400, 18000);
-  if (/range\s*rover/i.test(t))
-    return depr(80000, 0.13, 350, 14000);
+  /* ════ LAMBORGHINI ════ */
+  if(/lamborghini/i.test(t)){
+    if(/aventador\s*svj/i.test(t))              return val(520000,.04,2000,420000,5);
+    if(/aventador\s*(sv|ultimae)/i.test(t))     return val(450000,.04,1800,360000,5);
+    if(/aventador/i.test(t))                    return val(350000,.05,1500,270000,5);
+    if(/revuelto/i.test(t))                     return val(580000,.03,2000,500000,5);
+    if(/huracan\s*(sto|performante|evo\s*spyder)/i.test(t)) return val(280000,.05,1200,220000,5);
+    if(/huracan\s*(evo|spyder)?/i.test(t))      return val(215000,.055,1000,160000,5);
+    if(/urus\s*s/i.test(t))                     return val(235000,.07,900,155000,5);
+    if(/urus/i.test(t))                         return val(195000,.08,800,120000,5);
+    if(/gallardo/i.test(t))                     return val(85000,.06,600,50000,4);
+    return val(200000,.055,900,110000,3);
+  }
 
-  // ── ELEKTRISCH PREMIUM ──
-  if (/tesla\s*(?:model\s*s\s*plaid|model\s*s\s*100)/i.test(t))
-    return depr(85000, 0.12, 200, 30000);
-  if (/tesla/i.test(t))
-    return depr(55000, 0.12, 180, 18000);
+  /* ════ MCLAREN ════ */
+  if(/mclaren/i.test(t)){
+    if(/senna/i.test(t))                        return val(950000,.03,3000,800000,5);
+    if(/p1/i.test(t))                           return val(1400000,.02,4000,1200000,5);
+    if(/765lt/i.test(t))                        return val(350000,.04,1500,290000,5);
+    if(/720s\s*(spider)?/i.test(t))             return val(240000,.06,1000,170000,5);
+    if(/750s/i.test(t))                         return val(280000,.05,1200,230000,5);
+    if(/600lt/i.test(t))                        return val(195000,.06,900,140000,5);
+    if(/570s\s*(spider|gt)?/i.test(t))          return val(155000,.07,800,105000,5);
+    if(/650s\s*(spider)?/i.test(t))             return val(145000,.07,750,95000,5);
+    if(/540c|570gt/i.test(t))                   return val(115000,.07,700,75000,4);
+    if(/artura/i.test(t))                       return val(185000,.07,700,130000,5);
+    return val(160000,.07,800,90000,3);
+  }
 
-  // ── STANDAARD AUTO ──
-  return depr(Math.max(8000, 30000 * Math.pow(0.88, age)), 0.11, 150, 2000);
+  /* ════ PORSCHE ════ */
+  if(/porsche/i.test(t)){
+    // 911 varianten
+    if(/911\s*(gt2\s*rs)/i.test(t))             return val(320000,.04,1200,270000,5);
+    if(/911\s*(gt3\s*rs)/i.test(t))             return val(250000,.04,1000,210000,5);
+    if(/911\s*(gt3)/i.test(t))                  return val(190000,.05,900,155000,5);
+    if(/911\s*(turbo\s*s)/i.test(t))            return val(210000,.06,800,145000,5);
+    if(/911\s*(turbo)/i.test(t))                return val(170000,.06,700,115000,5);
+    if(/911\s*(cabriolet|targa|4s|carrera\s*s)/i.test(t)) return val(130000,.07,600,75000,5);
+    if(/911\s*(carrera|992|991)/i.test(t))      return val(110000,.07,550,60000,4);
+    if(/911/i.test(t))                          return val(115000,.07,550,58000,4);
+    // Taycan
+    if(/taycan\s*(turbo\s*s|turbo\s*cross)/i.test(t)) return val(165000,.10,600,75000,5);
+    if(/taycan\s*(turbo)/i.test(t))             return val(140000,.10,550,65000,5);
+    if(/taycan\s*(gts|4s)/i.test(t))            return val(115000,.10,500,52000,5);
+    if(/taycan/i.test(t))                       return val(95000,.10,450,42000,4);
+    // Panamera
+    if(/panamera\s*(turbo\s*s\s*e-hybrid|turbo\s*s)/i.test(t)) return val(155000,.10,600,55000,5);
+    if(/panamera\s*(turbo|gts)/i.test(t))       return val(120000,.10,550,40000,5);
+    if(/panamera/i.test(t))                     return val(90000,.10,450,25000,4);
+    // Cayenne
+    if(/cayenne\s*(turbo\s*gt|turbo\s*s)/i.test(t)) return val(185000,.09,700,85000,5);
+    if(/cayenne\s*(turbo)/i.test(t))            return val(140000,.09,600,55000,5);
+    if(/cayenne\s*(coupe|gts)/i.test(t))        return val(105000,.09,500,38000,5);
+    if(/cayenne/i.test(t))                      return val(85000,.09,450,22000,4);
+    // Macan
+    if(/macan\s*(turbo|gts)/i.test(t))          return val(90000,.09,400,28000,5);
+    if(/macan/i.test(t))                        return val(70000,.09,350,18000,4);
+    // Boxster/Cayman
+    if(/boxster\s*(spyder|gts|s)/i.test(t)||/cayman\s*(gt4|gts|s)/i.test(t)) return val(75000,.07,400,30000,5);
+    if(/boxster|cayman/i.test(t))               return val(55000,.07,350,20000,4);
+    return val(90000,.08,450,22000,3);
+  }
+
+  /* ════ ASTON MARTIN ════ */
+  if(/aston\s*martin/i.test(t)){
+    if(/dbs\s*(superleggera|volante)/i.test(t)) return val(225000,.08,900,110000,5);
+    if(/db11\s*(amr|volante)/i.test(t))         return val(175000,.08,800,90000,5);
+    if(/db11/i.test(t))                         return val(155000,.08,750,75000,5);
+    if(/vantage\s*(f1|amr)/i.test(t))           return val(140000,.08,700,75000,5);
+    if(/vantage/i.test(t))                      return val(115000,.08,650,55000,5);
+    if(/dbx\s*707/i.test(t))                    return val(210000,.09,800,120000,5);
+    if(/dbx/i.test(t))                          return val(165000,.09,700,90000,5);
+    if(/vanquish/i.test(t))                     return val(145000,.07,700,80000,4);
+    return val(130000,.08,650,60000,3);
+  }
+
+  /* ════ BENTLEY ════ */
+  if(/bentley/i.test(t)){
+    if(/continental\s*(gt\s*speed|gt3-r)/i.test(t)) return val(285000,.07,900,165000,5);
+    if(/continental\s*(gt\s*w12|gtc\s*w12)/i.test(t)) return val(245000,.07,800,135000,5);
+    if(/continental\s*(gt|gtc)/i.test(t))       return val(210000,.07,750,110000,5);
+    if(/flying\s*spur\s*w12/i.test(t))          return val(230000,.08,700,100000,5);
+    if(/flying\s*spur/i.test(t))                return val(195000,.08,650,85000,5);
+    if(/bentayga\s*(speed|w12)/i.test(t))       return val(215000,.09,750,95000,5);
+    if(/bentayga/i.test(t))                     return val(185000,.09,650,80000,5);
+    if(/mulsanne/i.test(t))                     return val(175000,.07,600,80000,4);
+    return val(175000,.08,650,75000,3);
+  }
+
+  /* ════ ROLLS ROYCE ════ */
+  if(/rolls.royce/i.test(t)){
+    if(/spectre/i.test(t))                      return val(380000,.06,1200,310000,5);
+    if(/cullinan\s*(black\s*badge)/i.test(t))   return val(460000,.06,1400,380000,5);
+    if(/cullinan/i.test(t))                     return val(380000,.06,1200,305000,5);
+    if(/phantom\s*(viii|8)/i.test(t))           return val(430000,.06,1200,350000,5);
+    if(/phantom/i.test(t))                      return val(280000,.06,1000,200000,4);
+    if(/ghost\s*(black\s*badge)/i.test(t))      return val(360000,.06,1100,295000,5);
+    if(/ghost/i.test(t))                        return val(310000,.06,1000,235000,5);
+    if(/wraith/i.test(t))                       return val(255000,.06,900,165000,4);
+    if(/dawn/i.test(t))                         return val(280000,.06,950,195000,4);
+    return val(300000,.06,1000,200000,3);
+  }
+
+  /* ════ MERCEDES AMG ════ */
+  if(/mercedes|amg/i.test(t)){
+    if(/amg\s*(gt\s*(black\s*series|r\s*pro)|one)/i.test(t)) return val(390000,.05,1500,310000,5);
+    if(/amg\s*gt\s*(r|black)/i.test(t))         return val(175000,.07,700,100000,5);
+    if(/amg\s*gt\s*(63\s*s|s\s*coupe)/i.test(t)) return val(185000,.08,700,90000,5);
+    if(/amg\s*(gt\s*43|gt\s*53|gt\s*63)/i.test(t)) return val(135000,.08,550,55000,5);
+    if(/amg\s*gt/i.test(t))                     return val(115000,.07,600,60000,4);
+    if(/c\s*63\s*(black|edition|coupé.*amg|amg.*coupé)/i.test(t)) return val(80000,.09,450,28000,5);
+    if(/c\s*63\s*s?\b/i.test(t))                return val(70000,.09,400,22000,5);
+    if(/e\s*63\s*s?\b/i.test(t))                return val(90000,.09,450,28000,5);
+    if(/s\s*63\s*(coupe|amg)?/i.test(t))        return val(115000,.09,500,38000,5);
+    if(/g\s*63\b/i.test(t))                     return val(185000,.06,600,125000,5);
+    if(/g\s*500\b/i.test(t))                    return val(155000,.06,550,100000,5);
+    if(/gls\s*600\s*maybach/i.test(t))          return val(185000,.08,600,100000,5);
+    if(/s\s*(580|600|680|maybach)/i.test(t))    return val(145000,.09,500,48000,5);
+    if(/gle\s*(63|coupe\s*63)/i.test(t))        return val(110000,.09,500,42000,5);
+    if(/glc\s*63/i.test(t))                     return val(90000,.09,450,32000,5);
+    if(/sl\s*(43|55|63)/i.test(t))              return val(120000,.07,500,65000,5);
+    if(/eqs\s*(580|amg)/i.test(t))              return val(115000,.11,400,50000,5);
+    return val(55000,.09,350,12000,2);
+  }
+
+  /* ════ BMW M ════ */
+  if(/\bbmw\b/i.test(t)||/\bm[2-8]\b/.test(t)){
+    if(/m\s*2\s*(?:competition|cs)?/i.test(t))  return val(80000,.09,380,32000,5);
+    if(/m\s*3\s*(?:competition|touring|cs|csl)/i.test(t)) return val(90000,.09,400,32000,5);
+    if(/m\s*4\s*(?:competition|csl|coupé|convertible)/i.test(t)) return val(92000,.09,400,30000,5);
+    if(/m\s*5\s*(?:competition|cs)?/i.test(t))  return val(110000,.09,450,35000,5);
+    if(/m\s*6\s*(?:gran\s*coupe|competition)?/i.test(t)) return val(75000,.09,400,22000,5);
+    if(/m\s*8\s*(?:competition|gran\s*coupe)?/i.test(t)) return val(135000,.09,500,55000,5);
+    if(/x5\s*m\s*(?:competition)?/i.test(t))    return val(115000,.09,480,42000,5);
+    if(/x6\s*m\s*(?:competition)?/i.test(t))    return val(118000,.09,490,40000,5);
+    if(/i7\s*m70/i.test(t))                     return val(185000,.10,600,100000,5);
+    if(/7\s*(?:serie|series).*750|760/i.test(t)) return val(110000,.10,450,32000,4);
+    if(/i8/i.test(t))                           return val(65000,.10,400,28000,4);
+    if(/alpina\s*b7/i.test(t))                  return val(95000,.09,420,28000,4);
+    return val(55000,.09,350,12000,2);
+  }
+
+  /* ════ AUDI RS ════ */
+  if(/\baudi\b/i.test(t)){
+    if(/rs\s*(?:6|7)\s*performance/i.test(t))   return val(120000,.09,450,52000,5);
+    if(/rs\s*(?:6|7)/i.test(t))                 return val(105000,.09,420,42000,5);
+    if(/rs\s*(?:q8|e-tron\s*gt\s*rs)/i.test(t)) return val(130000,.09,480,55000,5);
+    if(/rs\s*(?:q3|q5)/i.test(t))               return val(75000,.09,380,28000,5);
+    if(/rs\s*(?:3|4|5)/i.test(t))               return val(70000,.09,360,25000,5);
+    if(/s8/i.test(t))                           return val(110000,.10,430,38000,5);
+    if(/(?:s6|s7)/i.test(t))                    return val(80000,.09,380,26000,5);
+    if(/r8\s*(?:v10\s*performance|plus)/i.test(t)) return val(165000,.07,700,105000,5);
+    if(/r8\s*(?:v10|spyder)/i.test(t))          return val(140000,.07,650,88000,5);
+    if(/r8/i.test(t))                           return val(105000,.07,600,65000,4);
+    return val(48000,.09,300,8000,2);
+  }
+
+  /* ════ RANGE ROVER ════ */
+  if(/range\s*rover/i.test(t)){
+    if(/range\s*rover\s*sport\s*svr/i.test(t))  return val(115000,.11,500,45000,5);
+    if(/range\s*rover\s*sport\s*(p530|p460)/i.test(t)) return val(105000,.11,480,40000,5);
+    if(/range\s*rover\s*sport/i.test(t))        return val(95000,.11,450,28000,5);
+    if(/range\s*rover\s*(autobiography|p530|p460)/i.test(t)) return val(145000,.11,550,60000,5);
+    if(/range\s*rover\s*(sv|swb|lwb)/i.test(t)) return val(195000,.10,600,100000,5);
+    if(/range\s*rover/i.test(t))                return val(115000,.11,480,40000,4);
+    if(/defender\s*(90|110|130|v8)/i.test(t))   return val(85000,.08,400,35000,4);
+    if(/defender/i.test(t))                     return val(70000,.08,350,28000,4);
+    return val(75000,.10,380,18000,3);
+  }
+
+  /* ════ TESLA ════ */
+  if(/tesla/i.test(t)){
+    if(/model\s*s\s*plaid/i.test(t))            return val(105000,.11,300,52000,5);
+    if(/model\s*s/i.test(t))                    return val(80000,.12,280,32000,5);
+    if(/model\s*x\s*plaid/i.test(t))            return val(115000,.11,320,60000,5);
+    if(/model\s*x/i.test(t))                    return val(90000,.12,300,38000,5);
+    if(/model\s*3\s*(?:performance|long)/i.test(t)) return val(55000,.11,220,28000,5);
+    if(/model\s*3/i.test(t))                    return val(45000,.11,200,22000,5);
+    if(/model\s*y\s*(?:performance|long)/i.test(t)) return val(58000,.11,220,30000,5);
+    if(/model\s*y/i.test(t))                    return val(48000,.11,200,24000,5);
+    return val(55000,.12,220,22000,3);
+  }
+
+  /* ════ OVERIG STANDAARD ════ */
+  // Fallback op basis van vermogen als hint
+  if(pw>400)  return val(85000,.10,400,18000,1);
+  if(pw>280)  return val(55000,.10,320,12000,1);
+  if(pw>200)  return val(38000,.10,260,8000,1);
+  return val(Math.max(8000,28000*Math.pow(0.88,age)),.11,180,2000,1);
 }
 
 /* ══ PRICE ADVICE ══ */
-function priceAdvice(price, km, year, title) {
-  if (!price || !year) return null;
-  const est   = estimateMarketValue(title, year, km);
-  const ratio = price / est;
-  const diff  = Math.abs(Math.round((ratio - 1) * 100));
+function priceAdvice(price, km, year, title, fuel, power){
+  if(!price||!year)return null;
+  const {est,confidence} = estimateMarketValue(title,year,km,fuel,power);
+  const ratio = price/est;
+  const diff  = Math.abs(Math.round((ratio-1)*100));
 
-  if (ratio < 0.88) return {
-    level:'ok', tag:'Onder marktwaarde', title:'Aantrekkelijke vraagprijs', icon:'check',
-    text:`Op basis van merk, model, leeftijd en kilometerstand lijkt de vraagprijs <strong>circa ${diff}% onder de geschatte marktwaarde</strong> te liggen. Dit kan duiden op een koop­kans — maar ga altijd na of er een gegronde reden is (schade, ontbrekend onderhoud, import­kosten, hoge verzekerings­premie).`,
-    est, ratio,
+  // Bepaal bandbreedte op basis van confidence
+  // Hoge confidence (5) → strakke marges (±10%)
+  // Lage confidence (1) → ruimere marges (±25%)
+  const lowThresh  = 1 - (0.05 + (5-confidence)*0.035);  // 0.83–0.95
+  const highThresh = 1 + (0.05 + (5-confidence)*0.035);  // 1.05–1.17
+
+  if(ratio < lowThresh) return{
+    level:'ok',tag:'Onder marktwaarde',title:'Aantrekkelijke vraagprijs',icon:'check',
+    text:`Op basis van merk, model, bouwjaar en kilometerstand lijkt de vraagprijs <strong>circa ${diff}% onder de geschatte marktwaarde</strong>. Ga altijd na of er een gegronde reden is — verborgen schade, ontbrekend onderhoud, importkosten of een specifieke verkoopurgentie.`,
+    est, ratio, confidence,
   };
-  if (ratio > 1.12) return {
-    level:'bad', tag:'Boven marktwaarde', title:'Prijs vraagt nadere onderbouwing', icon:'warn',
-    text:`De vraagprijs lijkt <strong>circa ${diff}% boven de geschatte marktwaarde</strong> te liggen. Bij exclusieve voertuigen kan dit gerechtvaardigd zijn door zeldzame specificaties, collectorswaarde, zeer lage kilometerstand of een recent volledig onderhoud. Een onafhankelijke taxatie is sterk aanbevolen voordat u beslist.`,
-    est, ratio,
+  if(ratio > highThresh) return{
+    level:'bad',tag:'Boven marktwaarde',title:'Prijs vraagt nadere onderbouwing',icon:'warn',
+    text:`De vraagprijs lijkt <strong>circa ${diff}% boven de geschatte marktwaarde</strong>. Bij exclusieve voertuigen kan dit gerechtvaardigd zijn door zeldzame specificaties, collectorswaarde, lage kilometerstand of volledig servicehistorie. Een onafhankelijke taxatie is sterk aanbevolen.`,
+    est, ratio, confidence,
   };
-  return {
-    level:'warn', tag:'Marktconform', title:'Redelijk marktconforme prijs', icon:'info',
-    text:`De vraagprijs lijkt <strong>marktconform</strong>. Bij exclusieve voertuigen zijn onderhoud­shistorie, originele kleurcombinatie, optiepakket en aantoonbare service­historie vaak bepalender dan uitsluitend leeftijd en kilometerstand. Ruimte voor onderhandelen is nagenoeg altijd aanwezig.`,
-    est, ratio,
+  return{
+    level:'warn',tag:'Marktconform',title:'Redelijk marktconforme prijs',icon:'info',
+    text:`De vraagprijs ligt <strong>binnen de verwachte bandbreedte</strong> voor dit model, bouwjaar en kilometerstand. Onderhandelruimte is nagenoeg altijd aanwezig — ook bij een marktconforme vraagprijs.`,
+    est, ratio, confidence,
   };
 }
 
 /* ══ RISK PROFILE ══ */
-function buildRisk(parsed, priceNum, kmNum) {
-  const age  = parsed.year ? 2026 - parseInt(parsed.year) : null;
+function buildRisk(parsed, priceNum, kmNum){
+  const age  = parsed.year ? 2026-parseInt(parsed.year) : null;
   const t    = (parsed.title||'').toLowerCase();
   const isLux= /lamborghini|ferrari|mclaren|porsche|bentley|rolls.royce|aston.martin/i.test(t);
-  const checks = [];
-  let score = 28;
+  const checks=[];
+  let score=28;
 
-  if (kmNum) {
-    if (kmNum < 30000) { checks.push({s:'ok', strong:'Lage kilometerstand', text:'Minder dan 30.000 km — gunstiger dan gemiddeld voor de categorie.'}); score -= 8; }
-    else if (kmNum < 80000) { checks.push({s:'ok', strong:'Normale kilometerstand', text:'Normaal gebruik voor de voertuig­leeftijd.'}); }
-    else if (kmNum < 150000) { checks.push({s:'warn', strong:'Hogere kilometerstand', text:'Extra aandacht vereist voor slijtage­onderdelen bij aankoopkeuring.'}); score += 10; }
-    else { checks.push({s:'bad', strong:'Hoge kilometerstand', text:'Significant hoger risico op verborgen slijtage — keuring essentieel.'}); score += 20; }
-  } else {
-    checks.push({s:'neu', strong:'Kilometerstand onbekend', text:'Niet aantoonbaar uit advertentie — vraag dit expliciet na bij de verkoper.'}); score += 10;
+  if(kmNum){
+    if(kmNum<30000){ checks.push({s:'ok',strong:'Lage kilometerstand',text:'Minder dan 30.000 km — gunstiger dan gemiddeld.'});score-=8;}
+    else if(kmNum<80000){checks.push({s:'ok',strong:'Normale kilometerstand',text:'Normaal gebruik voor de leeftijd.'});}
+    else if(kmNum<150000){checks.push({s:'warn',strong:'Hogere kilometerstand',text:'Extra aandacht voor slijtage­onderdelen bij keuring.'});score+=10;}
+    else{checks.push({s:'bad',strong:'Hoge kilometerstand',text:'Significant risico op verborgen slijtage — keuring essentieel.'});score+=20;}
+  }else{checks.push({s:'neu',strong:'Kilometerstand onbekend',text:'Vraag dit expliciet na bij de verkoper.'});score+=10;}
+
+  if(age!==null){
+    if(age<=3){checks.push({s:'ok',strong:'Recent model',text:'Relatief jong — minder kans op verborgen gebreken.'});score-=5;}
+    else if(age<=8){checks.push({s:'ok',strong:'Normale leeftijd',text:'Gangbare leeftijd voor de categorie.'});}
+    else if(age<=15){checks.push({s:'warn',strong:'Ouder voertuig',text:'Onderhoudshistorie is bij deze leeftijd cruciaal.'});score+=8;}
+    else{checks.push({s:'bad',strong:'Hoge ouderdom',text:'Grondige keuring én volledige documentatiecheck verplicht.'});score+=18;}
   }
 
-  if (age !== null) {
-    if (age <= 3)   { checks.push({s:'ok', strong:'Recent model', text:'Relatief jong voertuig — minder kans op verborgen technische gebreken.'}); score -= 5; }
-    else if (age <= 8) { checks.push({s:'ok', strong:'Middeloud voertuig', text:'Normale leeftijd voor de categorie — gangbare onderhoudsbeurt verwacht.'}); }
-    else if (age <= 15){ checks.push({s:'warn', strong:'Ouder voertuig', text:'Verhoogde kans op slijtage — onderhoudshistorie is bij deze leeftijd cruciaal.'}); score += 8; }
-    else               { checks.push({s:'bad', strong:'Hoge voertuigouderdom', text:'Grondige keuring én volledige documentatie­check zijn onmisbaar.'}); score += 18; }
+  const adv=priceAdvice(priceNum,kmNum,parsed.year,parsed.title,parsed.fuel,parsed.power);
+  if(adv){
+    if(adv.level==='ok'){checks.push({s:'ok',strong:'Aantrekkelijke prijs',text:'Vraag waarom de auto zo geprijsd is — niet altijd negatief.'});}
+    else if(adv.level==='bad'){checks.push({s:'warn',strong:'Hogere vraagprijs',text:'Verifieer of bijzondere specificaties de meerprijs rechtvaardigen.'});score+=8;}
+    else{checks.push({s:'ok',strong:'Marktconforme prijs',text:'Geen alarmsignalen vanuit de prijsstelling.'});}
   }
 
-  const adv = priceAdvice(priceNum, kmNum, parsed.year, parsed.title);
-  if (adv) {
-    if (adv.level==='ok')  { checks.push({s:'ok', strong:'Aantrekkelijke prijs', text:'Vraag na waarom de auto aantrekkelijk geprijsd staat — dit is niet altijd negatief.'}); }
-    else if (adv.level==='bad') { checks.push({s:'warn', strong:'Hogere vraagprijs', text:'Controleer of bijzondere specificaties de meerprijs aantoonbaar rechtvaardigen.'}); score += 8; }
-    else { checks.push({s:'ok', strong:'Marktconforme prijs', text:'Geen alarmsignalen vanuit de prijsstelling.'}); }
-  }
+  if(isLux){checks.push({s:'warn',strong:'Exclusief voertuig',text:'Verzekering, BPM en onderhoud liggen significant hoger.'});score+=6;}
+  if(parsed.platform==='Marktplaats.nl'){checks.push({s:'warn',strong:'Particuliere markt',text:'Geen dealergarantie — extra due diligence vereist.'});score+=8;}
+  else{checks.push({s:'ok',strong:'Professioneel platform',text:'Mobile.de en AutoScout24 hanteren strikte kwaliteitsnormen.'});}
+  checks.push({s:'neu',strong:'Servicehistorie',text:'Vraag het complete onderhoudsboekje op.'});
+  checks.push({s:'neu',strong:'Schadeverleden',text:'Laat een Carfax- of equivalent rapport opvragen.'});
 
-  if (isLux) {
-    checks.push({s:'warn', strong:'Exclusief voertuig', text:'BPM, verzekering en onderhoudskosten liggen significant hoger. Plan dit mee in uw totaalbudget.'}); score += 6;
-  }
-  if (parsed.platform === 'Marktplaats.nl') {
-    checks.push({s:'warn', strong:'Particuliere markt', text:'Geen dealer­garantie, geen wettelijke bedenktijd — extra due diligence vereist.'}); score += 8;
-  } else {
-    checks.push({s:'ok', strong:'Professioneel platform', text:'Mobile.de en AutoScout24 hanteren strikte dealer­normen en kwaliteits­controles.'});
-  }
-  checks.push({s:'neu', strong:'Servicehistorie onbekend', text:'Vraag het complete onderhoud­sboekje op bij de verkoper.'});
-  checks.push({s:'neu', strong:'Schadeverleden onbekend', text:'Laat een Carfax of equivalent rapport opvragen voor definitieve aankoop.'});
-
-  score = Math.max(5, Math.min(95, score));
-  return { score, checks };
+  score=Math.max(5,Math.min(95,score));
+  return{score,checks};
 }
 
 /* ══ MARKET CONTEXT ══ */
-function buildMarketContext(parsed, priceNum, kmNum) {
-  const age  = parsed.year ? 2026 - parseInt(parsed.year) : null;
-  const adv  = priceAdvice(priceNum, kmNum, parsed.year, parsed.title);
-  const est  = adv ? adv.est : null;
-  const avgKm= age ? age * 15000 : null;
-  const kmDelta = (kmNum && avgKm) ? kmNum - avgKm : null;
+function buildMarketContext(parsed, priceNum, kmNum){
+  const age =parsed.year?2026-parseInt(parsed.year):null;
+  const adv =priceAdvice(priceNum,kmNum,parsed.year,parsed.title,parsed.fuel,parsed.power);
+  const est =adv?adv.est:null;
+  const avgKm=age?age*15000:null;
+  const kmDelta=(kmNum&&avgKm)?kmNum-avgKm:null;
 
-  let h = '<div class="bd-section"><div class="bd-sec-lbl">Marktwaarde indicatie</div><div class="market-grid">';
-  h += `<div class="mkt-card"><div class="mkt-lbl">Geschatte marktwaarde</div><div class="mkt-val">${est ? euro(est) : '—'}</div><div class="mkt-sub">Op basis van merk, model, leeftijd &amp; km</div></div>`;
-  h += `<div class="mkt-card"><div class="mkt-lbl">Vraagprijs</div><div class="mkt-val">${euro(priceNum)}</div><div class="mkt-sub">Advertentieprijs verkoper</div></div>`;
-  if (adv) {
-    const pct = Math.round((adv.ratio - 1) * 100);
-    h += `<div class="mkt-card"><div class="mkt-lbl">Verschil</div><div class="mkt-val" style="color:${adv.level==='ok'?'var(--ig)':adv.level==='bad'?'var(--ir)':'var(--wn-c)'}">${pct>0?'+':''}${pct}%</div><div class="mkt-sub">${adv.tag}</div></div>`;
+  let h='<div class="bd-section"><div class="bd-sec-lbl">Marktwaarde indicatie — '+
+    (parsed.title?parsed.title.substring(0,60):'voertuig')+'</div><div class="market-grid">';
+  h+=`<div class="mkt-card"><div class="mkt-lbl">Geschatte marktwaarde</div><div class="mkt-val">${est?euro(est):'—'}</div><div class="mkt-sub">Merk · model · km · leeftijd</div></div>`;
+  h+=`<div class="mkt-card"><div class="mkt-lbl">Vraagprijs advertentie</div><div class="mkt-val">${euro(priceNum)}</div><div class="mkt-sub">Opgegeven door verkoper</div></div>`;
+  if(adv){
+    const pct=Math.round((adv.ratio-1)*100);
+    h+=`<div class="mkt-card"><div class="mkt-lbl">Prijsverschil</div><div class="mkt-val" style="color:${adv.level==='ok'?'var(--ig)':adv.level==='bad'?'var(--ir)':'var(--wn-c)'}">${pct>0?'+':''}${pct}%</div><div class="mkt-sub">${adv.tag}</div></div>`;
   }
-  h += '</div></div>';
+  h+='</div></div>';
 
-  if (kmNum && age) {
-    h += '<div class="bd-section"><div class="bd-sec-lbl">Kilometerstand analyse</div><div class="market-grid">';
-    h += `<div class="mkt-card"><div class="mkt-lbl">Werkelijke stand</div><div class="mkt-val">${fmtKm(kmNum)}</div><div class="mkt-sub">Opgegeven in advertentie</div></div>`;
-    h += `<div class="mkt-card"><div class="mkt-lbl">Gemiddeld voor leeftijd</div><div class="mkt-val">${fmtKm(avgKm)}</div><div class="mkt-sub">15.000 km/jaar norm</div></div>`;
-    if (kmDelta !== null) {
-      const d = Math.abs(Math.round(kmDelta/1000));
-      const isH = kmDelta > 5000;
-      h += `<div class="mkt-card"><div class="mkt-lbl">Afwijking</div><div class="mkt-val" style="color:${isH?'var(--ir)':'var(--ig)'}">${isH?'+':'−'}${d}k km</div><div class="mkt-sub">${isH?'Hoger dan gemiddeld':'Lager dan gemiddeld'}</div></div>`;
+  // Confidence toelichting
+  if(adv){
+    const conf=adv.confidence;
+    const confPct=Math.round((conf/5)*100);
+    const confLabel=['','Generiek','Laag','Matig','Hoog','Zeer hoog'][conf]||'Onbekend';
+    h+=`<div class="conf-bar" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--hr)">
+      <span class="conf-label">Nauwkeurigheid schatting</span>
+      <div class="conf-track"><div class="conf-fill" style="transform:scaleX(${confPct/100})"></div></div>
+      <span class="conf-val">${confLabel} (${confPct}%)</span>
+    </div>
+    <div class="conf-basis">Basis: ${conf>=4?'Exacte model/variant match — betrouwbare vergelijking':conf>=3?'Model herkend, variantspecificaties deels geschat':conf>=2?'Merk herkend, model indicatief — gebruik als grove richtlijn':'Onbekend model — schatting puur indicatief. Raadpleeg APEXclusive voor een precieze waardebepaling.'}.</div>`;
+  }
+
+  if(kmNum&&age){
+    h+='<div class="bd-section" style="margin-top:1.5rem"><div class="bd-sec-lbl">Kilometerstand analyse</div><div class="market-grid">';
+    h+=`<div class="mkt-card"><div class="mkt-lbl">Werkelijke stand</div><div class="mkt-val">${fmtKm(kmNum)}</div><div class="mkt-sub">Opgegeven in advertentie</div></div>`;
+    h+=`<div class="mkt-card"><div class="mkt-lbl">Norm voor leeftijd</div><div class="mkt-val">${fmtKm(avgKm)}</div><div class="mkt-sub">15.000 km/jaar gemiddeld</div></div>`;
+    if(kmDelta!==null){
+      const d=Math.abs(Math.round(kmDelta/1000));
+      const isH=kmDelta>5000;
+      h+=`<div class="mkt-card"><div class="mkt-lbl">Afwijking</div><div class="mkt-val" style="color:${isH?'var(--ir)':'var(--ig)'}">${isH?'+':'−'}${d}k km</div><div class="mkt-sub">${isH?'Hoger dan gemiddeld':'Lager dan gemiddeld'}</div></div>`;
     }
-    h += '</div></div>';
+    h+='</div></div>';
   }
 
-  if (priceNum) {
-    const bpmEst = Math.round(priceNum * 0.092);
-    const rdw = 690;
-    const total = priceNum + bpmEst + rdw;
-    h += '<div class="bd-section"><div class="bd-sec-lbl">Indicatieve totaalkosten bij import naar Nederland</div><div class="market-grid">';
-    h += `<div class="mkt-card"><div class="mkt-lbl">Aankoopprijs</div><div class="mkt-val">${euro(priceNum)}</div><div class="mkt-sub">Vraagprijs advertentie</div></div>`;
-    h += `<div class="mkt-card"><div class="mkt-lbl">BPM (indicatief ~9%)</div><div class="mkt-val">${euro(bpmEst)}</div><div class="mkt-sub"><a href="https://bpm.apexclusive.nl" target="_blank" style="color:var(--pt)">Gebruik onze BPM Calculator →</a></div></div>`;
-    h += `<div class="mkt-card"><div class="mkt-lbl">Totaal indicatief</div><div class="mkt-val" style="color:var(--pt)">${euro(total)}</div><div class="mkt-sub">Incl. BPM + RDW (±€690)</div></div>`;
-    h += '</div></div>';
+  if(priceNum){
+    const bpmEst=Math.round(priceNum*0.092);
+    const rdw=690;
+    const total=priceNum+bpmEst+rdw;
+    h+='<div class="bd-section" style="margin-top:1.5rem"><div class="bd-sec-lbl">Indicatieve importkosten naar Nederland</div><div class="market-grid">';
+    h+=`<div class="mkt-card"><div class="mkt-lbl">Aankoopprijs</div><div class="mkt-val">${euro(priceNum)}</div><div class="mkt-sub">Vraagprijs advertentie</div></div>`;
+    h+=`<div class="mkt-card"><div class="mkt-lbl">BPM (indicatief ~9%)</div><div class="mkt-val">${euro(bpmEst)}</div><div class="mkt-sub"><a href="https://bpm.apexclusive.nl" target="_blank" style="color:var(--pt)">Exacte BPM berekenen →</a></div></div>`;
+    h+=`<div class="mkt-card"><div class="mkt-lbl">Totaal indicatief</div><div class="mkt-val" style="color:var(--pt)">${euro(total)}</div><div class="mkt-sub">Incl. BPM + RDW (±€690)</div></div>`;
+    h+='</div></div>';
   }
-
   return h;
 }
 
-/* ══ ICOON SVG MAP ══ */
-const TIP_ICONS = {
-  tool:   `<svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
-  file:   `<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
-  shield: `<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-  check:  `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`,
-  user:   `<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
-  layers: `<svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
-  gauge:  `<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>`,
-  star:   `<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
-  key:    `<svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>`,
-  search: `<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
-  euro:   `<svg viewBox="0 0 24 24"><path d="M4 10h12M4 14h12"/><path d="M19.5 9.5A7.5 7.5 0 1 0 19.5 14.5"/></svg>`,
-  nav:    `<svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`,
-};
-const VERDICT_ICONS = {
-  check:`<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`,
-  warn: `<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
-  info: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`,
+/* ══ SVG ICONEN ══ */
+const ICONS={
+  tool:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+  file:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+  shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  check:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>`,
+  user:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+  layers: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+  gauge:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>`,
+  euro:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h12M4 14h12"/><path d="M19.5 9.5A7.5 7.5 0 1 0 19.5 14.5"/></svg>`,
+  search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  key:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>`,
+  nav:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`,
+  info:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`,
+  warn:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+  star:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  arrow:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
 };
 
-/* ══ TIPS BUILDER — volledig nieuw ══ */
-function buildTips(parsed, adv, kmNum, claims) {
-  const age  = parsed.year ? 2026 - parseInt(parsed.year) : null;
-  const t    = (parsed.title||'').toLowerCase();
-  const isLux= /lamborghini|ferrari|mclaren|porsche|bentley|rolls.royce/i.test(t);
-  const tips = [];
+/* ══ TIP CARD BUILDER ══ */
+function makeTipCard(num, icon, title, body, badge, badgeStatus, extract, extractStatus, verifyText, verifyStatus, actionText){
 
-  // Helper: maak een tip-card object
-  function tip(icon, title, body, source, sourceStatus, extract, action) {
-    return { icon, title, body, source, sourceStatus, extract, action };
+  const badgeSVG = {
+    ok:`<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`,
+    warn:`<svg viewBox="0 0 24 24"><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    bad:`<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+    neu:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg>`,
+  };
+
+  const verifySVG = {
+    ok:`<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`,
+    warn:`<svg viewBox="0 0 24 24"><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    bad:`<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+    neu:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg>`,
+  };
+
+  // Kaart-klasse op basis van overall status
+  const cardClass = `tc-${badgeStatus||'neu'}`;
+
+  let html = `<div class="tip-card ${cardClass}">`;
+
+  /* Linker kolom */
+  html += `<div class="tip-left">
+    <div class="tip-num">${String(num).padStart(2,'0')}</div>
+    <div class="tip-icon-wrap">${ICONS[icon]||ICONS.info}</div>
+  </div>`;
+
+  /* Rechter kolom */
+  html += `<div class="tip-right">`;
+
+  /* Titel + badge — altijd op aparte regel, nooit aaneengeschreven */
+  html += `<div class="tip-title-row">
+    <div class="tip-title">${title}</div>`;
+  if(badge){
+    html += `<div class="tip-badge tb-${badgeStatus||'neu'}">${badgeSVG[badgeStatus||'neu']||''}${badge}</div>`;
+  }
+  html += `</div>`;
+
+  /* Body tekst — altijd ONDER de titel, in eigen div */
+  html += `<div class="tip-body">${body}</div>`;
+
+  /* Advertentie-extract — alleen als er iets gevonden is */
+  if(extract){
+    const cleanExtract = extract.length > 200
+      ? extract.substring(0,200).replace(/\s+\S*$/, '')+'…'
+      : extract;
+    html += `<div class="tip-extract ex-${extractStatus||'neu'}">
+      <span class="tip-extract-lbl">Aangetroffen in advertentie</span>
+      "${cleanExtract}"
+    </div>`;
   }
 
-  // 1. Keuring
-  tips.push(tip(
+  /* Verificatie-status pill — conclusie vanuit advertentietekst */
+  if(verifyText){
+    html += `<div class="tip-verify-row vr-${verifyStatus||'neu'}">
+      ${verifySVG[verifyStatus||'neu']||''}
+      ${verifyText}
+    </div>`;
+  }
+
+  /* Actie link */
+  if(actionText){
+    html += `<div class="tip-action">${actionText} ${ICONS.arrow}</div>`;
+  }
+
+  html += `</div></div>`; // /tip-right /tip-card
+  return html;
+}
+
+/* ══ TIPS BUILDER ══ */
+function buildTips(parsed, adv, kmNum, claims){
+  const age  = parsed.year ? 2026-parseInt(parsed.year) : null;
+  const t    = (parsed.title||'').toLowerCase();
+  const isLux= /lamborghini|ferrari|mclaren|porsche|bentley|rolls.royce|aston.martin/i.test(t);
+  const cards= [];
+  let n = 1;
+
+  /* 1. Onafhankelijke keuring — altijd eerste */
+  cards.push(makeTipCard(
+    n++,
     'search',
     'Onafhankelijke aankoopkeuring',
-    'Laat altijd een <strong>onafhankelijke keuring</strong> uitvoeren door een erkende specialist — nooit via of bij de verkopende partij. APEXclusive kan dit voor u regelen in heel Europa, inclusief verslag en foto-documentatie.',
-    'Aanbeveling APEXclusive', 'neu', null,
+    'Laat altijd een onafhankelijke keuring uitvoeren door een erkende specialist — <strong>nooit via of bij de verkopende partij</strong>. APEXclusive regelt dit voor u in heel Europa, inclusief uitgebreid inspectieverslag en fotodocumentatie.',
+    'Altijd aanbevolen',
+    'warn',
+    null, null,
+    'Nog niet vermeld in advertentie — altijd zelf regelen',
+    'warn',
     'Keuring aanvragen via APEXclusive'
   ));
 
-  // 2. Servicehistorie — koppel aan claim
-  const serviceClaim = claims.find(c => c.key === 'Onderhoud & servicehistorie');
-  if (serviceClaim && serviceClaim.found) {
-    tips.push(tip(
-      'tool',
-      'Servicehistorie aantoonbaar — controleer originelen',
-      'De advertentie vermeldt onderhoud­shistorie. Dit is een positief signaal. <strong>Vraag bij bezichtiging altijd de originele facturen en het stempelboekje op</strong> — een digitale foto is geen bewijs.',
-      'Vermeld in advertentie', 'ok',
-      serviceClaim.quote ? `"${serviceClaim.quote.substring(0,160).replace(/"/g,"'").trim()}…"` : null,
-      'Facturen opvragen bij verkoper'
+  /* 2. Reden van verkoop */
+  if(claims.redenVerkoop){
+    cards.push(makeTipCard(
+      n++,
+      'info',
+      'Reden van verkoop vermeld',
+      'De verkoper heeft een reden van verkoop opgegeven. Dit is een <strong>positief transparantiesignaal</strong>. Verifieer bij bezichtiging of de genoemde reden consistent is met de staat en documentatie van het voertuig.',
+      'Vermeld in advertentie',
+      'ok',
+      typeof claims.redenVerkoop === 'string' ? claims.redenVerkoop : null,
+      'ok',
+      'Reden aangetroffen — controleer bij bezichtiging',
+      'ok',
+      null
     ));
   } else {
-    tips.push(tip(
+    cards.push(makeTipCard(
+      n++,
+      'info',
+      'Vraag naar de reden van verkoop',
+      'Er is geen verkooprede vermeld in de advertentie. <strong>Vraag dit expliciet na</strong> bij de verkoper. Een duidelijke, consistente reden geeft vertrouwen — een vage of wisselende toelichting is een waarschuwingssignaal.',
+      'Niet vermeld',
+      'warn',
+      null, null,
+      'Reden niet aangetroffen in advertentie',
+      'warn',
+      'Stel deze vraag bij bezichtiging'
+    ));
+  }
+
+  /* 3. Servicehistorie */
+  if(claims.service){
+    cards.push(makeTipCard(
+      n++,
       'tool',
-      'Servicehistorie — niet vermeld',
-      'Er is geen melding van servicehistorie aangetroffen in de advertentie. <strong>Vraag expliciet om het onderhoudsbewijs</strong> voordat u enige stap zet. Ontbrekend onderhoud kan duiden op hoge vervolg­kosten.',
-      'Niet vermeld in advertentie', 'warn', null,
+      'Servicehistorie vermeld',
+      'De advertentie maakt melding van servicehistorie of onderhoudsboekje. <strong>Vraag bij bezichtiging altijd de originele facturen en het stempelboekje op</strong> — een digitale foto of mondelinge bevestiging is onvoldoende bewijs.',
+      'Aangetroffen',
+      'ok',
+      typeof claims.service === 'string' ? claims.service : null,
+      'ok',
+      'Servicehistorie aangetroffen — verifieer originelen',
+      'ok',
+      'Originele facturen opvragen bij bezichtiging'
+    ));
+  } else {
+    cards.push(makeTipCard(
+      n++,
+      'tool',
+      'Servicehistorie niet vermeld',
+      'Er is geen vermelding van servicehistorie aangetroffen. <strong>Vraag expliciet om het onderhoudbewijs</strong> voordat u verdere stappen zet. Ontbrekend onderhoud bij een exclusief voertuig kan leiden tot aanzienlijke vervolg­kosten.',
+      'Niet vermeld',
+      'bad',
+      null, null,
+      'Geen servicehistorie gevonden in advertentie',
+      'bad',
       'Onderhoudsdocumentatie opvragen'
     ));
   }
 
-  // 3. Facturen
-  const factureClaim = claims.find(c => c.key === 'Facturen aanwezig');
-  if (factureClaim && factureClaim.found) {
-    tips.push(tip(
+  /* 4. Facturen */
+  if(claims.facturen){
+    cards.push(makeTipCard(
+      n++,
       'file',
-      'Facturen vermeld — vraag originals op',
-      'De verkoper vermeldt dat er facturen aanwezig zijn. <strong>Verifieer dit altijd bij de bezichtiging.</strong> Vraag om alle facturen van de afgelopen vijf jaar — reparaties, regulier onderhoud en eventuele schade­reparaties.',
-      'Vermeld in advertentie', 'ok',
-      factureClaim.quote ? `"${factureClaim.quote.substring(0,160).replace(/"/g,"'").trim()}…"` : null,
-      'Facturen controleren bij bezichtiging'
+      'Facturen aanwezig volgens verkoper',
+      'De verkoper geeft aan dat facturen beschikbaar zijn. <strong>Vraag om álle facturen van de afgelopen vijf jaar</strong> — regulier onderhoud, reparaties én eventuele schadeherstelwerkzaamheden. Ontbreekt een periode? Vraag naar de reden.',
+      'Vermeld in advertentie',
+      'ok',
+      typeof claims.facturen === 'string' ? claims.facturen : null,
+      'ok',
+      'Facturen aangetroffen — controleer volledigheid bij bezichtiging',
+      'ok',
+      'Facturen opvragen en controleren'
+    ));
+  } else {
+    cards.push(makeTipCard(
+      n++,
+      'file',
+      'Facturen niet vermeld',
+      'Geen melding van facturen aangetroffen in de advertentie. <strong>Vraag de verkoper expliciet</strong> of er facturen beschikbaar zijn. Bij afwezigheid van facturen is een onafhankelijke keuring extra belangrijk.',
+      'Niet vermeld',
+      'neu',
+      null, null,
+      'Geen factuurvermelding gevonden',
+      'neu',
+      'Vraag verkoper naar beschikbare facturen'
     ));
   }
 
-  // 4. Garantie
-  const garantieClaim = claims.find(c => c.key === 'Garantie');
-  if (garantieClaim && garantieClaim.found) {
-    tips.push(tip(
+  /* 5. Garantie */
+  if(claims.garantie){
+    cards.push(makeTipCard(
+      n++,
       'shield',
-      'Garantie vermeld — controleer de voorwaarden',
-      'De advertentie vermeldt een vorm van garantie. <strong>Controleer de exacte duur, dekkings­omvang en bij wie het recht geldt.</strong> Fabrieksgarantie verschilt wezenlijk van een dealer­garantie of los garantiecontract.',
-      'Vermeld in advertentie', 'ok',
-      garantieClaim.quote ? `"${garantieClaim.quote.substring(0,160).replace(/"/g,"'").trim()}…"` : null,
-      'Garantievoorwaarden opvragen'
+      'Garantie vermeld',
+      'De advertentie maakt melding van garantie. <strong>Controleer de exacte duur, dekkingsomvang en bij wie het recht geldt.</strong> Fabrieksgarantie, dealergarantie en een los garantiecontract verschillen wezenlijk van elkaar.',
+      'Vermeld in advertentie',
+      'ok',
+      typeof claims.garantie === 'string' ? claims.garantie : null,
+      'ok',
+      'Garantiemelding aangetroffen — vraag voorwaarden op',
+      'ok',
+      'Garantievoorwaarden opvragen bij dealer'
     ));
   } else {
-    tips.push(tip(
+    cards.push(makeTipCard(
+      n++,
       'shield',
-      'Garantie niet vermeld',
-      'Geen garantiebeding aangetroffen. Vraag of er nog fabrieksgarantie loopt, of de dealer een garantie biedt. <strong>Bij import vervalt de fabrieksgarantie soms</strong> — APEXclusive controleert dit voor u.',
-      'Niet vermeld in advertentie', 'warn', null,
+      'Geen garantie vermeld',
+      'Er is geen garantiebeding aangetroffen. <strong>Vraag of er nog fabrieksgarantie loopt</strong>, of de dealer een garantie biedt. Bij import via APEXclusive controleren wij dit standaard voor u.',
+      'Niet vermeld',
+      'neu',
+      null, null,
+      'Geen garantie aangetroffen in advertentie',
+      'neu',
       null
     ));
   }
 
-  // 5. Schadevrij
-  const schadeClaim = claims.find(c => c.key === 'Schadevrij / geen ongelukshistorie');
-  if (schadeClaim && schadeClaim.found) {
-    tips.push(tip(
+  /* 6. Schadevrij */
+  if(claims.schadevrij){
+    cards.push(makeTipCard(
+      n++,
       'check',
-      'Schadevrij — laat onafhankelijk verifiëren',
-      'De verkoper claimt een schadevrij voertuig. <strong>Verifieer dit altijd onafhankelijk</strong> via een Carfax- of HPI-rapport én via een laktdiktemeting bij de aankoopkeuring. Een mondelinge claim is geen garantie.',
-      'Vermeld in advertentie', 'ok',
-      schadeClaim.quote ? `"${schadeClaim.quote.substring(0,160).replace(/"/g,"'").trim()}…"` : null,
-      'Carfax-rapport opvragen'
+      'Schadevrij claim aangetroffen',
+      'De verkoper claimt een schadevrij voertuig. <strong>Verifieer dit altijd onafhankelijk</strong> via een Carfax- of HPI-rapport én via een laktdiktemeting tijdens de aankoopkeuring. Een mondelinge claim is géén garantie.',
+      'Claim aanwezig',
+      'ok',
+      typeof claims.schadevrij === 'string' ? claims.schadevrij : null,
+      'ok',
+      'Schadevrij claim aangetroffen — laat onafhankelijk verifiëren',
+      'warn',
+      'Carfax-rapport en laktdiktemeting laten uitvoeren'
     ));
   } else {
-    tips.push(tip(
+    cards.push(makeTipCard(
+      n++,
       'check',
-      'Schadevrij — niet aangetoond',
-      'Geen schadevrij-claim gevonden in de advertentie. <strong>Laat een onafhankelijk voertuigrapport opvragen</strong> (Carfax, Dekra of ADAC) en verzoek een laktdiktemeting bij de aankoopkeuring.',
-      'Niet vermeld', 'warn', null,
-      'Schaderapport laten opvragen'
+      'Schadevrij niet vermeld',
+      'Er is geen schadevrij-claim aangetroffen. <strong>Vraag expliciet naar het schadeverleden</strong> en laat een onafhankelijk voertuigrapport opvragen. Een laktdiktemeting bij de aankoopkeuring is bij dit voertuig sterk aanbevolen.',
+      'Niet vermeld',
+      'warn',
+      null, null,
+      'Geen schadevrij-claim gevonden in advertentie',
+      'warn',
+      'Schaderapport en laktdiktemeting aanvragen'
     ));
   }
 
-  // 6. NAP / km aantoonbaar
-  const napClaim = claims.find(c => c.key === 'Kilometerstand aantoonbaar (NAP)');
-  if (napClaim && napClaim.found) {
-    tips.push(tip(
+  /* 7. Eerste eigenaar */
+  if(claims.eigenaar){
+    cards.push(makeTipCard(
+      n++,
+      'user',
+      'Eerste of weinig eigenaren vermeld',
+      'Verkoper claimt één of weinig vorige eigenaren. <strong>Controleer dit via het kentekenregister of voertuigrapport.</strong> Minder eigenaren betekent doorgaans consistentere verzorging en completer onderhoudsdossier.',
+      'Claim aanwezig',
+      'ok',
+      typeof claims.eigenaar === 'string' ? claims.eigenaar : null,
+      'ok',
+      'Eigenaarsclaim aangetroffen — verifieer via register',
+      'ok',
+      'Eigendomshistorie controleren via Kentekencheck'
+    ));
+  }
+
+  /* 8. NAP */
+  if(claims.nap){
+    cards.push(makeTipCard(
+      n++,
       'gauge',
       'NAP / aantoonbare kilometerstand vermeld',
-      'Verkoper vermeldt dat de kilometerstand aantoonbaar is. <strong>Verifieer via de RDW kentekencheck of via Carfax</strong> of dit klopt met eerdere APK-registraties en eigendomswisselingen.',
-      'Vermeld in advertentie', 'ok',
-      napClaim.quote ? `"${napClaim.quote.substring(0,160).replace(/"/g,"'").trim()}…"` : null,
-      'Controleer via Kentekencheck'
+      'Verkoper vermeldt dat de kilometerstand aantoonbaar is (NAP). <strong>Verifieer via de RDW kentekencheck of via Carfax</strong> of dit klopt met eerdere APK-registraties en eigendomswisselingen.',
+      'NAP vermeld',
+      'ok',
+      typeof claims.nap === 'string' ? claims.nap : null,
+      'ok',
+      'NAP-claim aangetroffen — verifieer via kentekencheck',
+      'ok',
+      'Controleren via APEXclusive Kentekencheck'
+    ));
+  } else {
+    cards.push(makeTipCard(
+      n++,
+      'gauge',
+      'NAP niet aantoonbaar gemaakt',
+      'Geen NAP-vermelding aangetroffen in de advertentie. <strong>Controleer de kilometerhistorie</strong> via onze kentekencheck of via een Carfax-rapport. Tellerstand­manipulatie komt voor, ook bij exclusieve voertuigen.',
+      'Niet vermeld',
+      'warn',
+      null, null,
+      'Geen NAP-claim gevonden — controleer zelfstandig',
+      'warn',
+      'Kentekencheck uitvoeren'
     ));
   }
 
-  // 7. Eerste eigenaar
-  const eigenaarClaim = claims.find(c => c.key === 'Eerste / weinig eigenaren');
-  if (eigenaarClaim && eigenaarClaim.found) {
-    tips.push(tip(
-      'user',
-      'Eerste of weinig eigenaren — extra positief signaal',
-      'Verkoper claimt één of weinig vorige eigenaren. <strong>Controleer dit via het kenteken­register</strong> of via het voertuigrapport. Minder eigenaren betekent doorgaans meer consistente verzorging.',
-      'Vermeld in advertentie', 'ok',
-      eigenaarClaim.quote ? `"${eigenaarClaim.quote.substring(0,160).replace(/"/g,"'").trim()}…"` : null,
-      'Eigendomshistorie verifiëren'
+  /* 9. Originele lak */
+  if(claims.lak){
+    cards.push(makeTipCard(
+      n++,
+      'layers',
+      'Originele lak / geen spuitwerk vermeld',
+      'Verkoper meldt originele lak of geen overspuiting. <strong>Laat altijd een laktdiktemeting uitvoeren</strong> bij de aankoopkeuring — zelfs bij een betrouwbare verkoper. Partieel spuitwerk verlaagt de waarde significant.',
+      'Claim aanwezig',
+      'ok',
+      typeof claims.lak === 'string' ? claims.lak : null,
+      'ok',
+      'Lakclaim aangetroffen — laktdiktemeting verplicht',
+      'warn',
+      'Laktdiktemeting aanvragen bij keuring'
     ));
   }
 
-  // 8. PPF/ceramic
-  const ppfClaim = claims.find(c => c.key === 'Beschermfolie / PPF / Ceramic coating');
-  if (ppfClaim && ppfClaim.found) {
-    tips.push(tip(
+  /* 10. PPF / Ceramic */
+  if(claims.ppf){
+    cards.push(makeTipCard(
+      n++,
       'layers',
       'PPF of keramische coating vermeld',
-      'De advertentie vermeldt beschermfolie of coating. <strong>Vraag om het installatie­bewijs en het garantiecertificaat</strong> van de applicateur. Kwalitatieve PPF heeft een marktwaarde van €3.000–€8.000+.',
-      'Vermeld in advertentie', 'ok',
-      ppfClaim.quote ? `"${ppfClaim.quote.substring(0,160).replace(/"/g,"'").trim()}…"` : null,
-      'Certificaat PPF/coating opvragen'
+      'De advertentie vermeldt beschermfolie of coating. <strong>Vraag om het installatiebewijs en garantiecertificaat</strong> van de applicateur. Kwalitatieve PPF (XPEL, SunTek, 3M) heeft een marktwaarde van €3.000–€8.000+.',
+      'Aangetroffen',
+      'ok',
+      typeof claims.ppf === 'string' ? claims.ppf : null,
+      'ok',
+      'PPF/coating vermeld — certificaat opvragen',
+      'ok',
+      'Installatiebewijs en certificaat opvragen'
     ));
   }
 
-  // 9. Prijsadvies gerelateerd
-  if (adv && adv.level === 'bad') {
-    tips.push(tip(
-      'euro',
-      'Onderhandelruimte benutten',
-      `De vraagprijs lijkt boven de marktwaarde te liggen. Ga de onderhandeling in met <strong>${euro(adv.est)}</strong> als referentiepunt. Onderbouw met vergelijkbare actieve advertenties op Mobile.de of AutoScout24.`,
-      'APEXclusive prijsanalyse', 'warn', null,
-      'Laat APEXclusive onderhandelen'
+  /* 11. Recent onderhoud/onderdelen */
+  if(claims.recentParts){
+    cards.push(makeTipCard(
+      n++,
+      'tool',
+      'Recent vervangen onderdelen vermeld',
+      'De advertentie vermeldt recent vervangen onderdelen of nieuw uitgevoerd onderhoud. <strong>Vraag de bijbehorende facturen op</strong> en laat dit controleren tijdens de aankoopkeuring — zelf vervangen onderdelen tellen minder.',
+      'Aangetroffen',
+      'ok',
+      typeof claims.recentParts === 'string' ? claims.recentParts : null,
+      'ok',
+      'Recent onderhoud aangetroffen — facturen verifiëren',
+      'ok',
+      'Facturen recent onderhoud opvragen'
     ));
   }
-  if (adv && adv.level === 'ok') {
-    tips.push(tip(
+
+  /* 12. Prijsadvies gerelateerd */
+  if(adv && adv.level === 'bad'){
+    cards.push(makeTipCard(
+      n++,
       'euro',
-      'Aantrekkelijke prijs — vraag naar reden',
-      'Een vraagprijs onder de marktwaarde is positief, maar vraag <strong>altijd waarom de auto zo geprijsd staat</strong>. Verborgen technische gebreken, ontbrekende documenten of een lopend importdispuut verklaren soms een lage prijs.',
-      'APEXclusive waarschuwing', 'warn', null,
+      'Onderhandelruimte benutten',
+      `De vraagprijs ligt boven de geschatte marktwaarde. Ga de onderhandeling in met <strong>${euro(adv.est)}</strong> als referentiepunt. Onderbouw uw bod met vergelijkbare actieve advertenties op Mobile.de of AutoScout24 en verwijs naar keuringsresultaten.`,
+      'Prijsanalyse',
+      'warn',
+      null, null,
+      `Vraagprijs circa ${Math.round((adv.ratio-1)*100)}% boven marktwaarde`,
+      'warn',
+      'Laat APEXclusive voor u onderhandelen'
+    ));
+  }
+
+  if(adv && adv.level === 'ok'){
+    cards.push(makeTipCard(
+      n++,
+      'euro',
+      'Aantrekkelijke prijs — navragen waarom',
+      `Een vraagprijs onder de marktwaarde is positief, maar <strong>vraag altijd waarom de auto zo geprijsd staat</strong>. Verborgen technische gebreken, ontbrekende documenten, hoge BPM bij import of een verkoopurgentie verklaren soms een lagere vraagprijs.`,
+      'Aantrekkelijk geprijsd',
+      'ok',
+      claims.redenVerkoop && typeof claims.redenVerkoop === 'string' ? claims.redenVerkoop : null,
+      claims.redenVerkoop ? 'ok' : 'warn',
+      claims.redenVerkoop ? 'Verkooprede aangetroffen — consistent met lage prijs?' : 'Geen verkooprede gevonden — vraag dit na',
+      claims.redenVerkoop ? 'ok' : 'warn',
       null
     ));
   }
 
-  // 10. Import
-  tips.push(tip(
+  /* 13. BPM */
+  cards.push(makeTipCard(
+    n++,
     'nav',
-    'BPM en importkosten — bereken vooraf',
+    'BPM en importkosten berekenen',
     'Bereken via onze <strong>BPM Calculator</strong> de exacte importbelasting voordat u een bod uitbrengt. BPM kan bij exclusieve voertuigen tienduizenden euro\'s bedragen en beïnvloedt de totale aankoopsom significant.',
-    'APEXclusive', 'neu', null,
+    'Aanbeveling',
+    'neu',
+    null, null,
+    'Gebruik de APEXclusive BPM Calculator voor een exacte berekening',
+    'neu',
     'Naar BPM Calculator →'
   ));
 
-  if (isLux) {
-    tips.push(tip(
+  /* 14. Exclusief voertuig onderhoudsbudget */
+  if(isLux){
+    cards.push(makeTipCard(
+      n++,
       'key',
       'Exclusief voertuig — plan onderhoudsbudget',
-      'Exclusieve voertuigen hebben <strong>aanzienlijk hogere onderhoudskosten</strong> dan gemiddeld. Een jaarservice bij een Ferrari-dealer kost €2.000–€5.000+. Plan dit structureel mee in uw eigenaarsbegroting.',
-      'APEXclusive advies', 'neu', null,
+      'Exclusieve voertuigen hebben <strong>aanzienlijk hogere onderhoudskosten</strong> dan gemiddeld. Een jaarservice bij een Ferrari of Lamborghini dealer kost typisch €2.500–€6.000+, bandenwissels €1.500–€4.000 per set. Plan dit structureel mee in uw budget.',
+      'Informatief',
+      'neu',
+      null, null,
+      null, null,
       null
     ));
   }
 
-  /* ── RENDER ── */
-  const checkSVG = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`;
-  const warnSVG  = `<svg viewBox="0 0 24 24"><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
-  const neuSVG   = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/></svg>`;
-  const arrowSVG = `<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+  return `<div class="tips-list">${cards.join('')}</div>`;
+}
 
-  function sourceBadge(label, status) {
-    const icon = status==='ok' ? checkSVG : status==='warn' ? warnSVG : neuSVG;
-    return `<span class="tip-source tip-source-${status}">${icon });
+/* ══ FOTO SWITCHER ══ */
+let allImages = [];
+function switchPhoto(idx){
+  const main=document.querySelector('.gallery-main img');
+  if(main&&allImages[idx]){
+    main.style.opacity=0;
+    setTimeout(()=>{main.src=allImages[idx];main.style.opacity=1;},180);
+    document.querySelectorAll('.thumb-item').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  }
+}
+function proxyIfNeeded(img){
+  const needs=['marktplaats','admarkt-cdn','ecg-img','hzcdn','mpimages','persgroep'].some(s=>img.includes(s));
+  return needs?'/api/fetch-ad?img='+encodeURIComponent(img):img;
+}
+function extractClientImages(html){
+  const imgs=[],seen=new Set();
+  const skip=/(logo|dealer|avatar|icon|placeholder|banner|sprite|pixel|tracking|favicon)/i;
+  function add(img){
+    img=img.replace(/\\u002F/gi,'/').replace(/\\u003A/gi,':').replace(/\\\//g,'/').replace(/&amp;/g,'&').trim();
+    if(!img.startsWith('http')||skip.test(img)||seen.has(img))return;
+    seen.add(img);imgs.push(img);
+  }
+  [/"extraExtraLargeUrl"\s*:\s*"([^"]+)"/gi,/"extraLargeUrl"\s*:\s*"([^"]+)"/gi,/"largeUrl"\s*:\s*"([^"]+)"/gi,/"imageUrl"\s*:\s*"([^"]+)"/gi,/property="og:image"\s+content="([^"]+)"/gi,/content="([^"]+)"\s+property="og:image"/gi]
+  .forEach(p=>{const re=new RegExp(p.source,p.flags);let m;while((m=re.exec(html))!==null)add(m[1]);});
+  return imgs.slice(0,16);
+}
+
+/* ══ DETAILS BLOCK ══ */
+function buildDetails(parsed, priceNum, kmNum, url){
+  const age=parsed.year?2026-parseInt(parsed.year):null;
+  function row(l,v){
+    if(!v||v==='—')return'';
+    return`<div class="bd-row"><span class="bd-l">${l}</span><span class="bd-v">${v}</span></div>`;
+  }
+  let h='';
+  h+='<div class="bd-section"><div class="bd-sec-lbl">Voertuig — hoofdgegevens</div><div class="bd-grid">';
+  h+=row('Platform',parsed.platform);
+  h+=row('Titel',parsed.title);
+  h+=row('Bouwjaar',parsed.year);
+  h+=row('Leeftijd',age?fmtAge(parsed.year):null);
+  h+=row('Brandstof',parsed.fuel);
+  h+=row('Transmissie',parsed.trans);
+  h+=row('Carrosserie',parsed.body);
+  h+=row('Kleur',parsed.color);
+  h+=row('Deuren',parsed.doors);
+  h+=row('Zitplaatsen',parsed.seats);
+  h+=row('Herkomst',parsed.country);
+  h+='</div></div>';
+  h+='<div class="bd-section"><div class="bd-sec-lbl">Financieel &amp; technisch</div><div class="bd-grid">';
+  h+=row('Vraagprijs',euro(priceNum));
+  h+=row('Kilometerstand',fmtKm(kmNum));
+  if(parsed.power)h+=row('Vermogen',parsed.power);
+  if(parsed.owners)h+=row('Vorige eigenaren',parsed.owners);
+  h+='</div></div>';
+  h+='<div class="bd-section"><div class="bd-sec-lbl">Advertentielink</div>';
+  h+=`<div class="bd-row"><span class="bd-l">Bron</span><span class="bd-v"><a href="${url}" target="_blank" rel="noopener">${url.length>65?url.substring(0,65)+'…':url}</a></span></div>`;
+  h+='</div>';
+  return h;
+}
+
+/* ══ HOOFD ANALYSE FUNCTIE ══ */
+async function analyzeAd(){
+  const url  = document.getElementById('adUrl').value.trim();
+  const err  = document.getElementById('errmsg');
+  const load = document.getElementById('loading');
+  const res  = document.getElementById('results');
+  const btn  = document.getElementById('analyzeBtn');
+  const btnt = document.getElementById('btn-t');
+
+  err.classList.remove('show');
+  res.classList.remove('show');
+  res.style.display='none';
+
+  if(!url){err.textContent='Vul een advertentielink in.';err.classList.add('show');return;}
+  const platform=detectPlatform(url);
+  if(!platform){err.textContent='Niet-ondersteund platform. Gebruik Mobile.de, AutoScout24, Marktplaats.nl, AutoTrack of BAS-World.';err.classList.add('show');return;}
+
+  load.style.display='block';
+  btn.disabled=true;btnt.textContent='Analyseren…';
+
+  try{
+    const resp=await fetch('/api/fetch-ad?url='+encodeURIComponent(url));
+    const data=await resp.json();
+    if(!resp.ok||data.error)throw new Error(data.error||'Ophalen mislukt');
+
+    const html=data.html;
+    const nd  =data.nextData||null;
+
+    allImages=(data.images&&data.images.length>0)
+      ?data.images.map(proxyIfNeeded)
+      :extractClientImages(html).map(proxyIfNeeded);
+
+    let parsed;
+    if(platform==='mobile')         parsed=parseMobile(html);
+    else if(platform==='autoscout') parsed=parseAutoscout(html,nd);
+    else                            parsed=parseMarktplaats(html);
+
+    const priceNum = cleanPrice(parsed.price,platform,parsed.priceCents||false);
+    const kmNum    = cleanKm(parsed.km);
+    const adv      = priceAdvice(priceNum,kmNum,parsed.year,parsed.title,parsed.fuel,parsed.power);
+    const level    = parsed.priceLevel||(adv?adv.level:null);
+    const risk     = buildRisk(parsed,priceNum,kmNum);
+    const claims   = extractClaims(html);
+
+    /* GALLERY */
+    const gh=document.getElementById('galleryHero');
+    if(allImages.length>0){
+      gh.innerHTML=
+        `<div class="gallery-main">
+          <img src="${allImages[0]}" alt="${(parsed.title||'Voertuig').replace(/"/g,'&quot;')}"
+            style="transition:opacity .25s" onerror="this.parentElement.style.background='var(--ink3)';this.style.display='none'">
+          <div class="gallery-overlay"></div>
+          <div class="gallery-strip"><span></span><span></span><span></span></div>
+          <div class="gallery-count">${allImages.length} foto${allImages.length!==1?'s':''}</div>
+          <div class="gallery-info">
+            <div class="gallery-platform">${parsed.platform}</div>
+            <div class="gallery-title">${parsed.title||'Voertuig'}</div>
+            <div class="gallery-meta">
+              ${parsed.year?`<span>${parsed.year}</span>`:''}
+              ${parsed.fuel?`<span>${parsed.fuel}</span>`:''}
+              ${parsed.power?`<span>${parsed.power}</span>`:''}
+              ${kmNum?`<span>${fmtKm(kmNum)}</span>`:''}
+            </div>
+          </div>
+        </div>`
+        +(allImages.length>1
+          ?`<div class="thumb-strip">${allImages.slice(0,8).map((img,i)=>
+              `<div class="thumb-item${i===0?' active':''}" onclick="switchPhoto(${i})">
+                <img src="${img}" alt="foto ${i+1}" loading="lazy" onerror="this.parentElement.style.display='none'">
+              </div>`).join('')
+            +(allImages.length>8?`<div class="thumb-item more">+${allImages.length-8}</div>`:'')
+            }</div>`:''
+        );
+    }else{gh.innerHTML='';}
+
+    /* STATUS BAR */
+    const sb=document.getElementById('statusBar');
+    [
+      {l:parsed.platform,c:'neu'},
+      priceNum?{l:euro(priceNum),c:level==='ok'?'ok':level==='bad'?'bad':'warn'}:{l:'Prijs onbekend',c:'neu'},
+      kmNum?{l:fmtKm(kmNum),c:kmNum<50000?'ok':kmNum<120000?'warn':'bad'}:{l:'KM onbekend',c:'neu'},
+      parsed.year?{l:parsed.year,c:'neu'}:{l:'Jaar onbekend',c:'neu'},
+      parsed.fuel?{l:parsed.fuel,c:'neu'}:null,
+      level?{l:level==='ok'?'Goede prijs':level==='bad'?'Hoge prijs':'Marktconform',c:level}:null,
+      parsed.country?{l:parsed.country,c:'neu'}:null,
+    ].filter(Boolean).forEach(p=>{
+      const el=document.createElement('div');
+      el.className=`s-pill pill-${p.c}`;
+      el.textContent=p.l;
+      sb.appendChild(el);
+    });
+
+    /* STAT CARDS */
+    document.getElementById('statRow').innerHTML=
+      `<div class="s-card"><span class="s-card-lbl">Vraagprijs</span><div class="s-card-val">${euro(priceNum)}</div><div class="s-card-sub">${adv?adv.tag:'—'}</div></div>`
+     +`<div class="s-card"><span class="s-card-lbl">Kilometerstand</span><div class="s-card-val">${fmtKm(kmNum)}</div><div class="s-card-sub">${kmNum&&kmNum<50000?'Laag':kmNum&&kmNum<120000?'Normaal':kmNum?'Hoog':'—'}</div></div>`
+     +`<div class="s-card"><span class="s-card-lbl">Bouwjaar</span><div class="s-card-val">${parsed.year||'—'}</div><div class="s-card-sub">${parsed.year?fmtAge(parsed.year):'Onbekend'}</div></div>`
+     +`<div class="s-card"><span class="s-card-lbl">Risicoscore</span><div class="s-card-val" style="color:${risk.score<40?'var(--ig)':risk.score<65?'var(--wn-c)':'var(--ir)'}">${risk.score}</div><div class="s-card-sub">0 = laag · 100 = hoog</div></div>`;
+
+    /* VERDICT */
+    const vw=document.getElementById('verdictWrap');
+    if(adv){
+      const vc={ok:'verdict-ok',warn:'verdict-warn',bad:'verdict-bad'}[adv.level];
+      const vi={check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>`,warn:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,info:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`}[adv.icon]||'';
+      const pct=Math.round((adv.ratio-1)*100);
+      const dc=adv.level==='ok'?'delta-ok':adv.level==='bad'?'delta-bad':'delta-warn';
+      const confPct=Math.round((adv.confidence/5)*100);
+      vw.innerHTML=
+        `<div class="verdict-box ${vc} rv">
+          <div class="verdict-head">
+            <div class="verdict-icon">${vi}</div>
+            <div>
+              <div class="verdict-tag">${adv.tag}</div>
+              <div class="verdict-title">${adv.title}</div>
+            </div>
+          </div>
+          <div class="verdict-body">${adv.text}</div>
+          <div class="price-compare">
+            <div class="pc-side">
+              <div class="pc-lbl">Vraagprijs</div>
+              <div class="pc-val">${euro(priceNum)}</div>
+              <div class="pc-sub">Gevraagd door verkoper</div>
+            </div>
+            <div class="pc-side">
+              <div class="pc-lbl">Geschatte marktwaarde</div>
+              <div class="pc-val">${euro(adv.est)}</div>
+              <div class="pc-sub">Indicatief · APEXclusive</div>
+              <div class="pc-delta ${dc}">${pct>0?'+':''}${pct}% verschil</div>
+            </div>
+          </div>
+          <div class="conf-bar">
+            <span class="conf-label">Nauwkeurigheid schatting</span>
+            <div class="conf-track"><div class="conf-fill" id="confFill" style="transform:scaleX(0)"></div></div>
+            <span class="conf-val">${confPct}%</span>
+          </div>
+        </div>`;
+      setTimeout(()=>{
+        const cf=document.getElementById('confFill');
+        if(cf)cf.style.transform=`scaleX(${confPct/100})`;
+      },300);
+      io.observe(vw.querySelector('.rv'));
+    }else{vw.innerHTML='';}
+
+    /* MARKET */
+    document.getElementById('marketContent').innerHTML=buildMarketContext(parsed,priceNum,kmNum);
+
+    /* RISK */
+    const riskHTML=`
+      <div class="risk-score-wrap">
+        <div>
+          <div class="risk-score" style="color:${risk.score<40?'var(--ig)':risk.score<65?'var(--wn-c)':'var(--ir)'}">${risk.score}</div>
+          <div class="risk-lbl" style="color:${risk.score<40?'var(--ig)':risk.score<65?'var(--wn-c)':'var(--ir)'}">
+            ${risk.score<40?'Laag risico':risk.score<65?'Gemiddeld risico':'Verhoogd risico'}
+          </div>
+        </div>
+        <div class="risk-track">
+          <div class="risk-track-labels"><span>Laag</span><span>Gemiddeld</span><span>Hoog</span></div>
+          <div class="risk-bg"><div class="risk-fill" id="riskFill" style="transform:scaleX(0)"></div></div>
+        </div>
+      </div>
+      <div class="checklist">${risk.checks.map(c=>`
+        <div class="check-item">
+          <div class="check-dot check-${c.s}">
+            ${c.s==='ok'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>'
+             :c.s==='warn'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+             :c.s==='bad'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+             :'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/></svg>'}
+          </div>
+          <div class="check-text"><strong>${c.strong}</strong>${c.text}</div>
+        </div>`).join('')}
+      </div>`;
+    document.getElementById('riskContent').innerHTML=riskHTML;
+    setTimeout(()=>{
+      const rf=document.getElementById('riskFill');
+      if(rf)rf.style.transform=`scaleX(${risk.score/100})`;
+    },400);
+
+    /* TIPS */
+    document.getElementById('tipsContent').innerHTML=buildTips(parsed,adv,kmNum,claims);
+
+    /* DETAILS */
+    document.getElementById('detailsContent').innerHTML=buildDetails(parsed,priceNum,kmNum,url);
+
+    /* Re-observe nieuwe .rv elementen */
+    res.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+    res.style.display='block';
+    res.classList.add('show');
+    setTimeout(()=>res.scrollIntoView({behavior:'smooth',block:'start'}),80);
+
+  }catch(e){
+    err.textContent='Ophalen mislukt: '+e.message+'. Controleer of de link correct en publiek toegankelijk is.';
+    err.classList.add('show');
+  }finally{
+    load.style.display='none';
+    btn.disabled=false;
+    btnt.textContent='Analyseer advertentie';
+  }
+}
+
+/* ══ RESET ══ */
+function resetTool(){
+  document.getElementById('results').style.display='none';
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('errmsg').classList.remove('show');
+  document.getElementById('adUrl').value='';
+  document.getElementById('statusBar').innerHTML='';
+  document.getElementById('statRow').innerHTML='';
+  document.getElementById('galleryHero').innerHTML='';
+  document.getElementById('verdictWrap').innerHTML='';
+  document.getElementById('marketContent').innerHTML='';
+  document.getElementById('riskContent').innerHTML='';
+  document.getElementById('tipsContent').innerHTML='';
+  document.getElementById('detailsContent').innerHTML='';
+  allImages=[];
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
