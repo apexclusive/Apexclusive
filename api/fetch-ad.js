@@ -57,81 +57,103 @@ module.exports = async function handler(req, res) {
   }
 };
 
-/* ══════════════════════
-   MARKTPLAATS HANDLER
-══════════════════════ */
+/* ══════════════════════════════════════
+   MARKTPLAATS — via mobiele API
+══════════════════════════════════════ */
 async function handleMarktplaats(rawUrl, res) {
 
-  /* extraheer ID uit URL */
+  /* ID extraheren */
   var adId = null;
   var match;
-
-  /* formaat: /m1234567890- of /a1234567890 */
   match = rawUrl.match(/\/[ma](\d{8,12})/i);
   if (match) adId = match[1];
-
   if (!adId) {
-    match = rawUrl.match(/(\d{9,12})/);
+    match = rawUrl.match(/(\d{8,12})/);
     if (match) adId = match[1];
   }
-
   if (!adId) {
-    return res.status(400).json({ error: 'Geen advertentie ID gevonden in de URL. Gebruik een directe advertentielink.' });
+    return res.status(400).json({ error: 'Geen advertentie ID gevonden in de URL.' });
   }
 
-  /* Marktplaats LRP API — dit is het werkende endpoint */
-  var apiUrl = 'https://www.marktplaats.nl/lrp/api/advertisement/' + adId;
+  /* Mobiele API — werkt zonder authenticatie */
+  var endpoints = [
+    {
+      url: 'https://www.marktplaats.nl/api/v2/listings/' + adId,
+      headers: {
+        'User-Agent': 'Marktplaats/11.12.0 (Android 12; Mobile)',
+        'Accept': 'application/json',
+        'Accept-Language': 'nl-NL',
+        'x-mp-xsrf-token': 'nocheck',
+        'Referer': 'https://www.marktplaats.nl/'
+      }
+    },
+    {
+      url: 'https://www.marktplaats.nl/api/v4/advertisements/' + adId + '?attributeGroup=mp-auto-characteristics',
+      headers: {
+        'User-Agent': 'Marktplaats/11.12.0 (Android 12; Mobile)',
+        'Accept': 'application/json',
+        'Accept-Language': 'nl-NL',
+        'x-mp-xsrf-token': 'nocheck',
+        'Referer': 'https://www.marktplaats.nl/'
+      }
+    },
+    {
+      url: 'https://api.marktplaats.nl/v1/listings/' + adId,
+      headers: {
+        'User-Agent': 'Marktplaats/11.12.0 (Android 12; Mobile)',
+        'Accept': 'application/json',
+        'Accept-Language': 'nl-NL'
+      }
+    },
+    {
+      url: 'https://www.marktplaats.nl/lrp/api/advertisement/' + adId,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 12; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'nl-NL,nl;q=0.9',
+        'Referer': 'https://www.marktplaats.nl/',
+        'x-mp-xsrf-token': 'nocheck'
+      }
+    }
+  ];
 
   var apiData = null;
-  try {
-    apiData = await fetchJson(apiUrl, {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-      'Accept': 'application/json, text/plain, */*',
-      'Accept-Language': 'nl-NL,nl;q=0.9',
-      'Referer': 'https://www.marktplaats.nl/',
-      'x-mp-xsrf-token': 'nocheck',
-      'Cache-Control': 'no-cache'
-    });
-  } catch(e) {
-    apiData = null;
-  }
+  var lastResponse = null;
 
-  /* tweede poging met andere endpoint */
-  if (!apiData || !apiData.title) {
+  for (var i = 0; i < endpoints.length; i++) {
     try {
-      var apiUrl2 = 'https://www.marktplaats.nl/v/api/listing/' + adId;
-      apiData = await fetchJson(apiUrl2, {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-        'Accept': 'application/json, */*',
-        'Referer': 'https://www.marktplaats.nl/',
-        'x-mp-xsrf-token': 'nocheck'
-      });
+      var result = await fetchRaw(endpoints[i].url, endpoints[i].headers);
+      lastResponse = result.body.substring(0, 500);
+      if (result.status === 200) {
+        try {
+          apiData = JSON.parse(result.body);
+          if (apiData && (apiData.title || apiData.description ||
+              apiData.listing || apiData.advertisement || apiData.ad)) {
+            break;
+          }
+        } catch(e) {
+          apiData = null;
+        }
+      }
     } catch(e) {
-      apiData = null;
+      continue;
     }
   }
 
-  /* derde poging: admarkt API */
-  if (!apiData || !apiData.title) {
-    try {
-      var apiUrl3 = 'https://www.marktplaats.nl/v/api/admarkt/advertisements/' + adId + '?attributeGroup=mp-auto-characteristics';
-      apiData = await fetchJson(apiUrl3, {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-        'Accept': 'application/json, */*',
-        'Referer': 'https://www.marktplaats.nl/',
-        'x-mp-xsrf-token': 'nocheck'
-      });
-    } catch(e) {
-      apiData = null;
-    }
+  /* unwrap geneste structuren */
+  if (apiData) {
+    apiData = apiData.listing || apiData.advertisement ||
+              apiData.ad || apiData.data || apiData;
   }
 
-  /* als alle API's falen, stuur debug info */
-  if (!apiData) {
+  /* als alles mislukt, stuur nuttige foutmelding */
+  if (!apiData || (!apiData.title && !apiData.description)) {
     return res.status(200).json({
-      html: '<html><body><h1>Marktplaats</h1></body></html>',
+      html: '<html><body><h1>Marktplaats advertentie</h1></body></html>',
       images: [],
-      error: 'Alle API endpoints zijn geblokkeerd. ID: ' + adId
+      error: 'Marktplaats blokkeert automatische toegang tot advertenties. ' +
+             'Probeer een link van Mobile.de of AutoScout24.',
+      _debug: { adId: adId, lastResponse: lastResponse }
     });
   }
 
@@ -146,92 +168,86 @@ async function handleMarktplaats(rawUrl, res) {
   var color  = '';
 
   /* afbeeldingen */
-  var pics = apiData.pictures || apiData.images || apiData.photos || [];
+  var pics = apiData.pictures || apiData.images ||
+             apiData.photos   || apiData.media  || [];
   if (Array.isArray(pics)) {
     pics.forEach(function(pic) {
-      var u = pic.extraExtraLargeUrl || pic.extraLargeUrl ||
-              pic.largeUrl || pic.mediumUrl || pic.url ||
-              pic.imageUrl || '';
-      /* ook directe string */
-      if (typeof pic === 'string') u = pic;
-      if (u && u.startsWith('http')) images.push(u);
+      var u = '';
+      if (typeof pic === 'string') {
+        u = pic;
+      } else {
+        u = pic.extraExtraLargeUrl || pic.extraLargeUrl ||
+            pic.largeUrl || pic.mediumUrl ||
+            pic.url || pic.imageUrl || pic.src || '';
+      }
+      if (u && u.startsWith('http') && !u.includes('logo') && !u.includes('placeholder')) {
+        images.push(u);
+      }
     });
   }
 
   /* prijs */
-  var pi = apiData.priceInfo || apiData.price || {};
-  if (pi.priceCents)       price = String(Math.round(pi.priceCents / 100));
-  else if (pi.price)       price = String(pi.price);
-  else if (pi.amount)      price = String(pi.amount);
-  else if (typeof pi === 'number') price = String(pi);
+  var pi = apiData.priceInfo || apiData.price || apiData.pricing || {};
+  if (typeof pi === 'number') {
+    price = String(pi);
+  } else if (pi.priceCents) {
+    price = String(Math.round(pi.priceCents / 100));
+  } else if (pi.price || pi.amount || pi.value) {
+    price = String(pi.price || pi.amount || pi.value);
+  }
 
-  /* kenmerken doorzoeken */
+  /* kenmerken */
   var allAttrs = []
     .concat(apiData.attributes || [])
     .concat(apiData.vipAttributes || [])
     .concat(apiData.characteristics || [])
-    .concat(apiData.properties || []);
+    .concat(apiData.properties || [])
+    .concat(apiData.traits || []);
 
   allAttrs.forEach(function(a) {
-    var k = String(a.key || a.attributeId || a.name || '').toLowerCase();
-    var v = String(a.value || a.valueId || a.label || '');
-    if (/mileage|km|kilomet/.test(k))         km    = v;
-    if (/year|bouwjaar|constructi/.test(k))    year  = v;
-    if (/fuel|brandstof/.test(k))              fuel  = v;
-    if (/power|vermogen|engine/.test(k))       power = v;
-    if (/colou?r|kleur/.test(k))               color = v;
+    var k = String(a.key || a.attributeId || a.name || a.trait || '').toLowerCase();
+    var v = String(a.value || a.valueId || a.label || a.traitValue || '');
+    if (/mileage|km|kilomet/.test(k))       km    = v;
+    if (/year|bouwjaar|constructi/.test(k)) year  = v;
+    if (/fuel|brandstof/.test(k))           fuel  = v;
+    if (/power|vermogen|engine/.test(k))    power = v;
+    if (/colou?r|kleur/.test(k))            color = v;
   });
 
-  /* bouw HTML voor bestaande parsers */
+  /* bouw HTML */
   var fakeHtml = '<html><head>'
-    + '<title>' + escHtml(title) + '</title>'
+    + '<title>' + esc(title) + '</title>'
     + '</head><body>'
-    + '<h1>' + escHtml(title) + '</h1>'
-    + (price ? '<div class="priceCents">' + price + '</div>' : '')
-    + (km    ? '<div>' + km + ' km</div>' : '')
+    + '<h1>' + esc(title) + '</h1>'
+    + (price ? '<div class="priceCents">' + (parseInt(price) * 100) + '</div>' : '')
+    + (km    ? '<div class="mileage">' + km + ' km</div>' : '')
     + (year  ? '<div class="constructionYear">' + year + '</div>' : '')
     + (fuel  ? '<div class="fuelType">' + fuel + '</div>' : '')
-    + (power ? '<div>' + power + ' pk</div>' : '')
-    + (color ? '<div>' + color + '</div>' : '')
-    + '<script type="application/json" id="mp-data">'
-    + JSON.stringify({
-        priceCents: price ? parseInt(price) * 100 : null,
-        constructionYear: year,
-        mileage: km,
-        fuelType: fuel,
-        power: power,
-        color: color,
-        title: title
-      })
-    + '</script>'
+    + (power ? '<div class="power">' + power + ' pk</div>' : '')
+    + (color ? '<div class="color">' + color + '</div>' : '')
     + '</body></html>';
 
   return res.status(200).json({
     html: fakeHtml,
-    images: images,
-    _debug: {
-      adId: adId,
-      title: title,
-      price: price,
-      km: km,
-      year: year,
-      imageCount: images.length,
-      apiKeys: apiData ? Object.keys(apiData) : []
-    }
+    images: images
   });
 }
 
-function escHtml(s) {
-  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 /* ══════════════════════
-   FETCH JSON
+   FETCH RAW (status + body)
 ══════════════════════ */
-function fetchJson(url, headers) {
+function fetchRaw(url, headers) {
   return new Promise(function(resolve, reject) {
     var parsedUrl;
-    try { parsedUrl = new URL(url); } catch(e) { return reject(e); }
+    try { parsedUrl = new URL(url); }
+    catch(e) { return reject(e); }
+
     var lib = parsedUrl.protocol === 'https:' ? https : http;
     var options = {
       hostname: parsedUrl.hostname,
@@ -239,21 +255,28 @@ function fetchJson(url, headers) {
       method: 'GET',
       headers: headers || {}
     };
+
     var request = lib.request(options, function(response) {
       if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
         response.resume();
-        return fetchJson(response.headers.location, headers).then(resolve).catch(reject);
+        return fetchRaw(response.headers.location, headers).then(resolve).catch(reject);
       }
       var chunks = [];
       response.on('data', function(c) { chunks.push(c); });
       response.on('end', function() {
-        try { resolve(JSON.parse(Buffer.concat(chunks).toString('utf8'))); }
-        catch(e) { resolve(null); }
+        resolve({
+          status: response.statusCode,
+          body: Buffer.concat(chunks).toString('utf8')
+        });
       });
       response.on('error', reject);
     });
+
     request.on('error', reject);
-    request.setTimeout(15000, function() { request.destroy(); reject(new Error('Timeout')); });
+    request.setTimeout(12000, function() {
+      request.destroy();
+      reject(new Error('Timeout'));
+    });
     request.end();
   });
 }
@@ -299,11 +322,9 @@ function proxyImage(imgUrl, res) {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
-        'Accept-Language': 'nl-NL,nl;q=0.9',
         'Referer': 'https://www.marktplaats.nl/',
         'Origin': 'https://www.marktplaats.nl',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive'
+        'Cache-Control': 'no-cache'
       }
     };
 
@@ -324,8 +345,15 @@ function proxyImage(imgUrl, res) {
       response.on('error', function() { resolve(); });
     });
 
-    request.on('error', function(e) { res.status(500).end('Error: ' + e.message); resolve(); });
-    request.setTimeout(15000, function() { request.destroy(); res.status(504).end('Timeout'); resolve(); });
+    request.on('error', function(e) {
+      res.status(500).end('Error: ' + e.message);
+      resolve();
+    });
+    request.setTimeout(15000, function() {
+      request.destroy();
+      res.status(504).end('Timeout');
+      resolve();
+    });
     request.end();
   });
 }
@@ -357,7 +385,9 @@ function fetchUrl(url, redirects) {
     var request = lib.request(options, function(response) {
       if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
         var nextUrl = response.headers.location;
-        if (nextUrl.startsWith('/')) nextUrl = parsedUrl.protocol + '//' + parsedUrl.hostname + nextUrl;
+        if (nextUrl.startsWith('/')) {
+          nextUrl = parsedUrl.protocol + '//' + parsedUrl.hostname + nextUrl;
+        }
         response.resume();
         return fetchUrl(nextUrl, redirects + 1).then(resolve).catch(reject);
       }
@@ -367,7 +397,10 @@ function fetchUrl(url, redirects) {
       response.on('error', reject);
     });
     request.on('error', reject);
-    request.setTimeout(20000, function() { request.destroy(); reject(new Error('Timeout')); });
+    request.setTimeout(20000, function() {
+      request.destroy();
+      reject(new Error('Timeout'));
+    });
     request.end();
   });
 }
