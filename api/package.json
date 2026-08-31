@@ -1,0 +1,6 @@
+{
+  "name": "apexclusive-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Serverless functions voor APEXclusive"
+}
