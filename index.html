@@ -118,31 +118,6 @@ nav.stuck~* .credit-bar{top:54px}
 .credit-buy-btn{font-family:var(--lb);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pt);border:1px solid var(--ln);padding:.45rem 1rem;cursor:pointer;background:transparent;transition:border-color .3s,color .3s,background .3s;display:flex;align-items:center;gap:.5rem}
 .credit-buy-btn:hover{border-color:rgba(198,203,209,.35);background:var(--ink3)}
 .credit-buy-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.8}
-.free-badge{font-family:var(--lb);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ok-c);border:1px solid var(--ok-bd);background:var(--ok-bg);padding:.28rem .65rem}
-
-/* Credit modal */
-.modal-bg{position:fixed;inset:0;background:rgba(8,8,8,.88);backdrop-filter:blur(18px);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
-.modal-bg.open{opacity:1;visibility:visible}
-.modal{background:var(--ink2);border:1px solid var(--ln);max-width:540px;width:100%;position:relative;overflow:hidden}
-.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--tr);opacity:.5}
-.modal-head{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--hr)}
-.modal-title{font-family:var(--sf);font-size:1.8rem;font-weight:300;color:var(--tx);margin-bottom:.35rem}
-.modal-sub{font-size:.8rem;color:var(--mt)}
-.modal-body{padding:1.75rem 2rem}
-.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);margin-bottom:1.5rem}
-.pkg{background:var(--ink3);padding:1.35rem 1rem;text-align:center;cursor:pointer;transition:background .3s;position:relative;border:1px solid transparent}
-.pkg:hover{background:var(--ink4)}
-.pkg.selected{border-color:rgba(198,203,209,.35);background:var(--ink4)}
-.pkg-credits{font-family:var(--sf);font-size:2rem;font-weight:300;color:var(--pt);line-height:1}
-.pkg-price{font-family:var(--lb);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mt);margin:.35rem 0}
-.pkg-per{font-size:.72rem;color:rgba(198,203,209,.25)}
-.pkg-badge{position:absolute;top:.5rem;right:.5rem;font-family:var(--lb);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-c);border:1px solid var(--ok-bd);background:var(--ok-bg);padding:.18rem .45rem}
-.modal-note{font-size:.72rem;color:rgba(198,203,209,.22);line-height:1.7;margin-bottom:1.25rem}
-.modal-note a{color:rgba(198,203,209,.4);border-bottom:1px solid var(--ln)}
-.modal-btns{display:flex;gap:.75rem;flex-wrap:wrap}
-.modal-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:1px solid var(--ln);color:var(--mt);width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .3s,color .3s}
-.modal-close:hover{border-color:rgba(198,203,209,.35);color:var(--tx)}
-.modal-close svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2}
 
 /* Paywall overlay */
 .paywall{display:none;text-align:center;padding:3.5rem 2rem;background:var(--ink2);border:1px solid var(--ln);margin-bottom:2px;position:relative;overflow:hidden}
@@ -385,7 +360,7 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
 .fl a:hover{color:rgba(198,203,209,.65)}
 
 @media(max-width:820px){
-  .how-grid,.pkg-grid{grid-template-columns:1fr 1fr}
+  .how-grid{grid-template-columns:1fr 1fr}
   .search-row{flex-direction:column;gap:0}
   .search-submit{border-left:none;border-top:1px solid var(--ln);padding:1rem}
   .stat-row{grid-template-columns:repeat(2,1fr)}
@@ -405,7 +380,6 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
   .tip-right{padding:1.25rem 1.1rem}
   .thumb-strip{grid-template-columns:repeat(3,1fr)}
   .fg{flex-direction:column;gap:1rem}
-  .pkg-grid{grid-template-columns:1fr}
   .credit-track{width:70px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -442,61 +416,19 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
     <div>
       <div style="display:flex;align-items:baseline;gap:.55rem">
         <div class="credit-count" id="creditCount">10</div>
-        <div class="credit-lbl">analyses resterend</div>
-        <div class="free-badge" id="freeBadge">GRATIS</div>
+        <div class="credit-lbl">gratis analyses deze maand</div>
       </div>
       <div style="display:flex;align-items:center;gap:.65rem;margin-top:.35rem">
         <div class="credit-track"><div class="credit-fill" id="creditFill"></div></div>
-        <div class="credit-msg ok" id="creditMsg">10 gratis analyses beschikbaar</div>
+        <div class="credit-msg ok" id="creditMsg">10 van 10 gratis analyses over deze maand</div>
       </div>
     </div>
   </div>
   <div class="credit-right">
-    <button class="credit-buy-btn" id="buyBtn" onclick="openModal()">
-      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Credits bijkopen
-    </button>
-  </div>
-</div>
-
-<!-- CREDIT MODAL -->
-<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="modal-head">
-      <div class="modal-title">Credits bijkopen</div>
-      <div class="modal-sub">Kies een pakket — elke analyse kost 1 credit (€0,10)</div>
-    </div>
-    <div class="modal-body">
-      <div class="pkg-grid" id="pkgGrid">
-        <div class="pkg" onclick="selectPkg(0)">
-          <div class="pkg-credits">10</div>
-          <div class="pkg-price">€ 1,00</div>
-          <div class="pkg-per">€0,10 per analyse</div>
-        </div>
-        <div class="pkg selected" onclick="selectPkg(1)">
-          <div class="pkg-badge">Populair</div>
-          <div class="pkg-credits">50</div>
-          <div class="pkg-price">€ 4,00</div>
-          <div class="pkg-per">€0,08 per analyse</div>
-        </div>
-        <div class="pkg" onclick="selectPkg(2)">
-          <div class="pkg-badge">Beste waarde</div>
-          <div class="pkg-credits">100</div>
-          <div class="pkg-price">€ 7,00</div>
-          <div class="pkg-per">€0,07 per analyse</div>
-        </div>
-      </div>
-      <div class="modal-note">
-        Credits worden lokaal opgeslagen en verlopen nooit. Betaling via Stripe — veilig en direct. Door te betalen gaat u akkoord met onze <a href="#">voorwaarden</a>.
-      </div>
-      <div class="modal-btns">
-        <button class="btn green" onclick="startCheckout()"><span id="checkoutBtnText">Betalen — € 4,00</span></button>
-        <button class="btn gh" onclick="closeModal()"><span>Annuleren</span></button>
-      </div>
-    </div>
+    <a class="credit-buy-btn" href="https://apexclusive.nl#contact">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Advies nodig?
+    </a>
   </div>
 </div>
 
@@ -538,11 +470,11 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
     <div class="paywall-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
     </div>
-    <h3>Geen credits meer</h3>
-    <p>U heeft uw 10 gratis analyses gebruikt. Koop credits bij om door te gaan — vanaf €0,10 per analyse.</p>
+    <h3>Gratis limiet bereikt</h3>
+    <p>U heeft de 10 gratis analyses van deze maand gebruikt. Uw limiet ververst automatisch op de eerste van de maand. Direct een volledig rapport nodig? APEXclusive stelt er persoonlijk een voor u op.</p>
     <div class="paywall-btns">
-      <button class="btn" onclick="openModal()"><span>Credits bijkopen</span></button>
-      <a class="btn gh" href="https://apexclusive.nl#contact"><span>Of plan een gesprek</span></a>
+      <a class="btn" href="https://apexclusive.nl#contact"><span>Gesprek plannen</span></a>
+      <a class="btn gh" href="https://wa.me/31624735939" target="_blank" rel="noopener"><span>WhatsApp ons</span></a>
     </div>
   </div>
 
@@ -640,7 +572,7 @@ footer{padding:0 var(--pd);border-top:1px solid var(--hr);background:var(--ink)}
       <h2>Van analyse naar <em style="font-style:italic;background:var(--ch);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent">rijklaar afgeleverd.</em></h2>
       <p class="lead">APEXclusive regelt de onafhankelijke keuring, onderhandeling, BPM-optimalisatie en volledige importafhandeling — van eerste gesprek tot sleuteloverdracht.</p>
       <div class="cta-row" style="margin-top:2rem">
-        <a class="btn" href="https://wa.me/31624735939" target="_blank"><span>WhatsApp +31 6 24 73 59 39</span></a>
+        <a class="btn" href="https://wa.me/31624735939" target="_blank" rel="noopener"><span>WhatsApp +31 6 24 73 59 39</span></a>
         <a class="btn gh" href="mailto:info@apexclusive.nl"><span>E-mail sturen</span></a>
       </div>
     </div>
@@ -695,117 +627,62 @@ document.querySelectorAll('.rv,.ey').forEach(el=>io.observe(el));
 
 function toggleBlock(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('hidden');}
 
-/* ══ CREDIT SYSTEEM ══ */
+/* ══ CREDIT SYSTEEM — gratis maandquota ══
+   Elke bezoeker krijgt maandelijks FREE_CREDITS gratis analyses.
+   De limiet ververst automatisch op de 1e van de maand (lokale teller).
+   Dit is bewust een fair-use limiet, geen betalingsmuur. */
 const FREE_CREDITS    = 10;
 const CREDIT_KEY      = 'apex_credits';
-const PAID_KEY        = 'apex_paid_credits';
-const USED_KEY        = 'apex_used_total';
+const MONTH_KEY       = 'apex_credits_month';
 
-const PKGS = [
-  {credits:10,  price:100,  label:'€ 1,00'},
-  {credits:50,  price:400,  label:'€ 4,00'},
-  {credits:100, price:700,  label:'€ 7,00'},
-];
-let selectedPkg = 1;
-
+function currentMonth(){
+  return new Date().toISOString().slice(0,7); // bv. '2026-08'
+}
 function getCredits(){
-  const free = parseInt(localStorage.getItem(CREDIT_KEY) ?? FREE_CREDITS);
-  const paid = parseInt(localStorage.getItem(PAID_KEY)   ?? 0);
-  return Math.max(0, free) + Math.max(0, paid);
-}
-function getFreeCredits(){
-  return Math.max(0, parseInt(localStorage.getItem(CREDIT_KEY) ?? FREE_CREDITS));
-}
-function getPaidCredits(){
-  return Math.max(0, parseInt(localStorage.getItem(PAID_KEY) ?? 0));
+  if(localStorage.getItem(MONTH_KEY) !== currentMonth()){
+    localStorage.setItem(MONTH_KEY, currentMonth());
+    localStorage.setItem(CREDIT_KEY, String(FREE_CREDITS));
+  }
+  const n = parseInt(localStorage.getItem(CREDIT_KEY) ?? FREE_CREDITS);
+  return Math.max(0, isNaN(n) ? FREE_CREDITS : n);
 }
 function spendCredit(){
-  const free = getFreeCredits();
-  if(free > 0){
-    localStorage.setItem(CREDIT_KEY, free-1);
-  } else {
-    const paid = getPaidCredits();
-    localStorage.setItem(PAID_KEY, Math.max(0,paid-1));
-  }
-  localStorage.setItem(USED_KEY, (parseInt(localStorage.getItem(USED_KEY)||0)+1));
+  localStorage.setItem(CREDIT_KEY, String(Math.max(0, getCredits()-1)));
   updateCreditUI();
 }
-function addCredits(n){
-  localStorage.setItem(PAID_KEY, getPaidCredits()+n);
+function refundCredit(){
+  localStorage.setItem(CREDIT_KEY, String(Math.min(FREE_CREDITS, getCredits()+1)));
   updateCreditUI();
 }
 function updateCreditUI(){
-  const total  = getCredits();
-  const free   = getFreeCredits();
-  const isPaid = free <= 0;
-  const pct    = Math.min(1, total / FREE_CREDITS);
+  const total = getCredits();
+  const pct   = Math.min(1, total / FREE_CREDITS);
 
   document.getElementById('creditCount').textContent = total;
   document.getElementById('creditFill').style.transform = `scaleX(${pct})`;
-  document.getElementById('freeBadge').style.display = isPaid ? 'none' : '';
 
   const msg = document.getElementById('creditMsg');
   const sb  = document.getElementById('searchBlock');
   const pw  = document.getElementById('paywall');
 
   if(total <= 0){
-    msg.textContent = 'Geen credits meer';
+    msg.textContent = 'Gratis limiet bereikt — ververst op de 1e van de maand';
     msg.className   = 'credit-msg bad';
     sb.style.display= 'none';
     pw.classList.add('show');
   } else if(total <= 3){
-    msg.textContent = `Nog ${total} ${isPaid?'betaald':'gratis'} — koop bij`;
+    msg.textContent = `Nog ${total} gratis ${total===1?'analyse':'analyses'} deze maand`;
     msg.className   = 'credit-msg warn';
     sb.style.display= '';
     pw.classList.remove('show');
   } else {
-    msg.textContent = isPaid
-      ? `${total} betaalde credits`
-      : `${total} gratis analyses beschikbaar`;
+    msg.textContent = `${total} van ${FREE_CREDITS} gratis analyses over deze maand`;
     msg.className   = 'credit-msg ok';
     sb.style.display= '';
     pw.classList.remove('show');
   }
 }
 updateCreditUI();
-
-/* Modal */
-function openModal(){
-  document.getElementById('modal').classList.add('open');
-  selectPkg(selectedPkg);
-}
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-}
-function selectPkg(i){
-  selectedPkg = i;
-  document.querySelectorAll('.pkg').forEach((p,j)=>p.classList.toggle('selected',j===i));
-  document.getElementById('checkoutBtnText').textContent = `Betalen — ${PKGS[i].label}`;
-}
-async function startCheckout(){
-  /* In productie: POST naar /api/create-checkout met selectedPkg data
-     Stripe stuurt terug naar ?session_id=... en je verwerkt de credits server-side.
-     Voor demo: simuleer directe credits toevoeging */
-  const pkg = PKGS[selectedPkg];
-  try{
-    /* PRODUCTIE:
-    const r = await fetch('/api/create-checkout',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({pkg: selectedPkg})
-    });
-    const {url} = await r.json();
-    window.location.href = url;
-    */
-
-    /* DEMO MODUS — verwijder dit in productie en gebruik bovenstaand: */
-    addCredits(pkg.credits);
-    closeModal();
-    showToast(`${pkg.credits} credits toegevoegd!`);
-  }catch(e){
-    showToast('Betaling mislukt — probeer opnieuw','bad');
-  }
-}
 
 /* Toast */
 function showToast(msg, type='ok'){
@@ -817,9 +694,19 @@ function showToast(msg, type='ok'){
 }
 
 /* ══ HELPERS ══ */
+const CUR_YEAR = new Date().getFullYear();
+/* HTML-escaping voor álle gescrapete/advertentie-data vóór renderen (anti-XSS).
+   Eigen templates met <strong> etc. blijven bewust on-escaped. */
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* Valideer bouwjaar uit gescrapete data (toekomstige/onmogelijke jaren verwerpen) */
+const okYear = y => {
+  const n = parseInt(y);
+  return (n >= 1950 && n <= CUR_YEAR + 1) ? String(n) : null;
+};
 const euro  = v => v ? '€\u00a0'+Math.round(v).toLocaleString('nl-NL') : '—';
 const fmtKm = v => v ? Math.round(v).toLocaleString('nl-NL')+'\u00a0km' : '—';
-const fmtAge= y => y ? (2026-parseInt(y))+' jaar' : '—';
+const fmtAge= y => y ? Math.max(0, CUR_YEAR-parseInt(y))+' jaar' : '—';
 
 function get(html, patterns){
   for(const p of patterns){const m=html.match(p);if(m&&m[1])return m[1].trim();}
@@ -936,8 +823,9 @@ function parseMobile(html){
   if(!year) year = get(html,[
     /"(?:firstRegistration|modelYear|vehicleYear)"\s*:\s*"?(\d{4})/i,
     /(?:erstzulassung|first\s*registration)[^>]*>\s*(?:\d{2}\/)?(\d{4})/i,
-    /\b(20(?:0[5-9]|1[0-9]|2[0-6]))\b/,
+    /\b(19[7-9]\d|20[0-4]\d)\b/,
   ]);
+  year = okYear(year);
 
   /* Brandstof */
   let fuel = null;
@@ -1006,7 +894,7 @@ function parseAutoscout(html,nd){
     title:get(html,[/<h1[^>]*>([^<]{5,100})<\/h1>/i,/<title>([^<|–]{5,80})/i]),
     price:get(html,[/data-testid="(?:price|listing-price)[^"]*"[^>]*>\s*€?\s*([\d.,]+)/i,/"price"\s*:\s*(\d{3,7})(?:[,}\s])/i,/(\d{1,3}(?:[.,]\d{3})+)\s*€/i]),
     km:   get(html,[/(\d{1,3}(?:[.,]\d{3})+)\s*km/i,/"mileage"\s*:\s*(\d{4,7})/i]),
-    year: get(html,[/(\b20[01]\d\b)/]),
+    year: get(html,[/\b(19[7-9]\d|20[0-4]\d)\b/]),
     fuel: get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i]),
     power:get(html,[/(\d{2,4})\s*(?:PS|pk|kW)/i]),
     color:get(html,[/"color"\s*:\s*"([^"]{2,30})"/i]),
@@ -1019,7 +907,7 @@ function parseAutoscout(html,nd){
   return{
     platform:'AutoScout24',
     title:nh.title||hm.title,   price:nh.price||hm.price,
-    km:nh.km||hm.km,            year:nh.year||hm.year,
+    km:nh.km||hm.km,            year:okYear(nh.year||hm.year),
     fuel:nh.fuel||hm.fuel,      power:nh.power?nh.power+' kW':hm.power,
     trans:nh.trans||hm.trans,   color:nh.color||hm.color,
     doors:nh.doors||hm.doors,   body:nh.body||hm.body,
@@ -1041,10 +929,45 @@ function parseMarktplaats(html){
     price:pcRaw||priceJsonLd||get(html,[/€\s*([\d]{1,3}(?:\.[\d]{3})*)/i,/"(?:asking)?[Pp]rice"\s*:\s*"?(\d{3,7})"?/i]),
     priceCents:!!pcRaw,
     km:get(html,[/"mileage"\s*:\s*"?([\d.]+)/i,/([\d]{1,3}(?:\.[\d]{3})+)\s*km/i]),
-    year:get(html,[/"constructionYear"\s*:\s*"?(\d{4})/i,/\b(20\d{2})\b/i]),
+    year:okYear(get(html,[/"constructionYear"\s*:\s*"?(\d{4})/i,/\b(19[7-9]\d|20[0-4]\d)\b/i])),
     fuel:get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i,/"brandstof"\s*:\s*"([^"]{2,30})"/i]),
     power:get(html,[/(\d+)\s*(?:pk|PS)/i]),
     color:get(html,[/"kleur"\s*:\s*"([^"]{2,30})"/i,/"color"\s*:\s*"([^"]{2,30})"/i]),
+    trans:null,doors:null,body:null,owners:null,country:'Nederland',
+    priceLevel:null,
+  };
+}
+
+/* ══ AUTOTRACK PARSER — Nederlands dealerplatform ══ */
+function parseAutotrack(html){
+  return{
+    platform:'AutoTrack',
+    title:get(html,[/<h1[^>]*>([^<]{5,120})<\/h1>/i,/property="og:title"\s+content="([^"]+)"/i,/<title>([^<|–\-]{5,120})/i]),
+    price:get(html,[/"price"\s*:\s*"?(\d{4,7})"?/i,/€\s*([\d]{1,3}(?:[.,][\d]{3})+)/i]),
+    priceCents:false,
+    km:get(html,[/([\d]{1,3}(?:[.,][\d]{3})+)\s*km/i,/"mileage"\s*:\s*"?(\d{3,7})"?/i]),
+    year:okYear(get(html,[/"constructionYear"\s*:\s*"?(\d{4})/i,/"bouwjaar"\s*:\s*"?(\d{4})/i,/\b(19[7-9]\d|20[0-4]\d)\b/])),
+    fuel:get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i,/"brandstof"\s*:\s*"([^"]{2,30})"/i]),
+    power:get(html,[/(\d+)\s*(?:pk|PS|kW)/i]),
+    color:get(html,[/"kleur"\s*:\s*"([^"]{2,30})"/i,/"color"\s*:\s*"([^"]{2,30})"/i]),
+    trans:get(html,[/"transmission"\s*:\s*"([^"]{2,30})"/i]),
+    doors:null,body:null,owners:null,country:'Nederland',
+    priceLevel:null,
+  };
+}
+
+/* ══ BAS-WORLD PARSER — internationaal voertuigenplatform (NL) ══ */
+function parseBas(html){
+  return{
+    platform:'BAS-World',
+    title:get(html,[/property="og:title"\s+content="([^"]+)"/i,/<h1[^>]*>([^<]{5,120})<\/h1>/i,/<title>([^<|–\-]{5,120})/i]),
+    price:get(html,[/€\s*([\d]{1,3}(?:[.,][\d]{3})+)/i,/"price"\s*:\s*"?(\d{4,7})"?/i]),
+    priceCents:false,
+    km:get(html,[/([\d]{1,3}(?:[.,][\d]{3})+)\s*km/i,/"mileage"\s*:\s*"?(\d{3,7})"?/i]),
+    year:okYear(get(html,[/\b(19[7-9]\d|20[0-4]\d)\b/])),
+    fuel:get(html,[/"fuelType"\s*:\s*"([^"]{2,30})"/i,/(?:brandstof|fuel)[^>]*>\s*([A-Za-z\-]{3,20})/i]),
+    power:get(html,[/(\d+)\s*(?:pk|PS|hp|kW)/i]),
+    color:null,
     trans:null,doors:null,body:null,owners:null,country:'Nederland',
     priceLevel:null,
   };
@@ -1088,7 +1011,7 @@ function cleanKm(raw){
 ══════════════════════════════════════════════ */
 function estimateMarketValue(title, year, km, fuel){
   const t   = (title||'').toLowerCase();
-  const age = year ? Math.max(0, 2026-parseInt(year)) : 5;
+  const age = year ? Math.max(0, CUR_YEAR-parseInt(year)) : 5;
   const kmN = km  || Math.round(age*15000);
   // Km-afwijking t.o.v. norm
   const kmDev = kmN - (age*15000);
@@ -1451,6 +1374,14 @@ function priceAdvice(price, km, year, title, fuel){
   const low  = 1 - (0.04 + (5-confidence)*0.03);
   const high = 1 + (0.04 + (5-confidence)*0.03);
 
+  // Bij confidence 1 (model niet herkend) is de schatting te onzeker
+  // om een koopoordeel aan te hangen — toon neutrale indicatie.
+  if(confidence <= 1) return{
+    level:'warn', tag:'Indicatieve schatting', title:'Te weinig data voor een betrouwbaar prijsadvies', icon:'info',
+    text:`Dit voertuig is niet herkend in onze referentiedata — de geschatte waarde is <strong>puur indicatief</strong> op basis van vermogen en leeftijd. Vergelijk zelf met actuele advertenties van identieke voertuigen, of laat APEXclusive een <strong>nauwkeurige marktanalyse</strong> uitvoeren.`,
+    est, ratio, confidence,
+  };
+
   if(ratio < low) return{
     level:'ok', tag:'Onder marktwaarde', title:'Aantrekkelijke vraagprijs', icon:'check',
     text:`Op basis van merk, model, variant, bouwjaar en kilometerstand lijkt de vraagprijs <strong>circa ${diff}% onder de geschatte marktwaarde</strong>. Onderzoek waarom — verborgen schade, ontbrekend onderhoud of importkosten kunnen een verklaring zijn.`,
@@ -1499,7 +1430,7 @@ function extractClaims(html){
 
 /* ══ RISK PROFILE ══ */
 function buildRisk(parsed, priceNum, kmNum){
-  const age  = parsed.year ? 2026-parseInt(parsed.year) : null;
+  const age  = parsed.year ? Math.max(0, CUR_YEAR-parseInt(parsed.year)) : null;
   const t    = (parsed.title||'').toLowerCase();
   const isLux= /lamborghini|ferrari|mclaren|porsche|bentley|rolls.royce|aston.martin/i.test(t);
   const checks=[];
@@ -1527,8 +1458,8 @@ function buildRisk(parsed, priceNum, kmNum){
   }
 
   if(isLux){checks.push({s:'warn',strong:'Exclusief voertuig',text:'Verzekering, BPM en onderhoud liggen significant hoger.'});score+=6;}
-  if(parsed.platform==='Marktplaats.nl'){checks.push({s:'warn',strong:'Particuliere markt',text:'Geen dealergarantie — extra due diligence vereist.'});score+=8;}
-  else{checks.push({s:'ok',strong:'Professioneel platform',text:'Mobile.de en AutoScout24 hanteren strikte kwaliteitsnormen.'});}
+  if(parsed.platform==='Marktplaats.nl'){checks.push({s:'warn',strong:'Mogelijk particuliere verkoop',text:'Vaak geen dealergarantie — extra due diligence vereist.'});score+=8;}
+  else{checks.push({s:'ok',strong:'Professioneel platform',text:'Dit platform werkt voornamelijk met aangesloten autobedrijven.'});}
   checks.push({s:'neu',strong:'Servicehistorie',text:'Vraag het complete onderhoudsboekje op.'});
   checks.push({s:'neu',strong:'Schadeverleden',text:'Laat een Carfax of equivalent rapport opvragen.'});
 
@@ -1537,7 +1468,7 @@ function buildRisk(parsed, priceNum, kmNum){
 
 /* ══ MARKET CONTEXT — NL-kenteken bewust ══ */
 function buildMarketContext(parsed, priceNum, kmNum, isNL){
-  const age =parsed.year?2026-parseInt(parsed.year):null;
+  const age =parsed.year?Math.max(0, CUR_YEAR-parseInt(parsed.year)):null;
   const adv =priceAdvice(priceNum,kmNum,parsed.year,parsed.title,parsed.fuel);
   const est =adv?adv.est:null;
   const avgKm=age?age*15000:null;
@@ -1585,7 +1516,7 @@ function buildMarketContext(parsed, priceNum, kmNum, isNL){
     const total=priceNum+bpmEst+rdw+transport;
     h+='<div class="bd-section" style="margin-top:1.5rem"><div class="bd-sec-lbl">Indicatieve importkosten naar Nederland</div><div class="market-grid">';
     h+=`<div class="mkt-card"><div class="mkt-lbl">Aankoopprijs</div><div class="mkt-val">${euro(priceNum)}</div><div class="mkt-sub">Vraagprijs advertentie</div></div>`;
-    h+=`<div class="mkt-card"><div class="mkt-lbl">BPM (indicatief ~9%)</div><div class="mkt-val">${euro(bpmEst)}</div><div class="mkt-sub"><a href="https://bpm.apexclusive.nl" target="_blank" style="color:var(--pt)">Exacte BPM berekenen →</a></div></div>`;
+    h+=`<div class="mkt-card"><div class="mkt-lbl">BPM (indicatief ~9%)</div><div class="mkt-val">${euro(bpmEst)}</div><div class="mkt-sub"><a href="https://bpm.apexclusive.nl" target="_blank" rel="noopener" style="color:var(--pt)">Exacte BPM berekenen →</a></div></div>`;
     h+=`<div class="mkt-card"><div class="mkt-lbl">Totaal incl. RDW &amp; transport</div><div class="mkt-val" style="color:var(--pt)">${euro(total)}</div><div class="mkt-sub">BPM + RDW €690 + transport ±${euro(transport)}</div></div>`;
     h+='</div></div>';
   } else if(isNL && priceNum){
@@ -1637,7 +1568,7 @@ function makeTip(num,icon,title,body,badge,bs,extract,xs,verify,vs,action){
         ${badge?`<div class="tip-badge tb-${bs||'neu'}">${BADGE_SVG[bs||'neu']}${badge}</div>`:''}
       </div>
       <div class="tip-body">${body}</div>
-      ${extract?`<div class="tip-extract ex-${xs||'neu'}"><span class="tip-extract-lbl">Aangetroffen in advertentie</span>"${clean(extract)}"</div>`:''}
+      ${extract?`<div class="tip-extract ex-${xs||'neu'}"><span class="tip-extract-lbl">Aangetroffen in advertentie</span>"${esc(clean(extract))}"</div>`:''}
       ${verify?`<div class="tip-verify-row vr-${vs||'neu'}">${BADGE_SVG[vs||'neu']}${verify}</div>`:''}
       ${action?`<div class="tip-action">${action}${ICONS.arrow}</div>`:''}
     </div>
@@ -1903,7 +1834,8 @@ function extractClientImages(html){
 
 /* ══ DETAILS ══ */
 function buildDetails(parsed,priceNum,kmNum,url,isNL){
-  function row(l,v){return v&&v!=='—'?`<div class="bd-row"><span class="bd-l">${l}</span><span class="bd-v">${v}</span></div>`:''}
+  function row(l,v){return v&&v!=='—'?`<div class="bd-row"><span class="bd-l">${l}</span><span class="bd-v">${esc(v)}</span></div>`:''}
+  const safeUrl=esc(url);
   let h='<div class="bd-section"><div class="bd-sec-lbl">Voertuig — hoofdgegevens</div><div class="bd-grid">';
   h+=row('Platform',parsed.platform);
   h+=row('Titel',parsed.title);
@@ -1924,7 +1856,7 @@ function buildDetails(parsed,priceNum,kmNum,url,isNL){
   if(parsed.power)h+=row('Vermogen',parsed.power);
   if(parsed.owners)h+=row('Vorige eigenaren',parsed.owners);
   h+='</div></div>';
-  h+=`<div class="bd-section"><div class="bd-sec-lbl">Advertentielink</div><div class="bd-row"><span class="bd-l">Bron</span><span class="bd-v"><a href="${url}" target="_blank" rel="noopener">${url.length>65?url.substring(0,65)+'…':url}</a></span></div></div>`;
+  h+=`<div class="bd-section"><div class="bd-sec-lbl">Advertentielink</div><div class="bd-row"><span class="bd-l">Bron</span><span class="bd-v"><a href="${safeUrl}" target="_blank" rel="noopener">${safeUrl.length>65?safeUrl.substring(0,65)+'…':safeUrl}</a></span></div></div>`;
   return h;
 }
 
@@ -1971,6 +1903,8 @@ async function analyzeAd(){
     let parsed;
     if(platform==='mobile')         parsed=parseMobile(html);
     else if(platform==='autoscout') parsed=parseAutoscout(html,nd);
+    else if(platform==='autotrack') parsed=parseAutotrack(html);
+    else if(platform==='bas')       parsed=parseBas(html);
     else                            parsed=parseMarktplaats(html);
 
     // Fallback voor Mobile.de og:image
@@ -1989,24 +1923,24 @@ async function analyzeAd(){
     if(allImages.length>0){
       gh.innerHTML=
         `<div class="gallery-main">
-          <img src="${allImages[0]}" alt="${(parsed.title||'Voertuig').replace(/"/g,'&quot;')}"
+          <img src="${esc(allImages[0])}" alt="${esc(parsed.title)||'Voertuig'}"
             style="transition:opacity .25s" onerror="this.parentElement.style.background='var(--ink3)';this.style.display='none'">
           <div class="gallery-overlay"></div>
           <div class="gallery-strip"><span></span><span></span><span></span></div>
           <div class="gallery-count">${allImages.length} foto${allImages.length!==1?'s':''}</div>
           <div class="gallery-info">
-            <div class="gallery-platform">${parsed.platform}${isNL?' · NL-kenteken':''}</div>
-            <div class="gallery-title">${parsed.title||'Voertuig'}</div>
+            <div class="gallery-platform">${esc(parsed.platform)}${isNL?' · NL-kenteken':''}</div>
+            <div class="gallery-title">${esc(parsed.title)||'Voertuig'}</div>
             <div class="gallery-meta">
-              ${parsed.year?`<span>${parsed.year}</span>`:''}
-              ${parsed.fuel?`<span>${parsed.fuel}</span>`:''}
-              ${parsed.power?`<span>${parsed.power}</span>`:''}
+              ${parsed.year?`<span>${esc(parsed.year)}</span>`:''}
+              ${parsed.fuel?`<span>${esc(parsed.fuel)}</span>`:''}
+              ${parsed.power?`<span>${esc(parsed.power)}</span>`:''}
               ${kmNum?`<span>${fmtKm(kmNum)}</span>`:''}
             </div>
           </div>
         </div>`
         +(allImages.length>1?`<div class="thumb-strip">${allImages.slice(0,8).map((img,i)=>
-          `<div class="thumb-item${i===0?' active':''}" onclick="switchPhoto(${i})"><img src="${img}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`
+          `<div class="thumb-item${i===0?' active':''}" onclick="switchPhoto(${i})"><img src="${esc(img)}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`
           ).join('')+(allImages.length>8?`<div class="thumb-item more">+${allImages.length-8}</div>`:'')}
           </div>`:''
         );
@@ -2032,7 +1966,7 @@ async function analyzeAd(){
     document.getElementById('statRow').innerHTML=
       `<div class="s-card"><span class="s-card-lbl">Vraagprijs</span><div class="s-card-val">${euro(priceNum)}</div><div class="s-card-sub">${adv?adv.tag:'—'}</div></div>`
      +`<div class="s-card"><span class="s-card-lbl">Kilometerstand</span><div class="s-card-val">${fmtKm(kmNum)}</div><div class="s-card-sub">${kmNum&&kmNum<50000?'Laag':kmNum&&kmNum<120000?'Normaal':kmNum?'Hoog':'—'}</div></div>`
-     +`<div class="s-card"><span class="s-card-lbl">Bouwjaar</span><div class="s-card-val">${parsed.year||'—'}</div><div class="s-card-sub">${parsed.year?fmtAge(parsed.year):'Onbekend'}</div></div>`
+     +`<div class="s-card"><span class="s-card-lbl">Bouwjaar</span><div class="s-card-val">${esc(parsed.year)||'—'}</div><div class="s-card-sub">${parsed.year?fmtAge(parsed.year):'Onbekend'}</div></div>`
      +`<div class="s-card"><span class="s-card-lbl">Risicoscore</span><div class="s-card-val" style="color:${risk.score<40?'var(--ig)':risk.score<65?'var(--wn-c)':'var(--ir)'}">${risk.score}</div><div class="s-card-sub">0 = laag · 100 = hoog</div></div>`;
 
     /* VERDICT */
@@ -2121,9 +2055,12 @@ async function analyzeAd(){
     setTimeout(()=>res.scrollIntoView({behavior:'smooth',block:'start'}),80);
 
   }catch(e){
-    // Credit terugstorten bij fout
-    addCredits(1);
-    err.textContent='Ophalen mislukt: '+e.message+'. Controleer of de link correct en publiek toegankelijk is. Uw credit is teruggestort.';
+    // Analyse terugstorten bij fout — mislukte poging kost niets
+    refundCredit();
+    const blocked=/HTTP 40[13]|HTTP 429|Timeout|te groot/i.test(e.message||'');
+    err.innerHTML = blocked
+      ? 'Het platform blokkeerde de automatische uitlezing (anti-bot beveiliging) of reageerde niet. Probeer het over enkele minuten opnieuw — of <a href="https://apexclusive.nl#contact" target="_blank" rel="noopener" style="color:var(--pt);border-bottom:1px solid var(--ln)">vraag een handmatige analyse aan</a>. Uw analyse is niet afgeschreven.'
+      : 'Ophalen mislukt: '+esc(e.message)+'. Controleer of de link correct en publiek toegankelijk is. Uw analyse is niet afgeschreven.';
     err.classList.add('show');
   }finally{
     load.style.display='none';
@@ -2150,15 +2087,6 @@ function resetTool(){
   document.getElementById('detailsContent').innerHTML='';
   allImages=[];
   window.scrollTo({top:0,behavior:'smooth'});
-}
-
-/* Stripe success callback (na redirect) */
-const params=new URLSearchParams(location.search);
-if(params.get('payment')===('success')){
-  const credits=parseInt(params.get('credits')||'50');
-  addCredits(credits);
-  showToast(`${credits} credits toegevoegd — bedankt!`);
-  history.replaceState({},'',location.pathname);
 }
 </script>
 </body>

@@ -1,6 +1,9 @@
 {
-  "dependencies": {
-    "@sparticuz/chromium": "^123.0.0",
-    "puppeteer-core": "^22.0.0"
+  "name": "apexclusive-advertentie-analyse",
+  "private": true,
+  "version": "1.1.0",
+  "description": "APEXclusive Advertentie Analyse — gratis voertuigrapport op basis van advertentielinks",
+  "engines": {
+    "node": ">=18"
   }
 }
